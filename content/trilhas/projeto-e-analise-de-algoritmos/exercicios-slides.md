@@ -20,10 +20,10 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Técnicas de Projeto](../../assuntos/projeto-e-analise-de-algoritmos/tecnicas-de-projeto/index.md)
-2. [Grafos](../../assuntos/projeto-e-analise-de-algoritmos/grafos/index.md)
-3. [Busca em Grafos](../../assuntos/projeto-e-analise-de-algoritmos/busca-em-grafos/index.md)
-4. [Menor caminho em grafos](../../assuntos/projeto-e-analise-de-algoritmos/menor-caminho-em-grafos/index.md)
+1. [Técnicas de Projeto](../../assuntos/projeto-e-analise-de-algoritmos/tecnicas-de-projeto.md)
+2. [Grafos](../../assuntos/projeto-e-analise-de-algoritmos/grafos.md)
+3. [Busca em Grafos](../../assuntos/projeto-e-analise-de-algoritmos/busca-em-grafos.md)
+4. [Menor caminho em grafos](../../assuntos/projeto-e-analise-de-algoritmos/menor-caminho-em-grafos.md)
 
 <a id="apresentacao-original"></a>
 

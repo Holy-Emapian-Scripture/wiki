@@ -20,10 +20,10 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Aula 1 - Documentação, Contratos e SRP](../../assuntos/engenharia-de-software/aula-1-documentacao-contratos-e-srp/index.md)
-2. [Aula 2 - Simple Factory, Factory Method e OCP](../../assuntos/engenharia-de-software/aula-2-simple-factory-factory-method-e-ocp/index.md)
-3. [Aula 3 - Builder e Singleton](../../assuntos/engenharia-de-software/aula-3-builder-e-singleton/index.md)
-4. [Aula 4 - Abstract Factory](../../assuntos/engenharia-de-software/aula-4-abstract-factory/index.md)
+1. [Aula 1 - Documentação, Contratos e SRP](../../assuntos/engenharia-de-software/aula-1-documentacao-contratos-e-srp.md)
+2. [Aula 2 - Simple Factory, Factory Method e OCP](../../assuntos/engenharia-de-software/aula-2-simple-factory-factory-method-e-ocp.md)
+3. [Aula 3 - Builder e Singleton](../../assuntos/engenharia-de-software/aula-3-builder-e-singleton.md)
+4. [Aula 4 - Abstract Factory](../../assuntos/engenharia-de-software/aula-4-abstract-factory.md)
 
 <a id="apresentacao-original"></a>
 

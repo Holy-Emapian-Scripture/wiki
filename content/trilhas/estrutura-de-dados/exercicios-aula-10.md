@@ -20,13 +20,13 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Exercise 4](../../assuntos/estrutura-de-dados/exercise-4/index.md)
-2. [Exercise 5](../../assuntos/estrutura-de-dados/exercise-5/index.md)
-3. [Exercise 6](../../assuntos/estrutura-de-dados/exercise-6/index.md)
-4. [Exercise 7](../../assuntos/estrutura-de-dados/exercise-7/index.md)
-5. [Exercise 8](../../assuntos/estrutura-de-dados/exercise-8/index.md)
-6. [Exercise 9](../../assuntos/estrutura-de-dados/exercise-9/index.md)
-7. [Exercise 10](../../assuntos/estrutura-de-dados/exercise-10/index.md)
+1. [Exercise 4](../../assuntos/estrutura-de-dados/exercise-4.md)
+2. [Exercise 5](../../assuntos/estrutura-de-dados/exercise-5.md)
+3. [Exercise 6](../../assuntos/estrutura-de-dados/exercise-6.md)
+4. [Exercise 7](../../assuntos/estrutura-de-dados/exercise-7.md)
+5. [Exercise 8](../../assuntos/estrutura-de-dados/exercise-8.md)
+6. [Exercise 9](../../assuntos/estrutura-de-dados/exercise-9.md)
+7. [Exercise 10](../../assuntos/estrutura-de-dados/exercise-10.md)
 
 <a id="apresentacao-original"></a>
 

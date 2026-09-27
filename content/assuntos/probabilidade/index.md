@@ -16,12 +16,12 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Continuous Random variables](continuous-random-variables/index.md) — [A1](../../trilhas/probabilidade/a1.md)
-- [Discrete Distributions](discrete-distributions/index.md) — [A1](../../trilhas/probabilidade/a1.md)
-- [Distribuições Contínuas](distribuicoes-continuas/index.md) — [A2](../../trilhas/probabilidade/a2.md)
-- [Fundamentals](fundamentals/index.md) — [A1](../../trilhas/probabilidade/a1.md)
-- [Variáveis Aleatórias Contínuas](variaveis-aleatorias-continuas/index.md) — [A2](../../trilhas/probabilidade/a2.md)
-- [Variáveis Aleatórias Contínuas Bidimensionais](variaveis-aleatorias-continuas-bidimensionais/index.md) — [A2](../../trilhas/probabilidade/a2.md)
+- [Continuous Random variables](continuous-random-variables.md) — [A1](../../trilhas/probabilidade/a1.md)
+- [Discrete Distributions](discrete-distributions.md) — [A1](../../trilhas/probabilidade/a1.md)
+- [Distribuições Contínuas](distribuicoes-continuas.md) — [A2](../../trilhas/probabilidade/a2.md)
+- [Fundamentals](fundamentals.md) — [A1](../../trilhas/probabilidade/a1.md)
+- [Variáveis Aleatórias Contínuas](variaveis-aleatorias-continuas.md) — [A2](../../trilhas/probabilidade/a2.md)
+- [Variáveis Aleatórias Contínuas Bidimensionais](variaveis-aleatorias-continuas-bidimensionais.md) — [A2](../../trilhas/probabilidade/a2.md)
 
 ## Hubs de origem
 

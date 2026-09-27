@@ -24,8 +24,8 @@ configuration:
         light: "#faf8f8"
         lightgray: "#e5e5e5"
         gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
+        darkgray: "#2e2e2e"
+        dark: "#1a1a1a"
         secondary: "#284b63"
         tertiary: "#84a59d"
         highlight: rgba(143, 159, 169, 0.15)
@@ -127,7 +127,7 @@ plugins:
   - source: "@quartz-community/content-page"
     enabled: true
   - source: "@quartz-community/folder-page"
-    enabled: false
+    enabled: true
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"

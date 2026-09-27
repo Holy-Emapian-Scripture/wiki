@@ -18,10 +18,10 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Exercise 1](../../assuntos/estrutura-de-dados/exercise-1-exercicios-aula-7/index.md)
-2. [Exercise 2](../../assuntos/estrutura-de-dados/exercise-2/index.md)
-3. [Exercise 3](../../assuntos/estrutura-de-dados/exercise-3/index.md)
-4. [Exercise 4](../../assuntos/estrutura-de-dados/exercise-4-exercicios-aula-7/index.md)
+1. [Exercise 1](../../assuntos/estrutura-de-dados/exercise-1-exercicios-aula-7.md)
+2. [Exercise 2](../../assuntos/estrutura-de-dados/exercise-2.md)
+3. [Exercise 3](../../assuntos/estrutura-de-dados/exercise-3.md)
+4. [Exercise 4](../../assuntos/estrutura-de-dados/exercise-4-exercicios-aula-7.md)
 
 <a id="apresentacao-original"></a>
 

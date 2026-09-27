@@ -15,7 +15,7 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Introdução](introducao/index.md) — [Revisão geral](../../trilhas/causalidade/revisao-geral.md)
+- [Introdução](introducao.md) — [Revisão geral](../../trilhas/causalidade/revisao-geral.md)
 
 ## Hubs de origem
 

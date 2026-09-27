@@ -15,7 +15,7 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Inferência Aproximada - O valor de uma premissa](inferencia-aproximada-o-valor-de-uma-premissa/index.md) — [A1](../../trilhas/modelagem-estatistica/a1.md)
+- [Inferência Aproximada - O valor de uma premissa](inferencia-aproximada-o-valor-de-uma-premissa.md) — [A1](../../trilhas/modelagem-estatistica/a1.md)
 
 ## Hubs de origem
 

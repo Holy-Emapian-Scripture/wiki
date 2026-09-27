@@ -11,7 +11,7 @@ Publicada com **[Quartz 5](https://quartz.jzhao.xyz/)** no GitHub Pages:
 
 Todo o conteúdo em Markdown reside na pasta `content/`, organizada da seguinte forma:
 
-- **`content/assuntos/`**: 19 disciplinas acadêmicas com tópicos consolidados em páginas completas (`index.md`), organizadas por seções (`##`) com âncoras explícitas para leitura contínua e índice automático (Table of Contents).
+- **`content/assuntos/`**: 19 disciplinas acadêmicas estruturadas por pastas temáticas, com tópicos consolidados em arquivos diretos (`<topico>.md`). As páginas são estruturadas por seções (`##`) com âncoras explícitas para leitura contínua e índice automático (Table of Contents).
 - **`content/trilhas/`**: Percursos de estudo organizados pela sequência didática de revisões (A1, A2, A3), notas de aula e listas de exercícios.
 - **`content/semestres/`**: Hubs de navegação cronológica do 3º ao 6º semestre, além de Eletivas e Mestrado.
 - **`content/guias/`**: Orientações para estudo, modelo de página e instruções de contribuição.
@@ -21,8 +21,8 @@ Todas as explicações originais, fórmulas matemáticas em LaTeX, blocos de có
 
 ### Diretrizes Recentes de Organização e Formatação
 
-1. **Granularidade Consolidada:**
-   - Evita-se a dispersão em micro-arquivos. Os subtópicos de um mesmo assunto são reunidos no arquivo `index.md` do tópico, cada um iniciado com `## Subtópico` e sua respectiva âncora `<a id="slug"></a>`.
+1. **Granularidade Consolidada e Arquivos Diretos:**
+   - Evita-se a dispersão em micro-arquivos ou a criação de pastas redundantes para arquivos únicos. Cada tópico consolidado é um arquivo direto (`<topico>.md`) na pasta de sua respectiva disciplina/área. Os subtópicos de um mesmo assunto são reunidos no próprio arquivo, cada um iniciado com `## Subtópico` e sua respectiva âncora `<a id="slug"></a>`. Pastas com `index.md` são mantidas para categorias e disciplinas.
 2. **Ordenação Canônica:**
    - A ordenação das anotações e dos subtópicos internos reflete estritamente o percurso cronológico/pedagógico das trilhas e revisões originais (PDFs).
 3. **Formatação Matemática (KaTeX):**

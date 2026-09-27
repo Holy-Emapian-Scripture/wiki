@@ -26,15 +26,15 @@ ordem_na_trilha: 4
 
 ## Tópicos desta página
 
-1. [Modelo linear padrão](modelo-linear-padrao/index.md)
-2. [Balanço Viés-Variância](balanco-vies-variancia/index.md)
-3. [Regularização Lasso e Ridge](regularizacao-lasso-e-ridge/index.md)
-4. [Generalized Additive Models (GAM)](generalized-additive-models-gam/index.md)
-5. [Deep Learning (DL)](deep-learning-dl/index.md)
+1. [Modelo linear padrão](modelo-linear-padrao.md)
+2. [Balanço Viés-Variância](balanco-vies-variancia.md)
+3. [Regularização Lasso e Ridge](regularizacao-lasso-e-ridge.md)
+4. [Generalized Additive Models (GAM)](generalized-additive-models-gam.md)
+5. [Deep Learning (DL)](deep-learning-dl.md)
 
 ## Percurso de estudo
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Introdução às Séries Temporais](../introducao-as-series-temporais/index.md)
-- Próximo: [Diagnóstico Visual](../diagnostico-visual/index.md)
+- Anterior: [Introdução às Séries Temporais](../introducao-as-series-temporais.md)
+- Próximo: [Diagnóstico Visual](../diagnostico-visual.md)

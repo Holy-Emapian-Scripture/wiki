@@ -26,18 +26,18 @@ ordem_na_trilha: 42
 
 ## Tópicos desta página
 
-1. [Introdução e Modelagem de Dados Sequenciais](introducao-e-modelagem-de-dados-sequenciais/index.md)
-2. [Simple RNN (Vanilla RNN)](simple-rnn-vanilla-rnn/index.md)
-3. [Treinamento e Problemas de Gradiente na RNN](treinamento-e-problemas-de-gradiente-na-rnn/index.md)
-4. [Limitações da RNN](limitacoes-da-rnn/index.md)
-5. [Long-short Term Memory (LSTM)](long-short-term-memory-lstm/index.md)
-6. [Gated Recurrent Unit (GRU)](gated-recurrent-unit-gru/index.md)
-7. [Aplicando CNN](aplicando-cnn/index.md)
-8. [RNN Bidirecionais](rnn-bidirecionais/index.md)
+1. [Introdução e Modelagem de Dados Sequenciais](introducao-e-modelagem-de-dados-sequenciais.md)
+2. [Simple RNN (Vanilla RNN)](simple-rnn-vanilla-rnn.md)
+3. [Treinamento e Problemas de Gradiente na RNN](treinamento-e-problemas-de-gradiente-na-rnn.md)
+4. [Limitações da RNN](limitacoes-da-rnn.md)
+5. [Long-short Term Memory (LSTM)](long-short-term-memory-lstm.md)
+6. [Gated Recurrent Unit (GRU)](gated-recurrent-unit-gru.md)
+7. [Aplicando CNN](aplicando-cnn.md)
+8. [RNN Bidirecionais](rnn-bidirecionais.md)
 
 ## Conteúdos relacionados
 
-- [Redes Neurais — Aprendizado de Máquina](../../aprendizado-de-maquina/redes-neurais/index.md)
+- [Redes Neurais — Aprendizado de Máquina](../../aprendizado-de-maquina/redes-neurais.md)
 
 ## Percurso de estudo
 

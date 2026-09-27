@@ -15,8 +15,8 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Sistemas de EDO’s de Primeira Ordem](sistemas-de-edos-de-primeira-ordem/index.md) — [A2](../../trilhas/equacoes-diferenciais-ordinarias/a2.md)
-- [Transformada de Laplace](transformada-de-laplace/index.md) — [A2](../../trilhas/equacoes-diferenciais-ordinarias/a2.md)
+- [Sistemas de EDO’s de Primeira Ordem](sistemas-de-edos-de-primeira-ordem.md) — [A2](../../trilhas/equacoes-diferenciais-ordinarias/a2.md)
+- [Transformada de Laplace](transformada-de-laplace.md) — [A2](../../trilhas/equacoes-diferenciais-ordinarias/a2.md)
 
 ## Hubs de origem
 

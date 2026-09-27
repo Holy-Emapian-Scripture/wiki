@@ -15,10 +15,10 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Introdução](introducao/index.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
-- [Processos de Decisão de Markov Finitos](processos-de-decisao-de-markov-finitos/index.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
-- [Programação Dinâmica](programacao-dinamica/index.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
-- [Soluções de métodos tabulares](solucoes-de-metodos-tabulares/index.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
+- [Introdução](introducao.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
+- [Processos de Decisão de Markov Finitos](processos-de-decisao-de-markov-finitos.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
+- [Programação Dinâmica](programacao-dinamica.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
+- [Soluções de métodos tabulares](solucoes-de-metodos-tabulares.md) — [Revisão geral](../../trilhas/aprendizado-por-reforco/revisao-geral.md)
 
 ## Hubs de origem
 

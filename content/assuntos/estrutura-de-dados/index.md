@@ -19,11 +19,11 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [1. Complexidade de algoritmos](complexidade-de-algoritmos/index.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
-- [Introdução](introducao/index.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
-- [4.0 Ordeanção avançada](ordeancao-avancada/index.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
-- [3. Ordenação](ordenacao/index.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
-- [2. Tipos Abstratos de Dados](tipos-abstratos-de-dados/index.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
+- [1. Complexidade de algoritmos](complexidade-de-algoritmos.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
+- [Introdução](introducao.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
+- [4.0 Ordeanção avançada](ordeancao-avancada.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
+- [3. Ordenação](ordenacao.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
+- [2. Tipos Abstratos de Dados](tipos-abstratos-de-dados.md) — [A1](../../trilhas/estrutura-de-dados/a1.md)
 
 ## Exercícios
 

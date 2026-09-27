@@ -26,15 +26,15 @@ ordem_na_trilha: 58
 
 ## Tópicos desta página
 
-1. [Motivação e Modelos Generativos](motivacao-e-modelos-generativos/index.md)
-2. [Introdução às GANs](introducao-as-gans/index.md)
-3. [GANs Condicionais (cGANs)](gans-condicionais-cgans/index.md)
-4. [CycleGANs (Tradução sem dados pareados)](cyclegans-traducao-sem-dados-pareados/index.md)
-5. [Outras aplicações de GANs](outras-aplicacoes-de-gans/index.md)
+1. [Motivação e Modelos Generativos](motivacao-e-modelos-generativos.md)
+2. [Introdução às GANs](introducao-as-gans.md)
+3. [GANs Condicionais (cGANs)](gans-condicionais-cgans.md)
+4. [CycleGANs (Tradução sem dados pareados)](cyclegans-traducao-sem-dados-pareados.md)
+5. [Outras aplicações de GANs](outras-aplicacoes-de-gans.md)
 
 ## Conteúdos relacionados
 
-- [Generative Adversarial Networks — Aprendizado de Máquina](../../aprendizado-de-maquina/generative-adversarial-networks/index.md)
+- [Generative Adversarial Networks — Aprendizado de Máquina](../../aprendizado-de-maquina/generative-adversarial-networks.md)
 
 ## Percurso de estudo
 

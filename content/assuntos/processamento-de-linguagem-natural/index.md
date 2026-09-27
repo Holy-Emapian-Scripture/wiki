@@ -15,7 +15,7 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Estudo formal da linguagem natural](estudo-formal-da-linguagem-natural/index.md) — [A1](../../trilhas/processamento-de-linguagem-natural/a1.md)
+- [Estudo formal da linguagem natural](estudo-formal-da-linguagem-natural.md) — [A1](../../trilhas/processamento-de-linguagem-natural/a1.md)
 
 ## Hubs de origem
 

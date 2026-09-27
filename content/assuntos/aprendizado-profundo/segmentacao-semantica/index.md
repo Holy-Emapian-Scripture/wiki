@@ -26,11 +26,11 @@ ordem_na_trilha: 1
 
 ## Tópicos desta página
 
-1. [Introdução e Métricas](introducao-e-metricas/index.md)
-2. [Ferramentas Fundamentais](ferramentas-fundamentais/index.md)
-3. [Arquiteturas](arquiteturas/index.md)
-4. [Percas](percas/index.md)
-5. [Pontos Práticos](pontos-praticos/index.md)
+1. [Introdução e Métricas](introducao-e-metricas.md)
+2. [Ferramentas Fundamentais](ferramentas-fundamentais.md)
+3. [Arquiteturas](arquiteturas.md)
+4. [Percas](percas.md)
+5. [Pontos Práticos](pontos-praticos.md)
 
 ## Percurso de estudo
 

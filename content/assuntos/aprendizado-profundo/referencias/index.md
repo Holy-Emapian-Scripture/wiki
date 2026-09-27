@@ -37,4 +37,4 @@ Zhu, Jun-Yan, Taesung Park, Phillip Isola, and Alexei A. Efros. 2018. “Unpaire
 
 [Trilha: A1](../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [The GAN Zoo](../generative-adversarial-networks-gans/outras-aplicacoes-de-gans/index.md#the-gan-zoo)
+- Anterior: [The GAN Zoo](../generative-adversarial-networks-gans/outras-aplicacoes-de-gans.md#the-gan-zoo)

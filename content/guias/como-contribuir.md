@@ -15,15 +15,15 @@ Uma contribuição pode ser pequena: corrigir uma explicação, acrescentar uma 
 
 Para evitar uma proliferação de micro-arquivos excessivamente curtos e manter uma leitura contínua e agradável, a wiki adota uma estrutura consolidada por temas:
 
-1. **Agrupamento por Tema Principal:**
-   - Em vez de criar um arquivo isolado para cada pequeno subtópico, reunimos as anotações de um mesmo tema em um único arquivo de índice temático: `content/assuntos/<disciplina>/<tema>/index.md` (por exemplo, `assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas/index.md`).
+1. **Agrupamento por Tema Principal e Arquivos Diretos:**
+   - Em vez de criar pastas isoladas para cada pequeno subtópico com um `index.md`, salvamos cada tópico temático diretamente como um arquivo Markdown (`.md`): `content/assuntos/<disciplina>/<topico>.md` (ou em subcategorias, como `assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas.md`). Pastas são reservadas para agrupar categorias e disciplinas (que possuem seu respectivo `index.md`), mantendo o repositório conciso e direto.
 2. **Subtópicos e Âncoras Explícitas:**
    - Cada subtópico dentro do documento é introduzido por um título de nível 2 (`## Nome do Subtópico`) acompanhado por uma âncora HTML explícita:
      ```markdown
      <a id="u-net"></a>
      ## U-Net
      ```
-   - Isso permite referenciar diretamente qualquer subtópico a partir de outras páginas (`[U-Net](../arquiteturas/index.md#u-net)`) ou fazer transclusão no Obsidian (`![[arquiteturas#U-Net]]`).
+   - Isso permite referenciar diretamente qualquer subtópico a partir de outras páginas (`[U-Net](arquiteturas.md#u-net)` ou `[U-Net](../segmentacao-semantica/arquiteturas.md#u-net)`) ou fazer transclusão no Obsidian (`![[arquiteturas#U-Net]]`).
 3. **Índice Automático (TOC):**
    - O Quartz e o tema da wiki geram automaticamente um sumário na barra lateral direita com todos os subtópicos da página (`##`), facilitando a navegação rápida.
 4. **Ordem Pedagógica e Canônica:**
@@ -36,7 +36,7 @@ Para evitar uma proliferação de micro-arquivos excessivamente curtos e manter 
 1. **Consulte o Modelo:**
    - Veja o [`modelo-de-pagina.md`](modelo-de-pagina.md) para a estrutura padrão recomendada.
 2. **Local do Arquivo:**
-   - Salve a nova página em `content/assuntos/<disciplina>/<tema>/index.md`. Use nomes curtos em minúsculas e separados por hífen (kebab-case).
+   - Salve a nova página diretamente na pasta da disciplina ou subcategoria: `content/assuntos/<disciplina>/<nome-do-topico>.md`. Use nomes curtos em minúsculas e separados por hífen (kebab-case).
 3. **Cabeçalho (Frontmatter):**
    - No topo do arquivo, defina os metadados entre `---`:
      ```yaml
@@ -52,8 +52,8 @@ Para evitar uma proliferação de micro-arquivos excessivamente curtos e manter 
      ```markdown
      ## Percurso de estudo
 
-     - **Anterior:** [Tópico Anterior](../topico-anterior/index.md)
-     - **Próximo:** [Próximo Tópico](../proximo-topico/index.md)
+     - **Anterior:** [Tópico Anterior](topico-anterior.md)
+     - **Próximo:** [Próximo Tópico](proximo-topico.md)
      ```
 
 ---
@@ -87,12 +87,12 @@ A wiki utiliza **KaTeX** para renderização rápida e precisa de fórmulas mate
 A wiki foi projetada para funcionar perfeitamente tanto como site publicado (Quartz 5) quanto como vault local no **Obsidian**:
 
 1. **Tipos de Links:**
-   - Links Markdown relativos tradicionais (`[Texto](../outro-topico/index.md)`) e Wikilinks (`[[outro-topico]]` ou `[[arquiteturas#U-Net|U-Net]]`) são totalmente suportados.
+   - Links Markdown relativos tradicionais (`[Texto](outro-topico.md)` ou `[Texto](../outra-disciplina/outro-topico.md)`) e Wikilinks (`[[outro-topico]]` ou `[[arquiteturas#U-Net|U-Net]]`) são totalmente suportados.
 2. **Imagens e Anexos:**
    - Salve as imagens na pasta `assets/` da disciplina correspondente: `content/assuntos/<disciplina>/assets/nome-da-imagem.png`.
    - Insira no Markdown usando caminho relativo:
      ```markdown
-     ![Diagrama da arquitetura U-Net](../assets/u-net-diagrama.png)
+     ![Diagrama da arquitetura U-Net](assets/u-net-diagrama.png)
      ```
 3. **Blocos de Código:**
    - Especifique sempre a linguagem para syntax highlighting (ex.: ````python`, ````bash`, ````latex`).

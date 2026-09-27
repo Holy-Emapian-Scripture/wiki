@@ -20,7 +20,7 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Exercise 1](../../assuntos/estrutura-de-dados/exercise-1/index.md)
+1. [Exercise 1](../../assuntos/estrutura-de-dados/exercise-1.md)
 
 <a id="apresentacao-original"></a>
 

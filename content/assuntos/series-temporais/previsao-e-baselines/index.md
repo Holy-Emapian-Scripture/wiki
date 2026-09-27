@@ -28,13 +28,13 @@ No capítulo passado, nós definimos ACF, e como podemos utilizar ela para **dia
 
 ## Tópicos desta página
 
-1. [Previsão via Autocorrelação $\rho(h)$ e Esperança Condicional](previsao-via-autocorrelacao-rho-h-e-esperanca-condicional/index.md)
-2. [Métodos simples de previsão (baseline)](metodos-simples-de-previsao-baseline/index.md)
-3. [Valores Ajustados V.S Previsões](valores-ajustados-v-s-previsoes/index.md)
+1. [Previsão via Autocorrelação $\rho(h)$ e Esperança Condicional](previsao-via-autocorrelacao-rho-h-e-esperanca-condicional.md)
+2. [Métodos simples de previsão (baseline)](metodos-simples-de-previsao-baseline.md)
+3. [Valores Ajustados V.S Previsões](valores-ajustados-v-s-previsoes.md)
 
 ## Percurso de estudo
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Estacionariedade e ACF](../estacionariedade-e-acf/index.md)
-- Próximo: [Diagnóstico de Resíduos](../diagnostico-de-residuos/index.md)
+- Anterior: [Estacionariedade e ACF](../estacionariedade-e-acf.md)
+- Próximo: [Diagnóstico de Resíduos](../diagnostico-de-residuos.md)

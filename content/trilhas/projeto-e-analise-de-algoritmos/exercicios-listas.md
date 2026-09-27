@@ -20,8 +20,8 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [A1](../../assuntos/projeto-e-analise-de-algoritmos/a1/index.md)
-2. [A2](../../assuntos/projeto-e-analise-de-algoritmos/a2/index.md)
+1. [A1](../../assuntos/projeto-e-analise-de-algoritmos/a1.md)
+2. [A2](../../assuntos/projeto-e-analise-de-algoritmos/a2.md)
 
 <a id="apresentacao-original"></a>
 

@@ -20,10 +20,10 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Introdução](../../assuntos/aprendizado-por-reforco/introducao/index.md)
-2. [Soluções de métodos tabulares](../../assuntos/aprendizado-por-reforco/solucoes-de-metodos-tabulares/index.md)
-3. [Processos de Decisão de Markov Finitos](../../assuntos/aprendizado-por-reforco/processos-de-decisao-de-markov-finitos/index.md)
-4. [Programação Dinâmica](../../assuntos/aprendizado-por-reforco/programacao-dinamica/index.md)
+1. [Introdução](../../assuntos/aprendizado-por-reforco/introducao.md)
+2. [Soluções de métodos tabulares](../../assuntos/aprendizado-por-reforco/solucoes-de-metodos-tabulares.md)
+3. [Processos de Decisão de Markov Finitos](../../assuntos/aprendizado-por-reforco/processos-de-decisao-de-markov-finitos.md)
+4. [Programação Dinâmica](../../assuntos/aprendizado-por-reforco/programacao-dinamica.md)
 
 <a id="apresentacao-original"></a>
 

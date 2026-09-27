@@ -13,7 +13,7 @@ Agrupamento conforme as pastas de origem das anotações.
 
 ## Computação na Nuvem
 
-[Abrir conteúdos por assunto](../assuntos/computacao-na-nuvem/index.md)
+[Abrir conteúdos por assunto](../assuntos/computacao-na-nuvem.md)
 
 - [A1](../trilhas/computacao-na-nuvem/a1.md)
 

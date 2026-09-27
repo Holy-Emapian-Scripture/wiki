@@ -18,17 +18,17 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Algoritmos de busca](algoritmos-de-busca/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Algoritmos de Ordenação](algoritmos-de-ordenacao/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Algoritmos de Seleção](algoritmos-de-selecao/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Árvore Geradora Minima](arvore-geradora-minima/index.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
-- [Busca em Grafos](busca-em-grafos-a2/index.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
-- [Grafos](grafos-a2/index.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
+- [Algoritmos de busca](algoritmos-de-busca.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Algoritmos de Ordenação](algoritmos-de-ordenacao.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Algoritmos de Seleção](algoritmos-de-selecao.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Árvore Geradora Minima](arvore-geradora-minima.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
+- [Busca em Grafos](busca-em-grafos-a2.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
+- [Grafos](grafos-a2.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
 - [Menor caminho em Grafos](menor-caminho-em-grafos-a2/index.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
-- [Notação Assintótica](notacao-assintotica/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Recorrência](recorrencia/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Tabela Hash](tabela-hash/index.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
-- [Técnicas de Projeto](tecnicas-de-projeto-a2/index.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
+- [Notação Assintótica](notacao-assintotica.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Recorrência](recorrencia.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Tabela Hash](tabela-hash.md) — [A1](../../trilhas/projeto-e-analise-de-algoritmos/a1.md)
+- [Técnicas de Projeto](tecnicas-de-projeto-a2.md) — [A2](../../trilhas/projeto-e-analise-de-algoritmos/a2.md)
 
 ## Exercícios
 

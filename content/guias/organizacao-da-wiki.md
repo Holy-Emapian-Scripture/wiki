@@ -19,8 +19,7 @@ assuntos/
     index.md
     segmentacao-semantica/
       index.md
-      arquiteturas/
-        index.md         <-- Contém U-Net, SegNet, FCN, etc. consolidadas
+      arquiteturas.md        <-- Contém U-Net, SegNet, FCN, etc. consolidadas
     assets/
     referencias/
 trilhas/
@@ -36,7 +35,9 @@ manutencao/
 
 ## Assuntos
 
-Os arquivos de conteúdo reúnem tópicos temáticos consolidados em páginas completas (`index.md`), evitando arquivos excessivamente curtos. Cada subtópico possui um título de nível 2 (`##`) acompanhado de âncora explícita (`<a id="..."></a>`), facilitando a citação pontual de seções e transclusões no Obsidian.
+Os tópicos de conteúdo são salvos diretamente como arquivos Markdown (`topico.md`) dentro da pasta da respectiva disciplina ou subcategoria temática (ex.: `assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas.md`). Pastas são reservadas para categorias e agrupamentos conceituais (pastas com `index.md`), evitando pastas redundantes que conteriam apenas um único arquivo `index.md`.
+
+Os arquivos reúnem tópicos temáticos consolidados em páginas completas, evitando notas excessivamente curtas ou fragmentadas. Cada subtópico possui um título de nível 2 (`##`) acompanhado de âncora explícita (`<a id="..."></a>`), facilitando a citação pontual de seções e transclusões no Obsidian.
 
 A sequência interna dos subtópicos preserva estritamente a ordem cronológica e pedagógica dos materiais de estudo originais. Exercícios mantêm suas soluções na mesma página. Figuras, fórmulas matemáticas em LaTeX, referências e códigos permanecem junto do trecho a que pertencem.
 

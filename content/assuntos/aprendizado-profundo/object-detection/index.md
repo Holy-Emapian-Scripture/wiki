@@ -26,10 +26,10 @@ ordem_na_trilha: 28
 
 ## Tópicos desta página
 
-1. [Introdução](introducao/index.md)
-2. [Métricas de Avaliação](metricas-de-avaliacao/index.md)
-3. [Redes de Estágio Único (Single-Shot): A Família YOLO](redes-de-estagio-unico-single-shot-a-familia-yolo/index.md)
-4. [Redes de Dois Estágios e Segmentação de Instâncias: Mask R-CNN](redes-de-dois-estagios-e-segmentacao-de-instancias-mask-r-cnn/index.md)
+1. [Introdução](introducao.md)
+2. [Métricas de Avaliação](metricas-de-avaliacao.md)
+3. [Redes de Estágio Único (Single-Shot): A Família YOLO](redes-de-estagio-unico-single-shot-a-familia-yolo.md)
+4. [Redes de Dois Estágios e Segmentação de Instâncias: Mask R-CNN](redes-de-dois-estagios-e-segmentacao-de-instancias-mask-r-cnn.md)
 
 ## Percurso de estudo
 

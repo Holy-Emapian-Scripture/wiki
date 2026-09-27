@@ -20,7 +20,7 @@ Percurso na ordem das anotações originais. Cada etapa abre uma página do assu
 
 ## Etapas
 
-1. [Introdução](../../assuntos/causalidade/introducao/index.md)
+1. [Introdução](../../assuntos/causalidade/introducao.md)
 
 <a id="apresentacao-original"></a>
 

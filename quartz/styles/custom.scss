@@ -6,6 +6,11 @@
   --font-interface: var(--bodyFont);
 }
 
+// Aumenta ligeiramente a escala padrão da tipografia para compensar o desenho clássico da EB Garamond
+html {
+  font-size: 18px; // padrão dos navegadores é 16px. 18px dá excelente legibilidade e aspecto editorial.
+}
+
 body {
   font-family: var(--bodyFont);
 }
@@ -14,9 +19,25 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--headerFont);
 }
 
+// Aumenta o tamanho do texto das anotações e ajusta o espaçamento de linha
+article {
+  font-size: 1.1rem;
+
+  p, li, tbody, blockquote {
+    line-height: 1.75rem;
+  }
+}
+
+// Contraste aprimorado: cinza mais escuro para o texto no tema claro
+:root:not([saved-theme="dark"]) {
+  --darkgray: #2e2e2e;
+  --dark: #1a1a1a;
+}
+
 // Oculta a listagem automatica de itens gerada pelo FolderPage nas paginas de pastas
+.page-listing,
 body[data-slug$="/index"] .page-listing {
-  display: none;
+  display: none !important;
 }
 
 // Centralização de equações em bloco (KaTeX)

@@ -16,19 +16,19 @@ render_with_liquid: false
 
 ## Conteúdos por assunto
 
-- [Algoritmos de Otimização](algoritmos-de-otimizacao/index.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
-- [Dualidade](dualidade/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Gradiente Conjugado](gradiente-conjugado/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Gradiente Projetado](gradiente-projetado/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Gradiente Proximal](gradiente-proximal/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Introdução](introducao/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Método de Newton](metodo-de-newton/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Método do Gradiente](metodo-do-gradiente/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Método do Subgradiente](metodo-do-subgradiente/index.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
-- [Otimização com restrições genéricas](otimizacao-com-restricoes-genericas/index.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
-- [Otimização com restrições lineares](otimizacao-com-restricoes-lineares/index.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
-- [Otimização Convexa](otimizacao-convexa/index.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
-- [Otimização Irrestrita](otimizacao-irrestrita/index.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
+- [Algoritmos de Otimização](algoritmos-de-otimizacao.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
+- [Dualidade](dualidade.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Gradiente Conjugado](gradiente-conjugado.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Gradiente Projetado](gradiente-projetado.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Gradiente Proximal](gradiente-proximal.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Introdução](introducao.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Método de Newton](metodo-de-newton.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Método do Gradiente](metodo-do-gradiente.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Método do Subgradiente](metodo-do-subgradiente.md) — [A2](../../trilhas/otimizacao-para-ciencia-de-dados/a2.md)
+- [Otimização com restrições genéricas](otimizacao-com-restricoes-genericas.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
+- [Otimização com restrições lineares](otimizacao-com-restricoes-lineares.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
+- [Otimização Convexa](otimizacao-convexa.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
+- [Otimização Irrestrita](otimizacao-irrestrita.md) — [A1](../../trilhas/otimizacao-para-ciencia-de-dados/a1.md)
 
 ## Hubs de origem
 

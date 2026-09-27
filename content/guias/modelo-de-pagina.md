@@ -45,6 +45,6 @@ Desenvolvimento do subtópico subsequente, mantendo a progressão didática orig
 
 ## Percurso de estudo
 
-- **Anterior:** [Tópico Anterior](../topico-anterior/index.md)
-- **Próximo:** [Próximo Tópico](../proximo-topico/index.md)
+- **Anterior:** [Tópico Anterior](topico-anterior.md)
+- **Próximo:** [Próximo Tópico](proximo-topico.md)
 
