@@ -113,7 +113,7 @@ Anáogo ao [\[gradient-inequality\]](#gradient-inequality)
 
 *Figura 9. Função $f(x,y) = 1.3x^{2} + 1.27y^{2}$ e um plano tangente à curva*
 
-A gente pode usar os teoremas anteriores pra caracterizar as funções quadráticas e quando elas são convexas
+A gente pode usar os teoremas anteriores pra caracterizar as [funções quadráticas](otimizacao-irrestrita.md#secao-8) e quando elas são convexas
 
 **Teorema: Convexidade da quadrática**
 
@@ -250,7 +250,7 @@ Seja $f:C \subset {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ continuamente difer
 
 **Demonstração**
 
-Precisamos provar apenas $( \Longleftarrow )$ do [\[first-order-condition-convex-set\]](#first-order-condition-convex-set). Seja $x^{\ast} \in C$ um ponto estacionário de $f$ em $C$. Obtemos que, para todo $x \in C$, $$f(x) \geq f\left( x^{\ast} \right) + \nabla f\left( x^{\ast} \right)^{T}\left( x - x^{\ast} \right) \geq f\left( x^{\ast} \right)$$ onde a primeira desigualdade segue da desigualdade do gradiente ([\[gradient-inequality\]](../convexidade/index.md#gradient-inequality)) e a segunda desigualdade segue de que $x^{\ast}$ é ponto estacionário. Sendo que $$\forall x \in C,\ f(x) \geq f\left( x^{\ast} \right)$$ segue que $x^{\ast} \in C$ é ponto de mínimo global de $f$ em $C$.
+Precisamos provar apenas $( \Longleftarrow )$ do [\[first-order-condition-convex-set\]](#first-order-condition-convex-set). Seja $x^{\ast} \in C$ um ponto estacionário de $f$ em $C$. Obtemos que, para todo $x \in C$, $$f(x) \geq f\left( x^{\ast} \right) + \nabla f\left( x^{\ast} \right)^{T}\left( x - x^{\ast} \right) \geq f\left( x^{\ast} \right)$$ onde a primeira desigualdade segue da desigualdade do gradiente ([\[gradient-inequality\]](#gradient-inequality)) e a segunda desigualdade segue de que $x^{\ast}$ é ponto estacionário. Sendo que $$\forall x \in C,\ f(x) \geq f\left( x^{\ast} \right)$$ segue que $x^{\ast} \in C$ é ponto de mínimo global de $f$ em $C$.
 
 ------------------------------------------------------------------------
 

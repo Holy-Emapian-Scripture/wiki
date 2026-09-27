@@ -27,7 +27,7 @@ ordem_na_trilha: 32
 
 ## Uma ideia de Girico
 
-A gente pode começar pensando “Macho, essa fatoração é mamão com açúcar, só eu multiplicar pelo refletor de Householder que eu vou ter 0 abaixo da diagonal que eu quiser”. Só que isso tem um problema, a gente precisa que o refletor multiplique de ambos os lados, ou seja: $$Q_{1}^{\ast}AQ_{1}$$ Isso faz com que os zeros que a gente colocou antes se percam, e a gente obtem uma matriz que a gente não queria :(.
+A gente pode começar pensando “Macho, essa fatoração é mamão com açúcar, só eu multiplicar pelo refletor de [Householder](triangularizacao-de-householder.md) que eu vou ter 0 abaixo da diagonal que eu quiser”. Só que isso tem um problema, a gente precisa que o refletor multiplique de ambos os lados, ou seja: $$Q_{1}^{\ast}AQ_{1}$$ Isso faz com que os zeros que a gente colocou antes se percam, e a gente obtem uma matriz que a gente não queria :(.
 
 <a id="uma-boa-ideia"></a>
 <a id="secao-34"></a>
@@ -63,20 +63,20 @@ Essa ideia continua a ser repetida para colunas subsequentes. Temos um algoritmo
 
 ## Hermitiana
 
-É bem tranquilo de ver que o [\[householder-reduction-to-hessenberg-form\]](../uma-boa-ideia/index.md#householder-reduction-to-hessenberg-form) gera uma matriz tri-diagonal no caso em que $A$ é hermitiana, já que $QAQ^{\ast}$ é hermitiana. Inclusive, essa propriedade pose gerar uma redução de custo, tendo em vista que podemos realizar as operações apenas da diagonal para cima, ignorando a parte de baixo das operações.
+É bem tranquilo de ver que o [\[householder-reduction-to-hessenberg-form\]](#householder-reduction-to-hessenberg-form) gera uma matriz tri-diagonal no caso em que $A$ é hermitiana, já que $QAQ^{\ast}$ é hermitiana. Inclusive, essa propriedade pose gerar uma redução de custo, tendo em vista que podemos realizar as operações apenas da diagonal para cima, ignorando a parte de baixo das operações.
 
 <a id="estabilidade"></a>
 <a id="secao-36"></a>
 
 ## Estabilidade
 
-Assim como o algoritmo de Householder, para a fatoração QR, esse algoritmo é **backward stable**. Seja $\widetilde{H}$ a matriz de Hessenberg computada pelo computador ideal, $\widetilde{Q}$ seja a matriz exatamente unitária que reflete os vetores $v_{k}$, então o resultado a seguir pode ser demonstrado:
+Assim como o algoritmo de Householder, para a [fatoração QR](fatoracao-qr.md), esse algoritmo é **backward stable**. Seja $\widetilde{H}$ a matriz de Hessenberg computada pelo computador ideal, $\widetilde{Q}$ seja a matriz exatamente unitária que reflete os vetores $v_{k}$, então o resultado a seguir pode ser demonstrado:
 
 <a id="householder-stability-and-precision"></a>
 
 **Teorema**
 
-Deixe a redução de Hessenberg $A = QTQ^{\ast}$ de uma matriz $A$ ser computada pelo [\[householder-reduction-to-hessenberg-form\]](../uma-boa-ideia/index.md#householder-reduction-to-hessenberg-form) em um computador ideal e sejam as matrizes $\widetilde{Q}$ e $\widetilde{H}$ definidas como falamos anteriormente, então: $$\widetilde{Q}\widetilde{H}{\widetilde{Q}}^{\ast} = A + \delta A,\text{ tal que  }\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times m}$
+Deixe a redução de Hessenberg $A = QTQ^{\ast}$ de uma matriz $A$ ser computada pelo [\[householder-reduction-to-hessenberg-form\]](#householder-reduction-to-hessenberg-form) em um computador ideal e sejam as matrizes $\widetilde{Q}$ e $\widetilde{H}$ definidas como falamos anteriormente, então: $$\widetilde{Q}\widetilde{H}{\widetilde{Q}}^{\ast} = A + \delta A,\text{ tal que  }\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times m}$
 
 ------------------------------------------------------------------------
 

@@ -49,7 +49,7 @@ Oxe, por que que tem essa divisão esquisita no final? Quando a gente não faz e
 
 ## Householder
 
-O algoritmo padrão para problemas de mínimos quadrados. Vejamos:
+O algoritmo padrão para [problemas de mínimos quadrados](problemas-de-minimos-quadrados.md). Vejamos:
 
 **CÓDIGO**
 
@@ -84,7 +84,7 @@ Deu pra ver que da quase a mesma coisa do resultado anterior, ou seja, os erros 
 
 **Teorema**
 
-Deixe um problema de mínimos quadrados em uma matriz de posto completo $A$ ser resolvida por fatoração **Householder** em um computador ideal. O algoritmo é **backward stable** tal que: $$\|(A + \delta A)\widetilde{x} - b\| = \min,\ \ \frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times n}$.
+Deixe um problema de mínimos quadrados em uma matriz de posto completo $A$ ser resolvida por fatoração **[Householder](triangularizacao-de-householder.md)** em um computador ideal. O algoritmo é **backward stable** tal que: $$\|(A + \delta A)\widetilde{x} - b\| = \min,\ \ \frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times n}$.
 
 <a id="ortogonalizacao-de-gram-schmidt"></a>
 <a id="secao-12"></a>
@@ -149,7 +149,7 @@ print(1-x[-1])
 
 Meu amigo, esse erro é **TENEBROSO**, não chegou nem **PERTO** do resultado. Claramente as equações normais são um método **instável** de calcular mínimos quadrados. Vamos dar uma visualizada no porquê isso ocorre:
 
-Suponha que nós temos um algoritmo **backward stable** para o problema de mínimos quadrados com uma matriz $A$ de posto-completo que retorna uma solução $\widetilde{x}$ satisfazendo $\|(A + \delta A)\widetilde{x} - b\| = \min$ para algum $\delta A$ com $\|\delta A\|/\| A\| = O\left( \varepsilon_{\text{machine}} \right)$. Pelo teorema da acurácia de algoritmos backward stable (Resumo 1) e o [\[conditioning-min-squared-problems\]](../../condicionando-problemas-de-minimos-quadrados/o-teorema/index.md#conditioning-min-squared-problems) temos: $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \left( \kappa + \frac{\kappa^{2}\tan(\theta)}{\eta} \right)\varepsilon_{\text{machine}} \right)$$<a id="normal-equation-algorithm-x-partialerence"></a>
+Suponha que nós temos um algoritmo **backward stable** para o problema de mínimos quadrados com uma matriz $A$ de posto-completo que retorna uma solução $\widetilde{x}$ satisfazendo $\|(A + \delta A)\widetilde{x} - b\| = \min$ para algum $\delta A$ com $\|\delta A\|/\| A\| = O\left( \varepsilon_{\text{machine}} \right)$. Pelo teorema da acurácia de algoritmos backward stable (Resumo 1) e o [\[conditioning-min-squared-problems\]](condicionando-problemas-de-minimos-quadrados.md#conditioning-min-squared-problems) temos: $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \left( \kappa + \frac{\kappa^{2}\tan(\theta)}{\eta} \right)\varepsilon_{\text{machine}} \right)$$<a id="normal-equation-algorithm-x-partialerence"></a>
 
 Suponha que $A$ é mal-condicionada. Dependendo dos valores dos híperparâmetros, podem acontecer duas situações diferentes. Se $\tan(\theta)$ for de ordem $1$, então o lado direito da equação [\[normal-equation-algorithm-x-partialerence\]](#normal-equation-algorithm-x-partialerence) troca e fica $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$. Porém, se $\tan(\theta)$ é próximo de 0, ou $\eta$ é próximo de $\kappa$, então então a equação muda para $O\left( \kappa\varepsilon_{\text{machine}} \right)$ (Usa um teorema mais la pra frente, mas é engraçado ver como tudo tá muito interconectado). Porém, a matriz $A^{\ast}A$ tem número de condicionamento ${\kappa(A)}^{2}$, então o máximo que podemos esperar do problema é $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$
 

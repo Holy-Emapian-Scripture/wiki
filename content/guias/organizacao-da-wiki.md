@@ -71,6 +71,6 @@ A reorganização alterou títulos de nível, metadados, caminhos e navegação.
 
 Os comentários HTML `wiki:original:inicio` e `wiki:original:fim` delimitam o trecho importado de cada página. Eles não aparecem na leitura e permitem auditar a reorganização. A navegação adicionada fica fora desses trechos.
 
-O [registro da reorganização](../manutencao/reorganizacao.md) documenta a verificação e as divergências encontradas nas fontes.
+O [registro da reorganização](https://github.com/Holy-Emapian-Scripture/wiki/blob/main/content/manutencao/reorganizacao.md) documenta a verificação e as divergências encontradas nas fontes.
 
 [Voltar aos guias](index.md)

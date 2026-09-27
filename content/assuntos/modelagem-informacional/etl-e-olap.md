@@ -71,7 +71,7 @@ Preenche um Data Warehouse vazio. Pode envolver grandes quantidades de dados, de
 
 **Definição: Carga de Atualização**
 
-Atualiza um Data Warehouse já iniciado. Feito em um período pré-determinado pela empresa (**Ciclo de Atualização**). Em **Data Warehouses ativos**, essas cargas ocorrem continuamente (Em microlotes)
+Atualiza um Data Warehouse já iniciado. Feito em um período pré-determinado pela empresa (**Ciclo de Atualização**). Em **[Data Warehouses](data-warehouses.md) ativos**, essas cargas ocorrem continuamente (Em microlotes)
 
 <a id="infraestrutura-de-um-etl"></a>
 <a id="secao-33"></a>

@@ -20,7 +20,7 @@ ordem_na_trilha: 30
 
 # Métricas de Avaliação
 
-Podemos utilizar métricas já vistas como [\[iou\]](../../segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md#iou), [\[precision\]](../../segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md#precision) e [\[avg-precision\]](../../segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md#avg-precision), porém podemos também utilizar métricas como **Recall**
+Podemos utilizar métricas já vistas como [\[iou\]](../segmentacao-semantica/introducao-e-metricas.md#iou), [\[precision\]](../segmentacao-semantica/introducao-e-metricas.md#precision) e [\[avg-precision\]](../segmentacao-semantica/introducao-e-metricas.md#avg-precision), porém podemos também utilizar métricas como **Recall**
 
 <a id="recall"></a>
 
@@ -30,7 +30,7 @@ $$
 \text{ Recall } = \frac{\text{ TP }}{\text{TP } + \text{ FN}}
 $$
 
-A maioria das competições utiliza a **mean Average Precision (mAP)** como métrica principal, que é a média das precisões de cada classe, considerando diferentes limiares de confiança para as detecções. O mAP é derivado de valores *precision v.s recall*, fazendo uma variação do limiar de confiança para cada classe. O **limiar de confiança** é a probabilidade de que uma **caixa de âncora** contenha um objeto. Dado a [\[avg-precision\]](../../segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md#avg-precision) de Average Precision, podemos definir melhor o mAP
+A maioria das competições utiliza a **mean Average Precision (mAP)** como métrica principal, que é a média das precisões de cada classe, considerando diferentes limiares de confiança para as detecções. O mAP é derivado de valores *precision v.s recall*, fazendo uma variação do limiar de confiança para cada classe. O **limiar de confiança** é a probabilidade de que uma **caixa de âncora** contenha um objeto. Dado a [\[avg-precision\]](../segmentacao-semantica/introducao-e-metricas.md#avg-precision) de Average Precision, podemos definir melhor o mAP
 
 **Definição: mAP**
 

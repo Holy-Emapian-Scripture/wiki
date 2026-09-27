@@ -27,11 +27,11 @@ ordem_na_trilha: 49
 
 ## Conexao com a Iteração Reversa
 
-A gente tinha visto que o algoritmo QR unshifted ([\[unshifted-qr-algorithm\]](../../algoritmo-qr-sem-shift/iteracao-simultanea-leftrightarrow-algoritmo-qr/index.md#unshifted-qr-algorithm)) era a mesma coisa que aplicar a iteração reversa na matriz identidade. Tem um porém, o [\[unshifted-qr-algorithm\]](../../algoritmo-qr-sem-shift/iteracao-simultanea-leftrightarrow-algoritmo-qr/index.md#unshifted-qr-algorithm) também é equivalente a aplicar a iteração inversa simultânea numa matriz identidade “invertida” P. Vamo tentar desenvolver melhor essa ideia:
+A gente tinha visto que o algoritmo QR unshifted ([\[unshifted-qr-algorithm\]](algoritmo-qr-sem-shift.md#unshifted-qr-algorithm)) era a mesma coisa que aplicar a iteração reversa na matriz identidade. Tem um porém, o [\[unshifted-qr-algorithm\]](algoritmo-qr-sem-shift.md#unshifted-qr-algorithm) também é equivalente a aplicar a [iteração inversa](quociente-de-rayleigh-e-iteracao-inversa.md#secao-41) simultânea numa matriz identidade “invertida” P. Vamo tentar desenvolver melhor essa ideia:
 
 Seja $Q^{(k)}$, assim como na última lecture, o fator ortogonal no $k$-ésimo passo da iteração do algoritmo QR. Mostramos antes que o produto acumulado dessas matrizes forma: $${\underline{Q}}^{(k)} = \prod_{j = 1}^{k}Q^{(j)} = \begin{pmatrix} q_{1}^{(k)} & \vert  & \ldots & \vert  & q_{m}^{(k)} \end{pmatrix}$$
 
-É a mesma matriz ortogonal que aparece no $k$-ésimo passo do algoritmo de iteração simultânea. $$A^{k} = {\underline{Q}}^{(k)}{\underline{R}}^{(k)}$$
+É a mesma matriz ortogonal que aparece no $k$-ésimo passo do algoritmo de [iteração simultânea](algoritmo-qr-sem-shift.md#secao-46). $$A^{k} = {\underline{Q}}^{(k)}{\underline{R}}^{(k)}$$
 
 Se a gente inverte essa fórmula, temos $$A^{- k} = \left( {\underline{R}}^{(k)} \right)^{- 1}\left( {\underline{Q}}^{(k)} \right)^{T} = {\underline{Q}}^{(k)}\left( {\underline{R}}^{(k)} \right)^{- T}$$
 
@@ -39,14 +39,14 @@ Essa segunda igualdade a gente tira porque $A^{- 1}$ é simétrica (Ainda tamo u
 
 Bem, como $P^{2} = I$, a gente pode reescrever a equação que tinhamos anteriormente como: $$A^{- k}P = \left( {\underline{Q}}^{(k)}P \right)\left( {P\left( {\underline{R}}^{(k)} \right)}^{- T}P \right)$$
 
-Perceba que ${\underline{Q}}^{(k)}P$ é ortogonal (${\underline{Q}}^{(k)}$ é ortogonal e $P$ também) e ${P\left( {\underline{R}}^{(k)} \right)}^{- T}P$ é triangular superior ($\left( {\underline{R}}^{(k)} \right)^{- T}$ é triangular inferior, daí eu inverto a ordem das colunas, e depois a ordem das linhas, aí fica triangular superior), ou seja, a equação anterior pode ser interpretada como uma fatoração QR de $A^{- k}P$. Isso que fizemos é a mesma coisa que aplicar o agloritmo QR na matriz $A^{- 1}$ usando a matriz $P$ como ponto de partida do algoritmo.
+Perceba que ${\underline{Q}}^{(k)}P$ é ortogonal (${\underline{Q}}^{(k)}$ é ortogonal e $P$ também) e ${P\left( {\underline{R}}^{(k)} \right)}^{- T}P$ é triangular superior ($\left( {\underline{R}}^{(k)} \right)^{- T}$ é triangular inferior, daí eu inverto a ordem das colunas, e depois a ordem das linhas, aí fica triangular superior), ou seja, a equação anterior pode ser interpretada como uma [fatoração QR](fatoracao-qr.md) de $A^{- k}P$. Isso que fizemos é a mesma coisa que aplicar o agloritmo QR na matriz $A^{- 1}$ usando a matriz $P$ como ponto de partida do algoritmo.
 
 <a id="conexao-com-o-algoritmo-de-iteracao-reversa-com-shifts"></a>
 <a id="secao-51"></a>
 
 ## Conexão com o Algoritmo de Iteração Reversa com Shifts
 
-Ok, a gente viu então que o algoritmo QR é tipo uma mistureba da iteração reversa e da iteração simultânea reversa. O negócio é que a gente viu em umas lectures anteriores que o último que mencionei pode ser melhorado com o uso de shifts ([\[shifted-qr-with-well-known-shifts\]](../../algoritmo-qr-sem-shift/o-algoritmo-qr/index.md#shifted-qr-with-well-known-shifts)). Isso é como inserir shifts nos dois algoritmos que comentei anterioremente. Vou escrever o algoritmo aqui novamente (Omiti a parte final de obter as submatrizes):
+Ok, a gente viu então que o algoritmo QR é tipo uma mistureba da iteração reversa e da iteração simultânea reversa. O negócio é que a gente viu em umas lectures anteriores que o último que mencionei pode ser melhorado com o uso de shifts ([\[shifted-qr-with-well-known-shifts\]](algoritmo-qr-sem-shift.md#shifted-qr-with-well-known-shifts)). Isso é como inserir shifts nos dois algoritmos que comentei anterioremente. Vou escrever o algoritmo aqui novamente (Omiti a parte final de obter as submatrizes):
 
 1.  **function** ShiftedQR($A \in {\mathbb{C}}^{m \times m}$) {
 
@@ -64,13 +64,13 @@ Ok, a gente viu então que o algoritmo QR é tipo uma mistureba da iteração re
 
 2.  }
 
-Deixe que $\mu^{(k)}$ seja a aproximação de autovalor que a gente escolhe no $k$-ésimo passo do algoritmo QR. De acordo com o [\[shifted-qr-with-well-known-shifts\]](../../algoritmo-qr-sem-shift/o-algoritmo-qr/index.md#shifted-qr-with-well-known-shifts), a relação entre os passos $k - 1$ e $k$ do algoritmo é: $$\begin{array}{r} A^{(k - 1)} - \mu^{(k)}I = Q^{(k)}R^{(k)} \\ A^{(k)} = R^{(k)}Q^{(k)} + \mu^{(k)}I \end{array}$$
+Deixe que $\mu^{(k)}$ seja a aproximação de autovalor que a gente escolhe no $k$-ésimo passo do algoritmo QR. De acordo com o [\[shifted-qr-with-well-known-shifts\]](algoritmo-qr-sem-shift.md#shifted-qr-with-well-known-shifts), a relação entre os passos $k - 1$ e $k$ do algoritmo é: $$\begin{array}{r} A^{(k - 1)} - \mu^{(k)}I = Q^{(k)}R^{(k)} \\ A^{(k)} = R^{(k)}Q^{(k)} + \mu^{(k)}I \end{array}$$
 
 Isso nos dá o seguinte (Só fazer umas substituições): $$A^{(k)} = \left( Q^{(k)} \right)^{T}A^{(k - 1)}Q^{(k)}$$
 
 Aí se a gente aplica uma indução, temos: $$A^{(k)} = \left( {\underline{Q}}^{(k)} \right)^{T}A{\underline{Q}}^{(k)}$$
 
-Se você para pra olhar, é a mesma coisa que a gente definiu no [\[unshifted-qr-and-sumultanious-iteration-equivalence\]](../../algoritmo-qr-sem-shift/iteracao-simultanea-leftrightarrow-algoritmo-qr/index.md#unshifted-qr-and-sumultanious-iteration-equivalence) (Segunda equação). O problema é que a primeira equação não vale mais, ela vai ser substituida por: $$\prod_{j = k}^{1}\left( A - \mu^{(j)}I \right) = {\underline{Q}}^{(k)}{\underline{R}}^{(k)}$$
+Se você para pra olhar, é a mesma coisa que a gente definiu no [\[unshifted-qr-and-sumultanious-iteration-equivalence\]](algoritmo-qr-sem-shift.md#unshifted-qr-and-sumultanious-iteration-equivalence) (Segunda equação). O problema é que a primeira equação não vale mais, ela vai ser substituida por: $$\prod_{j = k}^{1}\left( A - \mu^{(j)}I \right) = {\underline{Q}}^{(k)}{\underline{R}}^{(k)}$$
 
 Aí a gente não precisa entrar em detalhes da prova dessa equivalência. Isso acarreta que as colunas de ${\underline{Q}}^{(k)}$ aos poucos vão convergindo para autovetores de A. O livro da uma ênfase na primeira e na última coluna, onde cada uma é equivalente a apliar o algoritmo da iteração reversa com shifts nos vetores canônicos $e_{1}$ e $e_{m}$ respectivamente.
 
@@ -115,9 +115,9 @@ Como esperado, os algoritmos vistos anteriormente são **backward stable**, ou s
 
 **Teorema**
 
-Deixe uma matriz real, simétrica e tridiagonal $A \in {\mathbb{R}}^{m \times m}$ ser diagonalizada pelo algoritmo QR ([\[shifted-qr-with-well-known-shifts\]](../../algoritmo-qr-sem-shift/o-algoritmo-qr/index.md#shifted-qr-with-well-known-shifts)) em um computador ideal. Deixe $\overset{\sim}{\Lambda}$ ser a matriz de autovalores de $A$ computada por aritmética de ponto flutuante e $\overset{\sim}{Q}$ a matriz exatamente ortogonal associada ao produto dos refletores de householder e rotações utilizadas nos algoritmos, temos que: $$\overset{\sim}{Q}\overset{\sim}{\Lambda}\overset{\sim}{Q} = A + \delta A$$ onde $$\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algua $\delta A \in {\mathbb{C}}^{m \times m}$
+Deixe uma matriz real, simétrica e tridiagonal $A \in {\mathbb{R}}^{m \times m}$ ser diagonalizada pelo algoritmo QR ([\[shifted-qr-with-well-known-shifts\]](algoritmo-qr-sem-shift.md#shifted-qr-with-well-known-shifts)) em um computador ideal. Deixe $\overset{\sim}{\Lambda}$ ser a matriz de autovalores de $A$ computada por aritmética de ponto flutuante e $\overset{\sim}{Q}$ a matriz exatamente ortogonal associada ao produto dos [refletores de householder](triangularizacao-de-householder.md#secao-30) e rotações utilizadas nos algoritmos, temos que: $$\overset{\sim}{Q}\overset{\sim}{\Lambda}\overset{\sim}{Q} = A + \delta A$$ onde $$\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algua $\delta A \in {\mathbb{C}}^{m \times m}$
 
-Isso mostra que temos resultados muito bom! Inclusive, juntando com alguns outros teoremas que vimos ([\[qr-algorithm-stability-and-precision\]](#qr-algorithm-stability-and-precision) e [\[householder-stability-and-precision\]](../../reducao-a-forma-de-hessenberg/estabilidade/index.md#householder-stability-and-precision)), temos que, para todo autovalor $\lambda_{j}$, o autovalor computado $\overset{\sim}{\lambda_{j}}$ satisfaz: $$\frac{\vert \overset{\sim}{\lambda_{j}} - \lambda_{j}\vert }{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$
+Isso mostra que temos resultados muito bom! Inclusive, juntando com alguns outros teoremas que vimos ([\[qr-algorithm-stability-and-precision\]](#qr-algorithm-stability-and-precision) e [\[householder-stability-and-precision\]](reducao-a-forma-de-hessenberg.md#householder-stability-and-precision)), temos que, para todo autovalor $\lambda_{j}$, o autovalor computado $\overset{\sim}{\lambda_{j}}$ satisfaz: $$\frac{\vert \overset{\sim}{\lambda_{j}} - \lambda_{j}\vert }{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$
 
 ------------------------------------------------------------------------
 

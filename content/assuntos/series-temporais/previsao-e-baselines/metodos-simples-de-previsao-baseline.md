@@ -33,7 +33,7 @@ ordem_na_trilha: 28
 
 Prevemos todas as observações futuras pela média aritmética histórica da amostra: $${\hat{Y}}_{T + h\vert T} = {\overline{Y}}_{T} = \frac{1}{T}\sum_{t = 1}^{T}Y_{t}\text{\quad\quad}\forall h \geq 1$$
 
-o método da média assume que o processo é **fracamente estacionário**, sem tendência e sem sazonalidade $$Y_{t} = \mu + \varepsilon_{t},\text{\quad\quad}\varepsilon_{t} \sim \text{ WN}\left( 0,\sigma^{2} \right)$$
+o método da média assume que o processo é **fracamente estacionário**, sem tendência e sem [sazonalidade](../diagnostico-visual.md#secao-21) $$Y_{t} = \mu + \varepsilon_{t},\text{\quad\quad}\varepsilon_{t} \sim \text{ WN}\left( 0,\sigma^{2} \right)$$
 
 Corresponde ao caso em que a autocorrelação $\rho(h) \approx 0$ para todo $h \geq 1$ (série sem memória linear)
 

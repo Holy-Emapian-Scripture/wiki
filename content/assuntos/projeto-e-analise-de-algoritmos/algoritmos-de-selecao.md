@@ -106,7 +106,7 @@ $$
 \begin{aligned} T(n) & = cn + T\left( \frac{n}{2} \right) \\ & = cn + \frac{cn}{2} + T\left( \frac{n}{4} \right) \\ & = cn + \frac{cn}{2} + \frac{cn}{4} + T\left( \frac{n}{8} \right) \\ & = cn\left( 1 + \frac{1}{2} + \frac{1}{4} + \ldots \right) \leq O(n) \end{aligned}
 $$
 
-No entanto, no pior caso teremos sempre um conjunto vazio e um conjunto com $n - 1$ elementos, levando a seguinte função de recorrência: $$T(n) = cn + T(n - 1)$$
+No entanto, no pior caso teremos sempre um conjunto vazio e um conjunto com $n - 1$ elementos, levando a seguinte função de [recorrência](recorrencia.md): $$T(n) = cn + T(n - 1)$$
 
 e, continuando:
 

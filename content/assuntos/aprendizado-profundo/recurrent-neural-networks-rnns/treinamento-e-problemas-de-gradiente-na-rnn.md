@@ -67,7 +67,7 @@ A conclusão que temos dessa análise é que, se o maior valor singular é menor
 
 Para mitigar o problema de **exploding gradients** e **vanishing gradients**. A principal técnica utilizada é uma variação do BPTT.
 
-**Truncated BPTT**: No BPTT original, para atualizar o pesos, eu faço o forward pass por TODOS os $T$ passos temporais e retropropago por eles novamente. Nessa versão simplificada, existem dois hiperparâmetros $k_{1}$ e $k_{2}$. Na parte do forward, a rede propaga por apenas $k_{1}$ passos temporais, e na parte do backward, a rede retropropaga por apenas $k_{2}$ passos temporais (obrigatoriamente $k_{2} < k_{2}$). Isso reduz a profundidade da rede e ajuda a evitar o problema de gradientes explosivos ou desvanecentes.
+**Truncated BPTT**: No BPTT original, para atualizar o pesos, eu faço o [forward pass](../../aprendizado-de-maquina/redes-neurais.md#secao-26) por TODOS os $T$ passos temporais e retropropago por eles novamente. Nessa versão simplificada, existem dois hiperparâmetros $k_{1}$ e $k_{2}$. Na parte do forward, a rede propaga por apenas $k_{1}$ passos temporais, e na parte do backward, a rede retropropaga por apenas $k_{2}$ passos temporais (obrigatoriamente $k_{2} < k_{2}$). Isso reduz a profundidade da rede e ajuda a evitar o problema de gradientes explosivos ou desvanecentes.
 
 ![Exemplo de Truncated BPTT com k1=3 e k2=2](../assets/A1/rnn-truncated-bptt.png)
 

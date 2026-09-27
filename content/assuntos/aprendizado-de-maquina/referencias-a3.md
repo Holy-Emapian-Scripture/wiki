@@ -20,7 +20,7 @@ ordem_na_trilha: 25
 
 <a id="refs"></a>
 
-<a id="ref-mlPatternRecognition"></a>
+<a id="ref-mlpatternrecognition"></a>
 
 Bishop, Christopher M. 2006. *Pattern Recognition and Machine Learning*. Springer.
 <!-- wiki:original:fim -->

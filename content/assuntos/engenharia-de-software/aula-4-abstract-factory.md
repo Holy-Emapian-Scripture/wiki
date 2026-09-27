@@ -27,7 +27,7 @@ ordem_na_trilha: 14
 
 ## Abstract Factory
 
-A solução pro problema de criar algo generalizável de acordo com o sistema é criar uma fábrica que produz, de uma vez, todos os widgets daquele sistema. Cada produto (calendário, clima) continua sendo decidido por um Factory Method, igual ao que já vimos, só que agora vários desses métodos moram juntos, na mesma fábrica:
+A solução pro problema de criar algo generalizável de acordo com o sistema é criar uma fábrica que produz, de uma vez, todos os widgets daquele sistema. Cada produto (calendário, clima) continua sendo decidido por um [Factory Method](aula-2-simple-factory-factory-method-e-ocp.md#secao-8), igual ao que já vimos, só que agora vários desses métodos moram juntos, na mesma fábrica:
 
 ``` python
 from abc import ABC, abstractmethod

@@ -15,7 +15,7 @@ Escolha uma disciplina para navegar pelos assuntos e suas páginas.
 - [[aprendizado-por-reforco/index|Aprendizado por Reforço]]
 - [[causalidade/index|Causalidade]]
 - [[ciencia-de-redes/index|Ciência de Redes]]
-- [[computacao-na-nuvem/index|Computação na Nuvem]]
+- [[computacao-na-nuvem|Computação na Nuvem]]
 - [[calculo-vetorial/index|Cálculo Vetorial]]
 - [[engenharia-de-software/index|Engenharia de Software]]
 - [[equacoes-diferenciais-ordinarias/index|Equações Diferenciais Ordinárias]]

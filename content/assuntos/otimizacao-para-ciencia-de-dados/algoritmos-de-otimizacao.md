@@ -35,7 +35,7 @@ Vamos definir o algoritmo do gradiente
 
     1.  $x_{t + 1} = x_{t} - \alpha_{t}\nabla f\left( x_{t} \right)$
 
-Onde $\alpha_{t} > 0$ é o “passo” ou learning rate. Vamos agora fazer algumas definições para mostrar o porquê do método do gradiente funcionar
+Onde $\alpha_{t} > 0$ é o “passo” ou learning rate. Vamos agora fazer algumas definições para mostrar o porquê do [método do gradiente](metodo-do-gradiente.md) funcionar
 
 **Definição: Suavidade**
 

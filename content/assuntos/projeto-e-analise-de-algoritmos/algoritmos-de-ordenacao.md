@@ -364,7 +364,7 @@ Essa abordagem de implementação elimina a necessidade de ponteiros para o pai 
 
 *Figura 26. Exemplo de HEAP*
 
-![Forma da [\[heap-example\]](#heap-example) como vetor](../assets/heap-array-example.png)
+![Forma da [\[heap-example\]](#heap-example) como vetor](assets/heap-array-example.png)
 
 *Figura 27. Forma da [\[heap-example\]](#heap-example) como vetor*
 
@@ -638,7 +638,7 @@ Podemos avaliar o desempenho do algoritmo através da seguinte função: $$T(n) 
 
 - O pior caso é $\Theta(n^{2})$ - um único balde recebe n elementos.
 
-- O caso médio é $\Theta(n)$ - considerando a distribuição uniforme esperada, poucos elementos caem no mesmo balde.
+- O caso médio é $\Theta(n)$ - considerando a [distribuição uniforme](../probabilidade/distribuicoes-continuas.md#secao_dist_uniforme) esperada, poucos elementos caem no mesmo balde.
 
 - Exige $O(n)$ de espaço adicional.
 

@@ -29,7 +29,7 @@ ordem_na_trilha: 1
 
 O livro nos mostra um experimento no matlab para demonstrar a estabilidade em ação e alguns conceitos importantes, irei fazer o mesmo experimento, porém, utilizarei código em python e mostrarei meus resultados aqui.
 
-Primeiro de tudo, mostraremos na prática que o algoritmo de **Householder** é **backwards stable**. Vamos criar uma matriz $A$ com a fatoração $QR$ conhecida, então vamos gerar as matrizes $Q$ e $R$. Aqui, temos que $\varepsilon_{\text{machine }} = 2.220446049250313 \times 10^{- 16}$:
+Primeiro de tudo, mostraremos na prática que o algoritmo de **[Householder](triangularizacao-de-householder.md)** é **backwards stable**. Vamos criar uma matriz $A$ com a fatoração $QR$ conhecida, então vamos gerar as matrizes $Q$ e $R$. Aqui, temos que $\varepsilon_{\text{machine }} = 2.220446049250313 \times 10^{- 16}$:
 
 <a id="hh-comparison"></a>
 
@@ -107,7 +107,7 @@ Porém, $\widetilde{Q}$ **não é aproximadamente** ortogonal, ela é **perfeita
 
 **Teorema: Householder's Backwards Stability**
 
-Deixe que a fatoração QR de $A \in {\mathbb{C}}^{m \times n}$ seja dada por $A = QR$ e seja computada pelo algoritmo de **Householder**, o resultado dessa computação são as matrizes $\widetilde{Q}$ e $\widetilde{R}$ definidas anterioremente. Então temos: $$\widetilde{Q}\widetilde{R} = A + \delta A$$ Tal que: $$\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times n}$
+Deixe que a [fatoração QR](fatoracao-qr.md) de $A \in {\mathbb{C}}^{m \times n}$ seja dada por $A = QR$ e seja computada pelo algoritmo de **Householder**, o resultado dessa computação são as matrizes $\widetilde{Q}$ e $\widetilde{R}$ definidas anterioremente. Então temos: $$\widetilde{Q}\widetilde{R} = A + \delta A$$ Tal que: $$\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times n}$
 
 <a id="algoritmo-para-resolver-ax-b"></a>
 <a id="section_householder_stability_solve"></a>

@@ -9,3 +9,8 @@ private/
 .quartz/
 quartz/cli/tui/dist/
 .turbo/
+
+
+
+AGENTS.md
+CLAUDE.md

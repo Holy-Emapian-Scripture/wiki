@@ -20,7 +20,7 @@ ordem_na_trilha: 43
 
 # Introdução e Modelagem de Dados Sequenciais
 
-As RNNs são redes neurais projetadas para lidar com dados sequenciais, onde os dados possuem um tipo de relação sequencial, seja por tempo, posição ou qualquer outra forma de dependência entre os elementos da sequência. Diferente das redes feedforward tradicionais, as RNNs possuem conexões recorrentes que permitem que informações de etapas anteriores da sequência influenciem a saída atual, tornando-as ideais para tarefas como processamento de linguagem natural, reconhecimento de fala, séries temporais e processamento de vídeos.
+As RNNs são [redes neurais](../../aprendizado-de-maquina/redes-neurais.md) projetadas para lidar com dados sequenciais, onde os dados possuem um tipo de relação sequencial, seja por tempo, posição ou qualquer outra forma de dependência entre os elementos da sequência. Diferente das redes feedforward tradicionais, as RNNs possuem conexões recorrentes que permitem que informações de etapas anteriores da sequência influenciem a saída atual, tornando-as ideais para tarefas como processamento de linguagem natural, reconhecimento de fala, séries temporais e processamento de vídeos.
 
 <!-- wiki:original:fim -->
 

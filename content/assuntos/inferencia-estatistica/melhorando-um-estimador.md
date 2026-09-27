@@ -27,7 +27,7 @@ ordem_na_trilha: 20
 
 ## Limitações de uma Estatística Suficiente
 
-Vimos que as estatísticas suficientes são muito úteis, porém, nem sempre é fácil achá-las. Sua existência e formato depende criticamente de como é a estrutura de $f\left( x\vert \theta \right)$. Então pode acabar que estamos em dúvida entre duas funções de verossimilhança para aplicar ao nosso problema, dependendo da que escolhermos, pode ser muito complicado achar uma estatística suficiente! Além de que podemos nos interessar em montar um estimador que se aplique bem em ambas as minhas verossimilhanças, mesmo que ele não seja o melhor (Esse estimador é chamado de **estimador robusto**)
+Vimos que as estatísticas suficientes são muito úteis, porém, nem sempre é fácil achá-las. Sua existência e formato depende criticamente de como é a estrutura de $f\left( x\vert \theta \right)$. Então pode acabar que estamos em dúvida entre duas funções de verossimilhança para aplicar ao nosso problema, dependendo da que escolhermos, pode ser muito complicado achar uma [estatística suficiente](estatistica-suficiente.md)! Além de que podemos nos interessar em montar um estimador que se aplique bem em ambas as minhas verossimilhanças, mesmo que ele não seja o melhor (Esse estimador é chamado de **estimador robusto**)
 
 <!-- wiki:original:fim -->
 

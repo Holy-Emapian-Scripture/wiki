@@ -31,14 +31,14 @@ Por mais que os autovetores e autovalores tenham propriedades bonitas e simples,
 
 Agora a gente pode tirar vantagem do fato que a sequência $$\frac{x}{\| x\|},\frac{Ax}{\| Ax\|},\frac{A^{2}x}{\| A^{2}x\|},\ldots,\frac{A^{n}x}{\| A^{n}x\|}$$ converge, sobre certas condições, para o maior autovalor (Em valor absoluto) de $A$. Esse método é chamado de **Iteração sob Potências**, mas não é um método muito eficiente e não é utilizado em situações muito usuais.
 
-Ao invés dessas ideias, é mais comum, para propósitos gerais, os algoritmos seguirem um princípio diferente: A computação de uma fatoração explícita de autovalores de $A$, onde um dos fatores da fatoração tem os autovalores de $A$ como entradas. A gente viu 3 desses métodos na última lecture (Diagonalização, Diagonalização Unitária e Fatoração de Schur). Na prática, os algoritmos vão aplicando transformações em $A$ de forma que eles inserem 0 nas colunas e entradas corretas (Tipo o que a gente viu no método de Householder)
+Ao invés dessas ideias, é mais comum, para propósitos gerais, os algoritmos seguirem um princípio diferente: A computação de uma fatoração explícita de autovalores de $A$, onde um dos fatores da fatoração tem os autovalores de $A$ como entradas. A gente viu 3 desses métodos na última lecture (Diagonalização, [Diagonalização Unitária](problemas-de-autovalores.md#secao-24) e Fatoração de Schur). Na prática, os algoritmos vão aplicando transformações em $A$ de forma que eles inserem 0 nas colunas e entradas corretas (Tipo o que a gente viu no método de [Householder](triangularizacao-de-householder.md))
 
 <a id="uma-dificuldade-fundamental"></a>
 <a id="secao-29"></a>
 
 ## Uma dificuldade fundamental
 
-Acontece que **todo algoritmo para calcular autovalores deve ser iterativo**. Ué, por quê? Lembra que problemas de autovalores podem ser reduzidos a problemas de achar as raízes de um polinômio? Pois é, o inverso também é válido. O livro mostra isso criando um polinômio e expressando ele como o determinante de uma matriz e que as raízes do polinômio são os **autovalores** dessa matriz, mas isso não é o foco aqui. O foco é fazer a associação.
+Acontece que **todo algoritmo para calcular autovalores deve ser iterativo**. Ué, por quê? Lembra que [problemas de autovalores](problemas-de-autovalores.md) podem ser reduzidos a problemas de achar as raízes de um polinômio? Pois é, o inverso também é válido. O livro mostra isso criando um polinômio e expressando ele como o determinante de uma matriz e que as raízes do polinômio são os **autovalores** dessa matriz, mas isso não é o foco aqui. O foco é fazer a associação.
 
 É bem conhecido o fato de que, para polinômios com grau maior ou igual a 5, não existe uma sequência de fórmulas com somas, subtrações, etc. (Fórmula fechada) que encontre suas raízes. O que isso quer dizer? Quer dizer que, se o problema de raízes de polinômios pode ser reduzido para um problema de autovalores, matrizes com dimensão maior ou igual a 5 não podem ter seus autovalores expressos em uma sequência finita de passos.
 
@@ -58,7 +58,7 @@ O livro fala também que é possível utilizar de alguns truques para computar o
 
 ## Duas fases da computação de Autovalores
 
-A sendo Hermitiana ou não, a gente separa a sequência [\[upper-triangular-transformation\]](../fatoracao-e-diagonalizacao-de-schur/index.md#upper-triangular-transformation) em duas partes.
+A sendo Hermitiana ou não, a gente separa a sequência [\[upper-triangular-transformation\]](#upper-triangular-transformation) em duas partes.
 
 1.  A primeira fase consiste em produzir diretamente uma matriz **upper-Hessenberg**, isto é, uma matriz com zeros em baixo da primeira subdiagonal
 

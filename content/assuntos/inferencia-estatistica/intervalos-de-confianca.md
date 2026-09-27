@@ -63,7 +63,7 @@ Seja $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$, as estatísticas 
 
 ## Intervalo de confiança para outros parâmetros
 
-Até agora, só vimos a aplicação de intervalos de confiança para a distribuição normal, mas por quê? Pois a normal possui propriedades que tornam encontrar os intervalos de confiança mais fáceis, como por exemplo, encontrarmos estatísticas (Por exemplo $T = \sqrt{n}({\overline{X}}_{n} - \mu)/\sigma'$) que não dependem do parâmetro que queremos estimar, e isso na verdade é uma definição útil que pode nos ajudar:
+Até agora, só vimos a aplicação de intervalos de confiança para a [distribuição normal](../probabilidade/distribuicoes-continuas.md#secao_dist_normal), mas por quê? Pois a normal possui propriedades que tornam encontrar os intervalos de confiança mais fáceis, como por exemplo, encontrarmos estatísticas (Por exemplo $T = \sqrt{n}({\overline{X}}_{n} - \mu)/\sigma'$) que não dependem do parâmetro que queremos estimar, e isso na verdade é uma definição útil que pode nos ajudar:
 
 **Definição: Pivô**
 

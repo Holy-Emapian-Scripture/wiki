@@ -63,7 +63,7 @@ Seja $\left\{ q_{1},\ldots,q_{D} \right\}$ uma base ortogonal do ${\mathbb{R}}^{
 
 Seja $X \in {\mathbb{R}}^{N \times D}$ onde $x_{i}^{T}$ é a $i$-ésima linha de $X$, queremos projetar $X$ em um subespaço ${\mathbb{R}}^{M}$ com $M < D$ enquanto maximizamos a variância dos dados projetados.
 
-Supondo que $M = 1$, pegamos $u_{1} \in {\mathbb{R}}^{D}$ tal que $u_{1}^{T}u_{1} = 1$ então pegamos quanto de $u_{1}$ compõe o vetor $x_{i}$ com $u_{1}^{T}x_{i}$ ([\[base-coefficients\]](../definicoes/index.md#base-coefficients)). Vamos definir a média dos dados projetados como $$u_{1}^{T}\overline{x} = \frac{1}{N}\sum_{i = 1}^{N}u_{1}^{T}x_{i}$$
+Supondo que $M = 1$, pegamos $u_{1} \in {\mathbb{R}}^{D}$ tal que $u_{1}^{T}u_{1} = 1$ então pegamos quanto de $u_{1}$ compõe o vetor $x_{i}$ com $u_{1}^{T}x_{i}$ ([\[base-coefficients\]](#base-coefficients)). Vamos definir a média dos dados projetados como $$u_{1}^{T}\overline{x} = \frac{1}{N}\sum_{i = 1}^{N}u_{1}^{T}x_{i}$$
 
 e também definimos a variância deles como $$u_{1}^{T}Su_{1} = \frac{1}{N}\sum_{i = 1}^{N}\left( u_{1}^{T}x_{i} - u_{1}^{T}\overline{x} \right)^{2}$$
 
@@ -80,7 +80,7 @@ Ou seja, a direção que mais contribui com a variância dos dados é o autoveto
 
 ## Minimzando o Erro de Projeção
 
-Pegamos um set $\left\{ u_{1},u_{2},\ldots,u_{D} \right\}$ de vetores otornomais em ${\mathbb{R}}^{D}$. Pelo [\[base-coefficients\]](../definicoes/index.md#base-coefficients), sabemos que $$x_{n} = \sum_{i = 1}^{D}\left( x_{n}^{T}u_{i} \right)u_{i}$$
+Pegamos um set $\left\{ u_{1},u_{2},\ldots,u_{D} \right\}$ de vetores otornomais em ${\mathbb{R}}^{D}$. Pelo [\[base-coefficients\]](#base-coefficients), sabemos que $$x_{n} = \sum_{i = 1}^{D}\left( x_{n}^{T}u_{i} \right)u_{i}$$
 
 Porém, queremos aproximar $x_{n}$ usando um conjunto de só $M < D$ variáveis. Escrevemos então: $${\hat{x}}_{n} = \sum_{i = 1}^{M}\underset{\text{ Depende de }x_{n}}{\underbrace{z_{ni}}}u_{i} + \sum_{i = M + 1}^{D}\underset{\text{ Constante em }x_{n}}{\underbrace{b_{i}}}u_{i}$$
 

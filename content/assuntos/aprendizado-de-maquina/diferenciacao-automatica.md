@@ -31,7 +31,7 @@ Aposto que, se você é alguém que, como eu, sempre teve interesse de ver esses
 
 Existem, essencialmente, $4$ formas de se calcular o gradiente de uma rede neural.
 
-1.  Derivar as expressões analiticamente e implementá-las manualmente via software. Essa abordagem é extremamente trabalhosa, propensa a erros e não escalável para funções complexas. (Particularmente, exatamente o que eu sempre tentava fazer). Não só isso, mas as implementações dessas alternativas envolvem montar funções distintas para o forward pass e o backward pass, o que torna o processo ainda mais trabalhoso.
+1.  Derivar as expressões analiticamente e implementá-las manualmente via software. Essa abordagem é extremamente trabalhosa, propensa a erros e não escalável para funções complexas. (Particularmente, exatamente o que eu sempre tentava fazer). Não só isso, mas as implementações dessas alternativas envolvem montar funções distintas para o [forward pass](redes-neurais.md#secao-26) e o backward pass, o que torna o processo ainda mais trabalhoso.
 
 2.  Outro método é calcular o gradiente de forma aproximada: $$\frac{\partial f}{\partial x} \approx \frac{f(x + h) - f(x)}{h}\text{\quad\quad}h \approx 0$$ ele está bastante sujetio à erros numéricos, mas esse não é o principal problema, mas sim que ele escala muito mal com o tamanho da rede neural, mas ele é muito útil para verificar se a implementação do gradiente está correta (já que ele utiliza apenas o forward pass da rede neural).
 
@@ -46,7 +46,7 @@ Existem, essencialmente, $4$ formas de se calcular o gradiente de uma rede neura
 
 Considere a seguinte função: $$f\left( x_{1},x_{2} \right) = x_{1}x_{2} + e^{x_{1}x_{2}} - \sin(x_{2})$$<a id="funcao-exemplo-diferenciacao-automatica-forward"></a> quando implementado em código, podemos decompor a função em operações elementares que podem ser visualizadas em grafo
 
-![Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward)](../assets/automatic-diff-forward.png)
+![Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward)](assets/automatic-diff-forward.png)
 
 *Figura 1. Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward)*
 
@@ -62,13 +62,13 @@ Para calcular a derivada ($\frac{\partial f}{\partial x_{1}}$), fornecemos valor
 
 Agora considere o cenário onde temos uma função vetorial, onde a segunda saída é dada por: $$f_{2}\left( x_{1},x_{2} \right) = \left( x_{1}x_{2} - \sin(x_{2}) \right)\exp(x_{1}x_{2})$$<a id="funcao-exemplo-diferenciacao-automatica-forward-multidimensional"></a>
 
-![Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward) e [\[funcao-exemplo-diferenciacao-automatica-forward-multidimensional\]](#funcao-exemplo-diferenciacao-automatica-forward-multidimensional)](../assets/automatic-diff-forward-multidimensional.png)
+![Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward) e [\[funcao-exemplo-diferenciacao-automatica-forward-multidimensional\]](#funcao-exemplo-diferenciacao-automatica-forward-multidimensional)](assets/automatic-diff-forward-multidimensional.png)
 
 *Figura 2. Grafo de computação da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward) e [\[funcao-exemplo-diferenciacao-automatica-forward-multidimensional\]](#funcao-exemplo-diferenciacao-automatica-forward-multidimensional)*
 
 Se quisermos calcular $\frac{\partial f_{2}}{\partial x_{1}}$, conseguimos fazer isso no mesmo forward pass do cálculo de $\frac{\partial f_{1}}{\partial x_{1}}$, apenas adicionando mais equações para as **variáveis primais** e **variáveis tangentes** correspondentes a $f_{2}$. No entanto, se quisermos calcular $\frac{\partial f_{1}}{\partial x_{2}}$, precisamos fazer um novo forward pass, pois a variável tangente ${\dot{v}}_{i}$ depende da variável de entrada que estamos diferenciando. Portanto, no geral, se temos uma função com $D$ inputs e $K$ outputs, então um único forward pass produz apenas uma coluna da matriz jacobiana $K \times D$ $$J = \begin{pmatrix} \frac{\partial f_{1}}{\partial x_{1}} & \ldots & \frac{\partial f_{1}}{\partial x_{D}} \\ \vdots & \vdots & \vdots \\ \frac{\partial f_{K}}{\partial x_{1}} & \ldots & \frac{\partial f_{K}}{\partial x_{D}} \end{pmatrix}$$
 
-A diferenciação automática forward-mode é muito útil pricipalmente em casos onde temos muito mais outputs do que inputs ($K \gg D$). Entretanto, no contexto de machine learning, o mais comum é termos uma única função de erro $\mathcal{l}:{\mathbb{R}}^{D} \rightarrow {\mathbb{R}}$ que queremos minimizar com relação a milhões de parâmetros em cadeia dentro das redes neurais, então a implementação forward-mode fica ineficiente, para contornar isso, mudamos para outra abordagem
+A diferenciação automática forward-mode é muito útil pricipalmente em casos onde temos muito mais outputs do que inputs ($K \gg D$). Entretanto, no contexto de machine learning, o mais comum é termos uma única função de erro $\mathcal{l}:{\mathbb{R}}^{D} \rightarrow {\mathbb{R}}$ que queremos minimizar com relação a milhões de parâmetros em cadeia dentro das [redes neurais](redes-neurais.md), então a implementação forward-mode fica ineficiente, para contornar isso, mudamos para outra abordagem
 
 <a id="diferenciacao-automatica-reverse-mode"></a>
 <a id="secao-7"></a>
@@ -79,7 +79,7 @@ Podemos pensar nessa implementação como uma generalização do processo de bac
 
 Podemos calcular esse valor automaticamente com a regra da cadeia: $${\overset{-}{v}}_{i} = \frac{\partial f}{\partial v_{i}} = \sum_{j \in \text{ ch}\left( v_{i} \right)}\frac{\partial f}{\partial v_{j}} \cdot \frac{\partial v_{j}}{\partial v_{i}} = \sum_{j \in \text{ ch}\left( v_{i} \right)}{\overset{-}{v}}_{j} \cdot \frac{\partial v_{j}}{\partial v_{i}}$$
 
-onde $\text{ch}\left( v_{i} \right)$ representa o conjunto de variáveis que dependem de $v_{i}$ (filhos do nó $v_{i}$). Considerando novamente o exemplo da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](../diferenciacao-automatica-forward-mode/index.md#funcao-exemplo-diferenciacao-automatica-forward), podemos calcular as variáveis adjuntas ${\overset{-}{v}}_{i}$ para cada $v_{i}$: $$\begin{aligned} {\overset{-}{v}}_{7} & = 1 \\ {\overset{-}{v}}_{6} & = {\overset{-}{v}}_{7} \\ {\overset{-}{v}}_{5} & = {\overset{-}{v}}_{7} \\ {\overset{-}{v}}_{4} & = - {\overset{-}{v}}_{6} \\ {\overset{-}{v}}_{3} & = {\overset{-}{v}}_{5}v_{5} + {\overset{-}{v}}_{6} \\ {\overset{-}{v}}_{2} & = {\overset{-}{v}}_{2}v_{1} + {\overset{-}{v}}_{4}\cos(v_{2}) \\ {\overset{-}{v}}_{1} & = {\overset{-}{v}}_{3}v_{2} \end{aligned}$$
+onde $\text{ch}\left( v_{i} \right)$ representa o conjunto de variáveis que dependem de $v_{i}$ (filhos do nó $v_{i}$). Considerando novamente o exemplo da função [\[funcao-exemplo-diferenciacao-automatica-forward\]](#funcao-exemplo-diferenciacao-automatica-forward), podemos calcular as variáveis adjuntas ${\overset{-}{v}}_{i}$ para cada $v_{i}$: $$\begin{aligned} {\overset{-}{v}}_{7} & = 1 \\ {\overset{-}{v}}_{6} & = {\overset{-}{v}}_{7} \\ {\overset{-}{v}}_{5} & = {\overset{-}{v}}_{7} \\ {\overset{-}{v}}_{4} & = - {\overset{-}{v}}_{6} \\ {\overset{-}{v}}_{3} & = {\overset{-}{v}}_{5}v_{5} + {\overset{-}{v}}_{6} \\ {\overset{-}{v}}_{2} & = {\overset{-}{v}}_{2}v_{1} + {\overset{-}{v}}_{4}\cos(v_{2}) \\ {\overset{-}{v}}_{1} & = {\overset{-}{v}}_{3}v_{2} \end{aligned}$$
 
 Observe que essas equações começam na saída (output) e fluem para trás através do grafo até as entradas (inputs). Mesmo com múltiplas entradas, apenas um único backward pass é necessário para calcular as derivadas.
 

@@ -44,7 +44,7 @@ Ou seja, a probabilidade de que meu estimador esteja a pelo menos $10\%$ de $\th
 
 **Exemplo**
 
-Vamos tentar condensar tudo o que vimos em um exemplo. Vamos supor que temos uma clínica que está a fim de identificar ou prever pacientes candidatos a um remédio específico para tratamento da depressão. Então podemos modelar a variável aleatória de um paciente usar ou não esse remédio como uma Bernoulli com $\theta$ de chance de utilizar o remédio (${\mathbb{P}}(X = 1) = \theta$). Sabemos por capítulos anteriores que $T = \frac{1}{n}\sum_{i = 1}^{n}X_{i}$ (A proporção de pacientes que vão utilizar o remédio) é uma estatística suficiente e também é o EVM (Estimador de Máxima Verossimilhança) de $\theta$
+Vamos tentar condensar tudo o que vimos em um exemplo. Vamos supor que temos uma clínica que está a fim de identificar ou prever pacientes candidatos a um remédio específico para tratamento da depressão. Então podemos modelar a variável aleatória de um paciente usar ou não esse remédio como uma Bernoulli com $\theta$ de chance de utilizar o remédio (${\mathbb{P}}(X = 1) = \theta$). Sabemos por capítulos anteriores que $T = \frac{1}{n}\sum_{i = 1}^{n}X_{i}$ (A proporção de pacientes que vão utilizar o remédio) é uma [estatística suficiente](estatistica-suficiente.md) e também é o EVM (Estimador de [Máxima Verossimilhança](estatistica-frequentista.md#secao-14)) de $\theta$
 
 Porém, $T$ também é uma variável aleatória com distribuição própria, então ela pode assumir vários valores, mas queremos que ela seja o mais próximo possível de $\theta$. Então, que tal calcularmos: $${\mathbb{P}}(\vert T - \theta\vert  < 0.1)$$
 

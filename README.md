@@ -95,7 +95,12 @@ Nesse repositório só serão aceitas anotações feitas em formato **Markdown**
 
 * **Compilar para produção:**
   ```bash
-  npx quartz build
+  node quartz/bootstrap-cli.mjs build
+  ```
+
+* **Verificar links, imagens e a auditoria histórica após a compilação:**
+  ```bash
+  python3 content/manutencao/verificar_wiki.py --site --preservacao
   ```
 
 ### Deploy Contínuo

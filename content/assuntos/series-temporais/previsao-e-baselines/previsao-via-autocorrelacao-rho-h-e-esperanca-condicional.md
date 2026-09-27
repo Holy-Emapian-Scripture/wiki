@@ -22,7 +22,7 @@ ordem_na_trilha: 27
 
 **Definição**
 
-Seja $\left\{ Y_{t} \right\}$ um processo estocástico **gaussiano** e **fracamente estacionário**, com média constante ${\mathbb{E}}\left\lbrack Y_{t} \right\rbrack = \mu$, variância ${\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \gamma_{Y}(0) = \sigma^{2}$ e função de autocorrelação $\rho_{Y}(h) = \gamma_{Y}(h)/\sigma^{2}$. O vetor formado pela observação presente $Y_{n}$ e pela observação futura $Y_{n + h}$ segue uma distribuição normal bivariada $$\begin{pmatrix} Y_{n} \\ Y_{n + h} \end{pmatrix} \sim \mathcal{N}(\begin{pmatrix} \mu \\ \mu \end{pmatrix},\begin{pmatrix} \sigma^{2} & \rho_{Y}(h)\sigma^{2} \\ \rho_{Y}(h)\sigma^{2} & \sigma^{2} \end{pmatrix})$$
+Seja $\left\{ Y_{t} \right\}$ um processo estocástico **gaussiano** e **fracamente estacionário**, com média constante ${\mathbb{E}}\left\lbrack Y_{t} \right\rbrack = \mu$, variância ${\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \gamma_{Y}(0) = \sigma^{2}$ e função de autocorrelação $\rho_{Y}(h) = \gamma_{Y}(h)/\sigma^{2}$. O vetor formado pela observação presente $Y_{n}$ e pela observação futura $Y_{n + h}$ segue uma [distribuição normal](../../probabilidade/distribuicoes-continuas.md#secao_dist_normal) bivariada $$\begin{pmatrix} Y_{n} \\ Y_{n + h} \end{pmatrix} \sim \mathcal{N}(\begin{pmatrix} \mu \\ \mu \end{pmatrix},\begin{pmatrix} \sigma^{2} & \rho_{Y}(h)\sigma^{2} \\ \rho_{Y}(h)\sigma^{2} & \sigma^{2} \end{pmatrix})$$
 
 **Teorema: Condicional Gaussiana**
 

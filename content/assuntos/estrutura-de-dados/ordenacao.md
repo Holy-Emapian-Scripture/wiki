@@ -27,7 +27,7 @@ ordem_na_trilha: 14
 
 ## 3.1 - Características relevantes:
 
-A utilidade dos algoritmos de ordenação que vamos ver podem ser medidos através de:
+A utilidade dos [algoritmos de ordenação](../projeto-e-analise-de-algoritmos/algoritmos-de-ordenacao.md) que vamos ver podem ser medidos através de:
 
 - Complexidade de tempo de execução;
 

@@ -57,7 +57,7 @@ De forma que a $i$-ésima coluna de $W^{(j)}$ representa os pesos de todas as co
 
 ## Não-linearidade
 
-É importante ressaltar que, se as funções de ativação $h^{(1)},\ldots,h^{(K)}$ forem todas lineares, então a rede neural é equivalente a um modelo de regressão linear sem camadas escondidas, pois, se $h$ é uma função linear: $$h(X) = AX$$
+É importante ressaltar que, se as funções de ativação $h^{(1)},\ldots,h^{(K)}$ forem todas lineares, então a rede neural é equivalente a um modelo de [regressão linear](regressao-linear.md) sem camadas escondidas, pois, se $h$ é uma função linear: $$h(X) = AX$$
 
 para algum $X$
 

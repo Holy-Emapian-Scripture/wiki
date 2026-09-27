@@ -29,7 +29,7 @@ ordem_na_trilha: 25
 
 Usando as definições anteriores, vamos reescrever o Algoritmo de Gram-Schmidt.
 
-Para cada valor de $j$, o algoritmo de Gram-Schmidt original calcula uma única projeção ortogonal de posto $m - (j - 1)$. Estou apenas traduzindo para a linguagem usando projetores, ele faz isso: $$v_{j} = P_{j}a_{j} = \left( I - {\widehat{Q}}_{j - 1}{\widehat{Q}}_{j - 1}^{\ast} \right)a_{j}$$ Se você voltar ao que eu disse antes, obterá a fórmula original, estou apenas trocando aquele monte de somas e vetores por um produto matricial. O algoritmo original faz esse cálculo usando um único projetor, mas o que veremos faz isso por uma sequência de $j - 1$ projetores de posto $m - 1$. Pela definição de $P_{j}$, podemos afirmar que:
+Para cada valor de $j$, o algoritmo de Gram-Schmidt original calcula uma única projeção ortogonal de posto $m - (j - 1)$. Estou apenas traduzindo para a linguagem usando [projetores](projetores.md), ele faz isso: $$v_{j} = P_{j}a_{j} = \left( I - {\widehat{Q}}_{j - 1}{\widehat{Q}}_{j - 1}^{\ast} \right)a_{j}$$ Se você voltar ao que eu disse antes, obterá a fórmula original, estou apenas trocando aquele monte de somas e vetores por um produto matricial. O algoritmo original faz esse cálculo usando um único projetor, mas o que veremos faz isso por uma sequência de $j - 1$ projetores de posto $m - 1$. Pela definição de $P_{j}$, podemos afirmar que:
 
 **Teorema**
 

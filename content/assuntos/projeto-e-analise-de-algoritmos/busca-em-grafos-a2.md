@@ -94,7 +94,7 @@ Dizemos então que um vértice $v$ é **visitado** quando ``preOrder\[v\]`` é c
 
 A abordagem de tentar percorrer a partir de cada vértice garante que todos os vértices serão inspecionados, mesmo que o grafo não seja conexo. Além disso, um grafo pode apresentar múltiplas sequências de pré-ordem (depende da ordem em que as arestas são inspecionadas).
 
-Falando de complexidade, sabemos pelo algoritmo que cada vértice será processado uma única vez, e em cada vértice são verificadas cada $g_{s}\left( v_{i} \right)$ arestas. Sabendo que isso soma $\vert E\vert$, fica claro que temos uma complexidade de $\Theta(\vert V\vert  + \vert E\vert )$ usando lista de adjacências, e $\Theta(\vert V\vert ^{2})$ para matriz de adjacência.
+Falando de complexidade, sabemos pelo algoritmo que cada vértice será processado uma única vez, e em cada vértice são verificadas cada $g_{s}\left( v_{i} \right)$ arestas. Sabendo que isso soma $\vert E\vert$, fica claro que temos uma complexidade de $\Theta(\vert V\vert  + \vert E\vert )$ usando [lista de adjacências](grafos.md#secao-12), e $\Theta(\vert V\vert ^{2})$ para matriz de adjacência.
 
 <a id="grafo-topologico"></a>
 <a id="secao-20"></a>

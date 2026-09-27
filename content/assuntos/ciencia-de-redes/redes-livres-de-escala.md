@@ -75,7 +75,7 @@ Ou seja, quanto maior é minha rede, maior vai ser o tamanho do meu centro (Maio
 
 ## Significado de Livre de Escala
 
-Antes de entender o significado desse termo, vamos nos familiarizar com alguns conceitos. Vimos em probabilidade o conceito de **momentos**. O $n$-ésimo momento da distribuição dos graus (Levando em conta a variável aleatória $K$ que é o grau de um vértice aleatório) é: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = \sum_{i = k_{\min}}^{\infty}k^{n} \cdot {\mathbb{P}}(K = k) = \int_{k_{\min}}^{\infty}k^{n}p(k)dk$$
+Antes de entender o significado desse termo, vamos nos familiarizar com alguns conceitos. Vimos em probabilidade o conceito de **momentos**. O $n$-ésimo momento da [distribuição dos graus](modelo-biaconi-barabasi.md#secao-34) (Levando em conta a variável aleatória $K$ que é o grau de um vértice aleatório) é: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = \sum_{i = k_{\min}}^{\infty}k^{n} \cdot {\mathbb{P}}(K = k) = \int_{k_{\min}}^{\infty}k^{n}p(k)dk$$
 
 Resolvendo a integral, vamos obter: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = C\frac{k_{\max}^{n - \gamma + 1} - k_{\min}^{n - \gamma + 1}}{n - \gamma + 1}$$
 
@@ -98,7 +98,7 @@ Porém, em redes livres de escala em que o segundo momento diverge? Isso signifi
 
 ## Propriedade *Ultra Small*
 
-Essa propriedade dos centros faz levantar uma pergunta: Será que os centros afetam a propriedade dos minimundos? (Distância média). Se formos parar para tentar ter uma visão intuitiva, faz sentido dizer que elas afetam. Se eu tenho nós que se ligam em **MUITOS** outros nós (Os centros), então faz sentido dizer que a probabilidade de a distância entre dois outros nós quaisquer ser pequena é bem alta. Na verdade essa visão intuitiva está **correta**. As distâncias em uma rede **livre de escala** são menores do que em redes aleatórias equivalentes. Nós temos a seguinte relação: Seja D a variável aleatória que representa a distância entre dois nós aleatórios na rede $${\mathbb{E}}\lbrack D\rbrack = \begin{cases} \text{ const }\text{\quad\quad} & \gamma = 2 \\ \ln(\ln(N))\text{\quad\quad} & 2 < \gamma < 3 \\ \frac{\ln(N)}{\ln(\ln(N))}\text{\quad\quad} & \gamma = 3 \\ \ln(N)\text{\quad\quad} & \gamma > 3 \end{cases}$$<a id="average-path-distance-ultra-small-networks"></a>
+Essa propriedade dos centros faz levantar uma pergunta: Será que os centros afetam a propriedade dos minimundos? (Distância média). Se formos parar para tentar ter uma visão intuitiva, faz sentido dizer que elas afetam. Se eu tenho nós que se ligam em **MUITOS** outros nós (Os centros), então faz sentido dizer que a probabilidade de a distância entre dois outros nós quaisquer ser pequena é bem alta. Na verdade essa visão intuitiva está **correta**. As distâncias em uma rede **livre de escala** são menores do que em [redes aleatórias](redes-aleatorias.md) equivalentes. Nós temos a seguinte relação: Seja D a variável aleatória que representa a distância entre dois nós aleatórios na rede $${\mathbb{E}}\lbrack D\rbrack = \begin{cases} \text{ const }\text{\quad\quad} & \gamma = 2 \\ \ln(\ln(N))\text{\quad\quad} & 2 < \gamma < 3 \\ \frac{\ln(N)}{\ln(\ln(N))}\text{\quad\quad} & \gamma = 3 \\ \ln(N)\text{\quad\quad} & \gamma > 3 \end{cases}$$<a id="average-path-distance-ultra-small-networks"></a>
 
 Vamos falar um pouco sobre cada um desses *regimes*
 
@@ -106,7 +106,7 @@ Vamos falar um pouco sobre cada um desses *regimes*
 
 ### Regime Anômalo ($\gamma = 2$)
 
-De acordo com a equação [\[biggest-hub-relation\]](../centros/index.md#biggest-hub-relation), quando $\gamma = 2$, o maior hub (Maior centro) vai crescer linearmente com relação a $N$, ou seja, o tamanho do caminho entre dois nós aleatórios não depende de $N$ já que essa relação linear indica que todos os nós vão estar conectados ao mesmo hub central
+De acordo com a equação [\[biggest-hub-relation\]](#biggest-hub-relation), quando $\gamma = 2$, o maior hub (Maior centro) vai crescer linearmente com relação a $N$, ou seja, o tamanho do caminho entre dois nós aleatórios não depende de $N$ já que essa relação linear indica que todos os nós vão estar conectados ao mesmo hub central
 
 <a id="secao-25"></a>
 
@@ -159,9 +159,9 @@ Aqui, o primeiro momento converge enquanto o segundo diverge, o que faz a gente 
 
 ### Regime de Rede Aleatória ($\gamma > 3$)
 
-Como indicado relação [\[average-path-distance-ultra-small-networks\]](../propriedade-ultra-small/index.md#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
+Como indicado relação [\[average-path-distance-ultra-small-networks\]](#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
 
-Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [\[biggest-hub-relation\]](../centros/index.md#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
+Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [\[biggest-hub-relation\]](#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
 
 E isso daria uma relação de quantos nós precisamos para que começássemos a registrar a propriedade da rede livre de escala. Por exemplo, vamos supor que queremos saber quantos nós precisamos para começar a ver essa propriedade em redes de $\gamma = 5$ (E, por exemplo, $k_{\min} = 1$ e $k_{\max} = 10^{2}$), então deveríamos ter $N > 10^{8}$, e são poucas as redes, na prática, com um tamanho absurdo desses!
 

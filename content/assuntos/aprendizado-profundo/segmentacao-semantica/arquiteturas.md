@@ -44,7 +44,7 @@ Já na U-Net, a arquitetura é um pouco diferente, ela utiliza **skip connection
 
 *Figura 2. Arquitetura da U-Net*
 
-Nas camadas de upsampling, a U-Net utiliza **transpose convolution** para aumentar a dimensionalidade das features unida com um **aumento** nos canais das features. Após o transpose convolution, a U-Net concatena as features da camada correspondente de downsampling, permitindo que a rede utilize informações de diferentes níveis de abstração para melhorar a segmentação, como se ela falasse: “depois de reconstruir a imagem, eu obtive o seguinte mapa de feature, mas lá atrás antes de eu ter feito o downsampling, eu tinha obtido o seguinte mapa de feature, então vou juntar os dois para melhorar a segmentação” (por exemplo, se eu tenho uma imagem 32x32 na escala de cinza, com apenas um canal de cor, na hora do último upsampling, a camada logo após a transpose convolution terá 2 canais “de cor”, que seria o mapa obtido pela rede anteriormente e o mapa obtido na camada de upsampling).
+Nas camadas de upsampling, a U-Net utiliza **[transpose convolution](ferramentas-fundamentais.md#secao-8)** para aumentar a dimensionalidade das features unida com um **aumento** nos canais das features. Após o transpose convolution, a U-Net concatena as features da camada correspondente de downsampling, permitindo que a rede utilize informações de diferentes níveis de abstração para melhorar a segmentação, como se ela falasse: “depois de reconstruir a imagem, eu obtive o seguinte mapa de feature, mas lá atrás antes de eu ter feito o downsampling, eu tinha obtido o seguinte mapa de feature, então vou juntar os dois para melhorar a segmentação” (por exemplo, se eu tenho uma imagem 32x32 na escala de cinza, com apenas um canal de cor, na hora do último upsampling, a camada logo após a transpose convolution terá 2 canais “de cor”, que seria o mapa obtido pela rede anteriormente e o mapa obtido na camada de upsampling).
 
 <a id="resunet"></a>
 <a id="secao-19"></a>
@@ -66,13 +66,13 @@ Na ResUNet, a arquitetura é uma combinação da U-Net com blocos residuais, per
 
 ## DeepLab V1 & V2
 
-A DeepLabV1 é uma arquitetura de rede neural convolucional projetada para segmentação semântica, que utiliza **atrous convolution** para aumentar o campo receptivo da rede sem aumentar o número de parâmetros. Ela também utiliza **image pooling** para trazer contexto global da imagem para a rede.
+A DeepLabV1 é uma arquitetura de rede neural convolucional projetada para segmentação semântica, que utiliza [[ferramentas-fundamentais#Atrous Convolution|atrous convolution]] para aumentar o campo receptivo da rede sem aumentar o número de parâmetros. Ela também utiliza **[image pooling](ferramentas-fundamentais.md#secao-11)** para trazer contexto global da imagem para a rede.
 
 ![Arquitetura da DeepLabV1&V2](../assets/A1/deeplab.png)
 
 *Figura 5. Arquitetura da DeepLabV1&V2*
 
-Ambas seguem uma arquitetura muito semelhante, diferindo por um único conceito. Na DeepLab V1, passamos a imagem por uma Deep Convolutional Neural Network (DCNN) para extrair features utilizando camadas de Atrous Convolution. Depois, pegamos o score map obtido e aplicamos um processo de **interpolação bilinear** para aumentar a dimensionalidade do score map, e por fim aplicamos o um algoritmo de pós-processamento chamado **Conditional Random Field (CRF)** para refinar a segmentação. Já na DeepLab V2, o processo é o mesmo, mas ao invés de aplicarmos apenas uma Atrous Convolution, aplicamos múltiplas Atrous Convolutions com diferentes **rates** (ASPP).
+Ambas seguem uma arquitetura muito semelhante, diferindo por um único conceito. Na DeepLab V1, passamos a imagem por uma Deep Convolutional Neural Network (DCNN) para extrair features utilizando camadas de Atrous Convolution. Depois, pegamos o score map obtido e aplicamos um processo de **interpolação bilinear** para aumentar a dimensionalidade do score map, e por fim aplicamos o um algoritmo de pós-processamento chamado **Conditional Random Field (CRF)** para refinar a segmentação. Já na DeepLab V2, o processo é o mesmo, mas ao invés de aplicarmos apenas uma Atrous Convolution, aplicamos múltiplas Atrous Convolutions com diferentes **rates** ([ASPP](ferramentas-fundamentais.md#secao-13)).
 
 <a id="parsenet"></a>
 <a id="secao-21"></a>
@@ -80,9 +80,9 @@ Ambas seguem uma arquitetura muito semelhante, diferindo por um único conceito.
 ## PARSENet
 
 
-Foi na ParseNet que surgiu a ideia do [[assuntos/aprendizado-de-maquina/convolutional-neural-networks-cnn/index#Pooling|image pooling]], gerando o contexto global da imagem para a rede, permitindo que ela utilize informações de diferentes níveis de abstração para melhorar a segmentação. Já vimos antes como esse conceito funciona, mas como ele é estruturado **dentro** da rede?
+Foi na ParseNet que surgiu a ideia do [image pooling](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md#pooling), gerando o contexto global da imagem para a rede, permitindo que ela utilize informações de diferentes níveis de abstração para melhorar a segmentação. Já vimos antes como esse conceito funciona, mas como ele é estruturado **dentro** da rede?
 
-Primeiro a rede passa por uma rede convolucional padrão, depois o feature map gerado é passado por um [[assuntos/aprendizado-de-maquina/convolutional-neural-networks-cnn/index#Pooling|image pooling]], que gera um vetor de características que representa a imagem como um todo. Esse vetor é então redimensionado através de upsampling e concatenado com o feature map original, permitindo que a rede utilize informações de contexto global para melhorar a segmentação.
+Primeiro a rede passa por uma rede convolucional padrão, depois o feature map gerado é passado por um [image pooling](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md#pooling), que gera um vetor de características que representa a imagem como um todo. Esse vetor é então redimensionado através de upsampling e concatenado com o feature map original, permitindo que a rede utilize informações de contexto global para melhorar a segmentação.
 
 ![Arquitetura simplificada da PARSENet](../assets/A1/parsenet.png)
 
@@ -93,7 +93,7 @@ Primeiro a rede passa por uma rede convolucional padrão, depois o feature map g
 
 ## PSPNet
 
-A PSPNet é uma arquitetura de rede neural convolucional projetada para segmentação semântica, que utiliza **pyramid pooling** para capturar informações de diferentes escalas da imagem. Ela também utiliza [[assuntos/aprendizado-profundo/segmentacao-semantica/ferramentas-fundamentais/index#Atrous Convolution|atrous convolution]] para aumentar o campo receptivo da rede sem aumentar o número de parâmetros.
+A PSPNet é uma arquitetura de rede neural convolucional projetada para segmentação semântica, que utiliza **pyramid pooling** para capturar informações de diferentes escalas da imagem. Ela também utiliza [atrous convolution](ferramentas-fundamentais.md#atrous-convolution) para aumentar o campo receptivo da rede sem aumentar o número de parâmetros.
 
 Primeiro a imagem passa por um processamento em uma CNN, essa rede diminui a imagem original para $1/8$ do seu tamanho original e entra no bloco PSP **único**. Assim como no ASPP a imagem passa por múltiplas convoluções paralelas, no bloco PSP, a imagem passa por múltiplos **average pooling** com diferentes tamanhos de agrupamento:
 

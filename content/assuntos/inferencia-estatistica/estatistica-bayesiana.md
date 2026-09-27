@@ -79,7 +79,7 @@ Porém, estamos assumindo que eles são condicionalmente independentes, ou seja:
 
 Ou seja, independentemente se eu estou recebendo dado após o outro ou se eu tenho todos de uma vez para trabalhar, o resultado final deve ser o mesmo.
 
-Porém, se voltarmos na equação [\[finding-the-constant\]](../distribuicoes-priori-e-posteriori/index.md#finding-the-constant), podemos perceber algo interessante. Lembra da **Lei da Probabilidade Total**? $${\mathbb{P}}(A) = \sum_{i = 1}^{n}{\mathbb{P}}(B_{i}){\mathbb{P}}(A\vert B_{i})$$ Com $B_{i}$ sendo disjuntos. Porém, temos também a versão contínua do teorema: $$f_{X}(x) = \int_{\Omega}f_{X\vert Y}\left( x\vert y \right)f_{Y}(y)dy$$ Porém, se fizermos algumas substituições, nós obtemos: $$f\left( x_{k}\vert x_{1},\ldots,x_{k - 1} \right) = \int_{\vert \Theta\vert }f\left( x_{k}\vert \theta \right)\xi\left( \theta\vert x_{1},\ldots,x_{k - 1} \right)d\theta$$
+Porém, se voltarmos na equação [\[finding-the-constant\]](#finding-the-constant), podemos perceber algo interessante. Lembra da **Lei da Probabilidade Total**? $${\mathbb{P}}(A) = \sum_{i = 1}^{n}{\mathbb{P}}(B_{i}){\mathbb{P}}(A\vert B_{i})$$ Com $B_{i}$ sendo disjuntos. Porém, temos também a versão contínua do teorema: $$f_{X}(x) = \int_{\Omega}f_{X\vert Y}\left( x\vert y \right)f_{Y}(y)dy$$ Porém, se fizermos algumas substituições, nós obtemos: $$f\left( x_{k}\vert x_{1},\ldots,x_{k - 1} \right) = \int_{\vert \Theta\vert }f\left( x_{k}\vert \theta \right)\xi\left( \theta\vert x_{1},\ldots,x_{k - 1} \right)d\theta$$
 
 Ou seja, podemos utilizar essa equação caso tenhamos $n$ observações e estamos interessados em prever o resultado da próxima observação.
 
@@ -106,7 +106,7 @@ $$f\left( \theta\vert x_{1},\ldots,x_{n} \right) \propto \xi(\theta)f\left( x_{1
 
 **Teorema**
 
-Suponha que $X_{1},\ldots,X_{n}\vert \theta$ são uma amostra aleatória de variáveis com distribuição Poisson com parâmetro $\theta$ (Desconhecido). Suponha também que a distribuição a priori de $\theta$ é uma **Gamma** com parâmetros $\alpha > 0$ e $\beta > 0$. Então a distribuição a posteriori de $\theta\vert x_{1},\ldots,x_{n}$ é a distribuição Gamma com parâmetros $\alpha + \sum_{i = 1}^{n}x_{i}$ e $\beta + n$
+Suponha que $X_{1},\ldots,X_{n}\vert \theta$ são uma amostra aleatória de variáveis com distribuição Poisson com parâmetro $\theta$ (Desconhecido). Suponha também que a distribuição a priori de $\theta$ é uma **Gamma** com parâmetros $\alpha > 0$ e $\beta > 0$. Então a distribuição a posteriori de $\theta\vert x_{1},\ldots,x_{n}$ é a [distribuição Gamma](../probabilidade/distribuicoes-continuas.md#secao_dist_gamma) com parâmetros $\alpha + \sum_{i = 1}^{n}x_{i}$ e $\beta + n$
 
 **Demonstração**
 
@@ -114,7 +114,7 @@ Seja $y = \sum_{i = 1}^{n}x_{i}$, então a função de verossimilhança de ${\ma
 
 **Teorema**
 
-Suponha que $X_{1},\ldots,X_{n}\vert \theta$ são uma amostra aleatória de variáveis com distribuição Normal com média $\theta$ (Desconhecido) e variância $\sigma^{2} > 0$ conhecido. Suponha também que a distribuição a priori de $\theta$ é uma **Normal** com média $\mu_{0}$ e variância $v_{0}^{2}$. Então a distribuição a posteriori de $\theta\vert x_{1},\ldots,x_{n}$ é a distribuição normal com média $\mu_{1}$ e variância $v_{1}^{2}$ onde: $$\mu_{1} = \frac{\sigma^{2}\mu_{0} + nv_{0}^{2}{\widetilde{x}}_{n}}{\sigma^{2} + nv_{0}^{2}}$$<a id="normal-posterior-mu1"></a> e $$v_{1}^{2} = \frac{\sigma^{2}v_{0}^{2}}{\sigma^{2} + nv_{0}^{2}}$$<a id="normal-posterior-v0-squared"></a>
+Suponha que $X_{1},\ldots,X_{n}\vert \theta$ são uma amostra aleatória de variáveis com [distribuição Normal](../probabilidade/distribuicoes-continuas.md#secao_dist_normal) com média $\theta$ (Desconhecido) e variância $\sigma^{2} > 0$ conhecido. Suponha também que a distribuição a priori de $\theta$ é uma **Normal** com média $\mu_{0}$ e variância $v_{0}^{2}$. Então a distribuição a posteriori de $\theta\vert x_{1},\ldots,x_{n}$ é a distribuição normal com média $\mu_{1}$ e variância $v_{1}^{2}$ onde: $$\mu_{1} = \frac{\sigma^{2}\mu_{0} + nv_{0}^{2}{\widetilde{x}}_{n}}{\sigma^{2} + nv_{0}^{2}}$$<a id="normal-posterior-mu1"></a> e $$v_{1}^{2} = \frac{\sigma^{2}v_{0}^{2}}{\sigma^{2} + nv_{0}^{2}}$$<a id="normal-posterior-v0-squared"></a>
 
 **Demonstração**
 
@@ -141,7 +141,7 @@ Novamente vamos chamar $y ≔ \sum_{i = 1}^{n}x_{i}$. Então temos que a funçã
 
 Seja $\xi:C \rightarrow {\mathbb{R}}$ uma função não-negativa cujo domínio inclui o espaço paramétrico ($\Omega \subset C$) de um modelo estatístico. Suponha também que: $$\int_{C}\xi(\theta)d\theta = \infty$$ Se nós imaginarmos que $\xi$ é a f.d.p à priori de $\theta$, então $\xi$ é uma **distribuição imprória** de $\theta$
 
-Um bom exemplo é utilizar a distribuição **beta** assumindo que $\alpha = \beta = 0$. Mesmo que isso viole a condição da distribuição beta, o resultado da posteriori ainda sim é uma distribuição beta. Porém, existem diversos métodos para se escolher uma distribuição imprópria para $\theta$. O mais comum é se utilizar de uma família de conjugados para o modelo estatístico, e forma a adaptarmos seus parâmetros para obter uma distribuição imprópria.
+Um bom exemplo é utilizar a distribuição **beta** assumindo que $\alpha = \beta = 0$. Mesmo que isso viole a condição da distribuição beta, o resultado da posteriori ainda sim é uma distribuição beta. Porém, existem diversos métodos para se escolher uma distribuição imprópria para $\theta$. O mais comum é se utilizar de uma [família de conjugados](analise-bayesiana-de-amostras-normais.md#secao-13) para o modelo estatístico, e forma a adaptarmos seus parâmetros para obter uma distribuição imprópria.
 
 ------------------------------------------------------------------------
 

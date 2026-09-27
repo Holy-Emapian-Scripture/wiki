@@ -35,7 +35,7 @@ $H_{0}$ é chamada de **hipótese nula** e $H_{1}$ a **hipótese alternativa**. 
 
 Ué, porque não falamos que **aceitamos** a hipótese $H_{0}$? Esse modo de visualizar o teste de hipóteses foi popularizado por Ronald Fisher, Jerzy Neyman e Egon Pearson. Essa visualização de assemelha muito ao sistema jurídico, onde seguimos o princípio da presunção de inocência:
 
-- **Hipótese Nula $H_{0}$**: Representa o status quo, a crença estabelecida, o “nenhum efeito” ou a “igualdade”. É a hipótese que se presume verdadeira até que haja evidência estatística suficiente para o contrário. (Ex: “O réu é inocente”)
+- **Hipótese Nula $H_{0}$**: Representa o status quo, a crença estabelecida, o “nenhum efeito” ou a “igualdade”. É a hipótese que se presume verdadeira até que haja evidência [estatística suficiente](estatistica-suficiente.md) para o contrário. (Ex: “O réu é inocente”)
 
 - **Hipótese Alternativa ($H_{1}$)**: É a afirmação que o pesquisador está tentando encontrar evidências para suportar. (Ex: “O réu é culpado.”)
 
@@ -211,7 +211,7 @@ Seja $X_{1},\ldots,X_{n}$ uma amostra aleatória de uma distribuição indexada 
 
 ## Testes de razão de verossimilhança
 
-Não vou explicar formalmente todos os pontos da teoria, mas dar uma ideia intuitiva. Como vimos nos Estimadores de Máxima Verossimilhança, quanto mais próximo do verdadeiro valor de $\theta$ a minha amostra estiver, maior será a verossimilhança. Então, intuitivamente, se a minha amostra tem uma verossimilhança muito maior para um valor de $\theta$ que pertence a $H_{1}$ do que para um valor de $\theta$ que pertence a $H_{0}$, isso é uma evidência contra $H_{0}$. O teste de razão de verossimilhança é justamente isso, ele rejeita $H_{0}$ quando a razão entre a máxima verossimilhança sob $H_{1}$ e a máxima verossimilhança sob $H_{0}$ é grande o suficiente. Como comentei antes, a gente tenta sempre achar evidências contra $H_{0}$ $$\begin{array}{r} H_{0}:\theta \in \Omega_{0} \\ H_{1}:\theta \in \Omega_{1} \end{array}$$
+Não vou explicar formalmente todos os pontos da teoria, mas dar uma ideia intuitiva. Como vimos nos Estimadores de [Máxima Verossimilhança](estatistica-frequentista.md#secao-14), quanto mais próximo do verdadeiro valor de $\theta$ a minha amostra estiver, maior será a verossimilhança. Então, intuitivamente, se a minha amostra tem uma verossimilhança muito maior para um valor de $\theta$ que pertence a $H_{1}$ do que para um valor de $\theta$ que pertence a $H_{0}$, isso é uma evidência contra $H_{0}$. O teste de razão de verossimilhança é justamente isso, ele rejeita $H_{0}$ quando a razão entre a máxima verossimilhança sob $H_{1}$ e a máxima verossimilhança sob $H_{0}$ é grande o suficiente. Como comentei antes, a gente tenta sempre achar evidências contra $H_{0}$ $$\begin{array}{r} H_{0}:\theta \in \Omega_{0} \\ H_{1}:\theta \in \Omega_{1} \end{array}$$
 
 **Definição: Teste de razão de verossimilhança**
 

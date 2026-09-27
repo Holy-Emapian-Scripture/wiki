@@ -154,7 +154,7 @@ Esse conceito pode ser expandido para as convoluções Atrous, de forma que as m
 
 ## Blocos Residuais
 
-Normalmente, redes neurais são straight-to-the-point, nós temos a entrada $x$ e a partir disso a rede modela uma função complexa $F$ tal que $$y = F(x)$$
+Normalmente, [redes neurais](../../aprendizado-de-maquina/redes-neurais.md) são straight-to-the-point, nós temos a entrada $x$ e a partir disso a rede modela uma função complexa $F$ tal que $$y = F(x)$$
 
 no entanto, pode existir casos em que $y$ é MUITO parecido com $x$ com leves ajustes, e isso, surpreendentemente, pode dificultar muito o aprendizado da rede. Para consertar isso, os chamados **blocos residuais** foram introduzidos, de forma que a rede não aprende a relação direta entre $x$ e $y$, mas sim a **diferença** entre eles (o quão diferente $y$ é de $x$), ou seja, a rede aprende uma função $F$ tal que $$y = F(x) + x$$
 

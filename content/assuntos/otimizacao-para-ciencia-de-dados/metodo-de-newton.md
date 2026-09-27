@@ -24,7 +24,7 @@ ordem_na_trilha: 9
 
 Até agora, vimos métodos que utilizam de aproximações de primeira ordem das funções, porém, e se tentarmos utilizar mais informações além dessas? E se a função que estamos trabalhando for diferenciável duas vezes? Será que não poderiamos usar sua **Hessiana** para auxiliar? Lembra no primeiro resumo que falamos, inutitivamente, como a Hessiana carrega informações sobre para quais lados a função cresce e decresce? Poderíamos tentar utilizar essas informações! Vamos tentar aplicar uma fórmula recursiva igual fizemos no último? $$x^{(t + 1)} = \text{ argmin}_{x \in {\mathbb{R}}^{n}}\left\{ f\left( x^{(t)} \right) + \left( x - x^{(t)} \right)^{T}\nabla f\left( x^{(t)} \right) + \frac{1}{2}\left( x - x^{(t)} \right)^{T}\nabla^{2}f\left( x^{(t)} \right)\left( x - x^{(t)} \right) \right\}$$
 
-onde aqui utilizamos o [\[second-order-approximation\]](../introducao/index.md#second-order-approximation). Aqui, estamos assumindo algumas coisas:
+onde aqui utilizamos o [\[second-order-approximation\]](introducao.md#second-order-approximation). Aqui, estamos assumindo algumas coisas:
 
 - $\nabla^{2}f(x) \succ 0\ \forall x$
 

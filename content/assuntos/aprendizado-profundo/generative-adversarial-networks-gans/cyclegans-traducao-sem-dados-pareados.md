@@ -89,7 +89,7 @@ Dessa forma, podemos reescrever o aprendizado da nossa cycle GAN como $$\min\lim
 
 ## Arquitetura de CycleGANs
 
-Já vimos os tipos de redes dentro dos CycleGANs, mas como elas se comportam internamente? Na verdade utilizamos de algumas arquiteturas clássicas de redes neurais, como **ResNet** e **U-Net**, para construir os geradores e discriminadores. A escolha da arquitetura depende do tipo de dados e da complexidade da tarefa de tradução de imagem.
+Já vimos os tipos de redes dentro dos CycleGANs, mas como elas se comportam internamente? Na verdade utilizamos de algumas arquiteturas clássicas de [redes neurais](../../aprendizado-de-maquina/redes-neurais.md), como **ResNet** e **[U-Net](../segmentacao-semantica/arquiteturas.md#u-net)**, para construir os geradores e discriminadores. A escolha da arquitetura depende do tipo de dados e da complexidade da tarefa de tradução de imagem.
 
 ![Arquitetura dos geradores em CycleGANs](../assets/A1/generator-cyclegan-architecture.png)
 

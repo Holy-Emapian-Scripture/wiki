@@ -66,7 +66,7 @@ $$
 \text{ nº de ciclos } = \vert E\vert  - \text{ posto}(A)
 $$
 
-**Definição: Coeficiente de Clustering**
+**Definição: [Coeficiente de Clustering](redes-aleatorias.md#secao-12)**
 
 Dado um grafo $G(V,E)$, o coeficiente de clustering de um nó $v \in V$ é: $$C(v) ≔ \frac{2E_{v}}{\delta(v)\left( \delta(v) - 1 \right)}$$ onde $E_{v}$ é a quantidade de arestas que ligam os **vizinhos** de $v$ entre si
 

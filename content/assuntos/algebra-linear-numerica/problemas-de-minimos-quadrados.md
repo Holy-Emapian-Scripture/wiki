@@ -49,7 +49,7 @@ A equação $A^{\ast}b = A^{\ast}Ax$ é conhecida como “equação normal”, e
 
 ### Padrão
 
-Se $A$ tem posto completo, isso significa que $A^{\ast}A$ é um sistema de equações quadrado, hermitiano e definido positivo com dimensão $n$. Então, podemos fazer a Fatoração de Cholesky de $A^{\ast}A$, obtendo $R^{\ast}R$ onde $R$ é triangular superior, então podemos fazer a redução: $$A^{\ast}b = A^{\ast}Ax \Leftrightarrow A^{\ast}b = R^{\ast}Rx$$ Então, podemos fazer o algoritmo:
+Se $A$ tem posto completo, isso significa que $A^{\ast}A$ é um sistema de equações quadrado, hermitiano e definido positivo com dimensão $n$. Então, podemos fazer a [Fatoração de Cholesky](problemas-de-autovalores.md#secao-26) de $A^{\ast}A$, obtendo $R^{\ast}R$ onde $R$ é triangular superior, então podemos fazer a redução: $$A^{\ast}b = A^{\ast}Ax \Leftrightarrow A^{\ast}b = R^{\ast}Rx$$ Então, podemos fazer o algoritmo:
 
 1.  Formar a matriz $A^{\ast}A$ e $A^{\ast}b$
 
@@ -63,7 +63,7 @@ Se $A$ tem posto completo, isso significa que $A^{\ast}A$ é um sistema de equa�
 
 ### Fatoração $QR$
 
-Um método “moderno” usa a fatoração $QR$ reduzida. Usando o algoritmo de Householder, calculamos $A = \widehat{Q}\widehat{R}$ (Lembre-se que $\widehat{R}$ é quadrada e $\widehat{Q}$ é $m \times n$). Podemos então reescrever o projetor ortogonal $P = \left( A^{\ast}A \right)^{- 1}A$ como $P = \widehat{Q}{\widehat{Q}}^{\ast}$, porque $C(A) = C(Q)$. $$\widehat{Q}\widehat{R}x = \widehat{Q}{\widehat{Q}}^{\ast}b \Leftrightarrow \widehat{R}x = {\widehat{Q}}^{\ast}b$$ E se $R$ tem inversa, podemos multiplicá-lo por $R^{- 1}$ e ter $A^{+} = \widehat{R}{\widehat{Q}}^{\ast}$
+Um método “moderno” usa a fatoração $QR$ reduzida. Usando o algoritmo de [Householder](triangularizacao-de-householder.md), calculamos $A = \widehat{Q}\widehat{R}$ (Lembre-se que $\widehat{R}$ é quadrada e $\widehat{Q}$ é $m \times n$). Podemos então reescrever o projetor ortogonal $P = \left( A^{\ast}A \right)^{- 1}A$ como $P = \widehat{Q}{\widehat{Q}}^{\ast}$, porque $C(A) = C(Q)$. $$\widehat{Q}\widehat{R}x = \widehat{Q}{\widehat{Q}}^{\ast}b \Leftrightarrow \widehat{R}x = {\widehat{Q}}^{\ast}b$$ E se $R$ tem inversa, podemos multiplicá-lo por $R^{- 1}$ e ter $A^{+} = \widehat{R}{\widehat{Q}}^{\ast}$
 
 1.  Calcular a fatoração $QR$ reduzida $A = \widehat{Q}\widehat{R}$
 

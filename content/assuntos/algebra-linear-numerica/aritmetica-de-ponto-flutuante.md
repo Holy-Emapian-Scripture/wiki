@@ -175,7 +175,7 @@ Agora podemos redefinir $\varepsilon_{\text{machine}}$! Mas por quê? Bem, quere
 
 **Definição**
 
-$\varepsilon_{\text{machine}}$ é o menor valor tal que [\[floating_point_conversion\]](../epsilon-maquina/index.md#floating_point_conversion) e [\[fundamental_axiom_of_floating_point_arithmetic\]](../aritmetica-de-ponto-flutuante/index.md#fundamental_axiom_of_floating_point_arithmetic) são válidos
+$\varepsilon_{\text{machine}}$ é o menor valor tal que [\[floating_point_conversion\]](#floating_point_conversion) e [\[fundamental_axiom_of_floating_point_arithmetic\]](#fundamental_axiom_of_floating_point_arithmetic) são válidos
 
 Isso implica que, para alguns computadores, $\varepsilon_{\text{machine}}$ pode ser ainda menor que $\frac{1}{2}\beta^{1 - t}$, o que é uma coisa **muito** boa!
 

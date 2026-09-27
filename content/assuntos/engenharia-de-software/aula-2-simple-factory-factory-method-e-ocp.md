@@ -77,7 +77,7 @@ Note que essa última linha ainda esconde o mesmo bug do `else`. Como `FabricaDe
 
 Nesse ponto a aula sai do código e coloca o Simple Factory dentro de um vocabulário maior de arquitetura. O professor ajuda a definir alguns termos, que vou definir melhor aqui, não exatamente do jeito dito: um **padrão de projeto** é uma saída clássica, já testada, para um problema recorrente de modelagem; a referência dada foi o livro de 1994 do **GoF** (Gang of Four).
 
-O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões criacionais** (como criar objetos — Factory Method, Abstract Factory, Builder, Prototype, Singleton), **padrões estruturais** (como compor classes e objetos — Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy) e **padrões comportamentais** (como objetos interagem e distribuem responsabilidade — Observer, Strategy, State, Template Method, entre outros). O Simple Factory é um idioma didático, usado como degrau pra chegar no Factory Method — esse sim um dos criacionais reconhecidos pelo GoF.
+O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões criacionais** (como criar objetos — Factory Method, [Abstract Factory](aula-4-abstract-factory.md#secao-17), Builder, Prototype, Singleton), **padrões estruturais** (como compor classes e objetos — Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy) e **padrões comportamentais** (como objetos interagem e distribuem responsabilidade — Observer, Strategy, State, Template Method, entre outros). O Simple Factory é um idioma didático, usado como degrau pra chegar no Factory Method — esse sim um dos criacionais reconhecidos pelo GoF.
 
 <a id="factory-method"></a>
 <a id="secao-8"></a>

@@ -74,7 +74,7 @@ Uma vez identificada a dependência temporal, podemos usar modelos de séries te
 
 Existem $3$ usos complementares **principais** para séries temporais:
 
-**Descrever**. Entender o que aconteceu na série: tendência, sazonalidade, choques, mudanças de regime. A pergunta é interpretativa — *o que o traço temporal revela?*
+**Descrever**. Entender o que aconteceu na série: tendência, [sazonalidade](diagnostico-visual.md#secao-21), choques, mudanças de regime. A pergunta é interpretativa — *o que o traço temporal revela?*
 
 **Diagnosticar**. Avaliar se um modelo (clássico com covariáveis, baseline ingênuo, etc.) ainda deixou memória no tempo nos resíduos. Se os erros em $t$ e em $t + h$ ainda se relacionam de forma sistemática, a estrutura temporal não foi absorvida. Ferramentas formais de identificação (por exemplo ACF e testes como Ljung-Box) entram mais adiante no curso; o ponto conceitual já agora é: diagnóstico temporal é parte do trabalho, não um acessório opcional.
 

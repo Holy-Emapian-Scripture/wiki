@@ -97,7 +97,7 @@ Para cada vizinho, chamamos de $v_{2}$ o vizinho a ser analisado. Se ele não ti
 
 **Implementação em Python**
 
-Aqui, consideramos que a lista de adjacências é da forma:
+Aqui, consideramos que a [lista de adjacências](../grafos.md#secao-12) é da forma:
 
 ``` py
 [

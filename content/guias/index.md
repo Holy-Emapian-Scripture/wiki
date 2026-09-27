@@ -13,6 +13,7 @@ Orientações para manter a wiki fácil de consultar, editar e ampliar.
 - [Como contribuir](como-contribuir.md): organização dos arquivos, escrita e links.
 - [Modelo de página](modelo-de-pagina.md): estrutura inicial para uma nova nota.
 - [Organização da wiki](organizacao-da-wiki.md): assuntos, trilhas, semestres e preservação das fontes.
+- [Como organizar uma disciplina](../disciplinas/index.md): estrutura sugerida para uma área nova.
 
 ## Ideias para os próximos guias
 

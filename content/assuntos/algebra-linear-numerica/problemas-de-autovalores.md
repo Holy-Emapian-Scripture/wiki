@@ -54,9 +54,9 @@ Isso é equivalente a:
 
 $$\underset{A}{\underbrace{\begin{pmatrix} \  & \  & \  & \  \\ \  & \  & A & \  & \  \\ \  & \  & \  & \ \end{pmatrix}}} \cdot \underset{X}{\underbrace{\begin{pmatrix} \vert  & \vert  & \vert  & \vert  & \\ x_{1} & x_{2} & \ldots & x_{n} \\ \vert  & \vert  & \vert  & \vert \end{pmatrix}}} = \underset{\Lambda}{\underbrace{\begin{pmatrix} \lambda_{1} & 0 & \ldots & 0 \\ 0 & \lambda_{2} & \ldots & 0 \\ 0 & 0 & \ldots & 0 \end{pmatrix}}} \cdot \underset{X}{\underbrace{\begin{pmatrix} \vert  & \vert  & \vert  & \vert  & \\ x_{1} & x_{2} & \ldots & x_{n} \\ \vert  & \vert  & \vert  & \vert \end{pmatrix}}}$$ <a id="eq_decomposicao_autovalores_matricial"></a>
 
-Da [\[eq_decomposicao_autovalores_matricial\]](#eq_decomposicao_autovalores_matricial) e da [\[def_autovalor_autovetor\]](../definicoes/index.md#def_autovalor_autovetor), decorre que $Ax_{i} = \lambda_{i}x_{i}$, então a i-ésima coluna de $X$ é um autovetor de $A$ e $\lambda_{i}$ é o autovalor associado a $x_{i}$.
+Da [\[eq_decomposicao_autovalores_matricial\]](#eq_decomposicao_autovalores_matricial) e da [\[def_autovalor_autovetor\]](#def_autovalor_autovetor), decorre que $Ax_{i} = \lambda_{i}x_{i}$, então a i-ésima coluna de $X$ é um autovetor de $A$ e $\lambda_{i}$ é o autovalor associado a $x_{i}$.
 
-A decomposição apresentada pode representar uma mudança de base: Considere $Ax = b$ e $A = X\Lambda X^{- 1}$, então:
+A decomposição apresentada pode representar uma [mudança de base](svd.md#secao-11): Considere $Ax = b$ e $A = X\Lambda X^{- 1}$, então:
 
 $$
 Ax = b \Leftrightarrow X\Lambda X^{- 1}x = b \Leftrightarrow \Lambda\left( X^{- 1}x \right) = X^{- 1}b
@@ -85,7 +85,7 @@ Interpretaremos $\dim(S_{\lambda})$ como a maior quantidade de autovetores L.I a
 
 <a id="def_multiplicidade_geometrica"></a>
 
-Note que da equação [\[eq_autovalores_autovetores\]](../definicoes/index.md#eq_autovalores_autovetores):
+Note que da equação [\[eq_autovalores_autovetores\]](#eq_autovalores_autovetores):
 
 $$
 Ax = \lambda x \Leftrightarrow Ax - \lambda x = 0 \Leftrightarrow (A - \lambda I)x = 0
@@ -168,7 +168,7 @@ Uma matriz $A \in {\mathbb{C}}^{m \times m}$ é não-deficiente $\Leftrightarrow
 
 **Demonstração**
 
-$\Leftarrow$) Dada uma decomposição $A = X\Lambda X^{- 1}$, sabemos, pelo [\[similarity-theorem\]](../transformacoes-similares/index.md#similarity-theorem), que $\Lambda$ sendo similar a $A$, logo, $A$ tem os mesmos autovalores, MA e MG de $\Lambda$. Como $\Lambda$ é diagonal, eu tenho que $\Lambda$ é não-deficiente, logo, o mesmo vale para $A$
+$\Leftarrow$) Dada uma decomposição $A = X\Lambda X^{- 1}$, sabemos, pelo [\[similarity-theorem\]](#similarity-theorem), que $\Lambda$ sendo similar a $A$, logo, $A$ tem os mesmos autovalores, MA e MG de $\Lambda$. Como $\Lambda$ é diagonal, eu tenho que $\Lambda$ é não-deficiente, logo, o mesmo vale para $A$
 
 $\Rightarrow$) Uma matriz não-deficiente deve ter $m$ autovetores linearmente independentes, pois autovetores com diferentes autovalores precisam ser L.I, e cada autovalor pode se associar com autovetores a quantidade de vezes que sua MA permitir. Se esses $m$ autovetores independentes formam as colunas de uma matriz $X$, então X é inversível e $A = X\Lambda X^{- 1}$
 
@@ -183,7 +183,7 @@ Seja $\lambda_{j}$ um autovalor de $A \in {\mathbb{C}}^{m \times m}$: $$\begin{a
 
 **Demonstração**
 
-$$\det(A) = ( - 1)^{m}\det( - A) = ( - 1)^{m}p_{A(0)} = \prod_{j = 1}^{m}\lambda_{j}$$ Olhando a equação [\[characteristical-polynomial\]](../multiplicidades-algebrica-e-geometrica/index.md#characteristical-polynomial), podemos observar que o coeficiente do termo $\lambda^{m - 1}$ é igual a $- \sum_{j = 1}^{m}\lambda_{j}$ e na equação [\[eq_polinimio_caracteristico\]](../multiplicidades-algebrica-e-geometrica/index.md#eq_polinimio_caracteristico) o termo é o negativo da soma dos termos da diagonal, ou seja, $- \operatorname{tr}(A)$, ou seja, $\operatorname{tr}(A) = \sum_{j = 1}^{m}\lambda_{j}$
+$$\det(A) = ( - 1)^{m}\det( - A) = ( - 1)^{m}p_{A(0)} = \prod_{j = 1}^{m}\lambda_{j}$$ Olhando a equação [\[characteristical-polynomial\]](#characteristical-polynomial), podemos observar que o coeficiente do termo $\lambda^{m - 1}$ é igual a $- \sum_{j = 1}^{m}\lambda_{j}$ e na equação [\[eq_polinimio_caracteristico\]](#eq_polinimio_caracteristico) o termo é o negativo da soma dos termos da diagonal, ou seja, $- \operatorname{tr}(A)$, ou seja, $\operatorname{tr}(A) = \sum_{j = 1}^{m}\lambda_{j}$
 
 <a id="diagonalizacao-unitaria"></a>
 <a id="secao-24"></a>

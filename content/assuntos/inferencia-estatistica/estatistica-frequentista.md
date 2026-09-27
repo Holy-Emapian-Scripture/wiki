@@ -68,7 +68,7 @@ Seja $\Gamma$ o novo espaço paramétrico, ou seja, $g:\Omega \rightarrow \Gamma
 
 Sabemos que o EMV $\hat{\psi}$ de $\psi$ é vai ser o valor de $\psi$ que maximiza $f\left( \underline{x}\vert h(x) \right)$. Como $f\left( x\vert \theta \right)$ é maximizada quando $\theta = \hat{\theta}$, então $h(\psi) = \hat{\theta}$ maximiza a verossimilhança. Porém, aplicando $g$ em ambos os lados, obtemos que: $$\hat{\psi} = g\left( \hat{\theta} \right)$$
 
-Essa propriedade é algo ótimo! Tendo em vista que no método anterior, o estimador de Bayes de $1/\theta$ podia ser diferente de $1/\hat{\theta}$. Porém, podemos estender esse teorema para casos em que a função $g$ não é bijetiva. Vamos então definir o **estimador de uma função**
+Essa propriedade é algo ótimo! Tendo em vista que no método anterior, o [estimador de Bayes](estimadores-de-bayes.md#secao-11) de $1/\theta$ podia ser diferente de $1/\hat{\theta}$. Porém, podemos estender esse teorema para casos em que a função $g$ não é bijetiva. Vamos então definir o **estimador de uma função**
 
 **Definição: MVE de uma Função**
 
@@ -89,7 +89,7 @@ Como $L^{\ast (t)}$ é o máximo de $\log f\left( \underline{x}\vert \theta \rig
 
 Muitos problemas possuem um EVM $\hat{\theta}$ de um parâmetro $\theta$, porém esses não podem ser computados com fórmulas fechadas. Nesses casos, precisamos utilizar de métodos numéricos para aproximações. Existem **inúmeros** métodos de aproximação numérica de funções, porém, aqui vamos abordar brevemente apenas um
 
-**Definição: Método de Newton**
+**Definição: [Método de Newton](../otimizacao-para-ciencia-de-dados/metodo-de-newton.md)**
 
 Seja $f(\theta)$ uma função real de uma variável e suponha que nós desejamos resolver a equação $f(\theta) = 0$. Seja $\theta_{0}$ um chute inicial da solução e $\theta_{t}$ o valor obtido na $t$-ésima iteração do programa. O método de Newton atualiza nossa resposta da seguinte forma: $$\theta_{t + 1} = \theta_{t} - \frac{f\left( \theta_{t} \right)}{f'\left( \theta_{t} \right)}$$
 

@@ -22,7 +22,7 @@ A proposta é construir uma referência que cresça com as contribuições de qu
 
 ## O acervo
 
-As 35 anotações de origem estão organizadas em 19 disciplinas, com 688 páginas de conteúdo e 35 percursos de leitura. As explicações, fórmulas, códigos e legendas foram preservados; as páginas mantêm a autoria disponível e a indicação de origem.
+As 35 anotações de origem foram consolidadas por assunto em 19 disciplinas e 35 percursos de leitura. As explicações, fórmulas, códigos e legendas foram preservados; as páginas mantêm a autoria disponível e a indicação de origem.
 
 As trilhas conservam a sequência das revisões, enquanto os hubs por semestre oferecem outro caminho para os mesmos conteúdos. Seções incompletas continuam como estavam nas anotações.
 

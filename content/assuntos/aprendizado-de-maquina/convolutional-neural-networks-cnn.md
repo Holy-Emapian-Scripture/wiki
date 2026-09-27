@@ -27,7 +27,7 @@ ordem_na_trilha: 19
 
 ## Introdução
 
-Dentro do campo de aprendizado de máquina, redes neurais convolucionais (CNNs) são uma classe de redes neurais artificiais projetadas para processar dados com uma estrutura de grade, como imagens. Elas são inspiradas na organização do córtex visual dos animais e são particularmente eficazes em tarefas de visão computacional, como reconhecimento de objetos, detecção de objetos e segmentação de imagens.
+Dentro do campo de aprendizado de máquina, [redes neurais](redes-neurais.md) convolucionais (CNNs) são uma classe de redes neurais artificiais projetadas para processar dados com uma estrutura de grade, como imagens. Elas são inspiradas na organização do córtex visual dos animais e são particularmente eficazes em tarefas de visão computacional, como reconhecimento de objetos, detecção de objetos e segmentação de imagens.
 
 O campo de visão computacional tem sido um dos principais impulsionadores do desenvolvimento de CNNs, com aplicações em reconhecimento facial, análise de imagens médicas, veículos autônomos e muito mais. As CNNs são capazes de aprender automaticamente características hierárquicas dos dados, permitindo que elas capturem padrões complexos e invariantes a transformações, como rotação e escala. Algumas aplicações de machine learning no campo da visão computacional são:
 
@@ -99,7 +99,7 @@ Se $I \in {\mathbb{R}}^{H \times W}$ e $K \in {\mathbb{R}}^{h \times w}$, então
 
 ## Padding
 
-Podemos ver da [\[convolution-representation\]](../equivariancia-em-translacao/index.md#convolution-representation) que a feature map $C$ é menor que a imagem original $I$. Isso ocorre porque a convolução é aplicada apenas às regiões da imagem onde o filtro pode ser completamente sobreposto. Para evitar essa redução de tamanho, podemos aplicar **padding** à imagem original, adicionando uma borda de zeros ao redor da imagem após uma normalização (Assim, o 0 representa o valor médio de pixel da imagem). Isso permite que o filtro seja aplicado a todas as regiões da imagem, incluindo as bordas, resultando em uma feature map do mesmo tamanho que a imagem original. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, então a feature map $C$ terá dimensões $(H - M + 1) \times (W - M + 1)$, se eu aplicar um padding de tamanho $P$, então a feature map $C$ terá dimensões $(H - M + 1 + 2P) \times (W - M + 1 + 2P)$. Isso se chama uma **padding válido**. Quando o padding é escolhido de forma que o tamanho da feature map seja o mesmo que o tamanho da imagem original, chamamos de **padding completo** ($P = (M - 1)/2$). O padding é uma técnica importante em CNNs, pois permite que a rede aprenda padrões em todas as regiões da imagem, incluindo as bordas.
+Podemos ver da [\[convolution-representation\]](#convolution-representation) que a feature map $C$ é menor que a imagem original $I$. Isso ocorre porque a convolução é aplicada apenas às regiões da imagem onde o filtro pode ser completamente sobreposto. Para evitar essa redução de tamanho, podemos aplicar **padding** à imagem original, adicionando uma borda de zeros ao redor da imagem após uma normalização (Assim, o 0 representa o valor médio de pixel da imagem). Isso permite que o filtro seja aplicado a todas as regiões da imagem, incluindo as bordas, resultando em uma feature map do mesmo tamanho que a imagem original. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, então a feature map $C$ terá dimensões $(H - M + 1) \times (W - M + 1)$, se eu aplicar um padding de tamanho $P$, então a feature map $C$ terá dimensões $(H - M + 1 + 2P) \times (W - M + 1 + 2P)$. Isso se chama uma **padding válido**. Quando o padding é escolhido de forma que o tamanho da feature map seja o mesmo que o tamanho da imagem original, chamamos de **padding completo** ($P = (M - 1)/2$). O padding é uma técnica importante em CNNs, pois permite que a rede aprenda padrões em todas as regiões da imagem, incluindo as bordas.
 
 ![Padding de $1$ pixel aplicado à uma imagem $4 \times 4$, transformando ela em uma imagem $6 \times 6$ com uma borda de zeros ao redor da imagem original](assets/padding.png)
 
@@ -400,7 +400,7 @@ Então o backward será simplesmente a operação: $$\nabla_{X}L = D_{P}^{\ast} 
 
 - Kernel invertido $K^{\ast}$
 
-- Operador de expansão $D_{S}^{\ast}$ (O mesmo definido em [\[input-gradient-with-stride\]](../os-gradientes/index.md#input-gradient-with-stride))
+- Operador de expansão $D_{S}^{\ast}$ (O mesmo definido em [\[input-gradient-with-stride\]](#input-gradient-with-stride))
 
 <a id="pooling"></a>
 <a id="secao-40"></a>

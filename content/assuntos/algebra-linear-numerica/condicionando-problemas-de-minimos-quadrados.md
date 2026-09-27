@@ -21,6 +21,15 @@ ordem_na_trilha: 7
 
 # Condicionando Problemas de Mínimos Quadrados
 
+**Nota**: Nessa lecture, quando escrevemos $\| \cdot \|$, estamos nos referindo a norma 2, **não a qualquer norma**, logo, $\| \cdot \| = \| \cdot \|_{2}$
+
+Vamos relembrar o problema dos mínimos quadrados?
+
+$$\begin{array}{r} \text{ Dada }A \in {\mathbb{C}}^{m \times n}\text{ de posto completo, }m \geq n\text{  e  }b \in {\mathbb{C}}^{m}, \\ \text{ache }x \in {\mathbb{C}}^{n}\text{ tal que }\| b - Ax\|_{2}\text{ seja a menor possível } \end{array}$$<a id="min-squares"></a>
+
+No resumo passado, vimos que o $x$ que satisfaz esse problema é $$x = \left( A^{\ast}A \right)^{- 1}A^{\ast}b \Rightarrow y = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}b \Leftrightarrow y = Pb$$<a id="min-squares-equations"></a> Ou seja, a projeção ortogonal de $b$ em $A$ resulta no vetor $y$. Queremos então saber o condicionamento de [\[min-squares\]](#min-squares) de acordo com perturbações em $b$, $A$, $y$ e $x$. Tenha em mente que o problema recebe dois parâmetros, $A$ e $b$ e retorna as soluções $x$ e $y$
+
+
 
 <a id="o-teorema"></a>
 <a id="secao-8"></a>
@@ -39,7 +48,7 @@ E a segunda medida é $\eta$, que representa por quanto $y$ não atinge seu valo
 
 **Teorema: Condicionamento de Mínimos Quadrados**
 
-Deixe $b \in {\mathbb{C}}^{m}$ e $A \in {\mathbb{C}}^{m \times n}$ de posto completo serem **fixos**. O problema de mínimos quadrados [\[min-squares\]](../index.md#min-squares) possui a seguinte tabela de condicionamentos em norma-2:
+Deixe $b \in {\mathbb{C}}^{m}$ e $A \in {\mathbb{C}}^{m \times n}$ de posto completo serem **fixos**. O problema de mínimos quadrados [\[min-squares\]](#min-squares) possui a seguinte tabela de condicionamentos em norma-2:
 
 |  | $y$ | $x$ |
 |:--:|:--:|:--:|
@@ -54,9 +63,9 @@ Vale dizer também que a primeira linha são igualdades exatas, enquanto a linha
 
 Antes de provar para cada tipo de perturbação, temos em mente que estamos trabalhando com a norma-2, correto? Então nós vamos reescrever $A$ para ter uma análise mais fácil. Seja $A = U\Sigma V^{\ast}$ a decomposição S.V.D de $A$, sabemos que $\| A\|_{2} = \|\Sigma\|_{2}$ (As matrizes unitárias não afetam a norma), então podemos, sem perca da generalidade, lidar diretamente com $\Sigma$, então podemos assumir que $A = \Sigma$ (Não literalmente, mas como vamos ficar analisando as normas, isso vai nos facilitar bastante) $$A = \begin{pmatrix} \sigma_{1} \\ & \sigma_{2} \\ & & \ddots \\ & & & \sigma_{n} \\ & \\  \end{pmatrix} = \begin{pmatrix} A_{1} \\ 0 \end{pmatrix}$$ Reescrevendo os outros termos, temos: $$b = \begin{pmatrix} b_{1} \\ b_{2} \end{pmatrix}\text{     }y = \begin{pmatrix} b_{1} \\ 0 \end{pmatrix}\text{      }\begin{pmatrix} A_{1} \\ 0 \end{pmatrix}x = \begin{pmatrix} b_{1} \\ 0 \end{pmatrix} \Leftrightarrow x = A_{1}^{- 1}b_{1}$$<a id="A-reduction-to-diagonal"></a>
 
-- **Sensibilidade de $y$ com perturbações em $b$**: Vimos anteriormente na equação [\[min-squares-equations\]](../index.md#min-squares-equations) que $y = Pb$, e podemos tirar o condicionamento disso se associarmos com a equação **genérica** $Ax = b$. Lembra que em estabilidade vimos que o condicionamento desse sistema genérico quando perturbamos $x$ é: $$\frac{\| A\|}{\| x\|/\| b\|}$$ Então, fazendo simples substituições: $$\frac{\| P\|}{\| y\|/\| b\|} = \frac{1}{\cos\theta}$$ O que até que faz sentido na intuição. Se fazemos com que $b$ fique muito próximo a um ângulo de $90{^\circ}$ com $C(A)$, na hora que formos projetar, a projeção será minúscula, o que pode acarretar erros numéricos dependendo da precisão usada pelo computador
+- **Sensibilidade de $y$ com perturbações em $b$**: Vimos anteriormente na equação [\[min-squares-equations\]](#min-squares-equations) que $y = Pb$, e podemos tirar o condicionamento disso se associarmos com a equação **genérica** $Ax = b$. Lembra que em estabilidade vimos que o condicionamento desse sistema genérico quando perturbamos $x$ é: $$\frac{\| A\|}{\| x\|/\| b\|}$$ Então, fazendo simples substituições: $$\frac{\| P\|}{\| y\|/\| b\|} = \frac{1}{\cos\theta}$$ O que até que faz sentido na intuição. Se fazemos com que $b$ fique muito próximo a um ângulo de $90{^\circ}$ com $C(A)$, na hora que formos projetar, a projeção será minúscula, o que pode acarretar erros numéricos dependendo da precisão usada pelo computador
 
-- **Sensibilidade de x com perturbações em $b$**: Também tem uma relação bem direta pela equação [\[min-squares-equations\]](../index.md#min-squares-equations): $x = A^{+}b$. Assim, temos o mesmo de antes: $$\frac{\| A^{+}\|}{\| x\|/\| b\|} = \| A^{+}\frac{\|\left( \| b\| \right)}{\| y\|}\frac{\| y\|}{\| x\|} = \| A^{+}\|\frac{1}{\cos\theta}\frac{\| A\|}{\eta} = \frac{\kappa(A)}{\eta\cos\theta}$$
+- **Sensibilidade de x com perturbações em $b$**: Também tem uma relação bem direta pela equação [\[min-squares-equations\]](#min-squares-equations): $x = A^{+}b$. Assim, temos o mesmo de antes: $$\frac{\| A^{+}\|}{\| x\|/\| b\|} = \| A^{+}\frac{\|\left( \| b\| \right)}{\| y\|}\frac{\| y\|}{\| x\|} = \| A^{+}\|\frac{1}{\cos\theta}\frac{\| A\|}{\eta} = \frac{\kappa(A)}{\eta\cos\theta}$$
 
 Antes de continuar o resto da demonstração, temos que entender um pouco como as perturbações em $A$ podem afetar $C(A)$, porém, isso é um problema não-linear. Até daria pra fazer um monte de jacobiano algébrico, mas é melhor se manter numa pegada não muito formal e ter uma visão geométrica.
 

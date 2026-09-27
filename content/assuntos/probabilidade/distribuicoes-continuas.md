@@ -107,7 +107,7 @@ Se $X \sim \text{Expo}(\lambda)$, $Y = aX$, então $Y \sim \text{Expo}(\frac{\la
 
 **Demonstração**
 
-Pela [\[propriedade_derivada_inversa\]](../../variaveis-aleatorias-continuas/propriedades-da-cdf-e-pdf/index.md#propriedade_derivada_inversa), temos:
+Pela [\[propriedade_derivada_inversa\]](variaveis-aleatorias-continuas.md#propriedade_derivada_inversa), temos:
 
 $$
 \begin{array}{r} f_{Y}(y) = \frac{f_{X}(\varphi)}{h'(\varphi)} \\ h'(\varphi) = a \\ \varphi = h^{- 1}(y) = \frac{y}{a} \end{array}
@@ -248,7 +248,7 @@ Se $X \sim \Gamma(\alpha,\lambda)$ e $Z = \lambda X$, então $Z \sim \Gamma(\alp
 
 **Demonstração**
 
-Pela [\[propriedade_derivada_inversa\]](../../variaveis-aleatorias-continuas/propriedades-da-cdf-e-pdf/index.md#propriedade_derivada_inversa), temos:
+Pela [\[propriedade_derivada_inversa\]](variaveis-aleatorias-continuas.md#propriedade_derivada_inversa), temos:
 
 $$
 \begin{array}{r} f_{Z}(z) = \frac{f_{X}(\varphi)}{h'(\varphi)} \\ h'(\varphi) = \lambda \\ \varphi = h^{- 1}(z) = \frac{z}{\lambda} \end{array}
@@ -285,7 +285,7 @@ Se $X \sim N\left( \mu,\sigma^{2} \right)$, então $Z = \frac{X - \mu}{\sigma} \
 
 **Demonstração**
 
-Pela [\[propriedade_derivada_inversa\]](../../variaveis-aleatorias-continuas/propriedades-da-cdf-e-pdf/index.md#propriedade_derivada_inversa), temos:
+Pela [\[propriedade_derivada_inversa\]](variaveis-aleatorias-continuas.md#propriedade_derivada_inversa), temos:
 
 $$
 \begin{array}{r} f_{Z}(z) = \frac{f_{X}(\varphi)}{h'(\varphi)} \\ h'(\varphi) = \frac{1}{\sigma} \\ \varphi = h^{- 1}(z) = \mu + \sigma z \end{array}

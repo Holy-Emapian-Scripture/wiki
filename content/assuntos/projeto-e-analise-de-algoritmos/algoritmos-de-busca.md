@@ -138,7 +138,7 @@ Dada uma árvore com $n$ nós e balanceada, a sua altura $h$ será, no máximo: 
 
 **Demonstração**
 
-Seja $N(h)$ o número mínimo de nós de uma árvore balanceada de altura $h$. Temos a recorrência (pior caso):
+Seja $N(h)$ o número mínimo de nós de uma árvore balanceada de altura $h$. Temos a [recorrência](recorrencia.md) (pior caso):
 
 $$
 N(h) = 1 + N(h - 1) + N(h - 2)

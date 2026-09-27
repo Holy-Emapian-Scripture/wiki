@@ -76,7 +76,7 @@ $$
 H = \begin{pmatrix} 0 & A \\ A^{\ast} & 0 \end{pmatrix} = \begin{pmatrix} V & V \\ U & - U \end{pmatrix} \cdot \begin{pmatrix} \Sigma & 0 \\ 0 & - \Sigma \end{pmatrix} \cdot \begin{pmatrix} V & V \\ U & - U \end{pmatrix}^{- 1}
 $$
 
-É uma decomposição em autovalores de $H$, e fica claro que os autovalores de $H$ são os valores singulares de $A$, em módulo.
+É uma [decomposição em autovalores](problemas-de-autovalores.md#secao-18) de $H$, e fica claro que os autovalores de $H$ são os valores singulares de $A$, em módulo.
 
 Agora note que ao calcular os autovalores de $H$, pagamos $\kappa(A)$, e não $\kappa^{2}(A)$, Pois
 
@@ -89,7 +89,7 @@ $$
 
 ## Divisão em duas fases
 
-Porém, nós vimos algoritmos de autovalores para matrizes tridiagonais, e $H$ não é tridiagonal, como podemos ver. Então o que fazemos? Nós dividimos o processo de achar a SVD em duas etapas, uma de tridiagonalização (Ou bidiagonalização, como veremos), e uma de diagonalização (Achar os autovalores da matriz bidiagonalizada)
+Porém, nós vimos [algoritmos de autovalores](algoritmos-de-autovalores.md) para matrizes tridiagonais, e $H$ não é tridiagonal, como podemos ver. Então o que fazemos? Nós dividimos o processo de achar a SVD em duas etapas, uma de tridiagonalização (Ou bidiagonalização, como veremos), e uma de diagonalização (Achar os autovalores da matriz bidiagonalizada)
 
 ![As fases de um algoritmo de SVD](assets/svd-algorithm-phases.png)
 
@@ -100,7 +100,7 @@ Porém, nós vimos algoritmos de autovalores para matrizes tridiagonais, e $H$ n
 
 ## Bidiagonalização de Galub-Kahan
 
-A ideia é aplicar matrizes unitárias distintas na esquerda de $A$ e na sua direita, e advinha que tipo de matrizes usamo? Exatamente: **Refletores de Householder**. A ideia é aplicar refletores a esquerda de $A$ para colocar zeros abaixo da diagonal principal e a direita para aplicar zeros após a diagonal superior de $A$:
+A ideia é aplicar matrizes unitárias distintas na esquerda de $A$ e na sua direita, e advinha que tipo de matrizes usamo? Exatamente: **[Refletores de Householder](triangularizacao-de-householder.md#secao-30)**. A ideia é aplicar refletores a esquerda de $A$ para colocar zeros abaixo da diagonal principal e a direita para aplicar zeros após a diagonal superior de $A$:
 
 ![Bidiagonalização de Galub-Kahan exemplificada](assets/galub-kahan-diagonalization.png)
 
@@ -111,7 +111,7 @@ A ideia é aplicar matrizes unitárias distintas na esquerda de $A$ e na sua dir
 
 ## Métodos de Bidiagonalização mais eficientes
 
-Um método mais rápido que podemos aplicar quando $m > n$ é a *Bidiagonalização de Lawson-Hanson-Chan*, que consiste em aplicar a bidiagonalização de Galub-Kahan em $R$ da fatoração QR de $A$. Pois assim reduzimos o problema para uma bidiagonalização numa matriz triangular, veja:
+Um método mais rápido que podemos aplicar quando $m > n$ é a *Bidiagonalização de Lawson-Hanson-Chan*, que consiste em aplicar a bidiagonalização de Galub-Kahan em $R$ da [fatoração QR](fatoracao-qr.md) de $A$. Pois assim reduzimos o problema para uma bidiagonalização numa matriz triangular, veja:
 
 ![Bidiagonalização LHC exemplificada](assets/lhc-bidiagonalization.png)
 
@@ -132,7 +132,7 @@ Perceba que a proporção só aumenta pois eu estou sempre aplicando em matrizes
 
 ## Fase 2
 
-A fase 2 é aplicar algum algoritmo de autovalores na matriz que encontramos. Os dois principais algoritmos que são utilizados é uma versão modificada do algoritmo QR e o dividir e conquistar
+A fase 2 é aplicar algum algoritmo de autovalores na matriz que encontramos. Os dois principais algoritmos que são utilizados é uma versão modificada do algoritmo QR e o [dividir e conquistar](../projeto-e-analise-de-algoritmos/tecnicas-de-projeto-a2.md#secao-5)
 
 <!-- wiki:original:fim -->
 

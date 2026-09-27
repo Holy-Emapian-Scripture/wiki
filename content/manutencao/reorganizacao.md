@@ -39,17 +39,20 @@ As explicações não foram traduzidas, resumidas, corrigidas ou completadas. Co
 
 ## Auditoria
 
-O [mapa da reorganização](reorganizacao.json) registra o destino de cada trecho, seus limites no arquivo original, os hashes e as alterações estruturais reversíveis. O [verificador](verificar_wiki.py) permite reconstruir cada documento e conferir sua integridade sem depender das antigas pastas.
+O [mapa da reorganização](reorganizacao.json) registra os caminhos, limites, hashes e alterações reversíveis da versão anterior à consolidação. Esse mapa é histórico: suas 688 páginas de conteúdo não correspondem aos arquivos atuais. O [verificador](verificar_wiki.py) audita os links e o alcance das páginas atuais separadamente. Com `--preservacao`, reconstrói os 35 documentos na revisão Git histórica `1fe4ea2`, sem exigir a recriação das pastas antigas no site.
 
 ```sh
 python3 manutencao/verificar_wiki.py --preservacao
+
+# Após compilar o Quartz na raiz do repositório:
+python3 manutencao/verificar_wiki.py --site
 ```
 
 Essa auditoria compara o conteúdo reconstruído com o hash integral dos 35 documentos. A comparação inclui fórmulas, blocos de código, textos, legendas e a apresentação original. Os 294 anexos são comparados byte a byte por hash.
 
-A verificação de navegação confere arquivos locais, âncoras explícitas, fechamento dos blocos de código e alcance de todas as páginas importadas a partir do início. Não testa URLs externas nem substitui a futura validação do site publicado.
+A verificação de navegação confere links Markdown e wikilinks, âncoras, blocos de código e alcance das páginas publicadas a partir do início. `--site` confere os links internos e as imagens do HTML compilado. Nenhuma das duas verificações testa URLs externas.
 
-O [resultado da verificação](validacao.json) registra a execução ao final da reorganização.
+O [resultado da verificação](validacao.json) registra a execução histórica ao final da reorganização; não representa uma auditoria da estrutura atual.
 
 ## Registros anteriores
 

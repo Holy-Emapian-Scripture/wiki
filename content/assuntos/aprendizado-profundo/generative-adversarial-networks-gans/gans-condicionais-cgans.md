@@ -40,7 +40,7 @@ assim, o discriminador sabe a informação de qual classe a imagem pertence, e o
 
 *Figura 58. Arquitetura de uma cGAN clássica (pix2pix)*
 
-A arquitetura clássica de cGANs é a *pix2pix*, que é uma abordagem de tradução de imagem para imagem supervisionada. Nessa arquitetura, o gerador é tipicamente uma rede do tipo **U-Net**, que possui conexões de **skip** entre as camadas correspondentes do encoder e do decoder, permitindo que informações de baixo nível sejam preservadas durante a geração da imagem.
+A arquitetura clássica de cGANs é a *pix2pix*, que é uma abordagem de tradução de imagem para imagem supervisionada. Nessa arquitetura, o gerador é tipicamente uma rede do tipo **[U-Net](../segmentacao-semantica/arquiteturas.md#u-net)**, que possui conexões de **skip** entre as camadas correspondentes do encoder e do decoder, permitindo que informações de baixo nível sejam preservadas durante a geração da imagem.
 
 <a id="aplicacoes-das-cgans"></a>
 <a id="secao-76"></a>

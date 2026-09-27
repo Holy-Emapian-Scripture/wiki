@@ -27,7 +27,7 @@ ordem_na_trilha: 1
 
 ## Descobrindo os Critérios
 
-Dado uma rede $G(V,E)$, vamos supor que conhecemos a distribuição dos graus dessa rede (${\mathbb{P}}(\delta(v_{i}) = k) = p(k)$ para simplificação de notação), queremos ver se o grau do nó tem alguma influência em como eles se ligam. Então temos que ver a probabilidade de que um nó de grau $k'$ se ligue com um de grau $k$, ou seja: $${\mathbb{P}}(\left\{ v_{i},v_{j} \right\} \in E~\vert ~\delta(v_{i}) = k,\delta(v_{j}) = k') = p\left( \left\{ k,k' \right\} \in E \right)$$ Vamos escrever dessa forma para simplificar notação. Vamos ter que: $$p\left( \left\{ k,k' \right\} \in E \right) = \frac{kk'}{2\vert E\vert }$$ Onde $k'/2L$ é a probabilidade do meu nó com grau $k$ se ligar com um nó de grau $k'$ e eu multiplico por $k$ pois meu nó possui $k$ arestas ligadas a ele. Essa probabilidade indica que nós com graus maiores tem mais probabilidade de se ligar com outros nós de grau grande
+Dado uma rede $G(V,E)$, vamos supor que conhecemos a [distribuição dos graus](modelo-biaconi-barabasi.md#secao-34) dessa rede (${\mathbb{P}}(\delta(v_{i}) = k) = p(k)$ para simplificação de notação), queremos ver se o grau do nó tem alguma influência em como eles se ligam. Então temos que ver a probabilidade de que um nó de grau $k'$ se ligue com um de grau $k$, ou seja: $${\mathbb{P}}(\left\{ v_{i},v_{j} \right\} \in E~\vert ~\delta(v_{i}) = k,\delta(v_{j}) = k') = p\left( \left\{ k,k' \right\} \in E \right)$$ Vamos escrever dessa forma para simplificar notação. Vamos ter que: $$p\left( \left\{ k,k' \right\} \in E \right) = \frac{kk'}{2\vert E\vert }$$ Onde $k'/2L$ é a probabilidade do meu nó com grau $k$ se ligar com um nó de grau $k'$ e eu multiplico por $k$ pois meu nó possui $k$ arestas ligadas a ele. Essa probabilidade indica que nós com graus maiores tem mais probabilidade de se ligar com outros nós de grau grande
 
 **Definição: Matriz de Correlação por Grau**
 
@@ -133,7 +133,7 @@ Ou seja, chegamos que $k_{s} \propto \left( {\mathbb{E}}\lbrack K\rbrack N \righ
 
 Tendo isso em mente, conseguimos dividir as **redes livre-de-escala** em dois regimes ao compararmos $k_{\text{max}}$ e $k_{s}$ (Lembrando: $k_{\max} \propto N^{\frac{1}{\gamma - 1}}$)
 
-- **Sem cutoff estrutural:** Para redes aleatórias e livre-de-escala com $\gamma \geq 3$, o expoente de $k_{\max} \leq \frac{1}{2} \Rightarrow k_{\max} \leq k_{s}$, logo os valores esperados dos links entre nós será **sempre** menor ou igual a 1
+- **Sem cutoff estrutural:** Para [redes aleatórias](redes-aleatorias.md) e livre-de-escala com $\gamma \geq 3$, o expoente de $k_{\max} \leq \frac{1}{2} \Rightarrow k_{\max} \leq k_{s}$, logo os valores esperados dos links entre nós será **sempre** menor ou igual a 1
 
 - **Dissassortividade estrutural:** Para redes livre-de-escala com $\gamma < 3$, temos $- \frac{1}{1 - \gamma} > \frac{1}{2}$, logo $k_{s}$ pode ser menor que $k_{\text{max}}$, logo, há nós entre $k_{s}$ e $k_{\max}$ que podem ter $E_{kk'} > 1$
 

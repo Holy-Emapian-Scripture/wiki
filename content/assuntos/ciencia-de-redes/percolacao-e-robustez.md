@@ -67,7 +67,7 @@ Perceba que, em $p_{c}$, o maior cluster tem tamanho infinito, assim ele cobre t
 
 Agora que entendemos um pouco melhor o comportamento do nosso caso específico, vamos analisar ele como uma rede em si. Imagine que vamos remover uma fração $f$ dos nós da rede antes mencionada. Conforme aumentamos a fração $f$, em algum momento, a componente gigante vai se desfazer e, para algum $f_{c}$, vale que $\forall f > f_{c} \Rightarrow p_{\infty} = 0$, logo, não há mais uma componente gigante
 
-Para redes aleatórias, **sob falhas aleatórias**, compartilham os mesmos expoentes críticos que uma rede de percolação dimensional-infinita: $$\gamma_{p} = 1\text{\quad\quad}\beta_{p} = 1\text{\quad\quad}\upsilon = \frac{1}{2}$$
+Para [redes aleatórias](redes-aleatorias.md), **sob falhas aleatórias**, compartilham os mesmos expoentes críticos que uma rede de percolação dimensional-infinita: $$\gamma_{p} = 1\text{\quad\quad}\beta_{p} = 1\text{\quad\quad}\upsilon = \frac{1}{2}$$
 
 Já em uma rede livre-de-escala, os expoentes são: $$\beta_{p} = \begin{cases} \frac{1}{3 - \gamma}\text{ se }2 < \gamma < 3 \\ \frac{1}{\gamma - 3}\text{ se }3 < \gamma < 4 \\ 1\text{ se }4 < \gamma \end{cases}\text{\quad\quad}\gamma_{p} = \begin{cases} 1\text{ se }\gamma > 3 \\ - 1\text{ se }2 < \gamma < 3 \end{cases}$$
 
@@ -112,7 +112,7 @@ Vamos agora utilizar do critério visto anteriormente para entender o porquê de
 
 - Altera o grau de alguns nós \[$k' \leq k$\]
 
-- Muda a distribuição dos graus \[$p_{k} \rightarrow p'_{k}'$\]
+- Muda a [distribuição dos graus](modelo-biaconi-barabasi.md#secao-34) \[$p_{k} \rightarrow p'_{k}'$\]
 
 Vamos primeiro descobrir a nova distribuição dos graus após a remoção da fração $f$. Vamos fixar que estamos analisando um nó $v \in V$ que, antes da remoção, tem grau $k$, ou seja, tem $k$ vizinhos. Para saber quantos vizinhos vão sobrar após remover a fração, definimos uma variável indicadora para cada um dos vizinhos do nó $v$ $${\mathbb{I}}_{j} = \begin{cases} 1\text{ se o vizinho NÃO foi removido com probabilidade }1 - f \\ 0\text{ se o vizinho foi removido com probabilidade }f \end{cases}$$
 

@@ -160,7 +160,7 @@ $$
 
 The conclusion $E\left( X^{2} \right) = \lambda(1 + \lambda)$ is not trivial, but it is true.
 
-We now proceed to continuous random variables,
+We now proceed to [continuous random variables](continuous-random-variables.md),
 
 <!-- wiki:original:fim -->
 

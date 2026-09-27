@@ -44,7 +44,7 @@ Nem sempre existirão subgradientes, porém, quando falamos das **funções conv
 
 Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$, então vale que: $$f\text{ é convexa } \Leftrightarrow \partial f(x) \neq \varnothing\ \forall x$$
 
-Vale ressaltar que funções subdiferenciáveis podem não ser suaves. E por que isso é importante? Acontece que antes, no método do gradiente e na direções de descida, utilizamos o fato das funções serem suaves para provar a convergência do método, porém, aqui estamos trabalhando com funções que não necessariamente são diferenciáveis, logo, intuitivamente, elas podem ter vários picos, ou paradas bruscas, etc.
+Vale ressaltar que funções subdiferenciáveis podem não ser suaves. E por que isso é importante? Acontece que antes, no [método do gradiente](metodo-do-gradiente.md) e na direções de descida, utilizamos o fato das funções serem suaves para provar a convergência do método, porém, aqui estamos trabalhando com funções que não necessariamente são diferenciáveis, logo, intuitivamente, elas podem ter vários picos, ou paradas bruscas, etc.
 
 <a id="subgradient-descent"></a>
 
@@ -68,9 +68,9 @@ Vale ressaltar que funções subdiferenciáveis podem não ser suaves. E por que
 
 *Figura 4. Método do Subgradiente*
 
-Esse algoritmo parece até que “ingênuo”, tipo, nada garante que o subgradiente vai fazer com que a função desça né?? Vamos mostrar que na verdade esse método converge sim! Porém, vamos assumir algumas coisas também. Para esse caso, vamos assumir que a função é $M$-Lipschitz ([\[m-lipschitz\]](../metodo-do-gradiente/caso-global/index.md#m-lipschitz))
+Esse algoritmo parece até que “ingênuo”, tipo, nada garante que o subgradiente vai fazer com que a função desça né?? Vamos mostrar que na verdade esse método converge sim! Porém, vamos assumir algumas coisas também. Para esse caso, vamos assumir que a função é $M$-Lipschitz ([\[m-lipschitz\]](metodo-do-gradiente.md#m-lipschitz))
 
-Usando o que foi mostrado na introdução ([\[linear-approximation\]](../introducao/index.md#linear-approximation)), podemos mostrar o seguinte teorema:
+Usando o que foi mostrado na introdução ([\[linear-approximation\]](introducao.md#linear-approximation)), podemos mostrar o seguinte teorema:
 
 **Teorema: Aproximação Linear de funções $M$-Lipschitz**
 

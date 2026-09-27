@@ -20,7 +20,7 @@ ordem_na_trilha: 12
 
 # Teorema de Stokes
 
-Analogamente ao Teorema de Green, temos:
+Analogamente ao [Teorema de Green](teorema-de-green.md), temos:
 
 $$\int_{\delta S}F \cdot d\overset{\rightarrow}{r} = \iint_{S}{\text{rot}(F)} \cdot dS$$ <a id="equation_teorema_de_stokes"></a>
 
