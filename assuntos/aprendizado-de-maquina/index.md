@@ -1,0 +1,46 @@
+---
+layout: "default"
+title: "Aprendizado de Máquina"
+parent: "Assuntos"
+nav_order: 2
+tipo: "hub"
+render_with_liquid: false
+---
+
+# Aprendizado de Máquina
+
+## Trilhas e materiais
+
+- [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+
+## Bibliografia
+
+- [works.bib](referencias/works.bib)
+
+## Conteúdos por assunto
+
+- [Convolutional Neural Networks (CNN)](convolutional-neural-networks-cnn/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Diferenciação Automática](diferenciacao-automatica/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Gaussian and Bernoulli Mixture Models](gaussian-and-bernoulli-mixture-models/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+- [Generative Adversarial Networks](generative-adversarial-networks/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+- [Graph Neural Networks](graph-neural-networks/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Inferência Variacional](inferencia-variacional/index.md) — [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [K-means](k-means/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+- [Método dos Vizinhos mais próximos (k-NN)](metodo-dos-vizinhos-mais-proximos-k-nn/index.md) — [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [Principal Component Analysis](principal-component-analysis/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+- [Problema de Aprendizagem](problema-de-aprendizagem/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Processos Gaussianos](processos-gaussianos/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Redes Neurais](redes-neurais/index.md) — [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [Referências](referencias/index.md) — [A2](../../trilhas/aprendizado-de-maquina/a2.md)
+- [Referências](referencias-a3/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+- [Regressão Linear](regressao-linear/index.md) — [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [Regressão Logística](regressao-logistica/index.md) — [A1](../../trilhas/aprendizado-de-maquina/a1.md)
+- [Variational Autoencoders](variational-autoencoders/index.md) — [A3](../../trilhas/aprendizado-de-maquina/a3.md)
+
+## Hubs de origem
+
+- [5 semestre](../../semestres/5-semestre.md)
+
+[Todos os assuntos](../index.md)

@@ -1,0 +1,240 @@
+{
+  "main": {
+    "id": "79306bfb9e4de60c",
+    "type": "split",
+    "children": [
+      {
+        "id": "e797cff6d3b13c74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7d82234acd301dc6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "00d10292f2c009a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "65d870df09399a7d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5b21afd191763f26",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "20b0c589756dbf65",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "41356161ce7c7567",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d7dc9751bde595d7",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f96f38b8282dec3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d187ba235fca3e2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "d1ec90dab45a19b9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "6570da49f55f59ee",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c98347b156a1969d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "2f858204bf50584c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "7d82234acd301dc6",
+  "lastOpenFiles": [
+    "disciplinas/index.md",
+    "assuntos/otimizacao-para-ciencia-de-dados/algoritmos-de-otimizacao/metodo-gradiente/index.md",
+    "trilhas/ciencia-de-redes/a1.md",
+    "6 semestre/Deep Learning/A1.md",
+    "manutencao/validacao.json",
+    "manutencao/reorganizacao.md",
+    "assuntos/catalogo.md",
+    "guias/organizacao-da-wiki.md",
+    "manutencao/verificar_wiki.py",
+    "manutencao/reorganizacao.json",
+    "manutencao/conversao-original.md",
+    "manutencao/conversao-original.json",
+    "manutencao",
+    "assuntos/algebra-linear-numerica/assets/tridiagonal-sum-factorization.png",
+    "assuntos/algebra-linear-numerica/assets/svd-algorithm-phases.png",
+    "assuntos/algebra-linear-numerica/assets/rayleigh-iteration.png",
+    "assuntos/algebra-linear-numerica/assets/r(x)-unit-sphere.png",
+    "assuntos/algebra-linear-numerica/assets/r(x)-example.png",
+    "assuntos/algebra-linear-numerica/assets/lhc-bidiagonalization.png",
+    "assuntos/algebra-linear-numerica/assets/lah-optimization.png",
+    "assuntos/algebra-linear-numerica/assets/galub-kahan-diagonalization.png",
+    "assuntos/algebra-linear-numerica/assets/function-example.png",
+    "assuntos/algebra-linear-numerica/assets/Singular-Value-Decomposition.svg.png",
+    "assuntos/algebra-linear-numerica/assets",
+    "assuntos/probabilidade/assets",
+    "trilhas/index.md",
+    "assuntos/index.md",
+    "semestres/mestrado.md",
+    "semestres/index.md",
+    "semestres/eletivas.md",
+    "semestres/6-semestre.md",
+    "semestres/5-semestre.md",
+    "semestres/4-semestre.md",
+    "semestres/3-semestre.md",
+    "semestres",
+    "assuntos/algebra-linear-numerica/index.md",
+    "assuntos/probabilidade/index.md",
+    "assuntos/estrutura-de-dados/index.md",
+    "assuntos/equacoes-diferenciais-ordinarias/index.md",
+    "assuntos/calculo-vetorial/index.md",
+    "assuntos/computacao-na-nuvem/index.md",
+    "assuntos/computacao-na-nuvem",
+    "assuntos/causalidade/introducao/index.md",
+    "assuntos/causalidade/introducao",
+    "assuntos/causalidade/index.md",
+    "trilhas/causalidade/revisao-geral.md"
+  ]
+}
