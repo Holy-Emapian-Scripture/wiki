@@ -22,15 +22,6 @@ ordem_na_trilha: 34
 # Comparando as médias de duas Distribuições Normais
 
 
-<a id="alternativas-bilaterais"></a>
-<a id="secao-37"></a>
-
-## Alternativas Bilaterais
-
-Podemos adaptar os testes $t$ biamostrais para o caso de hipóteses bilaterais: $$H_{0}:\mu_{X} = \mu_{Y}\text{\quad\quad}H_{1}:\mu_{X} \neq \mu_{Y}$$
-
-O teste $t$ bilateral de tamanho $\alpha_{0}$ rejeita $H_{0}$ se $\vert U\vert  \geq c$ onde $c = T_{m + n - 2}^{- 1}\left( 1 - \alpha_{0}/2 \right)$ e a estatística $U$ é a mesma definida anteriormente. O $p$-valor quando $U = u$ é observado é igual a $2\left\lbrack 1 - T_{m + n - 2}\left( \vert u\vert  \right) \right\rbrack$
-
 <a id="o-t-teste-biamostral"></a>
 <a id="secao-35"></a>
 
@@ -87,6 +78,15 @@ Para cada parâmetro do vetor $\theta = \left( \mu_{X},\mu_{Y},\sigma^{2} \right
 
 Seja a estatística $U$ ser definida como na equação [\[two-sample-u-statistic\]](../o-t-teste-biamostral/index.md#two-sample-u-statistic), então $U$ tem distribuição não-central $t$ com $m + n - 2$ graus de liberdade e parâmetro de não-centralidade $$\psi = \frac{\mu_{X} - \mu_{Y}}{\sigma\left( \frac{1}{m} + \frac{1}{n} \right)^{1/2}}$$
 
+<a id="alternativas-bilaterais"></a>
+<a id="secao-37"></a>
+
+## Alternativas Bilaterais
+
+Podemos adaptar os testes $t$ biamostrais para o caso de hipóteses bilaterais: $$H_{0}:\mu_{X} = \mu_{Y}\text{\quad\quad}H_{1}:\mu_{X} \neq \mu_{Y}$$
+
+O teste $t$ bilateral de tamanho $\alpha_{0}$ rejeita $H_{0}$ se $\vert U\vert  \geq c$ onde $c = T_{m + n - 2}^{- 1}\left( 1 - \alpha_{0}/2 \right)$ e a estatística $U$ é a mesma definida anteriormente. O $p$-valor quando $U = u$ é observado é igual a $2\left\lbrack 1 - T_{m + n - 2}\left( \vert u\vert  \right) \right\rbrack$
+
 <!-- wiki:original:fim -->
 
 
@@ -94,5 +94,4 @@ Seja a estatística $U$ ser definida como na equação [\[two-sample-u-statistic
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Testes $t$ como testes de razão de verossimilhança](../testes-t/index.md#testes-t-como-testes-de-razao-de-verossimilhanca)
-- Próximo: [Alternativas Bilaterais](#alternativas-bilaterais)
+- Anterior: [Testes $t$](../testes-t/index.md)

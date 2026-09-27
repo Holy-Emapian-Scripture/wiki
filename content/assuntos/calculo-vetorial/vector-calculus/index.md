@@ -21,6 +21,28 @@ ordem_na_trilha: 8
 # Vector Calculus
 
 
+<a id="curves"></a>
+<a id="secao-9"></a>
+
+## Curves
+
+A Curve is a continuous function $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$, it is of class $C^{1}$ if $\gamma'$ exists and is continuous in \[a,b\], if $\gamma(a) = \gamma(b)$, the curve is **closed**.
+
+A curve is said to be $C^{1}$ *by parts* if there is a partition of $\lbrack a,b\rbrack$ in a finite number of subintervals such that the curve is $C^{1}$ in each of tese subintervals.
+
+<a id="scalar-line-integrals"></a>
+<a id="secao-10"></a>
+
+## Scalar Line Integrals
+
+Given $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ a function and $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$ a $C^{1}$ class curve in ${\mathbb{R}}^{n}$, the **scalar line integral** of f along $\gamma$ is:
+
+$$
+\int_{\gamma}fds = \int_{a}^{b}f\left( \gamma(t) \right)\|\gamma'(y)\| dt
+$$
+
+If $\gamma$ is $C^{1}$ *by parts*, we integrate on the $C^{1}$ partition-subintervals and sum each odf the smaller integrals.
+
 <a id="centroid-and-mass-center-of-a-curve"></a>
 <a id="secao-11"></a>
 
@@ -59,6 +81,21 @@ Where $L$ is the total arc length of the curve:
 $$
 L = \int_{\gamma}ds = \int_{a}^{b}\|\gamma'(t)\| dt
 $$
+
+<a id="vectorial-line-integrals"></a>
+<a id="secao-14"></a>
+
+## Vectorial Line Integrals
+
+Consider now $F:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}^{n}$, usually called a *vector field*, and a class $C^{1}$ curve $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$ in this field.
+
+The integral of F *along* $\gamma$ is:
+
+$$
+\int_{\gamma}F = \int_{a}^{b}F\left( \gamma(t) \right)\gamma'(t)dt
+$$
+
+This line integral is linear: $\int_{\gamma}(aF + bG) = a\int_{\gamma}F + b\int_{\gamma}G$
 
 <a id="conservative-vector-fields-and-angle-variation"></a>
 <a id="secao-15"></a>
@@ -109,43 +146,6 @@ $$
 
 Since the line integral over a closed curve is nonzero, $F$ is not conservative.
 
-<a id="curves"></a>
-<a id="secao-9"></a>
-
-## Curves
-
-A Curve is a continuous function $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$, it is of class $C^{1}$ if $\gamma'$ exists and is continuous in \[a,b\], if $\gamma(a) = \gamma(b)$, the curve is **closed**.
-
-A curve is said to be $C^{1}$ *by parts* if there is a partition of $\lbrack a,b\rbrack$ in a finite number of subintervals such that the curve is $C^{1}$ in each of tese subintervals.
-
-<a id="scalar-line-integrals"></a>
-<a id="secao-10"></a>
-
-## Scalar Line Integrals
-
-Given $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ a function and $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$ a $C^{1}$ class curve in ${\mathbb{R}}^{n}$, the **scalar line integral** of f along $\gamma$ is:
-
-$$
-\int_{\gamma}fds = \int_{a}^{b}f\left( \gamma(t) \right)\|\gamma'(y)\| dt
-$$
-
-If $\gamma$ is $C^{1}$ *by parts*, we integrate on the $C^{1}$ partition-subintervals and sum each odf the smaller integrals.
-
-<a id="vectorial-line-integrals"></a>
-<a id="secao-14"></a>
-
-## Vectorial Line Integrals
-
-Consider now $F:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}^{n}$, usually called a *vector field*, and a class $C^{1}$ curve $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb{R}}^{n}$ in this field.
-
-The integral of F *along* $\gamma$ is:
-
-$$
-\int_{\gamma}F = \int_{a}^{b}F\left( \gamma(t) \right)\gamma'(t)dt
-$$
-
-This line integral is linear: $\int_{\gamma}(aF + bG) = a\int_{\gamma}F + b\int_{\gamma}G$
-
 <!-- wiki:original:fim -->
 
 
@@ -153,5 +153,4 @@ This line integral is linear: $\int_{\gamma}(aF + bG) = a\int_{\gamma}F + b\int_
 
 [Trilha: A1](../../../trilhas/calculo-vetorial/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/calculo-vetorial/a1.md#apresentacao-original)
 
-- Anterior: [Moment of Inertia](../physics/index.md#moment-of-inertia)
-- Próximo: [Conservative Vector Fields and Angle Variation](#conservative-vector-fields-and-angle-variation)
+- Anterior: [Physics](../physics/index.md)

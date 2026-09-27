@@ -35,17 +35,6 @@ Por isso, na prática, a imagem é fatiada em blocos menores (**patches** ou **t
 
 *Figura 26. Exemplo de fatiamento de uma imagem em blocos menores*
 
-<a id="cnn-patch-wise-classica-vs-fcn-modela"></a>
-<a id="secao-33"></a>
-
-## CNN Patch-wise Clássica vs. FCN Modela
-
-- **CNN Clássica Por Patch (Sliding Window)**: Classificava isoladamente o pixel central de um **patch** deslocado. Isso gerava alta redundância de cálculos e resultava em um efeito de **suavização excessiva nas bordas dos objetos (*oversmoothing*)**.
-
-- **FCN Moderna**: Classifica todos os pixels do **patch** simultaneamente em uma única passada (**dense prediction**), aprendendo estruturas e geometrias específicas diretamente contidas dentro de cada bloco.
-
-------------------------------------------------------------------------
-
 <a id="o-problema-do-contexto-nas-bordas-border-context-loss"></a>
 <a id="secao-32"></a>
 
@@ -65,6 +54,17 @@ Para mitigar a perda de contexto nas bordas dos blocos, podemos destacar a estra
 
 3.  **Média das Predições (*Averaging Results*)**: Nas áreas onde os blocos se sobrepõem, calcula-se a média das probabilidades previstas por cada bloco para definir a classe final do pixel.
 
+<a id="cnn-patch-wise-classica-vs-fcn-modela"></a>
+<a id="secao-33"></a>
+
+## CNN Patch-wise Clássica vs. FCN Modela
+
+- **CNN Clássica Por Patch (Sliding Window)**: Classificava isoladamente o pixel central de um **patch** deslocado. Isso gerava alta redundância de cálculos e resultava em um efeito de **suavização excessiva nas bordas dos objetos (*oversmoothing*)**.
+
+- **FCN Moderna**: Classifica todos os pixels do **patch** simultaneamente em uma única passada (**dense prediction**), aprendendo estruturas e geometrias específicas diretamente contidas dentro de cada bloco.
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -72,5 +72,5 @@ Para mitigar a perda de contexto nas bordas dos blocos, podemos destacar a estra
 
 [Trilha: A1](../../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [Loss Function for Regression](../percas/index.md#loss-function-for-regression)
-- Próximo: [CNN Patch-wise Clássica vs. FCN Modela](#cnn-patch-wise-classica-vs-fcn-modela)
+- Anterior: [Percas](../percas/index.md)
+- Próximo: [Object Detection](../../object-detection/index.md)

@@ -22,42 +22,94 @@ ordem_na_trilha: 2
 # Data Warehouses
 
 
-<a id="abordagens-de-datawarehouses"></a>
-<a id="secao-23"></a>
+<a id="o-que-e"></a>
+<a id="secao-3"></a>
 
-## Abordagens de Datawarehouses
+## O que é?
 
-Vimos esse meio de se criar o Data Warehouse utilizando dos modelos estrela e floco de neve, porém, existem alguns métodos para abordar os Data Warehouses de formas diferentes. Porém, quando falamos de formas diferentes, não estamos dizendo que, por exemplo, se escolhermos uma dessas formas, automaticamente não podemos usar um modelo estrela, mas são algumas abordagens extras que podemos integrar dependendo do contexto
+Antes de adentrar no conceito de um Data Warehouse, vamos ter algumas definições antes
 
-<a id="secao-24"></a>
+**Definição: Dado Operacional**
 
-### Data Warehouses Normalizados
+Informações com pouco tempo de vida, utilizados essencialmente para o dia a dia e funcionamento do sistema, tem alta frequência e vão se atualizando conforme o tempo passa. Usado por diversos funcionários em setores diferentes e é orientado à aplicação
 
-Data warehouses utilizando de práticas-padrão de modelagem ER, de forma que ele mesmo serve como fonte para outros Data Warehouses que utilizam da modelagem dimensional e Data Marts dentro da empresa
+**Definição: Dado Analítico**
 
-![Data Warehouse Normalizado](../assets/normalized-data-warehouse.png)
+Informações duradouras, que não se atualizam frequentemente e nem tem alta frequência de acesso. Redundância não é um problema, utilizado por um grupo ninchado de pessoas. Orientado ao assunto/contexto
 
-*Figura 16. Data Warehouse Normalizado*
+A definição pode não ser muito clara, mas podemos imaginar um comparativo. Pense nos dados operacionais como um registro de diário, enquanto os dados analíticos são um livro de história. Os dados operacionais são frequentes, e não representam uma importância a longo prazo, por exemplo, o preço de um produto que está sendo passado no caixa, enquanto os dados analíticos representam um marco da empresa, como por exemplo, o lucro total da empresa na semana $x$.
 
-<a id="secao-25"></a>
+Vamos também definir melhor:
 
-### Data Warehouse em Modelo Dimensional
+**Definição: Orientado à Aplicação/Application Oriented**
 
-Foi o que vimos na criação de Data Warehouses até esse momento, dividido em tabelas de dimensões e tabelas de fatos, onde um fato representa um acontecimento de interesse dentro do contexto do negócio e as dimensões são informações externas ao fato, mas que tem participação interna à ele
+Dados projetados para suportar processos do dia a dia da organização. Estrutura de dados otimizada para inserções, atualizações e consultas rápidas de informações atuais com foco em transações (OLTP – Online Transaction Processing).
 
-<a id="secao-26"></a>
+**Exemplo**
 
-### Data Marts Independentes
+Sistema bancário para processar depósitos/saques, sistema hospitalar para registrar consultas.
 
-É quando vários **Data Marts** são criados em instâncias e setores diferentes da empresa, todos independentes um do outro. Consequentemente, isso faz com que **vários ETL’s** sejam criados
+**Definição: Orientado ao Assunto/Subject Oriented**
 
-![Data Marts Independentes](../assets/independent-data-marts.png)
+Dados projetados para analisar informações de um assunto de negócio específico (clientes, vendas, faturamento, estoque, etc.). Dados integrados e organizados de forma a responder perguntas estratégicas. Foco em análise histórica e tendências (OLAP – Online Analytical Processing). Normalmente são read-only (só leitura, não ficam sendo atualizados a todo instante).
 
-*Figura 17. Data Marts Independentes*
+**Exemplo**
 
-Essa abordagem é considerada inferior, já que inviabiliza uma análise **direto-ao-ponto** de toda a empresa e a existência de **vários** ETL’s **não relacionados**
+DW que reúne anos de dados de vendas para gerar relatórios, dashboards ou prever demanda.
 
-------------------------------------------------------------------------
+Imagine que você está fazendo o sistema, você sabe que seus dados precisam ser bem estruturados, o foco do seu sistema é ser duradouro e bem manutenível além de promover uma segurança boa, então seus dados vão ser **application-oriented**, de forma que você faz questão de deixar tudo muito bem-estruturado e separado. Porém imagine que o foco do seu sistema é responder perguntas de negócio de forma rápida e eficiente, por exemplo: “Quanto minha empresa faturou nos últimos 3 meses?”, dificilmente você vai se importar que as informações do banco que você está consultando estejam todas na norma 3, ou separadas direitinho com as chaves-estrangeiras bem definidas e organizadas, o importante é você responder a pergunta de forma rápida e eficiente, então você vai estruturar esse banco de forma a atingir esse objetivo, então seus dados são **subject-oriented**
+
+Com isso em mente, agora podemos entender o que são Data Warehouses
+
+**Definição: Data Warehouse**
+
+Um Data Warehouse é um **repositório estruturado** de dados **integrados**, **orientados ao assunto**, **com informações sobre toda a empresa**, **históricos** e **variantes com o tempo**. O propósito de um Data Warehouse é a extração de **dados analíticos**. Pode armazenar dados detalhados e/ou resumidos
+
+De forma resumida, um Data Warehouse também é um banco de dados, porém, estruturado e com um objetivo totalmente diferente dos bancos convencionais que estudamos na disciplina de **banco de dados**. Mas o que compõe um Data Warehouse? No núcleo, ele em si é apenas esse banco de dados diferenciado, porém, como funciona o sistema? Como é estruturado um projeto/sistema em que um Data Warehouse é incluído?
+
+![Ecossistema Data Warehouse](../assets/data-warehouse-ecosystem.png)
+
+*Figura 5. Ecossistema Data Warehouse*
+
+Todas as definições abaixo são referentes a elementos apresentados na imagem como componentes de um ecossistema de Data Warehouse
+
+**Definição: Sistemas de Origem**
+
+Sob o contexto de DW, os sistemas de origem são bases de dados operacionais e outros repositórios de dados (qualquer conjunto de dados usado para proposta operacional) que provê informação analítica útil para assuntos de análise. Cada unidade de armazenamento de dados operacionais que é usada como sistema de origem tem duas finalidades:
+
+- A própria finalidade operacional
+
+- Ser a fonte do DW
+
+Sistemas de origem podem incluir fontes internas e externas
+
+**Definição: Infraestrutura de ETL**
+
+Facilita a leitura dos dados dos sistemas de origem para o Data Warehouse. O ETL (Extract, Transform, Load) tem as seguintes tarefas:
+
+- Extrair dados analiticamente úteis das origens operacionais
+
+- Transformar tais dados de forma aderente a estrutura de “orientação-ao-assunto” do modelo do DW (ao mesmo tempo que assegura a qualidade dessa transformação)
+
+- Carregar os dados transformados e com qualidade assegurada para o destino “target” data warehouse
+
+**Definição: Data Warehouse**
+
+As vezes referenciado como “target system”. Um DW típico lê as informações analiticamente úteis dos sistemas de origem de forma periódica ou contínua ,provendo sempre dados atualizados para análise
+
+**Definição: Aplicações Front-end**
+
+De forma similar aos bancos operacionais, as aplicações “front-end” permitem o acesso indireto dos usuários aos dados
+
+Como vimos, um data warehouse tem informações sobre **toda** uma empresa, podendo gerar análises sobre todos os seus departamentos. Mas e se isso for um comportamento indesejado? Eu quero ter uma análise detalhada, mas focar apenas no meu departamento e evitar que os outros vejam informações que não deveriam ou informações que possam atrapalhar nas suas análises, então aí entram os Data Marts
+
+**Definição: Data Mart**
+
+Os Data Marts Seguem os mesmos princípios de um DW ,mas possuem um escopo mais limitado, geralmente ligado a um uso mais departamental, e não de forma abrangente à empresa conforme um DW.
+
+- **Data Mart independente**: Lobo solitário, criado como se fosse um DW. Um DM independente tem os próprios sistemas de origem e infraestrutura de ETL
+
+- **Data Mart dependente**: Não possui os próprios sistemas de origem. Os dados são lidos de um DW
 
 <a id="como-um-data-warehouse-e-estruturado"></a>
 <a id="secao-4"></a>
@@ -160,6 +212,54 @@ Administração e manutenção do data warehouse - realizar atividades que dão 
 
 - Implementar os procedimentos de backup e recuperação
 
+<a id="modelo-dimensional"></a>
+<a id="secao-13"></a>
+
+## Modelo Dimensional
+
+Vimos na disciplina de banco de dados sobre **modelos relacionais**, porém, estudiosos, posteriormente, perceberam que esse modelo é ineficiente para **análise de dados**, então foram criados modelos diferentes para a criação desses bancos. Então como podemos fazer?
+
+- **Kimbal**: Star Schema (Mais utilizado)
+
+- **Inmon**: Floco de neve
+
+O método do **Kimbal** é o mais utilizado na prática, pois ele é uma versão não-normalizada do **Inmon**, já que, em um Data Warehouse, a normalização aparenta ser desnecessária, já que todas as entradas são apenas de leitura
+
+Antes nós montávamos como **entidade** e **relacionamentos**, agora, nossos elementos são:
+
+- **Dimensões**
+
+- **Fatos**
+
+**Exemplo**
+
+Dentro da nossa loja, queremos criar um dashboard para gerenciar e entender as devoluções dos produtos feitos. De um modo bem simples, vamos ter o fato **Devolução**, ela ocorreu e pronto, mas o que ela engloba que não está necessariamente dentro do fato da devolução? Temos o produto, temos o calendário (Quando a devolução foi feita) e tem o motivo da devolução (Tem mais coisas, mas vamos simplificar por aqui). A primeira vista, essas coisas estão dentro da devolução, correto? Mas se pararmos para pensar, vários produtos podem ser devolvidos de maneiras independentes, assim como nem toda devolução tem um motivo diferente
+
+**Definição: Tabela de Dimensões**
+
+Contém descrições de negócios, organização, ou empresas no qual o sujeito da análise pertence. As colunas na tabela dimensional costumam ter informações descritivas, como textos (e.g, `product_color`, `product_description`, `client_name`). Essas informações providenciam uma base para a análise do sujeito
+
+**Definição: Tabelas de Fatos**
+
+Contém medidas relacionadas ao sujeito da análise e chaves-estrangeiras que ligam os fatos às tabelas de dimensões. As medidas na tabela de fatos costumam ser numéricas com intenção de análises computacionais e matemáticas
+
+<a id="star-schema"></a>
+<a id="secao-14"></a>
+
+## Star Schema
+
+![Exemplo de estruturação em **Esquema Estrela**](../assets/star-schema-structure.png)
+
+*Figura 7. Exemplo de estruturação em **Esquema Estrela***
+
+Os **Fact Measures** são informações dentro do fato que **não se aplicam em nenhuma dimensão**
+
+**Exemplo**
+
+Queremos criar o fato **venda**, ele engloba as dimensões de **produto**, **cliente**, **loja**, **calendário** e **vendedor**. Porém, não faz sentido, por exemplo, colocar a quantidade de produtos comprados em **nenhuma dimensão**, ou o **valor total da compra**, de forma que essas informações são localizadas única e exclusivamente no fato
+
+Vale ressaltar que, dado a dimensão $i$, a sua chave-primária **não é a mesma chave-primária do modelo relacional**, pois a repetição dos registros pode ocorrer sem problema nenhum. Como aplicar chaves-primária nas dimensões e nos fatos será visto posteriormente
+
 <a id="como-um-fato-se-organiza"></a>
 <a id="secao-15"></a>
 
@@ -182,6 +282,21 @@ Os principais pontos a se destacar é que, no modelo estrela, nós não colocamo
 *Figura 9. Exemplo correto do modelo dimensional das lojas zagi*
 
 Podemos ter algumas abordagens **arbitrárias** para identificar os fatos. Por exemplo, na imagem acima, nós diferenciamos dois fatos pelo **id da transação** e pela **surrogate key** do produto, já que um produto comprado só pode estar associado a **uma única transação**. Eu também poderia identificar um fato utilizando uma **chave composta** das **chaves-estrangeiras** das dimensões (Tem alguns problemas e questionamentos para esse exemplo em específico, mas vamos supor que não precisa de alterações a mais)
+
+<a id="galaxia-de-estrelas"></a>
+<a id="secao-16"></a>
+
+## Galáxia de Estrelas
+
+É um modelo que contém **vários fatos** que compartilham **dimensões** entre si
+
+![Modelo ZAGI adaptado](../assets/zagi-adapted.png)
+
+*Figura 10. Modelo ZAGI adaptado*
+
+![Galáxia ZAGI](../assets/zagi-galaxy.png)
+
+*Figura 11. Galáxia ZAGI*
 
 <a id="detalhamento-de-fatos"></a>
 <a id="secao-17"></a>
@@ -241,52 +356,6 @@ Agora adicionamos uma nova coluna de “anterior” e de “atual” para cada c
 
 *Figura 14. Exemplo registrando apenas duas mudanças. Dependendo da situação, você também pode **não fazer** colunas de **identificação temporal***
 
-<a id="galaxia-de-estrelas"></a>
-<a id="secao-16"></a>
-
-## Galáxia de Estrelas
-
-É um modelo que contém **vários fatos** que compartilham **dimensões** entre si
-
-![Modelo ZAGI adaptado](../assets/zagi-adapted.png)
-
-*Figura 10. Modelo ZAGI adaptado*
-
-![Galáxia ZAGI](../assets/zagi-galaxy.png)
-
-*Figura 11. Galáxia ZAGI*
-
-<a id="modelo-dimensional"></a>
-<a id="secao-13"></a>
-
-## Modelo Dimensional
-
-Vimos na disciplina de banco de dados sobre **modelos relacionais**, porém, estudiosos, posteriormente, perceberam que esse modelo é ineficiente para **análise de dados**, então foram criados modelos diferentes para a criação desses bancos. Então como podemos fazer?
-
-- **Kimbal**: Star Schema (Mais utilizado)
-
-- **Inmon**: Floco de neve
-
-O método do **Kimbal** é o mais utilizado na prática, pois ele é uma versão não-normalizada do **Inmon**, já que, em um Data Warehouse, a normalização aparenta ser desnecessária, já que todas as entradas são apenas de leitura
-
-Antes nós montávamos como **entidade** e **relacionamentos**, agora, nossos elementos são:
-
-- **Dimensões**
-
-- **Fatos**
-
-**Exemplo**
-
-Dentro da nossa loja, queremos criar um dashboard para gerenciar e entender as devoluções dos produtos feitos. De um modo bem simples, vamos ter o fato **Devolução**, ela ocorreu e pronto, mas o que ela engloba que não está necessariamente dentro do fato da devolução? Temos o produto, temos o calendário (Quando a devolução foi feita) e tem o motivo da devolução (Tem mais coisas, mas vamos simplificar por aqui). A primeira vista, essas coisas estão dentro da devolução, correto? Mas se pararmos para pensar, vários produtos podem ser devolvidos de maneiras independentes, assim como nem toda devolução tem um motivo diferente
-
-**Definição: Tabela de Dimensões**
-
-Contém descrições de negócios, organização, ou empresas no qual o sujeito da análise pertence. As colunas na tabela dimensional costumam ter informações descritivas, como textos (e.g, `product_color`, `product_description`, `client_name`). Essas informações providenciam uma base para a análise do sujeito
-
-**Definição: Tabelas de Fatos**
-
-Contém medidas relacionadas ao sujeito da análise e chaves-estrangeiras que ligam os fatos às tabelas de dimensões. As medidas na tabela de fatos costumam ser numéricas com intenção de análises computacionais e matemáticas
-
 <a id="modelo-floco-de-neve-snowflake"></a>
 <a id="secao-22"></a>
 
@@ -298,111 +367,42 @@ Como dito anteriormente, a grande diferença dele pro anterior (Modelo estrela) 
 
 *Figura 15. Exemplo do Modelo Floco de Neve*
 
-<a id="o-que-e"></a>
-<a id="secao-3"></a>
+<a id="abordagens-de-datawarehouses"></a>
+<a id="secao-23"></a>
 
-## O que é?
+## Abordagens de Datawarehouses
 
-Antes de adentrar no conceito de um Data Warehouse, vamos ter algumas definições antes
+Vimos esse meio de se criar o Data Warehouse utilizando dos modelos estrela e floco de neve, porém, existem alguns métodos para abordar os Data Warehouses de formas diferentes. Porém, quando falamos de formas diferentes, não estamos dizendo que, por exemplo, se escolhermos uma dessas formas, automaticamente não podemos usar um modelo estrela, mas são algumas abordagens extras que podemos integrar dependendo do contexto
 
-**Definição: Dado Operacional**
+<a id="secao-24"></a>
 
-Informações com pouco tempo de vida, utilizados essencialmente para o dia a dia e funcionamento do sistema, tem alta frequência e vão se atualizando conforme o tempo passa. Usado por diversos funcionários em setores diferentes e é orientado à aplicação
+### Data Warehouses Normalizados
 
-**Definição: Dado Analítico**
+Data warehouses utilizando de práticas-padrão de modelagem ER, de forma que ele mesmo serve como fonte para outros Data Warehouses que utilizam da modelagem dimensional e Data Marts dentro da empresa
 
-Informações duradouras, que não se atualizam frequentemente e nem tem alta frequência de acesso. Redundância não é um problema, utilizado por um grupo ninchado de pessoas. Orientado ao assunto/contexto
+![Data Warehouse Normalizado](../assets/normalized-data-warehouse.png)
 
-A definição pode não ser muito clara, mas podemos imaginar um comparativo. Pense nos dados operacionais como um registro de diário, enquanto os dados analíticos são um livro de história. Os dados operacionais são frequentes, e não representam uma importância a longo prazo, por exemplo, o preço de um produto que está sendo passado no caixa, enquanto os dados analíticos representam um marco da empresa, como por exemplo, o lucro total da empresa na semana $x$.
+*Figura 16. Data Warehouse Normalizado*
 
-Vamos também definir melhor:
+<a id="secao-25"></a>
 
-**Definição: Orientado à Aplicação/Application Oriented**
+### Data Warehouse em Modelo Dimensional
 
-Dados projetados para suportar processos do dia a dia da organização. Estrutura de dados otimizada para inserções, atualizações e consultas rápidas de informações atuais com foco em transações (OLTP – Online Transaction Processing).
+Foi o que vimos na criação de Data Warehouses até esse momento, dividido em tabelas de dimensões e tabelas de fatos, onde um fato representa um acontecimento de interesse dentro do contexto do negócio e as dimensões são informações externas ao fato, mas que tem participação interna à ele
 
-**Exemplo**
+<a id="secao-26"></a>
 
-Sistema bancário para processar depósitos/saques, sistema hospitalar para registrar consultas.
+### Data Marts Independentes
 
-**Definição: Orientado ao Assunto/Subject Oriented**
+É quando vários **Data Marts** são criados em instâncias e setores diferentes da empresa, todos independentes um do outro. Consequentemente, isso faz com que **vários ETL’s** sejam criados
 
-Dados projetados para analisar informações de um assunto de negócio específico (clientes, vendas, faturamento, estoque, etc.). Dados integrados e organizados de forma a responder perguntas estratégicas. Foco em análise histórica e tendências (OLAP – Online Analytical Processing). Normalmente são read-only (só leitura, não ficam sendo atualizados a todo instante).
+![Data Marts Independentes](../assets/independent-data-marts.png)
 
-**Exemplo**
+*Figura 17. Data Marts Independentes*
 
-DW que reúne anos de dados de vendas para gerar relatórios, dashboards ou prever demanda.
+Essa abordagem é considerada inferior, já que inviabiliza uma análise **direto-ao-ponto** de toda a empresa e a existência de **vários** ETL’s **não relacionados**
 
-Imagine que você está fazendo o sistema, você sabe que seus dados precisam ser bem estruturados, o foco do seu sistema é ser duradouro e bem manutenível além de promover uma segurança boa, então seus dados vão ser **application-oriented**, de forma que você faz questão de deixar tudo muito bem-estruturado e separado. Porém imagine que o foco do seu sistema é responder perguntas de negócio de forma rápida e eficiente, por exemplo: “Quanto minha empresa faturou nos últimos 3 meses?”, dificilmente você vai se importar que as informações do banco que você está consultando estejam todas na norma 3, ou separadas direitinho com as chaves-estrangeiras bem definidas e organizadas, o importante é você responder a pergunta de forma rápida e eficiente, então você vai estruturar esse banco de forma a atingir esse objetivo, então seus dados são **subject-oriented**
-
-Com isso em mente, agora podemos entender o que são Data Warehouses
-
-**Definição: Data Warehouse**
-
-Um Data Warehouse é um **repositório estruturado** de dados **integrados**, **orientados ao assunto**, **com informações sobre toda a empresa**, **históricos** e **variantes com o tempo**. O propósito de um Data Warehouse é a extração de **dados analíticos**. Pode armazenar dados detalhados e/ou resumidos
-
-De forma resumida, um Data Warehouse também é um banco de dados, porém, estruturado e com um objetivo totalmente diferente dos bancos convencionais que estudamos na disciplina de **banco de dados**. Mas o que compõe um Data Warehouse? No núcleo, ele em si é apenas esse banco de dados diferenciado, porém, como funciona o sistema? Como é estruturado um projeto/sistema em que um Data Warehouse é incluído?
-
-![Ecossistema Data Warehouse](../assets/data-warehouse-ecosystem.png)
-
-*Figura 5. Ecossistema Data Warehouse*
-
-Todas as definições abaixo são referentes a elementos apresentados na imagem como componentes de um ecossistema de Data Warehouse
-
-**Definição: Sistemas de Origem**
-
-Sob o contexto de DW, os sistemas de origem são bases de dados operacionais e outros repositórios de dados (qualquer conjunto de dados usado para proposta operacional) que provê informação analítica útil para assuntos de análise. Cada unidade de armazenamento de dados operacionais que é usada como sistema de origem tem duas finalidades:
-
-- A própria finalidade operacional
-
-- Ser a fonte do DW
-
-Sistemas de origem podem incluir fontes internas e externas
-
-**Definição: Infraestrutura de ETL**
-
-Facilita a leitura dos dados dos sistemas de origem para o Data Warehouse. O ETL (Extract, Transform, Load) tem as seguintes tarefas:
-
-- Extrair dados analiticamente úteis das origens operacionais
-
-- Transformar tais dados de forma aderente a estrutura de “orientação-ao-assunto” do modelo do DW (ao mesmo tempo que assegura a qualidade dessa transformação)
-
-- Carregar os dados transformados e com qualidade assegurada para o destino “target” data warehouse
-
-**Definição: Data Warehouse**
-
-As vezes referenciado como “target system”. Um DW típico lê as informações analiticamente úteis dos sistemas de origem de forma periódica ou contínua ,provendo sempre dados atualizados para análise
-
-**Definição: Aplicações Front-end**
-
-De forma similar aos bancos operacionais, as aplicações “front-end” permitem o acesso indireto dos usuários aos dados
-
-Como vimos, um data warehouse tem informações sobre **toda** uma empresa, podendo gerar análises sobre todos os seus departamentos. Mas e se isso for um comportamento indesejado? Eu quero ter uma análise detalhada, mas focar apenas no meu departamento e evitar que os outros vejam informações que não deveriam ou informações que possam atrapalhar nas suas análises, então aí entram os Data Marts
-
-**Definição: Data Mart**
-
-Os Data Marts Seguem os mesmos princípios de um DW ,mas possuem um escopo mais limitado, geralmente ligado a um uso mais departamental, e não de forma abrangente à empresa conforme um DW.
-
-- **Data Mart independente**: Lobo solitário, criado como se fosse um DW. Um DM independente tem os próprios sistemas de origem e infraestrutura de ETL
-
-- **Data Mart dependente**: Não possui os próprios sistemas de origem. Os dados são lidos de um DW
-
-<a id="star-schema"></a>
-<a id="secao-14"></a>
-
-## Star Schema
-
-![Exemplo de estruturação em **Esquema Estrela**](../assets/star-schema-structure.png)
-
-*Figura 7. Exemplo de estruturação em **Esquema Estrela***
-
-Os **Fact Measures** são informações dentro do fato que **não se aplicam em nenhuma dimensão**
-
-**Exemplo**
-
-Queremos criar o fato **venda**, ele engloba as dimensões de **produto**, **cliente**, **loja**, **calendário** e **vendedor**. Porém, não faz sentido, por exemplo, colocar a quantidade de produtos comprados em **nenhuma dimensão**, ou o **valor total da compra**, de forma que essas informações são localizadas única e exclusivamente no fato
-
-Vale ressaltar que, dado a dimensão $i$, a sua chave-primária **não é a mesma chave-primária do modelo relacional**, pois a repetição dos registros pode ocorrer sem problema nenhum. Como aplicar chaves-primária nas dimensões e nos fatos será visto posteriormente
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
@@ -412,4 +412,4 @@ Vale ressaltar que, dado a dimensão $i$, a sua chave-primária **não é a mesm
 [Trilha: A1](../../../trilhas/modelagem-informacional/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/modelagem-informacional/a1.md#apresentacao-original)
 
 - Anterior: [Modelagem Informacional de Requisitos (MIR)](../modelagem-informacional-de-requisitos-mir/index.md)
-- Próximo: [Como um fato se organiza?](#como-um-fato-se-organiza)
+- Próximo: [ETL e OLAP](../etl-e-olap/index.md)

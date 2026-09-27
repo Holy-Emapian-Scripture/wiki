@@ -196,5 +196,5 @@ def has_topologic_order(list_adj):
 
 [Trilha: Exercícios de slides](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md#apresentacao-original)
 
-- Anterior: [Verificação de subgrafo](../grafos/index.md#verificacao-de-subgrafo)
+- Anterior: [Grafos](../grafos/index.md)
 - Próximo: [Menor caminho em grafos](../menor-caminho-em-grafos/index.md)

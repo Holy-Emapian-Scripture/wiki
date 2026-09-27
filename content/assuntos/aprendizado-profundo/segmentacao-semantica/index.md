@@ -36,4 +36,4 @@ ordem_na_trilha: 1
 
 [Trilha: A1](../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Próximo: [Introdução e Métricas](introducao-e-metricas/index.md)
+- Próximo: [Object Detection](../object-detection/index.md)

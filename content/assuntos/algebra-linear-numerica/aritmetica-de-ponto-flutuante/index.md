@@ -22,21 +22,6 @@ ordem_na_trilha: 39
 # Aritmética de Ponto Flutuante
 
 
-<a id="aritmetica-de-ponto-flutuante"></a>
-<a id="secao-52"></a>
-
-## Aritmética de Ponto Flutuante
-
-Precisamos fazer operações com números, certo? Mas temos o mesmo problema, os computadores precisam arredondar porque não conseguem entender todos os números em um intervalo, então como podemos tornar as operações o mais precisas possível? Construímos um computador baseado neste princípio (alguns computadores podem ter mais princípios em seu núcleo, então algumas operações podem ser ainda mais precisas, mas vamos focar apenas neste):
-
-<a id="fundamental_axiom_of_floating_point_arithmetic"></a>
-
-**Definição: Axioma Fundamental da Aritmética de Ponto Flutuante**
-
-Dado que $+$, $-$, $\times$ e $\div$ representam operações em $\mathbb{R}$, considere $\oplus$, $\ominus$, $\otimes$ e $⨸$ sendo operações em $F$. Seja $\circledast$ definir qualquer uma das operações anteriores em $F$, então definimos um computador que realiza a operação $x \circledast y$ como $$x \circledast y = \text{ fl}(x \ast y) = (x \ast y)$$ Isso significa que construímos um computador tal que $\forall x,y \in F$, existe $\varepsilon$ com $\vert \varepsilon\vert  \leq \varepsilon_{\text{machine}}$ tal que $$x \circledast y = (x \ast y)(1 + \varepsilon)$$
-
-Em outras palavras, toda operação em $F$ tem um erro com tamanho **no máximo** $\varepsilon_{\text{machine}}$
-
 <a id="conjunto-de-ponto-flutuante"></a>
 <a id="secao-46"></a>
 
@@ -112,6 +97,25 @@ Sendo $F \subset {\mathbb{R}}$, definimos como: $$F = \left\{ \pm \left( \frac{m
 
 Qual é a diferença e por que o livro define assim? Há apenas uma grande diferença aqui: Por que ele está definindo a **mantissa** como $\frac{m}{\beta^{t}}$? Lembre-se de quando provamos que, se escrevemos $x$ na base $\beta$ e multiplicamos $x$ por $\beta^{e}$, a vírgula move $e$ dígitos para a direita? O mesmo se aplica se $e < 0$, mas a vírgula vai para a esquerda, e por que estou dizendo isso? Porque, o que o livro não nos diz, é que escrevemos $m$ **NA BASE $\beta$**, e essa divisão por $\beta^{t}$ faz com que obtenhamos apenas os primeiros $t$ dígitos do número, significando que obtemos apenas os dígitos que desejamos, SÓ ISSO (Sim, o livro explica isso mal)
 
+<a id="numeros-nao-em-f"></a>
+<a id="secao-50"></a>
+
+## Números não em $F$
+
+Quando tentamos representar um número que não está em $F$, o computador pode fazer 2 coisas:
+
+1.  **Arredondar**: Obtemos $t + 1$ dígitos do número, e verificamos se o $(t + 1)$-ésimo dígito é maior ou igual a $\left\lceil \frac{\beta}{2} \right\rceil$, se for, excluímos o $(t + 1)$-ésimo dígito e somamos 1 ao $t$-ésimo dígito. Se o $(t + 1)$-ésimo dígito for menor que $\left\lceil \frac{\beta}{2} \right\rceil$, então apenas excluímos o $(t + 1)$-ésimo dígito
+
+    **Exemplo**
+
+    Arredonde 10324 sabendo que $F$ tem precisão $4$ e $e \in \lbrack - \infty, + \infty\rbrack$ e $\beta = 10$.
+
+    Convertendo para a notação de mantissa e expoente: $10324 = 0,10324 \ast 10^{5}$, temos 5 dígitos, então vamos ver o $5$-ésimo. $4 \geq \left\lceil \frac{10}{2} \right\rceil \Leftrightarrow 4 \geq 5$? Não, então o número arredondado será $0,1032 \ast 10^{5}$
+
+2.  **Truncar**: Se a mantissa do número passar de $t$ dígitos, removemos todos os dígitos após o $t$-ésimo
+
+Sabendo disso, podemos finalmente entender o que é $\varepsilon_{\text{machine}}$
+
 <a id="epsilon-maquina"></a>
 <a id="secao-51"></a>
 
@@ -147,6 +151,21 @@ $\forall x \in {\mathbb{R}}$, existe $\varepsilon$ com $\vert \varepsilon\vert  
 
 O que isso significa? Significa que, sempre que arredondamos um número real para ajustá-lo em $F$, o número arredondado é equivalente a multiplicar $x$ por $1 +$ um número muito pequeno, você pode visualizá-lo olhando para a representação em linha de $F$ que mostrei antes
 
+<a id="aritmetica-de-ponto-flutuante"></a>
+<a id="secao-52"></a>
+
+## Aritmética de Ponto Flutuante
+
+Precisamos fazer operações com números, certo? Mas temos o mesmo problema, os computadores precisam arredondar porque não conseguem entender todos os números em um intervalo, então como podemos tornar as operações o mais precisas possível? Construímos um computador baseado neste princípio (alguns computadores podem ter mais princípios em seu núcleo, então algumas operações podem ser ainda mais precisas, mas vamos focar apenas neste):
+
+<a id="fundamental_axiom_of_floating_point_arithmetic"></a>
+
+**Definição: Axioma Fundamental da Aritmética de Ponto Flutuante**
+
+Dado que $+$, $-$, $\times$ e $\div$ representam operações em $\mathbb{R}$, considere $\oplus$, $\ominus$, $\otimes$ e $⨸$ sendo operações em $F$. Seja $\circledast$ definir qualquer uma das operações anteriores em $F$, então definimos um computador que realiza a operação $x \circledast y$ como $$x \circledast y = \text{ fl}(x \ast y) = (x \ast y)$$ Isso significa que construímos um computador tal que $\forall x,y \in F$, existe $\varepsilon$ com $\vert \varepsilon\vert  \leq \varepsilon_{\text{machine}}$ tal que $$x \circledast y = (x \ast y)(1 + \varepsilon)$$
+
+Em outras palavras, toda operação em $F$ tem um erro com tamanho **no máximo** $\varepsilon_{\text{machine}}$
+
 <a id="mais-sobre-epsilon-maquina"></a>
 <a id="secao-53"></a>
 
@@ -162,25 +181,6 @@ Isso implica que, para alguns computadores, $\varepsilon_{\text{machine}}$ pode 
 
 ------------------------------------------------------------------------
 
-<a id="numeros-nao-em-f"></a>
-<a id="secao-50"></a>
-
-## Números não em $F$
-
-Quando tentamos representar um número que não está em $F$, o computador pode fazer 2 coisas:
-
-1.  **Arredondar**: Obtemos $t + 1$ dígitos do número, e verificamos se o $(t + 1)$-ésimo dígito é maior ou igual a $\left\lceil \frac{\beta}{2} \right\rceil$, se for, excluímos o $(t + 1)$-ésimo dígito e somamos 1 ao $t$-ésimo dígito. Se o $(t + 1)$-ésimo dígito for menor que $\left\lceil \frac{\beta}{2} \right\rceil$, então apenas excluímos o $(t + 1)$-ésimo dígito
-
-    **Exemplo**
-
-    Arredonde 10324 sabendo que $F$ tem precisão $4$ e $e \in \lbrack - \infty, + \infty\rbrack$ e $\beta = 10$.
-
-    Convertendo para a notação de mantissa e expoente: $10324 = 0,10324 \ast 10^{5}$, temos 5 dígitos, então vamos ver o $5$-ésimo. $4 \geq \left\lceil \frac{10}{2} \right\rceil \Leftrightarrow 4 \geq 5$? Não, então o número arredondado será $0,1032 \ast 10^{5}$
-
-2.  **Truncar**: Se a mantissa do número passar de $t$ dígitos, removemos todos os dígitos após o $t$-ésimo
-
-Sabendo disso, podemos finalmente entender o que é $\varepsilon_{\text{machine}}$
-
 <!-- wiki:original:fim -->
 
 
@@ -188,5 +188,5 @@ Sabendo disso, podemos finalmente entender o que é $\varepsilon_{\text{machine}
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Condicionamento de Matrizes e Vetores](../condicionamento-e-numeros-de-condicao/index.md#condicionamento-de-matrizes-e-vetores)
-- Próximo: [Épsilon Máquina](#epsilon-maquina)
+- Anterior: [Condicionamento e Números de Condição](../condicionamento-e-numeros-de-condicao/index.md)
+- Próximo: [Estabilidade](../estabilidade/index.md)

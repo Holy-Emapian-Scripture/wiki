@@ -22,16 +22,75 @@ ordem_na_trilha: 5
 # Ferramentas Fundamentais
 
 
-<a id="blocos-residuais"></a>
-<a id="secao-15"></a>
+<a id="tecnicas-de-upsampling"></a>
+<a id="secao-6"></a>
 
-## Blocos Residuais
+## Técnicas de Upsampling
 
-Normalmente, redes neurais são straight-to-the-point, nós temos a entrada $x$ e a partir disso a rede modela uma função complexa $F$ tal que $$y = F(x)$$
+O processo de upsampling é o processo de reconstrução da dimensão original das features internas da rede, que foram reduzidas pelo **downsampling**. Existem diversas técnicas para realizar o upsampling, como o **max unpooling** e a **transpose convolution**, que serão detalhadas a seguir.
 
-no entanto, pode existir casos em que $y$ é MUITO parecido com $x$ com leves ajustes, e isso, surpreendentemente, pode dificultar muito o aprendizado da rede. Para consertar isso, os chamados **blocos residuais** foram introduzidos, de forma que a rede não aprende a relação direta entre $x$ e $y$, mas sim a **diferença** entre eles (o quão diferente $y$ é de $x$), ou seja, a rede aprende uma função $F$ tal que $$y = F(x) + x$$
+<a id="secao-7"></a>
 
-O principal motivo dessa abordagem é o **gradiente no backpropagation**. Em redes comuns de deep-learning, o gradiente pode se tornar muito pequeno (ou até mesmo zero) à medida que é propagado para trás, dificultando o aprendizado. Com os blocos residuais, o gradiente pode fluir diretamente através da conexão de atalho, permitindo que a rede aprenda mais facilmente.
+### Max Unpooling
+
+Relembrando o que é o **pooling**, ele é uma operação que reduz a dimensionalidade das features internas da rede, geralmente utilizando operações como **max pooling** ou **average pooling**. O **unpooling** é o processo inverso, onde tentamos reconstruir a dimensão original das features a partir das features reduzidas. No entanto, o **unpooling** não é uma operação trivial, pois não temos informações suficientes para reconstruir a dimensão original de forma precisa.
+
+O que acontece é que, **antes** de fazer o **pooling**, nós guardamos os índices dos valores máximos (no caso do **max pooling**), e depois utilizamos esses índices para reconstruir a dimensão original durante o **unpooling**. Essa abordagem é conhecida como **max unpooling**.
+
+![Exemplo de max unpooling](../../assets/A1/max-unpooling.png)
+
+*Figura 7. Exemplo de max unpooling*
+
+<a id="secao-8"></a>
+
+### Transpose Convolution
+
+A desvantagem do **max unpooling** é que ele depende dos índices dos valores máximos, o que pode limitar a capacidade da rede de aprender representações mais complexas. Uma alternativa é utilizar a **transpose convolution**, também conhecida como **deconvolution**. Essa operação é semelhante à convolução, mas ao invés de reduzir a dimensionalidade das features, ela aumenta.
+
+![Exemplo de transpose convolution](../../assets/A1/transpose-convolution.png)
+
+*Figura 8. Exemplo de transpose convolution*
+
+Como vimos na disciplina de **machine learning**, podemos obter uma matriz de filtro chamada $K_{\text{col}}$ a partir da operação *im2col*, que transforma a imagem em uma matriz de colunas. A **transpose convolution** é basicamente a operação inversa, onde aplicamos a matriz de filtro $K_{\text{col}}$ na matriz obtida anteriormente
+
+Se $X$ é a entrada da convolução e $K$ é o filtro tal que $$Y = X \ast K$$
+
+Já sabemos que $$Y = K_{\text{col }}X_{\text{col }}$$
+
+temos então que a transpose convolution é definida como $$X_{\text{col }} = K_{\text{col}}^{T}Y$$
+
+de tal forma que os $X_{\text{col}}$ são reconstruídos a partir dos $Y$ e do filtro $K_{\text{col}}$ (não de forma perfeita pois há perca de informação na compressão do $X$ para o $Y$, mas o objetivo é que a rede aprenda a reconstruir o $X$ da melhor forma possível)
+
+<a id="mecanismos-de-contexto-e-campo-receptivo"></a>
+<a id="secao-9"></a>
+
+## Mecanismos de Contexto e Campo Receptivo
+
+Antes de irmos de fato para as arquiteturas, temos que definir um conceito usado em algumas delas, se não vamos interromper o raciocínio no meio do caminho. O conceito é o de **contexto global**, que basicamente é a ideia de que, para classificar um pixel, precisamos levar em consideração não apenas os pixels vizinhos, mas também os pixels mais distantes da imagem. Só que usar filtros maiores consome mais memória, tempo de processamento e não permite que a rede aprenda a extrair características mais complexas.
+
+<a id="secao-10"></a>
+
+### Atrous Convolution
+
+Para resolver esse problema, surgiu a ideia de **atrous convolution**, que é uma técnica que permite aumentar o tamanho do filtro sem aumentar o número de parâmetros da rede nem redimensioná-la. A ideia é inserir “buracos” (ou **holes**) entre os pixels do filtro, permitindo que ele “veja” mais pixels da imagem sem aumentar o número de parâmetros.
+
+**Definição: Atrous Convolution**
+
+Dado um filtro $K$ de tamanho $kxk$, e uma feature map $X$, a **atrous convolution** é definida como $$Y(i,j) = \sum_{m = 0}^{k - 1}\sum_{n = 0}^{k - 1}X(i + r \ast m,j + r \ast n)K(m,n)$$ onde $r$ é o **rate** de atrous convolution, que determina o espaçamento entre os pixels do filtro.
+
+![Exemplo de atrous convolution](../../assets/A1/atrous-convolution.png)
+
+*Figura 9. Exemplo de atrous convolution*
+
+<a id="secao-11"></a>
+
+### Image Pooling (Global Average Pooling)
+
+Essa é uma abordagem que permite trazer contexto global da imagem para a rede. Pegamos um feature map e aplicamos um average pooling em toda a imagem, obtendo um vetor de características que representa a imagem como um todo. Esse vetor é então redimensionado através de upsampling e concatenado com o feature map original, permitindo que a rede utilize informações de contexto global para melhorar a segmentação.
+
+![Exemplo de image pooling](../../assets/A1/image-pooling.png)
+
+*Figura 10. Exemplo de image pooling*
 
 <a id="convolucoes-eficientes"></a>
 <a id="secao-12"></a>
@@ -90,75 +149,16 @@ Agora vamos ter que a quantidade de filtros é o filtro inicial mais os $256$ ou
 
 Esse conceito pode ser expandido para as convoluções Atrous, de forma que as mudanças necessárias são mínimas, mantendo tracking do rate $r$ conseguimos aplicar o mesmo conceito de **depthwise** e **pointwise** para as convoluções Atrous, resultando em uma redução significativa no número de parâmetros e operações, mantendo a capacidade da rede de capturar informações de diferentes escalas.
 
-<a id="mecanismos-de-contexto-e-campo-receptivo"></a>
-<a id="secao-9"></a>
+<a id="blocos-residuais"></a>
+<a id="secao-15"></a>
 
-## Mecanismos de Contexto e Campo Receptivo
+## Blocos Residuais
 
-Antes de irmos de fato para as arquiteturas, temos que definir um conceito usado em algumas delas, se não vamos interromper o raciocínio no meio do caminho. O conceito é o de **contexto global**, que basicamente é a ideia de que, para classificar um pixel, precisamos levar em consideração não apenas os pixels vizinhos, mas também os pixels mais distantes da imagem. Só que usar filtros maiores consome mais memória, tempo de processamento e não permite que a rede aprenda a extrair características mais complexas.
+Normalmente, redes neurais são straight-to-the-point, nós temos a entrada $x$ e a partir disso a rede modela uma função complexa $F$ tal que $$y = F(x)$$
 
-<a id="secao-10"></a>
+no entanto, pode existir casos em que $y$ é MUITO parecido com $x$ com leves ajustes, e isso, surpreendentemente, pode dificultar muito o aprendizado da rede. Para consertar isso, os chamados **blocos residuais** foram introduzidos, de forma que a rede não aprende a relação direta entre $x$ e $y$, mas sim a **diferença** entre eles (o quão diferente $y$ é de $x$), ou seja, a rede aprende uma função $F$ tal que $$y = F(x) + x$$
 
-### Atrous Convolution
-
-Para resolver esse problema, surgiu a ideia de **atrous convolution**, que é uma técnica que permite aumentar o tamanho do filtro sem aumentar o número de parâmetros da rede nem redimensioná-la. A ideia é inserir “buracos” (ou **holes**) entre os pixels do filtro, permitindo que ele “veja” mais pixels da imagem sem aumentar o número de parâmetros.
-
-**Definição: Atrous Convolution**
-
-Dado um filtro $K$ de tamanho $kxk$, e uma feature map $X$, a **atrous convolution** é definida como $$Y(i,j) = \sum_{m = 0}^{k - 1}\sum_{n = 0}^{k - 1}X(i + r \ast m,j + r \ast n)K(m,n)$$ onde $r$ é o **rate** de atrous convolution, que determina o espaçamento entre os pixels do filtro.
-
-![Exemplo de atrous convolution](../../assets/A1/atrous-convolution.png)
-
-*Figura 9. Exemplo de atrous convolution*
-
-<a id="secao-11"></a>
-
-### Image Pooling (Global Average Pooling)
-
-Essa é uma abordagem que permite trazer contexto global da imagem para a rede. Pegamos um feature map e aplicamos um average pooling em toda a imagem, obtendo um vetor de características que representa a imagem como um todo. Esse vetor é então redimensionado através de upsampling e concatenado com o feature map original, permitindo que a rede utilize informações de contexto global para melhorar a segmentação.
-
-![Exemplo de image pooling](../../assets/A1/image-pooling.png)
-
-*Figura 10. Exemplo de image pooling*
-
-<a id="tecnicas-de-upsampling"></a>
-<a id="secao-6"></a>
-
-## Técnicas de Upsampling
-
-O processo de upsampling é o processo de reconstrução da dimensão original das features internas da rede, que foram reduzidas pelo **downsampling**. Existem diversas técnicas para realizar o upsampling, como o **max unpooling** e a **transpose convolution**, que serão detalhadas a seguir.
-
-<a id="secao-7"></a>
-
-### Max Unpooling
-
-Relembrando o que é o **pooling**, ele é uma operação que reduz a dimensionalidade das features internas da rede, geralmente utilizando operações como **max pooling** ou **average pooling**. O **unpooling** é o processo inverso, onde tentamos reconstruir a dimensão original das features a partir das features reduzidas. No entanto, o **unpooling** não é uma operação trivial, pois não temos informações suficientes para reconstruir a dimensão original de forma precisa.
-
-O que acontece é que, **antes** de fazer o **pooling**, nós guardamos os índices dos valores máximos (no caso do **max pooling**), e depois utilizamos esses índices para reconstruir a dimensão original durante o **unpooling**. Essa abordagem é conhecida como **max unpooling**.
-
-![Exemplo de max unpooling](../../assets/A1/max-unpooling.png)
-
-*Figura 7. Exemplo de max unpooling*
-
-<a id="secao-8"></a>
-
-### Transpose Convolution
-
-A desvantagem do **max unpooling** é que ele depende dos índices dos valores máximos, o que pode limitar a capacidade da rede de aprender representações mais complexas. Uma alternativa é utilizar a **transpose convolution**, também conhecida como **deconvolution**. Essa operação é semelhante à convolução, mas ao invés de reduzir a dimensionalidade das features, ela aumenta.
-
-![Exemplo de transpose convolution](../../assets/A1/transpose-convolution.png)
-
-*Figura 8. Exemplo de transpose convolution*
-
-Como vimos na disciplina de **machine learning**, podemos obter uma matriz de filtro chamada $K_{\text{col}}$ a partir da operação *im2col*, que transforma a imagem em uma matriz de colunas. A **transpose convolution** é basicamente a operação inversa, onde aplicamos a matriz de filtro $K_{\text{col}}$ na matriz obtida anteriormente
-
-Se $X$ é a entrada da convolução e $K$ é o filtro tal que $$Y = X \ast K$$
-
-Já sabemos que $$Y = K_{\text{col }}X_{\text{col }}$$
-
-temos então que a transpose convolution é definida como $$X_{\text{col }} = K_{\text{col}}^{T}Y$$
-
-de tal forma que os $X_{\text{col}}$ são reconstruídos a partir dos $Y$ e do filtro $K_{\text{col}}$ (não de forma perfeita pois há perca de informação na compressão do $X$ para o $Y$, mas o objetivo é que a rede aprenda a reconstruir o $X$ da melhor forma possível)
+O principal motivo dessa abordagem é o **gradiente no backpropagation**. Em redes comuns de deep-learning, o gradiente pode se tornar muito pequeno (ou até mesmo zero) à medida que é propagado para trás, dificultando o aprendizado. Com os blocos residuais, o gradiente pode fluir diretamente através da conexão de atalho, permitindo que a rede aprenda mais facilmente.
 
 <!-- wiki:original:fim -->
 
@@ -167,5 +167,5 @@ de tal forma que os $X_{\text{col}}$ são reconstruídos a partir dos $Y$ e do f
 
 [Trilha: A1](../../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [Evolução das Abordagens](../introducao-e-metricas/index.md#evolucao-das-abordagens)
-- Próximo: [Mecanismos de Contexto e Campo Receptivo](#mecanismos-de-contexto-e-campo-receptivo)
+- Anterior: [Introdução e Métricas](../introducao-e-metricas/index.md)
+- Próximo: [Arquiteturas](../arquiteturas/index.md)

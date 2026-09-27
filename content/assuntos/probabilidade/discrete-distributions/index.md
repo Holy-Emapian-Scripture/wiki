@@ -169,5 +169,5 @@ We now proceed to continuous random variables,
 
 [Trilha: A1](../../../trilhas/probabilidade/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/probabilidade/a1.md#apresentacao-original)
 
-- Anterior: [Covariance, Correlation](../fundamentals/index.md#covariance-correlation)
+- Anterior: [Fundamentals](../fundamentals/index.md)
 - Próximo: [Continuous Random variables](../continuous-random-variables/index.md)

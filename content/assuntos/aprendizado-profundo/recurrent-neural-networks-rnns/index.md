@@ -43,5 +43,5 @@ ordem_na_trilha: 42
 
 [Trilha: A1](../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [Predições em Paralelo (R-CNN + FCN)](../object-detection/redes-de-dois-estagios-e-segmentacao-de-instancias-mask-r-cnn/index.md#predicoes-em-paralelo-r-cnn-fcn)
-- Próximo: [Introdução e Modelagem de Dados Sequenciais](introducao-e-modelagem-de-dados-sequenciais/index.md)
+- Anterior: [Object Detection](../object-detection/index.md)
+- Próximo: [Generative Adversarial Networks (GANs)](../generative-adversarial-networks-gans/index.md)

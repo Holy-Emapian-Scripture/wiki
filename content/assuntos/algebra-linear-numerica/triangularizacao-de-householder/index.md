@@ -22,68 +22,16 @@ ordem_na_trilha: 28
 # Triangularização de Householder
 
 
-<a id="aplicando-na-formacao-de-q"></a>
-<a id="secao-33"></a>
+<a id="triangularizacao-por-introducao-de-zeros"></a>
+<a id="secao-29"></a>
 
-## Aplicando na formação de Q
+## Triangularização por Introdução de Zeros
 
-Observe que não construímos a matriz $Q$ inteira no algoritmo, apenas aplicamos: $$Q^{\ast} = Q_{n}\ldots Q_{1} \Leftrightarrow Q = Q_{1.}..Q_{n}$$ (Não há asteriscos faltando, porque cada $Q_{j}$ é hermitiana!)
-
-Fazemos isso porque construir $Q$ requer trabalho extra, então trabalhamos diretamente com $Q_{j}$. Por exemplo, lembra que podemos reescrever $b = Ax$ como $Q^{\ast}b = Rx$? Bem, podemos fazer isso como no algoritmo anterior:
-
-1.  **para** $k = 1$ **até** $n$
-
-    1.  $b_{k:m} = b_{k:m} - 2v_{k}\left( v_{k}^{\ast}b_{k:m} \right)$
-
-Observe que fizemos o mesmo processo que fizemos com $A$, só não explicitei as partes onde defini $v_{k}$ e o normalizei.
-
-------------------------------------------------------------------------
-
-<a id="o-algoritmo"></a>
-<a id="secao-32"></a>
-
-## O Algoritmo
-
-Agora podemos reescrevê-lo como um algoritmo, mas antes disso:
-
-**Definição**
-
-Dada a matriz $A$, $A_{i:i',j:j'}$ é a submatriz $(i' - i + 1) \times (j' - j + 1)$ de $A$ com o elemento do canto superior esquerdo igual a $(A)_{ij}$ e o elemento do canto inferior direito igual a $(A)_{i'j'}$. Se a submatriz for um vetor linha ou coluna, podemos escrevê-lo como $A_{i,j:j'}$ ou $A_{i:i',j}$
-
-Dada essa definição, vamos reescrever o algoritmo
-
-1.  **para** $k = 1$ **até** $n$
-
-    1.  $x = A_{k:m,k}$
-
-    2.  $v_{k} = \text{ sign}\left( x_{1} \right)\| x\| e_{1} + x$
-
-    3.  $v_{k} = \frac{v_{k}}{\| v_{k}\|}$
-
-    4.  $A_{k:m,k:n} = A_{k:m,k:n} - 2v_{k}\left( v_{k}^{\ast}A_{k:m,k:n} \right)$
-
-<a id="o-melhor-de-dois-refletores"></a>
-<a id="secao-31"></a>
-
-## O Melhor de Dois Refletores
-
-Na verdade, podemos ter muitos refletores de Householder, por exemplo, no caso complexo, podemos projetar $v$ em qualquer vetor $z\| v\| e_{1}$ com $\vert z\vert  = 1$. No caso real, temos duas alternativas:
-
-![](../assets/Householder_Reflector_2.jpg)
-
-Então, o que devo escolher? Qual vetor é melhor para meu algoritmo? Todos serão a mesma coisa? Na verdade, há uma melhor opção que você pode escolher! Matematicamente, todos são a mesma coisa, mas para estabilidade numérica (insensibilidade a erros de arredondamento), escolheremos o $z\| v\| e_{1}$ que não está muito próximo de $v$, para alcançar isso, projetaremos em $- \text{sign}\left( v_{1} \right)\| v\| e_{1}$ onde $v_{1}$ é a primeira entrada de $v$, isso significa:
+No coração do algoritmo de Householder, temos a ideia de aplicar uma matriz ortogonal que introduz zeros abaixo da diagonal principal! Assim (neste exemplo, $x$ significa uma entrada não nula, **$x$** significa uma entrada que mudou desde a última aplicação ortogonal e nada significa 0)
 
 $$
-w = - \text{sign}\left( v_{1} \right)\| v\| e_{1} - v \vee w = \text{ sign}\left( v_{1} \right)\| v\| e_{1} + v
+\begin{pmatrix} x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \end{pmatrix}_{A} \rightarrow Q_{1}A \rightarrow \begin{pmatrix} \mathbf{x} & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \end{pmatrix}_{Q_{1}A} \rightarrow Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & \mathbf{x} & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \end{pmatrix}_{Q_{2}Q_{1}A} \rightarrow Q_{3}Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & x & x \\ & & \mathbf{x} \\ & & \\ & & \end{pmatrix}_{Q_{3}Q_{2}Q_{1}A}
 $$
-
-E podemos definir que:
-
-$$
-\text{ sign}(0) = 1
-$$
-
-Só para esclarecer por que fizemos essa escolha, imagine que o ângulo entre $v$ e $\| v\| e_{1}$ é MUITO PEQUENO, isso significa que, quando fazemos $\| v\| e_{1} - v$, estamos subtraindo quantidades próximas, dependendo de quais quantidades, isso poderia nos levar a cálculos imprecisos, levando a grandes erros
 
 <a id="refletores-de-householder"></a>
 <a id="secao-30"></a>
@@ -114,16 +62,68 @@ $$
 F = I - 2\frac{ww^{\ast}}{w^{\ast}w}
 $$
 
-<a id="triangularizacao-por-introducao-de-zeros"></a>
-<a id="secao-29"></a>
+<a id="o-melhor-de-dois-refletores"></a>
+<a id="secao-31"></a>
 
-## Triangularização por Introdução de Zeros
+## O Melhor de Dois Refletores
 
-No coração do algoritmo de Householder, temos a ideia de aplicar uma matriz ortogonal que introduz zeros abaixo da diagonal principal! Assim (neste exemplo, $x$ significa uma entrada não nula, **$x$** significa uma entrada que mudou desde a última aplicação ortogonal e nada significa 0)
+Na verdade, podemos ter muitos refletores de Householder, por exemplo, no caso complexo, podemos projetar $v$ em qualquer vetor $z\| v\| e_{1}$ com $\vert z\vert  = 1$. No caso real, temos duas alternativas:
+
+![](../assets/Householder_Reflector_2.jpg)
+
+Então, o que devo escolher? Qual vetor é melhor para meu algoritmo? Todos serão a mesma coisa? Na verdade, há uma melhor opção que você pode escolher! Matematicamente, todos são a mesma coisa, mas para estabilidade numérica (insensibilidade a erros de arredondamento), escolheremos o $z\| v\| e_{1}$ que não está muito próximo de $v$, para alcançar isso, projetaremos em $- \text{sign}\left( v_{1} \right)\| v\| e_{1}$ onde $v_{1}$ é a primeira entrada de $v$, isso significa:
 
 $$
-\begin{pmatrix} x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \end{pmatrix}_{A} \rightarrow Q_{1}A \rightarrow \begin{pmatrix} \mathbf{x} & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \end{pmatrix}_{Q_{1}A} \rightarrow Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & \mathbf{x} & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \end{pmatrix}_{Q_{2}Q_{1}A} \rightarrow Q_{3}Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & x & x \\ & & \mathbf{x} \\ & & \\ & & \end{pmatrix}_{Q_{3}Q_{2}Q_{1}A}
+w = - \text{sign}\left( v_{1} \right)\| v\| e_{1} - v \vee w = \text{ sign}\left( v_{1} \right)\| v\| e_{1} + v
 $$
+
+E podemos definir que:
+
+$$
+\text{ sign}(0) = 1
+$$
+
+Só para esclarecer por que fizemos essa escolha, imagine que o ângulo entre $v$ e $\| v\| e_{1}$ é MUITO PEQUENO, isso significa que, quando fazemos $\| v\| e_{1} - v$, estamos subtraindo quantidades próximas, dependendo de quais quantidades, isso poderia nos levar a cálculos imprecisos, levando a grandes erros
+
+<a id="o-algoritmo"></a>
+<a id="secao-32"></a>
+
+## O Algoritmo
+
+Agora podemos reescrevê-lo como um algoritmo, mas antes disso:
+
+**Definição**
+
+Dada a matriz $A$, $A_{i:i',j:j'}$ é a submatriz $(i' - i + 1) \times (j' - j + 1)$ de $A$ com o elemento do canto superior esquerdo igual a $(A)_{ij}$ e o elemento do canto inferior direito igual a $(A)_{i'j'}$. Se a submatriz for um vetor linha ou coluna, podemos escrevê-lo como $A_{i,j:j'}$ ou $A_{i:i',j}$
+
+Dada essa definição, vamos reescrever o algoritmo
+
+1.  **para** $k = 1$ **até** $n$
+
+    1.  $x = A_{k:m,k}$
+
+    2.  $v_{k} = \text{ sign}\left( x_{1} \right)\| x\| e_{1} + x$
+
+    3.  $v_{k} = \frac{v_{k}}{\| v_{k}\|}$
+
+    4.  $A_{k:m,k:n} = A_{k:m,k:n} - 2v_{k}\left( v_{k}^{\ast}A_{k:m,k:n} \right)$
+
+<a id="aplicando-na-formacao-de-q"></a>
+<a id="secao-33"></a>
+
+## Aplicando na formação de Q
+
+Observe que não construímos a matriz $Q$ inteira no algoritmo, apenas aplicamos: $$Q^{\ast} = Q_{n}\ldots Q_{1} \Leftrightarrow Q = Q_{1.}..Q_{n}$$ (Não há asteriscos faltando, porque cada $Q_{j}$ é hermitiana!)
+
+Fazemos isso porque construir $Q$ requer trabalho extra, então trabalhamos diretamente com $Q_{j}$. Por exemplo, lembra que podemos reescrever $b = Ax$ como $Q^{\ast}b = Rx$? Bem, podemos fazer isso como no algoritmo anterior:
+
+1.  **para** $k = 1$ **até** $n$
+
+    1.  $b_{k:m} = b_{k:m} - 2v_{k}\left( v_{k}^{\ast}b_{k:m} \right)$
+
+Observe que fizemos o mesmo processo que fizemos com $A$, só não explicitei as partes onde defini $v_{k}$ e o normalizei.
+
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
@@ -132,5 +132,5 @@ $$
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Gram-Schmidt como Ortonormalização Triangular](../ortonormalizacao-de-gram-schmidt/index.md#gram-schmidt-como-ortonormalizacao-triangular)
-- Próximo: [Refletores de Householder](#refletores-de-householder)
+- Anterior: [Ortonormalização de Gram-Schmidt](../ortonormalizacao-de-gram-schmidt/index.md)
+- Próximo: [Problemas de Mínimos Quadrados](../problemas-de-minimos-quadrados/index.md)

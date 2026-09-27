@@ -45,29 +45,6 @@ $$
 
 Então temos $A = \widehat{Q}\widehat{R}$, onde $Q \in {\mathbb{C}}^{m \times n}$ e $R \in {\mathbb{C}}^{n \times n}$
 
-<a id="existencia-e-unicidade"></a>
-<a id="secao-24"></a>
-
-## Existência e unicidade
-
-**Teorema**
-
-Toda $A \in {\mathbb{C}}^{m \times n},\ (m \geq n)$ tem uma fatoração QR completa, portanto também uma fatoração QR reduzida
-
-**Demonstração**
-
-Se rank$(A) = n$, podemos construir a fatoração reduzida usando Gram-Schmidt como fizemos antes. O único problema aqui é se, em algum momento, $v_{j} = a_{j} - \sum_{k = 1}^{j - 1}q_{k}q_{k}^{\ast}a_{j} = 0$ e, portanto, não pode ser normalizado. Se isso acontecer, significa que $A$ não tem posto completo, o que significa que posso escolher qualquer vetor ortogonal que quiser para continuar o processo.
-
-**Teorema**
-
-Cada $A \in {\mathbb{C}}^{m \times n}\ (m \geq n)$ de posto completo tem uma fatoração QR reduzida única $A = \widehat{Q}\widehat{R}$ com $r_{jj} > 0$
-
-**Demonstração**
-
-Sabemos que, se $A$ é de posto completo $\Rightarrow r_{jj} \neq 0$ e, portanto, em cada passo sucessivo $j$, as fórmulas mostradas anteriormente determinam $r_{ij}$ e $q_{j}$ completamente, o único problema é o sinal de $r_{jj}$, uma vez que dizemos $r_{jj} > 0$, esse problema é resolvido
-
-------------------------------------------------------------------------
-
 <a id="fatoracao-qr-completa"></a>
 <a id="secao-22"></a>
 
@@ -122,6 +99,29 @@ Escrevendo na forma de um algoritmo:
 
     4.  $q_{j} = \frac{v_{j}}{r_{jj}}$
 
+<a id="existencia-e-unicidade"></a>
+<a id="secao-24"></a>
+
+## Existência e unicidade
+
+**Teorema**
+
+Toda $A \in {\mathbb{C}}^{m \times n},\ (m \geq n)$ tem uma fatoração QR completa, portanto também uma fatoração QR reduzida
+
+**Demonstração**
+
+Se rank$(A) = n$, podemos construir a fatoração reduzida usando Gram-Schmidt como fizemos antes. O único problema aqui é se, em algum momento, $v_{j} = a_{j} - \sum_{k = 1}^{j - 1}q_{k}q_{k}^{\ast}a_{j} = 0$ e, portanto, não pode ser normalizado. Se isso acontecer, significa que $A$ não tem posto completo, o que significa que posso escolher qualquer vetor ortogonal que quiser para continuar o processo.
+
+**Teorema**
+
+Cada $A \in {\mathbb{C}}^{m \times n}\ (m \geq n)$ de posto completo tem uma fatoração QR reduzida única $A = \widehat{Q}\widehat{R}$ com $r_{jj} > 0$
+
+**Demonstração**
+
+Sabemos que, se $A$ é de posto completo $\Rightarrow r_{jj} \neq 0$ e, portanto, em cada passo sucessivo $j$, as fórmulas mostradas anteriormente determinam $r_{ij}$ e $q_{j}$ completamente, o único problema é o sinal de $r_{jj}$, uma vez que dizemos $r_{jj} > 0$, esse problema é resolvido
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -129,5 +129,5 @@ Escrevendo na forma de um algoritmo:
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Projeção em base arbitrária](../projetores/index.md#projecao-em-base-arbitraria)
-- Próximo: [Existência e unicidade](#existencia-e-unicidade)
+- Anterior: [Projetores](../projetores/index.md)
+- Próximo: [Ortonormalização de Gram-Schmidt](../ortonormalizacao-de-gram-schmidt/index.md)

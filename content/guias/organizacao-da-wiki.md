@@ -20,9 +20,7 @@ assuntos/
     segmentacao-semantica/
       index.md
       arquiteturas/
-        index.md
-        u-net/
-          index.md
+        index.md         <-- Contém U-Net, SegNet, FCN, etc. consolidadas
     assets/
     referencias/
 trilhas/
@@ -38,9 +36,9 @@ manutencao/
 
 ## Assuntos
 
-Os títulos das anotações definem as páginas e seus subtópicos. Exercícios mantêm suas soluções na mesma página. Figuras, fórmulas, referências e códigos permanecem junto do trecho a que pertencem.
+Os arquivos de conteúdo reúnem tópicos temáticos consolidados em páginas completas (`index.md`), evitando arquivos excessivamente curtos. Cada subtópico possui um título de nível 2 (`##`) acompanhado de âncora explícita (`<a id="..."></a>`), facilitando a citação pontual de seções e transclusões no Obsidian.
 
-Explicações distintas sobre um mesmo tema não foram fundidas. Quando necessário, o nome da pasta inclui a origem da revisão para evitar sobrescrever uma nota. Os links de conteúdos relacionados conectam temas que aparecem em disciplinas diferentes.
+A sequência interna dos subtópicos preserva estritamente a ordem cronológica e pedagógica dos materiais de estudo originais. Exercícios mantêm suas soluções na mesma página. Figuras, fórmulas matemáticas em LaTeX, referências e códigos permanecem junto do trecho a que pertencem.
 
 ## Trilhas
 

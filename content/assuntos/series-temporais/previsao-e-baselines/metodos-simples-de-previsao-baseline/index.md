@@ -47,21 +47,6 @@ $${\mathbb{V}}\left\lbrack \varepsilon_{T + h} \right\rbrack = \sigma^{2}\left( 
 
 $$\begin{aligned} {\mathbb{V}}\left\lbrack Y_{T + h} - {\overline{Y}}_{T} \right\rbrack & = {\mathbb{V}}\left\lbrack \varepsilon_{T + h} \right\rbrack \\ & = {\mathbb{V}}\left\lbrack Y_{T + h} \right\rbrack + {\mathbb{V}}\left\lbrack {\overline{Y}}_{T} \right\rbrack - 2\text{ Cov}\left( Y_{T + h},{\overline{Y}}_{T} \right) \\ & = \sigma^{2} + \frac{\sigma^{2}}{T} \\ & = \sigma^{2}\left( 1 + \frac{1}{T} \right) \end{aligned}$$ Aqui a covariância entre $Y_{T + h}$ e ${\overline{Y}}_{T}$ é nula, pois o ruído branco não possui memória linear, logo não há correlação entre o valor futuro e a média amostral (além de que o valor futuro está fora dos valores utilizados para a estimação da média amostral, pois $h \geq 1$)
 
-<a id="metodo-do-desvio-drift"></a>
-<a id="secao-37"></a>
-
-## Método do desvio (drift)
-
-![Ilustração do método do desvio](../../assets/A1/drift.png)
-
-*Figura 12. Ilustração do método do desvio*
-
-Extrapola uma tendência linear permitindo que a previsão mude ao longo do tempo a uma taxa constante $C$ $${\hat{Y}}_{T + h\vert T} = Y_{T} + hC\text{\quad\quad}\forall h \geq 1$$
-
-onde a taxa de variação (inclinação do desvio) é estimada pela variação média por período entre a primeira e a última observação da amostra $$C = \frac{Y_{T} - Y_{1}}{T - 1}$$
-
-na intuição geométrica, estamos traçando uma linha reta entre o primeiro e o último ponto da série temporal, e projetando essa linha para frente. Esse método assume um modelo de **Passeio Aleatório com Drift (Tendência)**: $$Y_{t} = C + Y_{t - 1} + \varepsilon_{t},\text{\quad\quad}\varepsilon_{t} \sim \text{ WN}\left( 0,\sigma^{2} \right)$$
-
 <a id="metodo-ingenuo-passeio-aleatorio-sem-tendencia"></a>
 <a id="secao-35"></a>
 
@@ -116,6 +101,21 @@ $$
 \begin{aligned} {\mathbb{V}}\left\lbrack Y_{T + h} - {\hat{Y}}_{T + h\vert T} \right\rbrack & = {\mathbb{V}}\left\lbrack \varepsilon_{T + h - m(K + 1)} + \ldots + \varepsilon_{T + h} \right\rbrack \\ & = {\mathbb{V}}\left\lbrack \varepsilon_{T + h - m(K + 1)} \right\rbrack + \ldots + {\mathbb{V}}\left\lbrack \varepsilon_{T + h} \right\rbrack \\ & = (K + 1)\sigma^{2} \end{aligned}
 $$
 
+<a id="metodo-do-desvio-drift"></a>
+<a id="secao-37"></a>
+
+## Método do desvio (drift)
+
+![Ilustração do método do desvio](../../assets/A1/drift.png)
+
+*Figura 12. Ilustração do método do desvio*
+
+Extrapola uma tendência linear permitindo que a previsão mude ao longo do tempo a uma taxa constante $C$ $${\hat{Y}}_{T + h\vert T} = Y_{T} + hC\text{\quad\quad}\forall h \geq 1$$
+
+onde a taxa de variação (inclinação do desvio) é estimada pela variação média por período entre a primeira e a última observação da amostra $$C = \frac{Y_{T} - Y_{1}}{T - 1}$$
+
+na intuição geométrica, estamos traçando uma linha reta entre o primeiro e o último ponto da série temporal, e projetando essa linha para frente. Esse método assume um modelo de **Passeio Aleatório com Drift (Tendência)**: $$Y_{t} = C + Y_{t - 1} + \varepsilon_{t},\text{\quad\quad}\varepsilon_{t} \sim \text{ WN}\left( 0,\sigma^{2} \right)$$
+
 <!-- wiki:original:fim -->
 
 
@@ -123,5 +123,5 @@ $$
 
 [Trilha: A1](../../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Previsão via Autocorrelação $\rho(h)$ e Esperança Condicional](../previsao-via-autocorrelacao-rho-h-e-esperanca-condicional/index.md)
-- Próximo: [Método do desvio (drift)](#metodo-do-desvio-drift)
+- Anterior: [Previsão via Autocorrelação $ho(h)$ e Esperança Condicional](../previsao-via-autocorrelacao-rho-h-e-esperanca-condicional/index.md)
+- Próximo: [Valores Ajustados V.S Previsões](../valores-ajustados-v-s-previsoes/index.md)

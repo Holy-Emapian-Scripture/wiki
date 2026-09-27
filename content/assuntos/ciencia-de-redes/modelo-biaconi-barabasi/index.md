@@ -51,5 +51,4 @@ Também involve cálculos mais complicados, então vou apenas mostrar a fórmula
 
 [Trilha: A1](../../../trilhas/ciencia-de-redes/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/ciencia-de-redes/a1.md#apresentacao-original)
 
-- Anterior: [O Papél do Expoente do Grau](../redes-livres-de-escala/index.md#o-papel-do-expoente-do-grau)
-- Próximo: [Distribuição dos Graus](#distribuicao-dos-graus)
+- Anterior: [Redes Livres de Escala](../redes-livres-de-escala/index.md)

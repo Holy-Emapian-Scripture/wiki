@@ -331,5 +331,4 @@ E reaparece o OCP: “se a gente quiser colocar Belém no frete aéreo, pra faze
 
 [Trilha: Notas de aula](../../../trilhas/engenharia-de-software/notas-de-aula.md) · [Apresentação e contexto da fonte](../../../trilhas/engenharia-de-software/notas-de-aula.md#apresentacao-original)
 
-- Anterior: [Termos da Aula 3](../aula-3-builder-e-singleton/index.md#termos-da-aula-3)
-- Próximo: [Termos da Aula 4](#termos-da-aula-4)
+- Anterior: [Aula 3 - Builder e Singleton](../aula-3-builder-e-singleton/index.md)

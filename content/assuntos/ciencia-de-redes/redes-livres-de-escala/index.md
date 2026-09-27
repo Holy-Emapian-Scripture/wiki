@@ -22,6 +22,17 @@ ordem_na_trilha: 14
 # Redes Livres de Escala
 
 
+<a id="formalismo-discreto"></a>
+<a id="secao-19"></a>
+
+## Formalismo Discreto
+
+Para cálculos analíticos, é interessante deixar que os graus possam assumir qualquer tipo de valor real (Mesmo que apenas os naturais sejam possíveis). Seja $K$ a variável aleatória que indica o grau de um vértice escolhido aleatoriamente, temos que: $${\mathbb{P}}(K = k) = Ck^{- \gamma}$$
+
+Normalizando, temos: $$\begin{array}{r} \int_{k_{\min}}^{\infty}{\mathbb{P}}(K = k)dk = 1 \\ \Rightarrow C = (\gamma - 1)k_{\min}^{\gamma - 1} \end{array}$$
+
+Então temos que a distribuição segue a P.M.F: $${\mathbb{P}}(K = k) = (\gamma - 1)k_{\min}^{\gamma - 1}k^{- \gamma}$$
+
 <a id="centros"></a>
 <a id="secao-20"></a>
 
@@ -59,51 +70,28 @@ Agora, para as redes livre de escala, resolvendo [\[kmin-and-kmax-equation\]](#k
 
 Ou seja, quanto maior é minha rede, maior vai ser o tamanho do meu centro (Maior é o grau do nó com mais graus). Isso é um resultado bem intuitivo, na verdade! Lembra que nós começamos dando o contexto da rede da internet (WWW)? Se pararmos para pensar, conforme as pessoas criam páginas na internet, elas tendem a colocar links para páginas famosas na internet, ou que tem alguma relevância em **comunidades**, ou seja, quanto mais links referenciando uma página, mais páginas vão referenciar ela, de forma que, quanto mais páginas vão sendo criadas, maior vai ser a quantidade de links referenciando páginas famosas ou reconhecidas!
 
-<a id="formalismo-discreto"></a>
-<a id="secao-19"></a>
+<a id="significado-de-livre-de-escala"></a>
+<a id="secao-22"></a>
 
-## Formalismo Discreto
+## Significado de Livre de Escala
 
-Para cálculos analíticos, é interessante deixar que os graus possam assumir qualquer tipo de valor real (Mesmo que apenas os naturais sejam possíveis). Seja $K$ a variável aleatória que indica o grau de um vértice escolhido aleatoriamente, temos que: $${\mathbb{P}}(K = k) = Ck^{- \gamma}$$
+Antes de entender o significado desse termo, vamos nos familiarizar com alguns conceitos. Vimos em probabilidade o conceito de **momentos**. O $n$-ésimo momento da distribuição dos graus (Levando em conta a variável aleatória $K$ que é o grau de um vértice aleatório) é: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = \sum_{i = k_{\min}}^{\infty}k^{n} \cdot {\mathbb{P}}(K = k) = \int_{k_{\min}}^{\infty}k^{n}p(k)dk$$
 
-Normalizando, temos: $$\begin{array}{r} \int_{k_{\min}}^{\infty}{\mathbb{P}}(K = k)dk = 1 \\ \Rightarrow C = (\gamma - 1)k_{\min}^{\gamma - 1} \end{array}$$
+Resolvendo a integral, vamos obter: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = C\frac{k_{\max}^{n - \gamma + 1} - k_{\min}^{n - \gamma + 1}}{n - \gamma + 1}$$
 
-Então temos que a distribuição segue a P.M.F: $${\mathbb{P}}(K = k) = (\gamma - 1)k_{\min}^{\gamma - 1}k^{- \gamma}$$
+Sabemos que, normalmente, $k_{\min}$ é fixo enquanto $k_{\max}$ aumenta confirme $N \rightarrow \infty$. Então vamos fazer uma análise mais detalhada sobre essa fórmula para o $n$-ésimo momento
 
-<a id="o-papel-do-expoente-do-grau"></a>
-<a id="secao-28"></a>
+- Se $n - \gamma + 1 \leq 0$, então $k_{\max}^{n - \gamma + 1} \rightarrow 0$ quando $N \rightarrow \infty$ (Ou $1$ quando a equação é igual a $0$). Então todos os momentos que satisfazem $n < \gamma - 1$ são **finitos**
 
-## O Papél do Expoente do Grau
+- Do contrário, se $n - \gamma + 1 > 0$, então $k_{\max}^{n - \gamma + 1} \rightarrow \infty$ quando $N \rightarrow \infty$, então os momentos que satisfazem $n > \gamma - 1$ **divergem**
 
-Se pararmos para analisar redes na vida real, vamos perceber que $\gamma$ varia de rede para rede, isso nos leva a intuitivamente querer saber como $\gamma$ influencia nas redes reais. Na maioria das redes reais, temos que $\gamma > 2$, o que também gera a pergunta: Por quê?
+Agora a gente pode tentar entender melhor o que esse **sem escala** significa. Vamos pegar uma rede de Poisson, sabemos que ${\mathbb{E}}\lbrack K\rbrack = \hat{k}$ e que $\sigma_{k} = \sqrt{\hat{k}}$ (Desvio padrão dos graus). Pela desigualdade de Chebyshev: $${\mathbb{P}}(\vert K - \hat{k}\vert  \geq h\sigma_{k}) \leq \frac{1}{h^{2}}$$
 
-![Regimes de $\gamma$](../assets/gamma-regimes.png)
+Que que isso quer dizer? O que quero dizer é que, em redes de Poisson, a chance de os graus estárem a $h$ desvios padrões da média é **no máximo** $1/h^{2}$. Isso é um indicativo grande de que a média dos graus serve como uma “escala”, de forma que temos uma noção do quão longe desse valor podemos estar caso escolhemos um nó aleatório.
 
-*Figura 10. Regimes de $\gamma$*
+Porém, em redes livres de escala em que o segundo momento diverge? Isso significa que, quando eu pego um nó aleatoriamente nessa rede, eu não sei o que esperar, a diferença dele para a média pode ser arbitrariamente grande ou pequena, não temos como ter ideia, ou seja, **não há uma escala para comparação**
 
-<a id="secao-29"></a>
-
-### Regime Anômalo ($\gamma \leq 2$)
-
-Nesse regime, o expoente $1/(\gamma - 1)$ é maior que $1$, ou seja, o número de links conectados ao maior hub cresce **mais rápido que o próprio número de links em si**, além de que ${\mathbb{E}}\lbrack K\rbrack$, sendo K a variável aleatória do grau dos nós, também diverge. O que isso indica? Isso mostra que, redes livre de escala **sem links múltiplos**, ou seja, a existência de várias arestas que ligam os mesmos dois nós, **não podem existir**
-
-<a id="secao-30"></a>
-
-### Regime Livre de Escala ($2 < \gamma < 3$)
-
-Aqui, o primeiro momento converge enquanto o segundo diverge, o que faz a gente cair na situação que ja comentei anteriormente de os graus serem arbitrariamente grandes, porém, que a distância entre dois nós cresce **muito** devagar, os já mencionado **Ultra Small Worlds**
-
-<a id="secao-31"></a>
-
-### Regime de Rede Aleatória ($\gamma > 3$)
-
-Como indicado relação [\[average-path-distance-ultra-small-networks\]](../propriedade-ultra-small/index.md#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
-
-Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [\[biggest-hub-relation\]](../centros/index.md#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
-
-E isso daria uma relação de quantos nós precisamos para que começássemos a registrar a propriedade da rede livre de escala. Por exemplo, vamos supor que queremos saber quantos nós precisamos para começar a ver essa propriedade em redes de $\gamma = 5$ (E, por exemplo, $k_{\min} = 1$ e $k_{\max} = 10^{2}$), então deveríamos ter $N > 10^{8}$, e são poucas as redes, na prática, com um tamanho absurdo desses!
-
-------------------------------------------------------------------------
+É claro que a divergência de ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ só acontece no limite $N \rightarrow \infty$, mas isso ainda tem uma relevância para redes finitas. Vamos pegar o caso da rede de internet novamente, sabemos que a quantidade de documentos (Nós) está na casa dos bilhões ou trilhões, o que indica que temos uma variância MUITO GRANDE, ou seja, mesmo tendo uma variância finita e, no concreto, tenhamos uma escala, ela é quase irrelevante, já que, ao pegarmos um documento aleatório, ele pode estar sendo citado por apenas dois outros documentos, ou ser citado por bilhões de documentos (Como google, facebook, etc.)
 
 <a id="propriedade-ultra-small"></a>
 <a id="secao-23"></a>
@@ -144,28 +132,40 @@ Aqui o termo $\ln(N)$ volta! Isso mostra um indicativo que para essas redes, mes
 
 Essa imagem presente no livro do barabasi mostra a prograssão das distâncias médias conforme aumentamos a quantidade de nós. Perceba que, para $N$ não muito grandes, como $N = 10^{4}$, as distribuições (E a distância média) não tem tanta diferença assim, porém com $N = 10^{6}$, ja da para notar diferenças atenuadas. Isso também é um indicativo de que, quanto maior o expoente da rede livre de escala, maior é a distância média entre dois nós
 
-<a id="significado-de-livre-de-escala"></a>
-<a id="secao-22"></a>
+<a id="o-papel-do-expoente-do-grau"></a>
+<a id="secao-28"></a>
 
-## Significado de Livre de Escala
+## O Papél do Expoente do Grau
 
-Antes de entender o significado desse termo, vamos nos familiarizar com alguns conceitos. Vimos em probabilidade o conceito de **momentos**. O $n$-ésimo momento da distribuição dos graus (Levando em conta a variável aleatória $K$ que é o grau de um vértice aleatório) é: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = \sum_{i = k_{\min}}^{\infty}k^{n} \cdot {\mathbb{P}}(K = k) = \int_{k_{\min}}^{\infty}k^{n}p(k)dk$$
+Se pararmos para analisar redes na vida real, vamos perceber que $\gamma$ varia de rede para rede, isso nos leva a intuitivamente querer saber como $\gamma$ influencia nas redes reais. Na maioria das redes reais, temos que $\gamma > 2$, o que também gera a pergunta: Por quê?
 
-Resolvendo a integral, vamos obter: $${\mathbb{E}}\left\lbrack K^{n} \right\rbrack = C\frac{k_{\max}^{n - \gamma + 1} - k_{\min}^{n - \gamma + 1}}{n - \gamma + 1}$$
+![Regimes de $\gamma$](../assets/gamma-regimes.png)
 
-Sabemos que, normalmente, $k_{\min}$ é fixo enquanto $k_{\max}$ aumenta confirme $N \rightarrow \infty$. Então vamos fazer uma análise mais detalhada sobre essa fórmula para o $n$-ésimo momento
+*Figura 10. Regimes de $\gamma$*
 
-- Se $n - \gamma + 1 \leq 0$, então $k_{\max}^{n - \gamma + 1} \rightarrow 0$ quando $N \rightarrow \infty$ (Ou $1$ quando a equação é igual a $0$). Então todos os momentos que satisfazem $n < \gamma - 1$ são **finitos**
+<a id="secao-29"></a>
 
-- Do contrário, se $n - \gamma + 1 > 0$, então $k_{\max}^{n - \gamma + 1} \rightarrow \infty$ quando $N \rightarrow \infty$, então os momentos que satisfazem $n > \gamma - 1$ **divergem**
+### Regime Anômalo ($\gamma \leq 2$)
 
-Agora a gente pode tentar entender melhor o que esse **sem escala** significa. Vamos pegar uma rede de Poisson, sabemos que ${\mathbb{E}}\lbrack K\rbrack = \hat{k}$ e que $\sigma_{k} = \sqrt{\hat{k}}$ (Desvio padrão dos graus). Pela desigualdade de Chebyshev: $${\mathbb{P}}(\vert K - \hat{k}\vert  \geq h\sigma_{k}) \leq \frac{1}{h^{2}}$$
+Nesse regime, o expoente $1/(\gamma - 1)$ é maior que $1$, ou seja, o número de links conectados ao maior hub cresce **mais rápido que o próprio número de links em si**, além de que ${\mathbb{E}}\lbrack K\rbrack$, sendo K a variável aleatória do grau dos nós, também diverge. O que isso indica? Isso mostra que, redes livre de escala **sem links múltiplos**, ou seja, a existência de várias arestas que ligam os mesmos dois nós, **não podem existir**
 
-Que que isso quer dizer? O que quero dizer é que, em redes de Poisson, a chance de os graus estárem a $h$ desvios padrões da média é **no máximo** $1/h^{2}$. Isso é um indicativo grande de que a média dos graus serve como uma “escala”, de forma que temos uma noção do quão longe desse valor podemos estar caso escolhemos um nó aleatório.
+<a id="secao-30"></a>
 
-Porém, em redes livres de escala em que o segundo momento diverge? Isso significa que, quando eu pego um nó aleatoriamente nessa rede, eu não sei o que esperar, a diferença dele para a média pode ser arbitrariamente grande ou pequena, não temos como ter ideia, ou seja, **não há uma escala para comparação**
+### Regime Livre de Escala ($2 < \gamma < 3$)
 
-É claro que a divergência de ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ só acontece no limite $N \rightarrow \infty$, mas isso ainda tem uma relevância para redes finitas. Vamos pegar o caso da rede de internet novamente, sabemos que a quantidade de documentos (Nós) está na casa dos bilhões ou trilhões, o que indica que temos uma variância MUITO GRANDE, ou seja, mesmo tendo uma variância finita e, no concreto, tenhamos uma escala, ela é quase irrelevante, já que, ao pegarmos um documento aleatório, ele pode estar sendo citado por apenas dois outros documentos, ou ser citado por bilhões de documentos (Como google, facebook, etc.)
+Aqui, o primeiro momento converge enquanto o segundo diverge, o que faz a gente cair na situação que ja comentei anteriormente de os graus serem arbitrariamente grandes, porém, que a distância entre dois nós cresce **muito** devagar, os já mencionado **Ultra Small Worlds**
+
+<a id="secao-31"></a>
+
+### Regime de Rede Aleatória ($\gamma > 3$)
+
+Como indicado relação [\[average-path-distance-ultra-small-networks\]](../propriedade-ultra-small/index.md#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
+
+Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [\[biggest-hub-relation\]](../centros/index.md#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
+
+E isso daria uma relação de quantos nós precisamos para que começássemos a registrar a propriedade da rede livre de escala. Por exemplo, vamos supor que queremos saber quantos nós precisamos para começar a ver essa propriedade em redes de $\gamma = 5$ (E, por exemplo, $k_{\min} = 1$ e $k_{\max} = 10^{2}$), então deveríamos ter $N > 10^{8}$, e são poucas as redes, na prática, com um tamanho absurdo desses!
+
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
@@ -174,5 +174,5 @@ Porém, em redes livres de escala em que o segundo momento diverge? Isso signifi
 
 [Trilha: A1](../../../trilhas/ciencia-de-redes/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/ciencia-de-redes/a1.md#apresentacao-original)
 
-- Anterior: [Anexação Preferencial](../evolucoes-de-redes/index.md#anexacao-preferencial)
-- Próximo: [Propriedade *Ultra Small*](#propriedade-ultra-small)
+- Anterior: [Evoluções de Redes](../evolucoes-de-redes/index.md)
+- Próximo: [Modelo Biaconi-Barabási](../modelo-biaconi-barabasi/index.md)

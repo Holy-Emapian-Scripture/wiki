@@ -22,46 +22,6 @@ ordem_na_trilha: 14
 # 3. Ordenação
 
 
-<a id="bubble-sort"></a>
-<a id="secao-20"></a>
-
-## 3.4 Bubble Sort
-
-- **ideia**
-
-  - Percorre a lista e compara elementos adjacentes, trocando se estiverem fora de ordem;
-
-  - Repete o processo até que esteja ordenado(pense que se tivessemos o maior elemento como primeiro da fila, teríamos n trocas).
-
-<a id="secao-21"></a>
-
-### img
-
-``` cpp
-void bubbleSort(int arr[], int n) {
-    int temp;                                     // Custo | Vezes
-    for (int i = 0; i < n - 1; i++) {             // 2     | n-1
-        for (int j = 0; j < n - i - 1; j++) {     // 2     | n-i-1 ->  1
-            if (arr[j] > arr[j + 1]) {            // 1     | n-i-1 ->  1
-                temp = arr[j];                    // 1     | n-i-1 ->  1
-                arr[j] = arr[j + 1];              // 1     | n-i-1 ->  1
-                arr[j + 1] = temp;                // 1     | n-i-1 ->  1
-            }
-        }
-    }
-}
-```
-
-Como explicado, a ideia é simples, o que faz com que o algoritmo também seja. Salvamos um int para fazer a troca entre elementos subjacentes. O primeiro for fará com que a verificação seja feita n - 1 vezes, e o segundo for fará a comparação entre todos os elementos subjacentes escolhendo o maior e levando-o ao final da fila, por isso j vai até $n - i - 1$, o $- 1$ serve para não sair da lista(fazemos j + 1 no if), e o $- i$ está ali pois o if carrega o maior elemento da lista até o fim dela a cada iteração, portanto não precisamos mais ordenar ele.
-
-- **Características:**
-
-  - Complexidade de tempo de execução: $O\left( n^{2} \right)$ no pior caso;
-
-  - Complexidade de espaço: $O(1)$ (in-place);
-
-  - Estabilidade: estável, pois só trocamos se for maior que o próximo elemento.
-
 <a id="caracteristicas-relevantes"></a>
 <a id="secao-15"></a>
 
@@ -87,21 +47,49 @@ A utilidade dos algoritmos de ordenação que vamos ver podem ser medidos atrav�
 
 Existem outros tipos de características relevantes, como adaptabilidade e paralelização, mas não serão abordados aqui. Legal, vamos para os algoritmos!
 
-<a id="comparacao-entre-algoritmos-de-ordenacao"></a>
-<a id="secao-22"></a>
+<a id="selection-sort"></a>
+<a id="secao-16"></a>
 
-## 3.5 Comparação entre algoritmos de ordenação
+## 3.2 Selection Sort
 
-Esses algoritmos, embora didáticos, são ineficientes para grandes conjuntos de dados. Nas próximas seções, abordaremos algoritmos mais avançados, como Merge Sort e Quick Sort, que possuem melhor desempenho. Vamos comparar os algoritmos que vemos até agora:
+- **Ideia**
 
-|                |                 |                         |          |           |
-|----------------|-----------------|-------------------------|----------|-----------|
-| Algoritmo      | Melhor caso     | Pior caso               | Estável? | In-place? |
-| Selection Sort | $\Omega(n^{2})$ | $O\left( n^{2} \right)$ | Não      | Sim       |
-| Insertion Sort | $\Omega(n)$     | $O\left( n^{2} \right)$ | Sim      | Sim       |
-| Bubble Sort    | $\Omega(n)$     | $O\left( n^{2} \right)$ | Sim      | Sim       |
+  - Percorre a lista até encontrar o menor elemento;
 
-Fazendo uma rápida análise, vemos que não temos diferenças aparentes nas características entre Insertion Sort e Bubble Sort, enquanto o Selection Sort é pior que os dois.
+  - Troca esse elemento com o primeiro da lista;
+
+  - Repete a ideia para os próximos elementos.
+
+<a id="secao-17"></a>
+
+## img
+
+``` cpp
+void selectionSort(int arr[], int n) {      // Custo  | Vezes
+    int minIndex, temp;                     // 2      | 1
+    for (int i = 0; i < n - 1; i++) {       // 2      | n-1
+        minIndex = i;                       // 1      | n-1
+        for (int j = i + 1; j < n; j++) {   // 2      | n-i+1 -> n-1, 
+            if (arr[j] < arr[minIndex]) {   // 1      | n-i+1 -> n-1,
+                minIndex = j;               // 1      | n-i+1 -> n-1, 
+            }
+        }
+        temp = arr[minIdx];                 // 1      | n-1
+        arr[minIdx] = arr[i];               // 1      | n-1
+        arr[i] = temp;                      // 1      | n-1
+    }
+}
+```
+
+Note que precisamos de dois inteiros, um para salvar o índice do menor elemento, e outro para fazer a troca de elementos. O primeiro for passará por toda a lista, e o segundo for comparará os elementos subjacentes ao indíce i, pois antes desse índice os elementos já foram ordenados. Fazemos a comparação do valor do índice i com todos os posteriores, e atualizamos o índice j. Após cada comparação, salvamos o valor do menor elemento, atualizamos o valor do índice do menor elemento como o elemento do índice i, e por fim atualizamos o valor do índice i como o menor elemento.
+
+- **Características:**
+
+  - Complexidade de tempo de execução: $O\left( n^{2} \right)$ para o pior caso, dado dois fors que iteram praticamente até $n$;
+
+  - Complexidade de espaço: $O(1)$, pois não precisamos criar nada;
+
+  - Estabilidade: não é estável, trocas alteram a ordem de elementos iguais.
 
 <a id="insertion-sort"></a>
 <a id="secao-18"></a>
@@ -149,49 +137,61 @@ Note que quando entramos no while mas não saímos, significa que ainda não enc
 
   - Estabilidade: é estável, trocas não alteram a ordem de elementos iguais já que fazemos a troca apenas quando o elemento é maior(\>), e não maior igual(\>=).
 
-<a id="selection-sort"></a>
-<a id="secao-16"></a>
+<a id="bubble-sort"></a>
+<a id="secao-20"></a>
 
-## 3.2 Selection Sort
+## 3.4 Bubble Sort
 
-- **Ideia**
+- **ideia**
 
-  - Percorre a lista até encontrar o menor elemento;
+  - Percorre a lista e compara elementos adjacentes, trocando se estiverem fora de ordem;
 
-  - Troca esse elemento com o primeiro da lista;
+  - Repete o processo até que esteja ordenado(pense que se tivessemos o maior elemento como primeiro da fila, teríamos n trocas).
 
-  - Repete a ideia para os próximos elementos.
+<a id="secao-21"></a>
 
-<a id="secao-17"></a>
-
-## img
+### img
 
 ``` cpp
-void selectionSort(int arr[], int n) {      // Custo  | Vezes
-    int minIndex, temp;                     // 2      | 1
-    for (int i = 0; i < n - 1; i++) {       // 2      | n-1
-        minIndex = i;                       // 1      | n-1
-        for (int j = i + 1; j < n; j++) {   // 2      | n-i+1 -> n-1, 
-            if (arr[j] < arr[minIndex]) {   // 1      | n-i+1 -> n-1,
-                minIndex = j;               // 1      | n-i+1 -> n-1, 
+void bubbleSort(int arr[], int n) {
+    int temp;                                     // Custo | Vezes
+    for (int i = 0; i < n - 1; i++) {             // 2     | n-1
+        for (int j = 0; j < n - i - 1; j++) {     // 2     | n-i-1 ->  1
+            if (arr[j] > arr[j + 1]) {            // 1     | n-i-1 ->  1
+                temp = arr[j];                    // 1     | n-i-1 ->  1
+                arr[j] = arr[j + 1];              // 1     | n-i-1 ->  1
+                arr[j + 1] = temp;                // 1     | n-i-1 ->  1
             }
         }
-        temp = arr[minIdx];                 // 1      | n-1
-        arr[minIdx] = arr[i];               // 1      | n-1
-        arr[i] = temp;                      // 1      | n-1
     }
 }
 ```
 
-Note que precisamos de dois inteiros, um para salvar o índice do menor elemento, e outro para fazer a troca de elementos. O primeiro for passará por toda a lista, e o segundo for comparará os elementos subjacentes ao indíce i, pois antes desse índice os elementos já foram ordenados. Fazemos a comparação do valor do índice i com todos os posteriores, e atualizamos o índice j. Após cada comparação, salvamos o valor do menor elemento, atualizamos o valor do índice do menor elemento como o elemento do índice i, e por fim atualizamos o valor do índice i como o menor elemento.
+Como explicado, a ideia é simples, o que faz com que o algoritmo também seja. Salvamos um int para fazer a troca entre elementos subjacentes. O primeiro for fará com que a verificação seja feita n - 1 vezes, e o segundo for fará a comparação entre todos os elementos subjacentes escolhendo o maior e levando-o ao final da fila, por isso j vai até $n - i - 1$, o $- 1$ serve para não sair da lista(fazemos j + 1 no if), e o $- i$ está ali pois o if carrega o maior elemento da lista até o fim dela a cada iteração, portanto não precisamos mais ordenar ele.
 
 - **Características:**
 
-  - Complexidade de tempo de execução: $O\left( n^{2} \right)$ para o pior caso, dado dois fors que iteram praticamente até $n$;
+  - Complexidade de tempo de execução: $O\left( n^{2} \right)$ no pior caso;
 
-  - Complexidade de espaço: $O(1)$, pois não precisamos criar nada;
+  - Complexidade de espaço: $O(1)$ (in-place);
 
-  - Estabilidade: não é estável, trocas alteram a ordem de elementos iguais.
+  - Estabilidade: estável, pois só trocamos se for maior que o próximo elemento.
+
+<a id="comparacao-entre-algoritmos-de-ordenacao"></a>
+<a id="secao-22"></a>
+
+## 3.5 Comparação entre algoritmos de ordenação
+
+Esses algoritmos, embora didáticos, são ineficientes para grandes conjuntos de dados. Nas próximas seções, abordaremos algoritmos mais avançados, como Merge Sort e Quick Sort, que possuem melhor desempenho. Vamos comparar os algoritmos que vemos até agora:
+
+|                |                 |                         |          |           |
+|----------------|-----------------|-------------------------|----------|-----------|
+| Algoritmo      | Melhor caso     | Pior caso               | Estável? | In-place? |
+| Selection Sort | $\Omega(n^{2})$ | $O\left( n^{2} \right)$ | Não      | Sim       |
+| Insertion Sort | $\Omega(n)$     | $O\left( n^{2} \right)$ | Sim      | Sim       |
+| Bubble Sort    | $\Omega(n)$     | $O\left( n^{2} \right)$ | Sim      | Sim       |
+
+Fazendo uma rápida análise, vemos que não temos diferenças aparentes nas características entre Insertion Sort e Bubble Sort, enquanto o Selection Sort é pior que os dois.
 
 <!-- wiki:original:fim -->
 
@@ -200,5 +200,5 @@ Note que precisamos de dois inteiros, um para salvar o índice do menor elemento
 
 [Trilha: A1](../../../trilhas/estrutura-de-dados/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/estrutura-de-dados/a1.md#apresentacao-original)
 
-- Anterior: [2.8 Comparação entre arrays e listas encadeadas](../tipos-abstratos-de-dados/index.md#comparacao-entre-arrays-e-listas-encadeadas)
-- Próximo: [3.3 Insertion Sort](#insertion-sort)
+- Anterior: [2. Tipos Abstratos de Dados](../tipos-abstratos-de-dados/index.md)
+- Próximo: [4.0 Ordeanção avançada](../ordeancao-avancada/index.md)

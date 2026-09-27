@@ -22,6 +22,125 @@ ordem_na_trilha: 9
 # Gaussian and Bernoulli Mixture Models
 
 
+<a id="introducao-e-definicao"></a>
+<a id="secao-10"></a>
+
+## Introdução e Definição
+
+No k-means, cada ponto é atribuído a um único cluster, o que significa que a fronteira entre os clusters é rígida. No entanto, em muitos casos, pode ser mais apropriado permitir que cada ponto tenha uma probabilidade de pertencer a cada cluster. Isso nos leva aos Modelos de Mistura Gaussiana (GMMs), que é uma generalização do K-means.
+
+Aqui, nós supomos que cada ponto **pode** ter saído de um dos $K$ clusters, mas não sabemos de qual, cada cluster esse sendo representado por uma distribuição gaussiana. Cada cluster $k$ é caracterizado por uma média $\mu_{k}$ e uma matriz de covariância $\Sigma_{k}$. Além disso, cada cluster tem um peso $\pi_{k}$, que representa a proporção de pontos que pertencem a esse cluster.
+
+**Definição: Modelo de Mistura Gaussiana**
+
+Um Modelo de Mistura Gaussiana é definido como: $$p(x) = \sum_{k = 1}^{K}\pi_{k}N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)$$ onde $N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)$ é a densidade da distribuição gaussiana com média $\mu_{k}$ e covariância $\Sigma_{k}$, e $\pi_{k}$ são os pesos dos clusters, que satisfazem $\sum_{k = 1}^{K}\pi_{k} = 1$.
+
+**Teorema: Validade da distribuição**
+
+Seja $p(x)$ um Modelo de Mistura Gaussiana com $K$ componentes. Então, $p(x)$ é uma distribuição de probabilidade válida, ou seja, $p(x) \geq 0$ para todo $x$ e $\int p(x)dx = 1$.
+
+**Demonstração**
+
+Para mostrar que $p(x) \geq 0$, note que cada termo na soma é não-negativo, pois $\pi_{k} \geq 0$ e $N\left( x~\vert ~\mu_{k},\Sigma_{k} \right) \geq 0$. Portanto, $p(x) \geq 0$ para todo $x$.
+
+Para mostrar que a integral de $p(x)$ sobre todo o espaço é igual a 1, usamos a linearidade da integral: $$\begin{aligned} \int p(x)dx & = \int\sum_{k = 1}^{K}\pi_{k}N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)dx \\ & = \sum_{k = 1}^{K}\pi_{k}\int N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)dx \\ & = \sum_{k = 1}^{K}\pi_{k} \ast 1 \\ & = \sum_{k = 1}^{K}\pi_{k} \\ & = 1 \end{aligned}$$
+
+Vamos também introduzir o conceito de **variável latente**. Intuitivamente, uma variável latente é uma variável que não observamos diretamente, mas que influencia os dados que observamos. Por exemplo, a classe de um documento em uma análise de tópicos, já que podemos não saber que um documento fala sobre biologia, mas ele influencia nosso modelo a aprender sobre o assunto.
+
+No caso dos GMMs, podemos introduzir uma variável latente $z_{n}$ para cada ponto $x_{n}$, que indica de qual cluster o ponto foi gerado. Especificamente, $z_{n}$ é um vetor one-hot de dimensão $K$, onde $z_{nk} = 1$ se o ponto $x_{n}$ foi gerado pelo cluster $k$, e $z_{nj} = 0$ para $k \neq j$.
+
+Vamos definir a distribuição conjunta de $x_{n}$ e $z_{n}$ como: $$p\left( x_{n},z_{n} \right) = p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right)$$
+
+a distribuição marginal de $z_{n}$ é definida em termo dos coeficientes de mistura $\pi_{k}$: $${\mathbb{P}}(z_{nk} = 1) = \pi_{k}$$
+
+de forma que $\pi_{k} \geq 0$ e $\sum_{k = 1}^{K}\pi_{k} = 1$ para que $p\left( z_{n} \right)$ seja uma distribuição de probabilidade válida. Por conta da forma que definimos $z_{n}$ como vetor one-hot, podemos reescrever sua distribuição como: $$p\left( z_{n} \right) = \prod_{k = 1}^{K}\pi_{k}^{z_{nk}}$$
+
+Similarmente, a distribuição condicional de $x_{n}$ dado $z_{nk} = 1$ é definida como: $$p\left( x_{n}~\vert ~z_{nk} = 1 \right) = N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)$$
+
+que também pode ser escrita na forma: $$p\left( x_{n}~\vert ~z_{n} \right) = \prod_{k = 1}^{K}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}^{z_{nk}}$$
+
+A distribuição conjunta é escrita então como $p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right)$ e a marginal sobre $x$ é obtida somando sobre todas as possíveis configurações de $z_{n}$: $$p\left( x_{n} \right) = \sum_{z_{n}}p\left( x_{n},z_{n} \right) = \sum_{z_{n}}p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right) = \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)$$
+
+Pode até parecer que, representando a distribuição de $x_{n}$ como uma mistura de gaussianas, estamos apenas complicando as coisas, mas a introdução da variável latente $z_{n}$ nos permite trabalhar com a conjunta (que vai se mostrar ser bem mais fácil de lidar) e também nos dá uma interpretação probabilística do modelo.
+
+Outra quantidade que será importante é a probabilidade posterior de $z_{n}$ dado $x_{n}$ (chamaremos de $\gamma(z_{nk})$), que é dada pelo Teorema de Bayes: $$\begin{aligned} \gamma(z_{nk}) & = {\mathbb{P}}(z_{nk} = 1~\vert ~x_{n}) \\ & = \frac{p\left( z_{nk} = 1 \right)p\left( x_{n}~\vert ~z_{nk} = 1 \right)}{p\left( x_{n} \right)} \\ & = \frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)} \end{aligned}$$
+
+Vamos interpretar $\pi_{k}$ como a probabilidade de que o ponto $x_{n}$ tenha sido gerado pelo cluster $k$ **a posteriori** e $\gamma(z_{nk})$ como a probabilidade de que o ponto $x_{n}$ pertença ao cluster $k$ **a posteriori**. Também podemos chamar $\gamma(z_{nk})$ de *responsabilidade* do cluster $k$ pelo ponto $x_{n}$, pois ela indica o quanto o cluster $k$ é responsável por gerar o ponto $x_{n}$.
+
+<a id="maxima-verossimilhanca"></a>
+<a id="secao-11"></a>
+
+## Máxima Verossimilhança
+
+Suponha que temos um conjunto de dados $X = \left\{ x_{1},x_{2},\ldots,x_{N} \right\}$ com $x_{i} \in {\mathbb{R}}^{D}$ e queremos modelar essa matriz $N \times D$ como uma mistura de $K$ gaussianas. As variáveis latentes $Z = \left\{ z_{1},z_{2},\ldots,z_{N} \right\}$ que indicam de qual cluster cada ponto foi gerado também serão representadas por uma matriz $N \times K$ de vetores one-hot. A função de log-verossimilhança do modelo é então dada por: $$\ln p\left( X~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln p\left( x_{n}~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln\left\{ \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right) \right\}$$
+
+Acaba que maximizar essa verossimilhança diretamente é difícil, pois a presença da soma dentro do log torna a derivada complicada. Uma alternativa válida é maximizar a verossimilhança por métodos de otimização de gradiente, porém, nós vamos utilizar o algoritmo Expectation-Maximization (EM), que é um método iterativo para encontrar estimativas de máxima verossimilhança em modelos com variáveis latentes.
+
+<a id="expectation-maximization-em-para-gmms"></a>
+<a id="secao-12"></a>
+
+## Expectation-Maximization (EM) para GMMs
+
+Para facilitar o entendimento das contas, defina $N_{k} = \sum_{n = 1}^{N}\gamma(z_{nk})$
+
+<a id="optimal-mean-k"></a>
+
+**Teorema**
+
+Fixando os parâmetros do modelo e variando apenas $\mu$, o valor ótimo de $\mu_{k}$ é dado por: $$\mu_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}}{\sum_{n = 1}^{N}\gamma(z_{nk})} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$$
+
+**Demonstração**
+
+Para encontrar o valor ótimo de $\mu_{k}$, derivamos a função de log-verossimilhança em relação a $\mu_{k}$ e igualamos a zero: $$\frac{\partial\ln p\left( X~\vert ~\mu,\Sigma,\pi \right)}{\partial\mu_{k}} = \sum_{n = 1}^{N}\underset{\gamma(z_{nk})}{\underbrace{\frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}}}\frac{1}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\mu_{k}} = 0$$ A derivada da densidade gaussiana em relação a $\mu_{k}$ é dada por: $$\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\mu_{k}} = N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)\Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)$$ Substituindo isso na equação anterior, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right) = 0$$ Multiplicando ambos os lados por $\Sigma_{k}$, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right) = 0$$ Rearranjando os termos, obtemos: $$\mu_{k}\sum_{n = 1}^{N}\gamma(z_{nk}) = \sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$$ Dividindo ambos os lados por $\sum_{n = 1}^{N}\gamma(z_{nk})$, obtemos a expressão desejada para $\mu_{k}$.
+
+<a id="optimal-covariance-k"></a>
+
+**Teorema**
+
+Fixando os parâmetros do modelo e variando apenas $\Sigma$, o valor ótimo de $\Sigma_{k}$ é dado por: $$\Sigma_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}}{\sum_{n = 1}^{N}\gamma(z_{nk})} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}$$
+
+**Demonstração**
+
+Para encontrar o valor ótimo de $\Sigma_{k}$, derivamos a função de log-verossimilhança em relação a $\Sigma_{k}$ e igualamos a zero: $$\frac{\partial\ln p\left( X~\vert ~\mu,\Sigma,\pi \right)}{\partial\Sigma_{k}} = \sum_{n = 1}^{N}\underset{\gamma(z_{nk})}{\underbrace{\frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}}}\frac{1}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\Sigma_{k}} = 0$$ A derivada da densidade gaussiana em relação a $\Sigma_{k}$ é dada por: $$\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\Sigma_{k}} = \frac{1}{2}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)\left( \Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - \Sigma_{k}^{- 1} \right)$$ Substituindo isso na equação anterior, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( \Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - \Sigma_{k}^{- 1} \right) = 0$$ Multiplicando ambos os lados por $\Sigma_{k}$, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( \left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - I \right) = 0$$ Rearranjando os termos, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T} = \sum_{n = 1}^{N}\gamma(z_{nk})\Sigma_{k}$$ Dividindo ambos os lados por $\sum_{n = 1}^{N}\gamma(z_{nk})$, obtemos a expressão desejada para $\Sigma_{k}$.
+
+<a id="optimal-mixing-coefficient-k"></a>
+
+**Teorema**
+
+Fixando os parâmetros do modelo e variando apenas $\pi$, o valor ótimo de $\pi_{k}$ é dado por: $$\pi_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})}{N} = \frac{N_{k}}{N}$$
+
+**Demonstração**
+
+Sabendo que $\sum_{k}\pi_{k} = 1$, usamos de multiplicadores de lagrange para encontrar o valor ótimo de $\pi_{k}$. Definimos a função lagrangiana como: $$L(\pi,\lambda) = \ln p\left( X~\vert ~\mu,\Sigma,\pi \right) + \lambda\left( \sum_{k = 1}^{K}\pi_{k} - 1 \right)$$ Derivando em relação a $\pi_{k}$ e igualando a zero, obtemos: $$\frac{\partial L}{\partial\pi_{k}} = \frac{\gamma(z_{nk})}{\pi_{k}} + \lambda = 0$$ Isolando $\pi_{k}$, obtemos: $$\pi_{k} = - \frac{\lambda}{\gamma(z_{nk})}$$ Usando a condição de normalização $\sum_{k}\pi_{k} = 1$, podemos encontrar o valor de $\lambda$: $$\sum_{k = 1}^{K} - \frac{\lambda}{\gamma(z_{nk})} = 1$$ Resolvendo para $\lambda$, obtemos: $$\lambda = - \frac{1}{\sum_{k = 1}^{K}\frac{1}{\gamma(z_{nk})}}$$ Substituindo esse valor de $\lambda$ na expressão para $\pi_{k}$, obtemos: $$\pi_{k} = \frac{\gamma(z_{nk})}{\sum_{j = 1}^{K}\gamma(z_{nj})} = \frac{N_{k}}{N}$$
+
+Vale ressaltar que o [\[optimal-mean-k\]](#optimal-mean-k), [\[optimal-covariance-k\]](#optimal-covariance-k) e [\[optimal-mixing-coefficient-k\]](#optimal-mixing-coefficient-k) não representam formas fechadas dos parâmetros do modelo, pois eles dependem de $\gamma(z_{nk})$, que por sua vez depende dos próprios parâmetros do modelo. Portanto, não podemos resolver essas equações diretamente. Em vez disso, usamos o algoritmo EM, que alterna entre calcular $\gamma(z_{nk})$ com os parâmetros atuais (passo E) e atualizar os parâmetros do modelo usando as fórmulas acima (passo M).
+
+**Algoritmo EM**
+
+1.  **function** *EM*($X$) {
+
+    1.  **initialize** $\mu_{k},\Sigma_{k},\pi_{k}$
+
+    2.  **// Passo E**
+
+    3.  $\gamma(z_{nk}) = \frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}$
+
+    4.  **// Passo M**
+
+    5.  $N_{k} = \sum_{n = 1}^{N}\gamma(z_{nk})$
+
+    6.  $\mu_{k} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$
+
+    7.  $\Sigma_{k} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}$
+
+    8.  $\pi_{k} = \frac{N_{k}}{N}$
+
+    9.  **// Calcular a log-verossimilhança**
+
+    10. $\ln p\left( X~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln\left\{ \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right) \right\}$
+
+2.  }
+
 <a id="algoritmo-em-variacional"></a>
 <a id="secao-13"></a>
 
@@ -136,125 +255,6 @@ Fixando os parâmetros do modelo e variando apenas $\pi$, o valor ótimo de $\pi
 
 Sabendo que $\sum_{k}\pi_{k} = 1$, usamos de multiplicadores de lagrange para encontrar o valor ótimo de $\pi_{k}$. Definimos a função lagrangiana como: $$L(\pi,\lambda) = \ln p\left( X,Z~\vert ~\mu,\pi \right) + \lambda\left( \sum_{k = 1}^{K}\pi_{k} - 1 \right)$$ Derivando em relação a $\pi_{k}$ e igualando a zero, obtemos: $$\frac{\partial L}{\partial\pi_{k}} = \frac{\gamma(z_{nk})}{\pi_{k}} + \lambda = 0$$ Isolando $\pi_{k}$, obtemos: $$\pi_{k} = - \frac{\lambda}{\gamma(z_{nk})}$$ Usando a condição de normalização $\sum_{k}\pi_{k} = 1$, podemos encontrar o valor de $\lambda$: $$\sum_{k = 1}^{K} - \frac{\lambda}{\gamma(z_{nk})} = 1$$ Resolvendo para $\lambda$, obtemos: $$\lambda = - \frac{1}{\sum_{k = 1}^{K}\frac{1}{\gamma(z_{nk})}}$$ Substituindo esse valor de $\lambda$ na expressão para $\pi_{k}$, obtemos: $$\pi_{k} = \frac{\gamma(z_{nk})}{\sum_{j = 1}^{K}\gamma(z_{nj})} = \frac{N_{k}}{N}$$
 
-<a id="expectation-maximization-em-para-gmms"></a>
-<a id="secao-12"></a>
-
-## Expectation-Maximization (EM) para GMMs
-
-Para facilitar o entendimento das contas, defina $N_{k} = \sum_{n = 1}^{N}\gamma(z_{nk})$
-
-<a id="optimal-mean-k"></a>
-
-**Teorema**
-
-Fixando os parâmetros do modelo e variando apenas $\mu$, o valor ótimo de $\mu_{k}$ é dado por: $$\mu_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}}{\sum_{n = 1}^{N}\gamma(z_{nk})} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$$
-
-**Demonstração**
-
-Para encontrar o valor ótimo de $\mu_{k}$, derivamos a função de log-verossimilhança em relação a $\mu_{k}$ e igualamos a zero: $$\frac{\partial\ln p\left( X~\vert ~\mu,\Sigma,\pi \right)}{\partial\mu_{k}} = \sum_{n = 1}^{N}\underset{\gamma(z_{nk})}{\underbrace{\frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}}}\frac{1}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\mu_{k}} = 0$$ A derivada da densidade gaussiana em relação a $\mu_{k}$ é dada por: $$\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\mu_{k}} = N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)\Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)$$ Substituindo isso na equação anterior, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right) = 0$$ Multiplicando ambos os lados por $\Sigma_{k}$, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right) = 0$$ Rearranjando os termos, obtemos: $$\mu_{k}\sum_{n = 1}^{N}\gamma(z_{nk}) = \sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$$ Dividindo ambos os lados por $\sum_{n = 1}^{N}\gamma(z_{nk})$, obtemos a expressão desejada para $\mu_{k}$.
-
-<a id="optimal-covariance-k"></a>
-
-**Teorema**
-
-Fixando os parâmetros do modelo e variando apenas $\Sigma$, o valor ótimo de $\Sigma_{k}$ é dado por: $$\Sigma_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}}{\sum_{n = 1}^{N}\gamma(z_{nk})} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}$$
-
-**Demonstração**
-
-Para encontrar o valor ótimo de $\Sigma_{k}$, derivamos a função de log-verossimilhança em relação a $\Sigma_{k}$ e igualamos a zero: $$\frac{\partial\ln p\left( X~\vert ~\mu,\Sigma,\pi \right)}{\partial\Sigma_{k}} = \sum_{n = 1}^{N}\underset{\gamma(z_{nk})}{\underbrace{\frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}}}\frac{1}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\Sigma_{k}} = 0$$ A derivada da densidade gaussiana em relação a $\Sigma_{k}$ é dada por: $$\frac{\partial N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\partial\Sigma_{k}} = \frac{1}{2}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)\left( \Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - \Sigma_{k}^{- 1} \right)$$ Substituindo isso na equação anterior, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( \Sigma_{k}^{- 1}\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - \Sigma_{k}^{- 1} \right) = 0$$ Multiplicando ambos os lados por $\Sigma_{k}$, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( \left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}\Sigma_{k}^{- 1} - I \right) = 0$$ Rearranjando os termos, obtemos: $$\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T} = \sum_{n = 1}^{N}\gamma(z_{nk})\Sigma_{k}$$ Dividindo ambos os lados por $\sum_{n = 1}^{N}\gamma(z_{nk})$, obtemos a expressão desejada para $\Sigma_{k}$.
-
-<a id="optimal-mixing-coefficient-k"></a>
-
-**Teorema**
-
-Fixando os parâmetros do modelo e variando apenas $\pi$, o valor ótimo de $\pi_{k}$ é dado por: $$\pi_{k} = \frac{\sum_{n = 1}^{N}\gamma(z_{nk})}{N} = \frac{N_{k}}{N}$$
-
-**Demonstração**
-
-Sabendo que $\sum_{k}\pi_{k} = 1$, usamos de multiplicadores de lagrange para encontrar o valor ótimo de $\pi_{k}$. Definimos a função lagrangiana como: $$L(\pi,\lambda) = \ln p\left( X~\vert ~\mu,\Sigma,\pi \right) + \lambda\left( \sum_{k = 1}^{K}\pi_{k} - 1 \right)$$ Derivando em relação a $\pi_{k}$ e igualando a zero, obtemos: $$\frac{\partial L}{\partial\pi_{k}} = \frac{\gamma(z_{nk})}{\pi_{k}} + \lambda = 0$$ Isolando $\pi_{k}$, obtemos: $$\pi_{k} = - \frac{\lambda}{\gamma(z_{nk})}$$ Usando a condição de normalização $\sum_{k}\pi_{k} = 1$, podemos encontrar o valor de $\lambda$: $$\sum_{k = 1}^{K} - \frac{\lambda}{\gamma(z_{nk})} = 1$$ Resolvendo para $\lambda$, obtemos: $$\lambda = - \frac{1}{\sum_{k = 1}^{K}\frac{1}{\gamma(z_{nk})}}$$ Substituindo esse valor de $\lambda$ na expressão para $\pi_{k}$, obtemos: $$\pi_{k} = \frac{\gamma(z_{nk})}{\sum_{j = 1}^{K}\gamma(z_{nj})} = \frac{N_{k}}{N}$$
-
-Vale ressaltar que o [\[optimal-mean-k\]](#optimal-mean-k), [\[optimal-covariance-k\]](#optimal-covariance-k) e [\[optimal-mixing-coefficient-k\]](#optimal-mixing-coefficient-k) não representam formas fechadas dos parâmetros do modelo, pois eles dependem de $\gamma(z_{nk})$, que por sua vez depende dos próprios parâmetros do modelo. Portanto, não podemos resolver essas equações diretamente. Em vez disso, usamos o algoritmo EM, que alterna entre calcular $\gamma(z_{nk})$ com os parâmetros atuais (passo E) e atualizar os parâmetros do modelo usando as fórmulas acima (passo M).
-
-**Algoritmo EM**
-
-1.  **function** *EM*($X$) {
-
-    1.  **initialize** $\mu_{k},\Sigma_{k},\pi_{k}$
-
-    2.  **// Passo E**
-
-    3.  $\gamma(z_{nk}) = \frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)}$
-
-    4.  **// Passo M**
-
-    5.  $N_{k} = \sum_{n = 1}^{N}\gamma(z_{nk})$
-
-    6.  $\mu_{k} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})x_{n}$
-
-    7.  $\Sigma_{k} = \frac{1}{N_{k}}\sum_{n = 1}^{N}\gamma(z_{nk})\left( x_{n} - \mu_{k} \right)\left( x_{n} - \mu_{k} \right)^{T}$
-
-    8.  $\pi_{k} = \frac{N_{k}}{N}$
-
-    9.  **// Calcular a log-verossimilhança**
-
-    10. $\ln p\left( X~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln\left\{ \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right) \right\}$
-
-2.  }
-
-<a id="introducao-e-definicao"></a>
-<a id="secao-10"></a>
-
-## Introdução e Definição
-
-No k-means, cada ponto é atribuído a um único cluster, o que significa que a fronteira entre os clusters é rígida. No entanto, em muitos casos, pode ser mais apropriado permitir que cada ponto tenha uma probabilidade de pertencer a cada cluster. Isso nos leva aos Modelos de Mistura Gaussiana (GMMs), que é uma generalização do K-means.
-
-Aqui, nós supomos que cada ponto **pode** ter saído de um dos $K$ clusters, mas não sabemos de qual, cada cluster esse sendo representado por uma distribuição gaussiana. Cada cluster $k$ é caracterizado por uma média $\mu_{k}$ e uma matriz de covariância $\Sigma_{k}$. Além disso, cada cluster tem um peso $\pi_{k}$, que representa a proporção de pontos que pertencem a esse cluster.
-
-**Definição: Modelo de Mistura Gaussiana**
-
-Um Modelo de Mistura Gaussiana é definido como: $$p(x) = \sum_{k = 1}^{K}\pi_{k}N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)$$ onde $N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)$ é a densidade da distribuição gaussiana com média $\mu_{k}$ e covariância $\Sigma_{k}$, e $\pi_{k}$ são os pesos dos clusters, que satisfazem $\sum_{k = 1}^{K}\pi_{k} = 1$.
-
-**Teorema: Validade da distribuição**
-
-Seja $p(x)$ um Modelo de Mistura Gaussiana com $K$ componentes. Então, $p(x)$ é uma distribuição de probabilidade válida, ou seja, $p(x) \geq 0$ para todo $x$ e $\int p(x)dx = 1$.
-
-**Demonstração**
-
-Para mostrar que $p(x) \geq 0$, note que cada termo na soma é não-negativo, pois $\pi_{k} \geq 0$ e $N\left( x~\vert ~\mu_{k},\Sigma_{k} \right) \geq 0$. Portanto, $p(x) \geq 0$ para todo $x$.
-
-Para mostrar que a integral de $p(x)$ sobre todo o espaço é igual a 1, usamos a linearidade da integral: $$\begin{aligned} \int p(x)dx & = \int\sum_{k = 1}^{K}\pi_{k}N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)dx \\ & = \sum_{k = 1}^{K}\pi_{k}\int N\left( x~\vert ~\mu_{k},\Sigma_{k} \right)dx \\ & = \sum_{k = 1}^{K}\pi_{k} \ast 1 \\ & = \sum_{k = 1}^{K}\pi_{k} \\ & = 1 \end{aligned}$$
-
-Vamos também introduzir o conceito de **variável latente**. Intuitivamente, uma variável latente é uma variável que não observamos diretamente, mas que influencia os dados que observamos. Por exemplo, a classe de um documento em uma análise de tópicos, já que podemos não saber que um documento fala sobre biologia, mas ele influencia nosso modelo a aprender sobre o assunto.
-
-No caso dos GMMs, podemos introduzir uma variável latente $z_{n}$ para cada ponto $x_{n}$, que indica de qual cluster o ponto foi gerado. Especificamente, $z_{n}$ é um vetor one-hot de dimensão $K$, onde $z_{nk} = 1$ se o ponto $x_{n}$ foi gerado pelo cluster $k$, e $z_{nj} = 0$ para $k \neq j$.
-
-Vamos definir a distribuição conjunta de $x_{n}$ e $z_{n}$ como: $$p\left( x_{n},z_{n} \right) = p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right)$$
-
-a distribuição marginal de $z_{n}$ é definida em termo dos coeficientes de mistura $\pi_{k}$: $${\mathbb{P}}(z_{nk} = 1) = \pi_{k}$$
-
-de forma que $\pi_{k} \geq 0$ e $\sum_{k = 1}^{K}\pi_{k} = 1$ para que $p\left( z_{n} \right)$ seja uma distribuição de probabilidade válida. Por conta da forma que definimos $z_{n}$ como vetor one-hot, podemos reescrever sua distribuição como: $$p\left( z_{n} \right) = \prod_{k = 1}^{K}\pi_{k}^{z_{nk}}$$
-
-Similarmente, a distribuição condicional de $x_{n}$ dado $z_{nk} = 1$ é definida como: $$p\left( x_{n}~\vert ~z_{nk} = 1 \right) = N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)$$
-
-que também pode ser escrita na forma: $$p\left( x_{n}~\vert ~z_{n} \right) = \prod_{k = 1}^{K}{N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}^{z_{nk}}$$
-
-A distribuição conjunta é escrita então como $p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right)$ e a marginal sobre $x$ é obtida somando sobre todas as possíveis configurações de $z_{n}$: $$p\left( x_{n} \right) = \sum_{z_{n}}p\left( x_{n},z_{n} \right) = \sum_{z_{n}}p\left( z_{n} \right)p\left( x_{n}~\vert ~z_{n} \right) = \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)$$
-
-Pode até parecer que, representando a distribuição de $x_{n}$ como uma mistura de gaussianas, estamos apenas complicando as coisas, mas a introdução da variável latente $z_{n}$ nos permite trabalhar com a conjunta (que vai se mostrar ser bem mais fácil de lidar) e também nos dá uma interpretação probabilística do modelo.
-
-Outra quantidade que será importante é a probabilidade posterior de $z_{n}$ dado $x_{n}$ (chamaremos de $\gamma(z_{nk})$), que é dada pelo Teorema de Bayes: $$\begin{aligned} \gamma(z_{nk}) & = {\mathbb{P}}(z_{nk} = 1~\vert ~x_{n}) \\ & = \frac{p\left( z_{nk} = 1 \right)p\left( x_{n}~\vert ~z_{nk} = 1 \right)}{p\left( x_{n} \right)} \\ & = \frac{\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right)}{\sum_{j = 1}^{K}\pi_{j}N\left( x_{n}~\vert ~\mu_{j},\Sigma_{j} \right)} \end{aligned}$$
-
-Vamos interpretar $\pi_{k}$ como a probabilidade de que o ponto $x_{n}$ tenha sido gerado pelo cluster $k$ **a posteriori** e $\gamma(z_{nk})$ como a probabilidade de que o ponto $x_{n}$ pertença ao cluster $k$ **a posteriori**. Também podemos chamar $\gamma(z_{nk})$ de *responsabilidade* do cluster $k$ pelo ponto $x_{n}$, pois ela indica o quanto o cluster $k$ é responsável por gerar o ponto $x_{n}$.
-
-<a id="maxima-verossimilhanca"></a>
-<a id="secao-11"></a>
-
-## Máxima Verossimilhança
-
-Suponha que temos um conjunto de dados $X = \left\{ x_{1},x_{2},\ldots,x_{N} \right\}$ com $x_{i} \in {\mathbb{R}}^{D}$ e queremos modelar essa matriz $N \times D$ como uma mistura de $K$ gaussianas. As variáveis latentes $Z = \left\{ z_{1},z_{2},\ldots,z_{N} \right\}$ que indicam de qual cluster cada ponto foi gerado também serão representadas por uma matriz $N \times K$ de vetores one-hot. A função de log-verossimilhança do modelo é então dada por: $$\ln p\left( X~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln p\left( x_{n}~\vert ~\mu,\Sigma,\pi \right) = \sum_{n = 1}^{N}\ln\left\{ \sum_{k = 1}^{K}\pi_{k}N\left( x_{n}~\vert ~\mu_{k},\Sigma_{k} \right) \right\}$$
-
-Acaba que maximizar essa verossimilhança diretamente é difícil, pois a presença da soma dentro do log torna a derivada complicada. Uma alternativa válida é maximizar a verossimilhança por métodos de otimização de gradiente, porém, nós vamos utilizar o algoritmo Expectation-Maximization (EM), que é um método iterativo para encontrar estimativas de máxima verossimilhança em modelos com variáveis latentes.
-
 <a id="singularidades-e-identificabilidade"></a>
 <a id="secao-15"></a>
 
@@ -273,5 +273,5 @@ Outro problema é que, dado um ponto (não-degenerado) no espaço dos parâmetro
 
 [Trilha: A3](../../../trilhas/aprendizado-de-maquina/a3.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a3.md#apresentacao-original)
 
-- Anterior: [Minimzando o Erro de Projeção](../principal-component-analysis/index.md#minimzando-o-erro-de-projecao)
+- Anterior: [Principal Component Analysis](../principal-component-analysis/index.md)
 - Próximo: [Variational Autoencoders](../variational-autoencoders/index.md)

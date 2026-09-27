@@ -116,5 +116,5 @@ Como vimos antes, também conseguimos uma fórmula recursiva para o método do s
 
 [Trilha: A2](../../../trilhas/otimizacao-para-ciencia-de-dados/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/otimizacao-para-ciencia-de-dados/a2.md#apresentacao-original)
 
-- Anterior: [Interpretação via regularização](../metodo-do-gradiente/index.md#interpretacao-via-regularizacao)
+- Anterior: [Método do Gradiente](../metodo-do-gradiente/index.md)
 - Próximo: [Gradiente Projetado](../gradiente-projetado/index.md)

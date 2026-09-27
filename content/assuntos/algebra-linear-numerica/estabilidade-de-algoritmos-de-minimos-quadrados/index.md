@@ -22,33 +22,27 @@ ordem_na_trilha: 9
 # Estabilidade de Algoritmos de Mínimos Quadrados
 
 
-<a id="equacoes-normais"></a>
-<a id="secao-13"></a>
+<a id="primeira-etapa"></a>
+<a id="secao-10"></a>
 
-## Equações Normais
+## Primeira Etapa
 
-A gente pode resolver por equações normais, que é o passo inicial para todos os outros métodos né? Vamos ver o que obtemos:
+Vamos fazer isso na prática. Vamos montar um cenário para a aplicação de cada um dos algoritmos. Vamos pegar $m$ pontos igualmente espaçados entre $0$ e $1$, montamos a <u>[matriz de vandermonde](https://en.wikipedia.org/wiki/Vandermonde_matrix)</u> desses pontos e aplicamos uma função que tentaremos prever com polinômios:
 
 **CÓDIGO**
 
+<a id="min-squared-algorithms-init"></a>
+
 ``` python
-x = np.linalg.solve(A.T @ A, A.T @ b)
-print(1-x[-1])
+import numpy as np
+m = 100
+n = 15
+t = np.linspace(0, 1, m)
+A = np.vander(t, n, True)
+b = np.exp(np.sin(4*t))/2.00678728e+03
 ```
 
-**SAÍDA**
-
-    1.35207472
-
-Meu amigo, esse erro é **TENEBROSO**, não chegou nem **PERTO** do resultado. Claramente as equações normais são um método **instável** de calcular mínimos quadrados. Vamos dar uma visualizada no porquê isso ocorre:
-
-Suponha que nós temos um algoritmo **backward stable** para o problema de mínimos quadrados com uma matriz $A$ de posto-completo que retorna uma solução $\widetilde{x}$ satisfazendo $\|(A + \delta A)\widetilde{x} - b\| = \min$ para algum $\delta A$ com $\|\delta A\|/\| A\| = O\left( \varepsilon_{\text{machine}} \right)$. Pelo teorema da acurácia de algoritmos backward stable (Resumo 1) e o [\[conditioning-min-squared-problems\]](../../condicionando-problemas-de-minimos-quadrados/o-teorema/index.md#conditioning-min-squared-problems) temos: $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \left( \kappa + \frac{\kappa^{2}\tan(\theta)}{\eta} \right)\varepsilon_{\text{machine}} \right)$$<a id="normal-equation-algorithm-x-partialerence"></a>
-
-Suponha que $A$ é mal-condicionada. Dependendo dos valores dos híperparâmetros, podem acontecer duas situações diferentes. Se $\tan(\theta)$ for de ordem $1$, então o lado direito da equação [\[normal-equation-algorithm-x-partialerence\]](#normal-equation-algorithm-x-partialerence) troca e fica $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$. Porém, se $\tan(\theta)$ é próximo de 0, ou $\eta$ é próximo de $\kappa$, então então a equação muda para $O\left( \kappa\varepsilon_{\text{machine}} \right)$ (Usa um teorema mais la pra frente, mas é engraçado ver como tudo tá muito interconectado). Porém, a matriz $A^{\ast}A$ tem número de condicionamento ${\kappa(A)}^{2}$, então o máximo que podemos esperar do problema é $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$
-
-**Teorema**
-
-A solução de um problema de mínimos quadrados com uma matriz $A$ de posto-completo utilizando de equações normais é **instável**. Porém a estabilidade pode ser alcançada ao restringir para uma classe de problemas onde $\kappa(A)$ é pequeno ou $\frac{\tan(\theta)}{\eta}$ é pequeno.
+Oxe, por que que tem essa divisão esquisita no final? Quando a gente não faz essa divisão, ao fazer a previsão dos coeficientes que aproximam a função, temos que o último coeficiente previsto ($x_{15}$) é igual a `2.00678728e+03`, então, nós dividimos $b$ por esse valor para que o último coeficiente seja igual a $1$ no caso matematicamente correto (Sem erros numéricos), assim poderemos fazer comparações apenas visualizando o último número dos coeficientes calculados.
 
 <a id="householder"></a>
 <a id="secao-11"></a>
@@ -135,36 +129,33 @@ Olha só! Já deu uma melhorada no algoritmo!
 
 Solucionar o problema de mínimos quadrados de uma matriz $A$ com posto completo utilizando o algoritmo de Gram-Schmidt (Fazendo de acordo como o código anterior mostra em que $Q^{\ast}b$ é implícito) é **backward stable**
 
-<a id="primeira-etapa"></a>
-<a id="secao-10"></a>
+<a id="equacoes-normais"></a>
+<a id="secao-13"></a>
 
-## Primeira Etapa
+## Equações Normais
 
-Vamos fazer isso na prática. Vamos montar um cenário para a aplicação de cada um dos algoritmos. Vamos pegar $m$ pontos igualmente espaçados entre $0$ e $1$, montamos a <u>[matriz de vandermonde](https://en.wikipedia.org/wiki/Vandermonde_matrix)</u> desses pontos e aplicamos uma função que tentaremos prever com polinômios:
+A gente pode resolver por equações normais, que é o passo inicial para todos os outros métodos né? Vamos ver o que obtemos:
 
 **CÓDIGO**
 
-<a id="min-squared-algorithms-init"></a>
-
 ``` python
-import numpy as np
-m = 100
-n = 15
-t = np.linspace(0, 1, m)
-A = np.vander(t, n, True)
-b = np.exp(np.sin(4*t))/2.00678728e+03
+x = np.linalg.solve(A.T @ A, A.T @ b)
+print(1-x[-1])
 ```
 
-Oxe, por que que tem essa divisão esquisita no final? Quando a gente não faz essa divisão, ao fazer a previsão dos coeficientes que aproximam a função, temos que o último coeficiente previsto ($x_{15}$) é igual a `2.00678728e+03`, então, nós dividimos $b$ por esse valor para que o último coeficiente seja igual a $1$ no caso matematicamente correto (Sem erros numéricos), assim poderemos fazer comparações apenas visualizando o último número dos coeficientes calculados.
+**SAÍDA**
 
-<a id="problemas-de-minimos-quadrados-com-posto-incompleto"></a>
-<a id="secao-15"></a>
+    1.35207472
 
-## Problemas de Mínimos Quadrados com Posto-Incompleto
+Meu amigo, esse erro é **TENEBROSO**, não chegou nem **PERTO** do resultado. Claramente as equações normais são um método **instável** de calcular mínimos quadrados. Vamos dar uma visualizada no porquê isso ocorre:
 
-A gente viu a aplicação de algoritmos em problemas de mínimos quadrados utilizando matrizes de posto-completo, mas pode ter outros casos de matrizes com $\text{posto } < n$, ou até $m < n$. Para essa classe de problemas, é necessário definirmos outro tipo de solução, já que nem todos tem o mesmo comportamento. As vezes precisamos restringir a solução com uma condição. Por conta disso, nem todo algoritmo que vimos ser estável até agora vai ser estável nesse tipo de problema, na verdade, apenas o de SVD será e o de Gram-Schmidt com pivotamento nas colunas.
+Suponha que nós temos um algoritmo **backward stable** para o problema de mínimos quadrados com uma matriz $A$ de posto-completo que retorna uma solução $\widetilde{x}$ satisfazendo $\|(A + \delta A)\widetilde{x} - b\| = \min$ para algum $\delta A$ com $\|\delta A\|/\| A\| = O\left( \varepsilon_{\text{machine}} \right)$. Pelo teorema da acurácia de algoritmos backward stable (Resumo 1) e o [\[conditioning-min-squared-problems\]](../../condicionando-problemas-de-minimos-quadrados/o-teorema/index.md#conditioning-min-squared-problems) temos: $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \left( \kappa + \frac{\kappa^{2}\tan(\theta)}{\eta} \right)\varepsilon_{\text{machine}} \right)$$<a id="normal-equation-algorithm-x-partialerence"></a>
 
-------------------------------------------------------------------------
+Suponha que $A$ é mal-condicionada. Dependendo dos valores dos híperparâmetros, podem acontecer duas situações diferentes. Se $\tan(\theta)$ for de ordem $1$, então o lado direito da equação [\[normal-equation-algorithm-x-partialerence\]](#normal-equation-algorithm-x-partialerence) troca e fica $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$. Porém, se $\tan(\theta)$ é próximo de 0, ou $\eta$ é próximo de $\kappa$, então então a equação muda para $O\left( \kappa\varepsilon_{\text{machine}} \right)$ (Usa um teorema mais la pra frente, mas é engraçado ver como tudo tá muito interconectado). Porém, a matriz $A^{\ast}A$ tem número de condicionamento ${\kappa(A)}^{2}$, então o máximo que podemos esperar do problema é $O\left( \kappa^{2}\varepsilon_{\text{machine}} \right)$
+
+**Teorema**
+
+A solução de um problema de mínimos quadrados com uma matriz $A$ de posto-completo utilizando de equações normais é **instável**. Porém a estabilidade pode ser alcançada ao restringir para uma classe de problemas onde $\kappa(A)$ é pequeno ou $\frac{\tan(\theta)}{\eta}$ é pequeno.
 
 <a id="svd"></a>
 <a id="secao-14"></a>
@@ -192,6 +183,15 @@ Olha só! Temos uma precisão ótima! (O algoritmo da SVD é o mais confiável e
 
 A solução do problema de mínimos quadrados com uma matriz $A$ de posto-completo utilizando o algoritmo de SVD é **backward stable**.
 
+<a id="problemas-de-minimos-quadrados-com-posto-incompleto"></a>
+<a id="secao-15"></a>
+
+## Problemas de Mínimos Quadrados com Posto-Incompleto
+
+A gente viu a aplicação de algoritmos em problemas de mínimos quadrados utilizando matrizes de posto-completo, mas pode ter outros casos de matrizes com $\text{posto } < n$, ou até $m < n$. Para essa classe de problemas, é necessário definirmos outro tipo de solução, já que nem todos tem o mesmo comportamento. As vezes precisamos restringir a solução com uma condição. Por conta disso, nem todo algoritmo que vimos ser estável até agora vai ser estável nesse tipo de problema, na verdade, apenas o de SVD será e o de Gram-Schmidt com pivotamento nas colunas.
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -199,5 +199,5 @@ A solução do problema de mínimos quadrados com uma matriz $A$ de posto-comple
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [O Teorema](../condicionando-problemas-de-minimos-quadrados/index.md#o-teorema)
-- Próximo: [Problemas de Mínimos Quadrados com Posto-Incompleto](#problemas-de-minimos-quadrados-com-posto-incompleto)
+- Anterior: [Condicionando Problemas de Mínimos Quadrados](../condicionando-problemas-de-minimos-quadrados/index.md)
+- Próximo: [Problemas de Autovalores](../problemas-de-autovalores/index.md)

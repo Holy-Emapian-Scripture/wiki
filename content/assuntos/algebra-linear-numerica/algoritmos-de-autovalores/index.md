@@ -33,6 +33,26 @@ Agora a gente pode tirar vantagem do fato que a sequência $$\frac{x}{\| x\|},\f
 
 Ao invés dessas ideias, é mais comum, para propósitos gerais, os algoritmos seguirem um princípio diferente: A computação de uma fatoração explícita de autovalores de $A$, onde um dos fatores da fatoração tem os autovalores de $A$ como entradas. A gente viu 3 desses métodos na última lecture (Diagonalização, Diagonalização Unitária e Fatoração de Schur). Na prática, os algoritmos vão aplicando transformações em $A$ de forma que eles inserem 0 nas colunas e entradas corretas (Tipo o que a gente viu no método de Householder)
 
+<a id="uma-dificuldade-fundamental"></a>
+<a id="secao-29"></a>
+
+## Uma dificuldade fundamental
+
+Acontece que **todo algoritmo para calcular autovalores deve ser iterativo**. Ué, por quê? Lembra que problemas de autovalores podem ser reduzidos a problemas de achar as raízes de um polinômio? Pois é, o inverso também é válido. O livro mostra isso criando um polinômio e expressando ele como o determinante de uma matriz e que as raízes do polinômio são os **autovalores** dessa matriz, mas isso não é o foco aqui. O foco é fazer a associação.
+
+É bem conhecido o fato de que, para polinômios com grau maior ou igual a 5, não existe uma sequência de fórmulas com somas, subtrações, etc. (Fórmula fechada) que encontre suas raízes. O que isso quer dizer? Quer dizer que, se o problema de raízes de polinômios pode ser reduzido para um problema de autovalores, matrizes com dimensão maior ou igual a 5 não podem ter seus autovalores expressos em uma sequência finita de passos.
+
+Por issos que os algoritmos de autovalores devem ser algoritmos iterativos que **convergem** para a solução
+
+<a id="fatoracao-e-diagonalizacao-de-schur"></a>
+<a id="secao-30"></a>
+
+## Fatoração e Diagonalização de Schur
+
+A maioria dos algoritmos de fatoração atuais envolvem o uso da fatoração de Schur de uma matriz. A gente pega a matriz $A$ e vai aplicando transformações nela com matrizes unitárias $Q_{j}$ (Transformação $X \mapsto Q_{j}^{\ast}XQ_{j}$) de forma que o produto: $$Q_{j}^{\ast}\ldots Q_{2}^{\ast}Q_{1}^{\ast}AQ_{1}Q_{2}\ldots Q_{j}$$<a id="upper-triangular-transformation"></a> Converja para uma matriz triangular superior $T$ conforme $j \rightarrow \infty$
+
+O livro fala também que é possível utilizar de alguns truques para computar os autovalores complexos e que os algoritmos que veremos também podem ser usados, em matrizes Hermitianas, para obter sua diagonalização unitária.
+
 <a id="duas-fases-da-computacao-de-autovalores"></a>
 <a id="secao-31"></a>
 
@@ -56,26 +76,6 @@ $$
 
 ------------------------------------------------------------------------
 
-<a id="fatoracao-e-diagonalizacao-de-schur"></a>
-<a id="secao-30"></a>
-
-## Fatoração e Diagonalização de Schur
-
-A maioria dos algoritmos de fatoração atuais envolvem o uso da fatoração de Schur de uma matriz. A gente pega a matriz $A$ e vai aplicando transformações nela com matrizes unitárias $Q_{j}$ (Transformação $X \mapsto Q_{j}^{\ast}XQ_{j}$) de forma que o produto: $$Q_{j}^{\ast}\ldots Q_{2}^{\ast}Q_{1}^{\ast}AQ_{1}Q_{2}\ldots Q_{j}$$<a id="upper-triangular-transformation"></a> Converja para uma matriz triangular superior $T$ conforme $j \rightarrow \infty$
-
-O livro fala também que é possível utilizar de alguns truques para computar os autovalores complexos e que os algoritmos que veremos também podem ser usados, em matrizes Hermitianas, para obter sua diagonalização unitária.
-
-<a id="uma-dificuldade-fundamental"></a>
-<a id="secao-29"></a>
-
-## Uma dificuldade fundamental
-
-Acontece que **todo algoritmo para calcular autovalores deve ser iterativo**. Ué, por quê? Lembra que problemas de autovalores podem ser reduzidos a problemas de achar as raízes de um polinômio? Pois é, o inverso também é válido. O livro mostra isso criando um polinômio e expressando ele como o determinante de uma matriz e que as raízes do polinômio são os **autovalores** dessa matriz, mas isso não é o foco aqui. O foco é fazer a associação.
-
-É bem conhecido o fato de que, para polinômios com grau maior ou igual a 5, não existe uma sequência de fórmulas com somas, subtrações, etc. (Fórmula fechada) que encontre suas raízes. O que isso quer dizer? Quer dizer que, se o problema de raízes de polinômios pode ser reduzido para um problema de autovalores, matrizes com dimensão maior ou igual a 5 não podem ter seus autovalores expressos em uma sequência finita de passos.
-
-Por issos que os algoritmos de autovalores devem ser algoritmos iterativos que **convergem** para a solução
-
 <!-- wiki:original:fim -->
 
 
@@ -83,5 +83,5 @@ Por issos que os algoritmos de autovalores devem ser algoritmos iterativos que *
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [Fatoração de Cholesky](../problemas-de-autovalores/index.md#fatoracao-de-cholesky)
-- Próximo: [Fatoração e Diagonalização de Schur](#fatoracao-e-diagonalizacao-de-schur)
+- Anterior: [Problemas de Autovalores](../problemas-de-autovalores/index.md)
+- Próximo: [Redução à forma de Hessenberg](../reducao-a-forma-de-hessenberg/index.md)

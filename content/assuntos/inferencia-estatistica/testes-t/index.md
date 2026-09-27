@@ -22,6 +22,19 @@ ordem_na_trilha: 28
 # Testes $t$
 
 
+<a id="testando-hipoteses-sobre-a-media-de-uma-normal-quando-a-variancia-e-desconhecida"></a>
+<a id="secao-29"></a>
+
+## Testando Hipóteses sobre a Média de uma Normal quando a Variância é Desconhecida
+
+Consideremos $X_{1},\ldots,X_{n}$ uma amostra de uma distribuição normal com média $\mu$ e variância $\sigma^{2}$ desconhecidas, e também que trabalhamos com as hipóteses: $$\begin{array}{r} H_{0}:\mu \leq \mu_{0} \\ H_{1}:\mu > \mu_{0} \end{array}$$<a id="t-test-mu-hypothesis-1"></a>
+
+O espaço paramétrico $\Omega$ suprime todo vetor bidimensiona $\left( \mu,\sigma^{2} \right)$ com $\mu \in ( - \infty,\infty)$ e $\sigma^{2} > 0$. Aqui, definimos a estatística de teste $U$ como: $$U = \sqrt{n} \cdot \frac{{\overline{X}}_{n} - \mu_{0}}{\sigma}'$$<a id="u-statistic"></a> onde o teste rejeita $H_{0}$ se $U \geq c$. Sabemos que a distribuição de $U$ é uma $t$ com $n - 1$ graus de liberdade, por isso os testes que utilizam de $U$ são chamados de **testes $t$**. Quando invertemos as hipóteses: $$\begin{array}{r} H_{0}:\mu \geq \mu_{0} \\ H_{1}:\mu < \mu_{0} \end{array}$$<a id="t-test-mu-hypothesis-2"></a> o teste vira da forma “rejeite $H_{0}$ quando $U \leq c$”
+
+**Exemplo**
+
+No [\[hospital-example-t-test\]](../index.md#hospital-example-t-test), se a gente quisesse um teste de tamanho $\alpha_{0}$, a gente poderia usar o teste $t$ que rejeita $H_{0}$ se a estatística $U$ for menor ou igual a um $c$ (escolhemos $c$ de forma a fazer o teste ter tamanho $\alpha_{0}$)
+
 <a id="propriedades-dos-testes-t"></a>
 <a id="secao-30"></a>
 
@@ -101,18 +114,24 @@ Seja $Y$ e $W$ variáveis aleatórias independentes onde $W \sim N(\psi,1)$ e $Y
 
 Seja $X_{1},\ldots,X_{n}$ uma amostra aleatória de uma distribuição normal com média $\mu$ e variância $\sigma^{2}$. A distribuição da estatística $U$ é dada por uma distribuição $t$ não-central com $n - 1$ graus de liberdade e parâmetro de não-centralidade $\psi = \sqrt{n}(\mu - \mu_{0})/\sigma$. Seja $\delta$ o teste que rejeita $H_{0}:\mu \leq \mu_{0}$ quando $U \geq c$. Então a função de poder de $\delta$ é $\pi(\mu,\sigma^{2}\vert \delta) = 1 - T_{n - 1}\left( c\vert \psi \right)$. Seja $\delta'$ o teste que rejeita $H_{0}:\mu \geq \mu_{0}$ quando $U \leq c$, então a função de poder de $\delta'$ é $\pi(\mu,\sigma^{2}\vert \delta') = T_{n - 1}\left( c\vert \psi \right)$
 
-<a id="testando-hipoteses-sobre-a-media-de-uma-normal-quando-a-variancia-e-desconhecida"></a>
-<a id="secao-29"></a>
+<a id="teste-t-pareado"></a>
+<a id="secao-31"></a>
 
-## Testando Hipóteses sobre a Média de uma Normal quando a Variância é Desconhecida
+## Teste $t$ pareado
 
-Consideremos $X_{1},\ldots,X_{n}$ uma amostra de uma distribuição normal com média $\mu$ e variância $\sigma^{2}$ desconhecidas, e também que trabalhamos com as hipóteses: $$\begin{array}{r} H_{0}:\mu \leq \mu_{0} \\ H_{1}:\mu > \mu_{0} \end{array}$$<a id="t-test-mu-hypothesis-1"></a>
+Em vários experimentos, podemos desejar comparar a mesma variável em condições distintas na mesma amostra, então estaríamos interessados em comparar qual condição possui maior média. Nesses casos é comum fazer a subtração entre os valores de cada condição e tratar como uma variável aleatória normal
 
-O espaço paramétrico $\Omega$ suprime todo vetor bidimensiona $\left( \mu,\sigma^{2} \right)$ com $\mu \in ( - \infty,\infty)$ e $\sigma^{2} > 0$. Aqui, definimos a estatística de teste $U$ como: $$U = \sqrt{n} \cdot \frac{{\overline{X}}_{n} - \mu_{0}}{\sigma}'$$<a id="u-statistic"></a> onde o teste rejeita $H_{0}$ se $U \geq c$. Sabemos que a distribuição de $U$ é uma $t$ com $n - 1$ graus de liberdade, por isso os testes que utilizam de $U$ são chamados de **testes $t$**. Quando invertemos as hipóteses: $$\begin{array}{r} H_{0}:\mu \geq \mu_{0} \\ H_{1}:\mu < \mu_{0} \end{array}$$<a id="t-test-mu-hypothesis-2"></a> o teste vira da forma “rejeite $H_{0}$ quando $U \leq c$”
+**Exemplo:**
 
-**Exemplo**
+O **National Transportation Safety Board** coleta dados de testes de colisão referentes à quantidade e à localização dos danos em bonecos (**dummies**) colocados nos carros testados. Em uma série de testes, um boneco foi colocado no banco do motorista e outro no banco do passageiro dianteiro de cada carro. Uma das variáveis medidas foi o grau de lesão na cabeça de cada boneco. Entre outros aspectos, há interesse em saber se, e/ou em que medida, a quantidade de lesão na cabeça difere entre o banco do motorista e o banco do passageiro.
 
-No [\[hospital-example-t-test\]](../index.md#hospital-example-t-test), se a gente quisesse um teste de tamanho $\alpha_{0}$, a gente poderia usar o teste $t$ que rejeita $H_{0}$ se a estatística $U$ for menor ou igual a um $c$ (escolhemos $c$ de forma a fazer o teste ter tamanho $\alpha_{0}$)
+Sejam $\left( X_{1},\ldots,X_{n} \right)$ as diferenças entre os logaritmos das medidas de lesão na cabeça do lado do motorista e do lado do passageiro. Podemos modelar $\left( X_{1},\ldots,X_{n} \right)$ como uma amostra aleatória de uma distribuição normal com média ( $\mu$ ) e variância ( $\sigma^{2}$ ). Suponha que desejamos testar a hipótese nula ( $H_{0}:\mu \leq 0$ ) contra a alternativa ( $H_{1}:\mu > 0$ ), ao nível de significância ( $\alpha_{0} = 0.01$ ).
+
+Há $n = 164$ carros. O teste consiste em rejeitar ( $H_{0}$ ) se $$U \geq T_{163}^{- 1}(0.99) = 2.35.$$
+
+A média das diferenças é ${\overline{x}}_{n} = 0.2199$. O valor de $\sigma'$ é $0.5342$. A estatística $U$ é então igual a $5.271$. Esse valor é maior que $2.35$, e a hipótese nula seria rejeitada ao nível de $0.01$. De fato, o **p-valor** é menor que $1.0 \cdot 10^{- 6}$.
+
+Suponha também que estamos interessados na função poder sob $H_{1}$ do teste de nível $0.01$. Suponha que a diferença média entre os logaritmos das lesões na cabeça do lado do motorista e do lado do passageiro seja $\frac{\sigma}{4}$. Então, o parâmetro de não centralidade é $\frac{(164)^{\frac{1}{2}}}{4} = 3.20$
 
 <a id="testando-uma-alternativa-bilateral"></a>
 <a id="secao-32"></a>
@@ -142,25 +161,6 @@ Suponha que estamos testando as hipóteses bilaterais $H_{0}:\mu = \mu_{0}$, $H_
 **Demonstração**
 
 Deixe $T_{n - 1}^{- 1}( \cdot )$ denotar a função quantil da $t_{n - 1}$. Nós rejeitariamos a hipótese nula no nível $\alpha_{0}$ se, e somente se, $\vert u\vert  \geq T_{n - 1}^{- 1}\left( 1 - \alpha_{0}/2 \right)$ que é equivalente a $T_{n - 1}\left( \vert u\vert  \right) \geq 1 - \alpha_{0}/2$ que é equivalente a $\alpha_{0} \geq 2\left\lbrack 1 - T_{n - 1}\left( \vert u\vert  \right) \right\rbrack$
-
-<a id="teste-t-pareado"></a>
-<a id="secao-31"></a>
-
-## Teste $t$ pareado
-
-Em vários experimentos, podemos desejar comparar a mesma variável em condições distintas na mesma amostra, então estaríamos interessados em comparar qual condição possui maior média. Nesses casos é comum fazer a subtração entre os valores de cada condição e tratar como uma variável aleatória normal
-
-**Exemplo:**
-
-O **National Transportation Safety Board** coleta dados de testes de colisão referentes à quantidade e à localização dos danos em bonecos (**dummies**) colocados nos carros testados. Em uma série de testes, um boneco foi colocado no banco do motorista e outro no banco do passageiro dianteiro de cada carro. Uma das variáveis medidas foi o grau de lesão na cabeça de cada boneco. Entre outros aspectos, há interesse em saber se, e/ou em que medida, a quantidade de lesão na cabeça difere entre o banco do motorista e o banco do passageiro.
-
-Sejam $\left( X_{1},\ldots,X_{n} \right)$ as diferenças entre os logaritmos das medidas de lesão na cabeça do lado do motorista e do lado do passageiro. Podemos modelar $\left( X_{1},\ldots,X_{n} \right)$ como uma amostra aleatória de uma distribuição normal com média ( $\mu$ ) e variância ( $\sigma^{2}$ ). Suponha que desejamos testar a hipótese nula ( $H_{0}:\mu \leq 0$ ) contra a alternativa ( $H_{1}:\mu > 0$ ), ao nível de significância ( $\alpha_{0} = 0.01$ ).
-
-Há $n = 164$ carros. O teste consiste em rejeitar ( $H_{0}$ ) se $$U \geq T_{163}^{- 1}(0.99) = 2.35.$$
-
-A média das diferenças é ${\overline{x}}_{n} = 0.2199$. O valor de $\sigma'$ é $0.5342$. A estatística $U$ é então igual a $5.271$. Esse valor é maior que $2.35$, e a hipótese nula seria rejeitada ao nível de $0.01$. De fato, o **p-valor** é menor que $1.0 \cdot 10^{- 6}$.
-
-Suponha também que estamos interessados na função poder sob $H_{1}$ do teste de nível $0.01$. Suponha que a diferença média entre os logaritmos das lesões na cabeça do lado do motorista e do lado do passageiro seja $\frac{\sigma}{4}$. Então, o parâmetro de não centralidade é $\frac{(164)^{\frac{1}{2}}}{4} = 3.20$
 
 <a id="testes-t-como-testes-de-razao-de-verossimilhanca"></a>
 <a id="secao-33"></a>
@@ -198,5 +198,5 @@ Ou seja, segue que $\Lambda(\underline{x})$ é uma função **não-crescente** d
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Testes de razão de verossimilhança](../analise-e-teste-de-hipoteses/index.md#testes-de-razao-de-verossimilhanca)
+- Anterior: [Análise e Teste de Hipóteses](../analise-e-teste-de-hipoteses/index.md)
 - Próximo: [Comparando as médias de duas Distribuições Normais](../comparando-as-medias-de-duas-distribuicoes-normais/index.md)

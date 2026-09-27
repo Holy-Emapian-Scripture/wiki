@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/index.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "README"
             }
           }
         ]
@@ -190,6 +190,8 @@
   },
   "active": "7d82234acd301dc6",
   "lastOpenFiles": [
+    "tsconfig.tsbuildinfo",
+    "content/index.md",
     "public/tags/index-og-image.webp",
     "public/trilhas/series-temporais/index-og-image.webp",
     "public/trilhas/projeto-e-analise-de-algoritmos/index-og-image.webp",
@@ -200,7 +202,6 @@
     "public/trilhas/modelagem-estatistica/index-og-image.webp",
     "public/trilhas/inferencia-estatistica/index-og-image.webp",
     "public/trilhas/estrutura-de-dados/index-og-image.webp",
-    "public/trilhas/equacoes-diferenciais-ordinarias/index-og-image.webp",
     "public/assuntos/series-temporais/assets/a1",
     "public/assuntos/series-temporais/assets",
     "public/assuntos/aprendizado-profundo/assets/a1",
@@ -234,7 +235,6 @@
     "node_modules/yaml/README.md",
     "node_modules/@esbuild/linux-x64/README.md",
     "node_modules/oniguruma-parser/README.md",
-    "node_modules/resolve/SECURITY.md",
-    "node_modules/preact/README.md"
+    "node_modules/resolve/SECURITY.md"
   ]
 }

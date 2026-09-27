@@ -22,55 +22,6 @@ ordem_na_trilha: 14
 # Projetores
 
 
-<a id="projecao-com-base-ortonormal"></a>
-<a id="secao-18"></a>
-
-## Projeção com base ortonormal
-
-Vimos na prova de [\[orthogonal-projectors\]](../projetores-ortogonais/index.md#orthogonal-projectors) que alguns valores singulares de $P$ são $0$, então poderíamos remover essas linhas de $\Sigma$ e reduzi-lo a $I$, também removendo as colunas e linhas de $Q$, obtendo: $$P = \widehat{Q}{\widehat{Q}}^{\ast}$$ Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$ e sejam eles as colunas de $\widehat{Q}$, sabemos que, para qualquer vetor $v \in {\mathbb{C}}^{m}$: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ O quê? Quando vimos isso? Calma, deixe-me recapitular para você:
-
-**Teorema**
-
-Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$, então qualquer $v \in {\mathbb{C}}^{m}$ pode ser expresso como $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ Com $r$ sendo outro vetor em $C^{m}$ ortogonal a $\left\{ q_{1},\ldots,q_{n} \right\}$ e, $\rightarrow n = m \Rightarrow r = 0$ e o conjunto de vetores escolhido é uma base para ${\mathbb{C}}^{m}$
-
-**Demonstração**
-
-Você sabe que, dada uma base de ${\mathbb{C}}^{m}$, qualquer vetor pode ser expresso como uma combinação linear desses vetores. Imagine a base canônica (com algumas rotações, essa lógica pode ser expandida para outras bases ortonormais), você pode imaginar que, se projetar o vetor que você tem sobre qualquer vetor da base canônica, obterá um vetor que, se somar com outro vetor $r$, obterá seu vetor original novamente! E podemos continuar esse processo até fazermos isso com $n$ vetores da base canônica, obtendo o $r$ original que, se somarmos todas as nossas projeções, obtemos o vetor original novamente, ou seja: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$
-
-Ok, sabendo que um vetor pode ser expresso assim, podemos ver que a parte da soma é a mesma que fazer: $$\widehat{Q}{\widehat{Q}}^{\ast}v$$ Ou seja, $\sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$ é um projetor sobre $C\left( \widehat{Q} \right)$
-
-**Teorema**
-
-O complemento de um projetor ortogonal também é um projetor ortogonal
-
-**Demonstração**
-
-1.  $\left( I - \widehat{Q}{\widehat{Q}}^{\ast} \right)^{2} = I - 2\widehat{Q}{\widehat{Q}}^{\ast} + \left( \widehat{Q}{\widehat{Q}}^{\ast} \right)^{2} = I - 2\widehat{Q}{\widehat{Q}}^{\ast} + \widehat{Q}{\widehat{Q}}^{\ast} = I - \widehat{Q}{\widehat{Q}}^{\ast}$
-
-2.  $\left( I - \widehat{Q}{\widehat{Q}}^{\ast} \right)^{\ast} = I - \left( \widehat{Q}{\widehat{Q}}^{\ast} \right)^{\ast} = I - \widehat{Q}{\widehat{Q}}^{\ast}$
-
-Um caso especial é o projetor ortogonal de posto um, que pega o vetor e obtém o componente em uma única direção $q$, que pode ser escrito: $$P_{q} = qq^{\ast}$$ E seu complemento é a matriz de posto ($m - 1$) $$P_{\bot q} = I - qq^{\ast}$$ Esse conceito também é válido para vetores não unitários: $$P_{a} = \frac{aa^{\ast}}{a^{\ast}a}$$ $$P_{\bot a} = I - \frac{aa^{\ast}}{a^{\ast}a}$$ Só para esclarecer as coisas. Se projetarmos um vetor $v$ sobre um vetor $a$, estamos restringindo $v$ na direção da projeção, então, se projetarmos no complemento de $a$, é como se pudéssemos expressar $v$ como uma combinação linear de $a$ e alguns outros vetores, e então remover a parte de $a$ nessa combinação linear, tendo apenas os outros vetores expressando um novo vetor.
-
-<a id="projecao-em-base-arbitraria"></a>
-<a id="secao-19"></a>
-
-## Projeção em base arbitrária
-
-Dada uma base arbitrária $\left\{ a_{j} \right\}$, deixamos os vetores dessa base serem as colunas de $A$. Dado $v$ com $Pv = y \in$ $C(A)$, isso significa $y - v\bot$ $C(A)$, ou seja, $a_{j}^{\ast (y - v)} = 0\ \forall j$. Sabemos que $y \in$ $C(A)$, então vamos escrevê-lo como $Ax = y$, então podemos reescrever $a_{j}^{\ast (y - v)} = 0\ \forall j$ como: $$A^{\ast (Ax - v)} = 0 \Leftrightarrow A^{\ast}Ax - A^{\ast}v = 0 \Leftrightarrow A^{\ast}Ax = A^{\ast}v \Leftrightarrow x = \left( A^{\ast}A \right)^{- 1}A^{\ast}v$$ $$Ax = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}v \Leftrightarrow y = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}v$$ $$\Rightarrow P = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}$$
-
-------------------------------------------------------------------------
-
-<a id="projecao-ortogonal-sobre-um-vetor"></a>
-<a id="secao-17"></a>
-
-## Projeção ortogonal sobre um vetor
-
-Vamos usar o mesmo exemplo usado anteriormente
-
-![](../assets/Orthogonal_Projector.jpg)
-
-Seja $q$ o vetor que gera $P$, sabemos que $Pv = \alpha q$ $$(v - Pv)^{\ast}q = 0 = (v - \alpha q)^{\ast}q = 0$$ Agora procuramos o $\alpha$ que torna esta equação válida $$v^{\ast}q - \alpha q^{\ast}q = 0 \Leftrightarrow v^{\ast}q = \alpha q^{\ast}q \Leftrightarrow \alpha = \frac{v^{\ast}q}{q^{\ast}q}$$ $$Pv = \alpha q \Leftrightarrow Pv = \frac{v^{\ast}q}{q^{\ast}q}q \Leftrightarrow Pv = \frac{q^{\ast}v}{q^{\ast}q}q \Leftrightarrow Pv = q\frac{q^{\ast}v}{q^{\ast}q} \Leftrightarrow Pv = \frac{qq^{\ast}}{q^{\ast}q}v \Rightarrow P = \frac{qq^{\ast}}{q^{\ast}q}$$
-
 <a id="projetores-complementares"></a>
 <a id="secao-15"></a>
 
@@ -125,6 +76,55 @@ $$
 P = Q\Sigma Q^{\ast} \Leftrightarrow P^{\ast} = Q\Sigma^{\ast}Q^{\ast} = Q\Sigma Q^{\ast} = P
 $$
 
+<a id="projecao-ortogonal-sobre-um-vetor"></a>
+<a id="secao-17"></a>
+
+## Projeção ortogonal sobre um vetor
+
+Vamos usar o mesmo exemplo usado anteriormente
+
+![](../assets/Orthogonal_Projector.jpg)
+
+Seja $q$ o vetor que gera $P$, sabemos que $Pv = \alpha q$ $$(v - Pv)^{\ast}q = 0 = (v - \alpha q)^{\ast}q = 0$$ Agora procuramos o $\alpha$ que torna esta equação válida $$v^{\ast}q - \alpha q^{\ast}q = 0 \Leftrightarrow v^{\ast}q = \alpha q^{\ast}q \Leftrightarrow \alpha = \frac{v^{\ast}q}{q^{\ast}q}$$ $$Pv = \alpha q \Leftrightarrow Pv = \frac{v^{\ast}q}{q^{\ast}q}q \Leftrightarrow Pv = \frac{q^{\ast}v}{q^{\ast}q}q \Leftrightarrow Pv = q\frac{q^{\ast}v}{q^{\ast}q} \Leftrightarrow Pv = \frac{qq^{\ast}}{q^{\ast}q}v \Rightarrow P = \frac{qq^{\ast}}{q^{\ast}q}$$
+
+<a id="projecao-com-base-ortonormal"></a>
+<a id="secao-18"></a>
+
+## Projeção com base ortonormal
+
+Vimos na prova de [\[orthogonal-projectors\]](../projetores-ortogonais/index.md#orthogonal-projectors) que alguns valores singulares de $P$ são $0$, então poderíamos remover essas linhas de $\Sigma$ e reduzi-lo a $I$, também removendo as colunas e linhas de $Q$, obtendo: $$P = \widehat{Q}{\widehat{Q}}^{\ast}$$ Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$ e sejam eles as colunas de $\widehat{Q}$, sabemos que, para qualquer vetor $v \in {\mathbb{C}}^{m}$: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ O quê? Quando vimos isso? Calma, deixe-me recapitular para você:
+
+**Teorema**
+
+Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$, então qualquer $v \in {\mathbb{C}}^{m}$ pode ser expresso como $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ Com $r$ sendo outro vetor em $C^{m}$ ortogonal a $\left\{ q_{1},\ldots,q_{n} \right\}$ e, $\rightarrow n = m \Rightarrow r = 0$ e o conjunto de vetores escolhido é uma base para ${\mathbb{C}}^{m}$
+
+**Demonstração**
+
+Você sabe que, dada uma base de ${\mathbb{C}}^{m}$, qualquer vetor pode ser expresso como uma combinação linear desses vetores. Imagine a base canônica (com algumas rotações, essa lógica pode ser expandida para outras bases ortonormais), você pode imaginar que, se projetar o vetor que você tem sobre qualquer vetor da base canônica, obterá um vetor que, se somar com outro vetor $r$, obterá seu vetor original novamente! E podemos continuar esse processo até fazermos isso com $n$ vetores da base canônica, obtendo o $r$ original que, se somarmos todas as nossas projeções, obtemos o vetor original novamente, ou seja: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$
+
+Ok, sabendo que um vetor pode ser expresso assim, podemos ver que a parte da soma é a mesma que fazer: $$\widehat{Q}{\widehat{Q}}^{\ast}v$$ Ou seja, $\sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$ é um projetor sobre $C\left( \widehat{Q} \right)$
+
+**Teorema**
+
+O complemento de um projetor ortogonal também é um projetor ortogonal
+
+**Demonstração**
+
+1.  $\left( I - \widehat{Q}{\widehat{Q}}^{\ast} \right)^{2} = I - 2\widehat{Q}{\widehat{Q}}^{\ast} + \left( \widehat{Q}{\widehat{Q}}^{\ast} \right)^{2} = I - 2\widehat{Q}{\widehat{Q}}^{\ast} + \widehat{Q}{\widehat{Q}}^{\ast} = I - \widehat{Q}{\widehat{Q}}^{\ast}$
+
+2.  $\left( I - \widehat{Q}{\widehat{Q}}^{\ast} \right)^{\ast} = I - \left( \widehat{Q}{\widehat{Q}}^{\ast} \right)^{\ast} = I - \widehat{Q}{\widehat{Q}}^{\ast}$
+
+Um caso especial é o projetor ortogonal de posto um, que pega o vetor e obtém o componente em uma única direção $q$, que pode ser escrito: $$P_{q} = qq^{\ast}$$ E seu complemento é a matriz de posto ($m - 1$) $$P_{\bot q} = I - qq^{\ast}$$ Esse conceito também é válido para vetores não unitários: $$P_{a} = \frac{aa^{\ast}}{a^{\ast}a}$$ $$P_{\bot a} = I - \frac{aa^{\ast}}{a^{\ast}a}$$ Só para esclarecer as coisas. Se projetarmos um vetor $v$ sobre um vetor $a$, estamos restringindo $v$ na direção da projeção, então, se projetarmos no complemento de $a$, é como se pudéssemos expressar $v$ como uma combinação linear de $a$ e alguns outros vetores, e então remover a parte de $a$ nessa combinação linear, tendo apenas os outros vetores expressando um novo vetor.
+
+<a id="projecao-em-base-arbitraria"></a>
+<a id="secao-19"></a>
+
+## Projeção em base arbitrária
+
+Dada uma base arbitrária $\left\{ a_{j} \right\}$, deixamos os vetores dessa base serem as colunas de $A$. Dado $v$ com $Pv = y \in$ $C(A)$, isso significa $y - v\bot$ $C(A)$, ou seja, $a_{j}^{\ast (y - v)} = 0\ \forall j$. Sabemos que $y \in$ $C(A)$, então vamos escrevê-lo como $Ax = y$, então podemos reescrever $a_{j}^{\ast (y - v)} = 0\ \forall j$ como: $$A^{\ast (Ax - v)} = 0 \Leftrightarrow A^{\ast}Ax - A^{\ast}v = 0 \Leftrightarrow A^{\ast}Ax = A^{\ast}v \Leftrightarrow x = \left( A^{\ast}A \right)^{- 1}A^{\ast}v$$ $$Ax = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}v \Leftrightarrow y = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}v$$ $$\Rightarrow P = {A\left( A^{\ast}A \right)}^{- 1}A^{\ast}$$
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -132,5 +132,5 @@ $$
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Propriedades de matrizes com SVD](../svd/index.md#propriedades-de-matrizes-com-svd)
-- Próximo: [Projeção ortogonal sobre um vetor](#projecao-ortogonal-sobre-um-vetor)
+- Anterior: [SVD](../svd/index.md)
+- Próximo: [Fatoração QR](../fatoracao-qr/index.md)

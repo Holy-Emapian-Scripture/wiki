@@ -48,5 +48,5 @@ A Lei dos Grandes Números diz que os momentos amostrais convergem em probabilid
 
 [Trilha: A1](../../../trilhas/inferencia-estatistica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a1.md#apresentacao-original)
 
-- Anterior: [Computação Numérica](../estatistica-frequentista/index.md#computacao-numerica)
+- Anterior: [Estatística Frequentista](../estatistica-frequentista/index.md)
 - Próximo: [Estatística Suficiente](../estatistica-suficiente/index.md)

@@ -22,15 +22,6 @@ ordem_na_trilha: 12
 # Diagnóstico Visual
 
 
-<a id="covariaveis"></a>
-<a id="secao-19"></a>
-
-## Covariáveis
-
-Dentro dessa estrutura, podem existir também **covariáveis explicativas** que influenciam a série temporal. Por exemplo, em uma série de vendas de um produto, fatores como campanhas de marketing, feriados ou eventos especiais podem afetar os valores observados. Incorporar essas covariáveis nos modelos pode melhorar a precisão das previsões e fornecer insights sobre os fatores que impactam a série. Ainda dentro do nosso framework visual, podemos introduzir essas covariáveis como $$y_{t} = \underset{\text{ Estrutura Temporal}}{\underbrace{T_{t} + S_{t}}} + \underset{\text{ Covariáveis}}{\underbrace{x_{t}^{T}\beta}} + R_{t}$$
-
-Na prática, $T_{t}$ e $S_{t}$ são incorporados dentro de $x_{t}$ e não são derivados explicitamente, mas é importante entender que eles existem e como eles caracterizam a série temporal. A análise visual pode nos ajudar a identificar quais covariáveis podem ser relevantes para o modelo e como elas se relacionam com os padrões observados na série.
-
 <a id="introducao"></a>
 <a id="secao-18"></a>
 
@@ -50,24 +41,25 @@ Visualmente conseguimos identificar cada um dos componentes da série temporal.
 
 **$T$**: No médio/longo prazo, a tendência é um crescimento linear, com inclinação positiva. Mesmo que existam flutuações de subida e descida, é perceptível que a cada a no o valor de $y_{t}$ tende a aumentar. **$S$**: A série mostra uma sazonalidade de subida no inicio de cada ano e descida no final, mostrando um padrão anual claro (mas de forma que a descida sempre se mantém acima do padrão anterior, gerando a tendência positiva citada anteriormente)
 
-<a id="residuos"></a>
-<a id="secao-22"></a>
+<a id="covariaveis"></a>
+<a id="secao-19"></a>
 
-## Resíduos
+## Covariáveis
 
-Por definição $R_{t} = y_{t} - \left( T_{t} + S_{t} \right)$, ou seja, o que sobra após extraírmos a tendência e a sazonalidade. Tomemos por exemplo o seguinte gráfico
+Dentro dessa estrutura, podem existir também **covariáveis explicativas** que influenciam a série temporal. Por exemplo, em uma série de vendas de um produto, fatores como campanhas de marketing, feriados ou eventos especiais podem afetar os valores observados. Incorporar essas covariáveis nos modelos pode melhorar a precisão das previsões e fornecer insights sobre os fatores que impactam a série. Ainda dentro do nosso framework visual, podemos introduzir essas covariáveis como $$y_{t} = \underset{\text{ Estrutura Temporal}}{\underbrace{T_{t} + S_{t}}} + \underset{\text{ Covariáveis}}{\underbrace{x_{t}^{T}\beta}} + R_{t}$$
 
-![Exemplo de resíduos em uma série temporal](../assets/A1/tsr-not-residuals.png)
+Na prática, $T_{t}$ e $S_{t}$ são incorporados dentro de $x_{t}$ e não são derivados explicitamente, mas é importante entender que eles existem e como eles caracterizam a série temporal. A análise visual pode nos ajudar a identificar quais covariáveis podem ser relevantes para o modelo e como elas se relacionam com os padrões observados na série.
 
-*Figura 6. Exemplo de resíduos em uma série temporal*
+<a id="tendencia"></a>
+<a id="secao-20"></a>
 
-Aqui, estratificamos $T$ que é a média móvel, no entanto, o gráfico ainda contém a estrutura da **sazonalidade**. Podemos, nesse caso, interpretar a sazonalidade como a **média mensal** de $y_{t} - T_{t}$ (detalhes serão melhor compreendidos posteriormente). Removendo essa sazonalidade $S_{t}$, então obtemos um gráfico dos resíduos
+## Tendência
 
-![Exemplo de resíduos em uma série temporal](../assets/A1/tsr-residuals.png)
+Tendência é o movimento lento do nível da série: crescimento, queda ou platô ao longo de muitos períodos. Em dados mensais, uma média móvel com janela da ordem de um ano (por exemplo 12) alisa oscilações curtas e ajuda a ver esse nível. A média móvel aqui é ajuda visual, não um modelo formal
 
-*Figura 7. Exemplo de resíduos em uma série temporal*
+![Exemplo de tendência em uma série temporal](../assets/A1/tsr-trend.png)
 
-Essa extração visual é temporária, serve no momento para termos um entendimento do que são resíduos e como eles se comportam. Posteriormente, vamos aprender a extrair $T$ e $S$ de forma formal, utilizando modelos estatísticos
+*Figura 2. Exemplo de tendência em uma série temporal*
 
 <a id="sazonalidade"></a>
 <a id="secao-21"></a>
@@ -96,6 +88,25 @@ Sazonalidade é estrutura que se repete em fases do calendário (mês do ano, di
 
 Em uma frase: overlay = “como o ano se parece”; sem tendência = “a onda no tempo”; boxplot = “estatística por mês”
 
+<a id="residuos"></a>
+<a id="secao-22"></a>
+
+## Resíduos
+
+Por definição $R_{t} = y_{t} - \left( T_{t} + S_{t} \right)$, ou seja, o que sobra após extraírmos a tendência e a sazonalidade. Tomemos por exemplo o seguinte gráfico
+
+![Exemplo de resíduos em uma série temporal](../assets/A1/tsr-not-residuals.png)
+
+*Figura 6. Exemplo de resíduos em uma série temporal*
+
+Aqui, estratificamos $T$ que é a média móvel, no entanto, o gráfico ainda contém a estrutura da **sazonalidade**. Podemos, nesse caso, interpretar a sazonalidade como a **média mensal** de $y_{t} - T_{t}$ (detalhes serão melhor compreendidos posteriormente). Removendo essa sazonalidade $S_{t}$, então obtemos um gráfico dos resíduos
+
+![Exemplo de resíduos em uma série temporal](../assets/A1/tsr-residuals.png)
+
+*Figura 7. Exemplo de resíduos em uma série temporal*
+
+Essa extração visual é temporária, serve no momento para termos um entendimento do que são resíduos e como eles se comportam. Posteriormente, vamos aprender a extrair $T$ e $S$ de forma formal, utilizando modelos estatísticos
+
 <a id="split-temporal"></a>
 <a id="secao-23"></a>
 
@@ -109,17 +120,6 @@ Comentamos anteriormente sobre, para fazer modelos preditivos das séries tempor
 
 ------------------------------------------------------------------------
 
-<a id="tendencia"></a>
-<a id="secao-20"></a>
-
-## Tendência
-
-Tendência é o movimento lento do nível da série: crescimento, queda ou platô ao longo de muitos períodos. Em dados mensais, uma média móvel com janela da ordem de um ano (por exemplo 12) alisa oscilações curtas e ajuda a ver esse nível. A média móvel aqui é ajuda visual, não um modelo formal
-
-![Exemplo de tendência em uma série temporal](../assets/A1/tsr-trend.png)
-
-*Figura 2. Exemplo de tendência em uma série temporal*
-
 <!-- wiki:original:fim -->
 
 
@@ -127,5 +127,5 @@ Tendência é o movimento lento do nível da série: crescimento, queda ou plat�
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Deep Learning (DL)](../modelagem-classica-aplicada-ao-tempo/deep-learning-dl/index.md)
-- Próximo: [Sazonalidade](#sazonalidade)
+- Anterior: [Modelagem Clássica aplicada ao Tempo](../modelagem-classica-aplicada-ao-tempo/index.md)
+- Próximo: [Estacionariedade e ACF](../estacionariedade-e-acf/index.md)

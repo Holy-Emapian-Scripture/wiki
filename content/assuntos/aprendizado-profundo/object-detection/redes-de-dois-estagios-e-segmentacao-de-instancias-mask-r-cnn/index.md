@@ -22,6 +22,23 @@ ordem_na_trilha: 38
 # Redes de Dois Estágios e Segmentação de Instâncias: Mask R-CNN
 
 
+<a id="geracao-de-propostas-com-a-rpn-region-proposal-network"></a>
+<a id="secao-47"></a>
+
+## Geração de propostas com a RPN (Region Proposal Network)
+
+Antes de mais nada, a **imagem é redimensionada** para caber na rede backbone. Essa rede backbone recebe a imagem e gera um **feature map** que representa as características da imagem. Esse **feature map** é então passado para a **Region Proposal Network (RPN)**, que é responsável por gerar propostas de regiões onde objetos podem estar localizados. A RPN utiliza um conjunto de $k$ **anchor boxes** de diferentes tamanhos e proporções para cobrir uma variedade de objetos possíveis na imagem.
+
+A RPN fica responsável por aprender principalmente duas coisas: A probabilidade de a anchor box conter ou não um objeto e estimar o tamanho/formato da caixa delimitadora do objeto. Primeiro, uma convolução $3 \times 3$ com $512$ filtros é aplicada ao **feature map** da backbone, gerando um **feature map** intermediário.
+
+Em seguida, duas convoluções $1 \times 1$ são aplicadas: uma para prever a probabilidade de cada **anchor box** conter um objeto (**objectness score**), contento um total de $36$ filtros e outra para prever os ajustes necessários para refinar as coordenadas da caixa delimitadora (**bounding box regression**) com $18$ filtros.
+
+![Arquitetura da Mask R-CNN](../../assets/A1/mask-rcnn-backbone.png)
+
+*Figura 32. Arquitetura da Mask R-CNN*
+
+Logo após isso, para escolher as melhores propostas de regiões, a RPN aplica a técnica de **Non-Maximum Suppression (NMS)** para eliminar propostas redundantes e manter apenas as mais promissoras. As propostas selecionadas são então passadas para a próxima etapa da Mask R-CNN, onde cada proposta é processada individualmente para prever a classe do objeto, refinar a caixa delimitadora e gerar a máscara binária correspondente.
+
 <a id="alinhamento-de-caracteristicas-com-roialign"></a>
 <a id="secao-48"></a>
 
@@ -48,23 +65,6 @@ Veja por exemplo a [\[roi-pooling-example-2\]](#roi-pooling-example-2). Nesse ca
 ![Exemplo de RoIAlign com região de interesse alinhada com a grade de células](../../assets/A1/roi-align.png)
 
 *Figura 35. Exemplo de RoIAlign com região de interesse alinhada com a grade de células*
-
-<a id="geracao-de-propostas-com-a-rpn-region-proposal-network"></a>
-<a id="secao-47"></a>
-
-## Geração de propostas com a RPN (Region Proposal Network)
-
-Antes de mais nada, a **imagem é redimensionada** para caber na rede backbone. Essa rede backbone recebe a imagem e gera um **feature map** que representa as características da imagem. Esse **feature map** é então passado para a **Region Proposal Network (RPN)**, que é responsável por gerar propostas de regiões onde objetos podem estar localizados. A RPN utiliza um conjunto de $k$ **anchor boxes** de diferentes tamanhos e proporções para cobrir uma variedade de objetos possíveis na imagem.
-
-A RPN fica responsável por aprender principalmente duas coisas: A probabilidade de a anchor box conter ou não um objeto e estimar o tamanho/formato da caixa delimitadora do objeto. Primeiro, uma convolução $3 \times 3$ com $512$ filtros é aplicada ao **feature map** da backbone, gerando um **feature map** intermediário.
-
-Em seguida, duas convoluções $1 \times 1$ são aplicadas: uma para prever a probabilidade de cada **anchor box** conter um objeto (**objectness score**), contento um total de $36$ filtros e outra para prever os ajustes necessários para refinar as coordenadas da caixa delimitadora (**bounding box regression**) com $18$ filtros.
-
-![Arquitetura da Mask R-CNN](../../assets/A1/mask-rcnn-backbone.png)
-
-*Figura 32. Arquitetura da Mask R-CNN*
-
-Logo após isso, para escolher as melhores propostas de regiões, a RPN aplica a técnica de **Non-Maximum Suppression (NMS)** para eliminar propostas redundantes e manter apenas as mais promissoras. As propostas selecionadas são então passadas para a próxima etapa da Mask R-CNN, onde cada proposta é processada individualmente para prever a classe do objeto, refinar a caixa delimitadora e gerar a máscara binária correspondente.
 
 <a id="predicoes-em-paralelo-r-cnn-fcn"></a>
 <a id="secao-49"></a>

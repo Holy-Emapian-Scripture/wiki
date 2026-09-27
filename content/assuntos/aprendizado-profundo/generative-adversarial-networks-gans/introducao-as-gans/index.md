@@ -22,6 +22,30 @@ ordem_na_trilha: 60
 # Introdução às GANs
 
 
+<a id="two-player-game"></a>
+<a id="secao-69"></a>
+
+## Two-player Game
+
+A primeira rede, chamada de **gerador** (Generator), é responsável por gerar novas amostras a partir de uma distribuição simples, enquanto a segunda rede, chamada de **discriminador** (Discriminator), é responsável por distinguir entre amostras reais e amostras geradas pelo gerador.
+
+![Arquitetura de uma GAN](../../assets/A1/gan-architecture.png)
+
+*Figura 55. Arquitetura de uma GAN*
+
+O objetivo do gerador é gerar imagens cada vez melhores, de forma que ele consiga **enganar** o discriminador, enquanto o objetivo do discriminador é se tornar cada vez melhor em distinguir entre imagens reais e imagens geradas. Esse processo de competição leva a um aprimoramento contínuo de ambas as redes, resultando em um gerador capaz de produzir amostras altamente realistas. Mas vale ressaltar que o objetivo principal é a melhora da rede **geradora**, mas nós aprimoramos a discriminadora também com a intenção de que ela se torne mais forte e assim force a geradora a melhorar ainda mais.
+
+<a id="funcao-objetivo"></a>
+<a id="secao-70"></a>
+
+## Função objetivo
+
+Seja $\omega$ e $\varphi$ o conjunto de parâmetros da rede geradora e discriminadora respectivamente, a função objetivo da GAN é dada por um jogo de soma zero (minmax game) que escrevemos da seguinte forma $$\min\limits_{\omega}\max\limits_{\varphi}\left\lbrack {\mathbb{E}}_{x \sim p_{\text{data}}}\left\lbrack \log D_{\varphi}(x) \right\rbrack + {\mathbb{E}}_{z \sim p_{\text{synthetic}}}\left\lbrack \log(1 - D_{\varphi}\left( G_{\omega}(z) \right)) \right\rbrack \right\rbrack$$
+
+onde $D_{\varphi}$ é a função de decisão do discriminador e $G_{\omega}$ é a função de geração do gerador. Essa função é basicamente uma **entropia cruzada** entre a classificação do discriminador sobre os dados reais e a sua classificação sobre os dados **gerados pelo gerador**, com a diferença que na entropia cruzada clássica, o sinal negativo é aplicado pra que a otimização vire uma **minimzação** (por isso que na fórmula do GAN a equação está **maximizando** o discriminador e **minimizando** o gerador). Por consequência, nós minimizamos com relação ao gerador para que ele consiga **atrapalhar** a percepção do discriminador.
+
+Na prática computacional, as esperanças são aproximadas pelas médias amostrais dentro de cada mini batch.
+
 <a id="dinamica-de-treinamento-e-ajuste-do-gradiente"></a>
 <a id="secao-71"></a>
 
@@ -70,30 +94,6 @@ Para contornar esse problema, em vez de minimizarmos $\log(1 - D\left( G(z) \rig
 
 Uma vez concluído o treinamento, o discriminador é descartado e utiliza-se exclusivamente a rede geradora para sintetizar novas amostras a partir de vetores de ruído $z$
 
-<a id="funcao-objetivo"></a>
-<a id="secao-70"></a>
-
-## Função objetivo
-
-Seja $\omega$ e $\varphi$ o conjunto de parâmetros da rede geradora e discriminadora respectivamente, a função objetivo da GAN é dada por um jogo de soma zero (minmax game) que escrevemos da seguinte forma $$\min\limits_{\omega}\max\limits_{\varphi}\left\lbrack {\mathbb{E}}_{x \sim p_{\text{data}}}\left\lbrack \log D_{\varphi}(x) \right\rbrack + {\mathbb{E}}_{z \sim p_{\text{synthetic}}}\left\lbrack \log(1 - D_{\varphi}\left( G_{\omega}(z) \right)) \right\rbrack \right\rbrack$$
-
-onde $D_{\varphi}$ é a função de decisão do discriminador e $G_{\omega}$ é a função de geração do gerador. Essa função é basicamente uma **entropia cruzada** entre a classificação do discriminador sobre os dados reais e a sua classificação sobre os dados **gerados pelo gerador**, com a diferença que na entropia cruzada clássica, o sinal negativo é aplicado pra que a otimização vire uma **minimzação** (por isso que na fórmula do GAN a equação está **maximizando** o discriminador e **minimizando** o gerador). Por consequência, nós minimizamos com relação ao gerador para que ele consiga **atrapalhar** a percepção do discriminador.
-
-Na prática computacional, as esperanças são aproximadas pelas médias amostrais dentro de cada mini batch.
-
-<a id="two-player-game"></a>
-<a id="secao-69"></a>
-
-## Two-player Game
-
-A primeira rede, chamada de **gerador** (Generator), é responsável por gerar novas amostras a partir de uma distribuição simples, enquanto a segunda rede, chamada de **discriminador** (Discriminator), é responsável por distinguir entre amostras reais e amostras geradas pelo gerador.
-
-![Arquitetura de uma GAN](../../assets/A1/gan-architecture.png)
-
-*Figura 55. Arquitetura de uma GAN*
-
-O objetivo do gerador é gerar imagens cada vez melhores, de forma que ele consiga **enganar** o discriminador, enquanto o objetivo do discriminador é se tornar cada vez melhor em distinguir entre imagens reais e imagens geradas. Esse processo de competição leva a um aprimoramento contínuo de ambas as redes, resultando em um gerador capaz de produzir amostras altamente realistas. Mas vale ressaltar que o objetivo principal é a melhora da rede **geradora**, mas nós aprimoramos a discriminadora também com a intenção de que ela se torne mais forte e assim force a geradora a melhorar ainda mais.
-
 <!-- wiki:original:fim -->
 
 
@@ -102,4 +102,4 @@ O objetivo do gerador é gerar imagens cada vez melhores, de forma que ele consi
 [Trilha: A1](../../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
 - Anterior: [Motivação e Modelos Generativos](../motivacao-e-modelos-generativos/index.md)
-- Próximo: [Função objetivo](#funcao-objetivo)
+- Próximo: [GANs Condicionais (cGANs)](../gans-condicionais-cgans/index.md)

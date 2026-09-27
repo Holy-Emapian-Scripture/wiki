@@ -22,6 +22,32 @@ ordem_na_trilha: 8
 # Estimadores de Bayes
 
 
+<a id="estimador-e-estimativa"></a>
+<a id="secao-9"></a>
+
+## Estimador e Estimativa
+
+Com estimadores, queremos, a partir, puramente, de nossas observações dos dados gerar uma função que, ao longo prazo, converge para uma medida de nosso interesse (Um parâmetro de distribuição, por exemplo)
+
+**Definição: Estimador/Estimativa**
+
+Seja $X_{1},\ldots,X_{n}$ os dados observados que a distribuição conjunta é indexada por um parâmetro $\theta$ e assume valores em um conjunto $\Omega$ na reta real (Cada observação $X_{i}$). Um estimador do parâmetro $\theta$ é uma função $\delta:\Omega^{n} \rightarrow {\mathbb{R}}$ ($\delta(X_{1},\ldots,X_{n})$). Se $X_{1} = x_{1},\ldots,X_{n} = x_{n}$ são observados, então $\delta(x_{1},\ldots,x_{n})$ é uma estimativa de $\theta$
+
+Vale ressaltar a diferença entre **estimador** e **estimativa**. O **estimador** é uma função das variáveis aleatórias, ou seja, ele também é uma variável aleatória e pode ter sua distribuição derivada da distribuição conjunta de $X_{1},\ldots,X_{n}$. Já uma **estimativa** é o resultado de $\delta(\underline{X})$ após serem observado os valores $x_{1},\ldots,x_{n}$
+
+<a id="funcao-de-perda"></a>
+<a id="secao-10"></a>
+
+## Função de Perda
+
+Muito comumente, criamos um estimador $\delta$ com o objetivo de aproximar um parâmetro $\theta$, ou seja, um bom estimador é aquele que $\delta(\underline{x}) - \theta \approx 0$
+
+**Definição: Função de perca**
+
+A função de perca é uma função real de duas variáveis $L(\theta,a)$, onde $\theta \in \Omega$ e $a \in {\mathbb{R}}$. A interpretação é que $L(\theta,a)$ decai conforme $a \rightarrow \theta$
+
+Queremos estimar $\theta$ apenas com nossos valores observados, porém, vamos supor que não vimos nenhum ainda, então se escolhermos $a$ como uma estimativa, vamos ter: $${\mathbb{E}}\left\lbrack L(\theta,a) \right\rbrack = \int_{\Omega}L(\theta,a)\xi(\theta)d\theta\text{\quad\quad}\text{ (LOTUS) }$$
+
 <a id="estimador-de-bayes"></a>
 <a id="secao-11"></a>
 
@@ -67,19 +93,6 @@ Quando uma sequência $\left( \delta_{n} \right)_{n \geq 1}$ converge para o val
 
 Ou seja, com grandes quantidades de dados, a probabilidade do estimador $\hat{\theta}$ estar **muito** próximo de $\theta$ é alta
 
-<a id="estimador-e-estimativa"></a>
-<a id="secao-9"></a>
-
-## Estimador e Estimativa
-
-Com estimadores, queremos, a partir, puramente, de nossas observações dos dados gerar uma função que, ao longo prazo, converge para uma medida de nosso interesse (Um parâmetro de distribuição, por exemplo)
-
-**Definição: Estimador/Estimativa**
-
-Seja $X_{1},\ldots,X_{n}$ os dados observados que a distribuição conjunta é indexada por um parâmetro $\theta$ e assume valores em um conjunto $\Omega$ na reta real (Cada observação $X_{i}$). Um estimador do parâmetro $\theta$ é uma função $\delta:\Omega^{n} \rightarrow {\mathbb{R}}$ ($\delta(X_{1},\ldots,X_{n})$). Se $X_{1} = x_{1},\ldots,X_{n} = x_{n}$ são observados, então $\delta(x_{1},\ldots,x_{n})$ é uma estimativa de $\theta$
-
-Vale ressaltar a diferença entre **estimador** e **estimativa**. O **estimador** é uma função das variáveis aleatórias, ou seja, ele também é uma variável aleatória e pode ter sua distribuição derivada da distribuição conjunta de $X_{1},\ldots,X_{n}$. Já uma **estimativa** é o resultado de $\delta(\underline{X})$ após serem observado os valores $x_{1},\ldots,x_{n}$
-
 <a id="estimadores-para-parametros-mais-gerais"></a>
 <a id="secao-12"></a>
 
@@ -93,19 +106,6 @@ Seja $X_{1},\ldots,X_{n}$ serem dados observados em que a distribuição conjunt
 
 ------------------------------------------------------------------------
 
-<a id="funcao-de-perda"></a>
-<a id="secao-10"></a>
-
-## Função de Perda
-
-Muito comumente, criamos um estimador $\delta$ com o objetivo de aproximar um parâmetro $\theta$, ou seja, um bom estimador é aquele que $\delta(\underline{x}) - \theta \approx 0$
-
-**Definição: Função de perca**
-
-A função de perca é uma função real de duas variáveis $L(\theta,a)$, onde $\theta \in \Omega$ e $a \in {\mathbb{R}}$. A interpretação é que $L(\theta,a)$ decai conforme $a \rightarrow \theta$
-
-Queremos estimar $\theta$ apenas com nossos valores observados, porém, vamos supor que não vimos nenhum ainda, então se escolhermos $a$ como uma estimativa, vamos ter: $${\mathbb{E}}\left\lbrack L(\theta,a) \right\rbrack = \int_{\Omega}L(\theta,a)\xi(\theta)d\theta\text{\quad\quad}\text{ (LOTUS) }$$
-
 <!-- wiki:original:fim -->
 
 
@@ -113,5 +113,5 @@ Queremos estimar $\theta$ apenas com nossos valores observados, porém, vamos su
 
 [Trilha: A1](../../../trilhas/inferencia-estatistica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a1.md#apresentacao-original)
 
-- Anterior: [Distribuições Impróprias](../estatistica-bayesiana/index.md#distribuicoes-improprias)
-- Próximo: [Estimador de Bayes](#estimador-de-bayes)
+- Anterior: [Estatística Bayesiana](../estatistica-bayesiana/index.md)
+- Próximo: [Estatística Frequentista](../estatistica-frequentista/index.md)

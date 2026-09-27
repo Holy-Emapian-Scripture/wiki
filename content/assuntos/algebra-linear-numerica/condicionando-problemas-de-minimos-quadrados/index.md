@@ -105,5 +105,5 @@ Quando a gente projeta uma n-esfera unitária em $C(A)$, temos uma hiperelipse. 
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [Teorema da Estabilidade Retroativa (Backward Stability)](../estabilidade-da-back-substitution/index.md#teorema-da-estabilidade-retroativa-backward-stability)
+- Anterior: [Estabilidade da Back Substitution](../estabilidade-da-back-substitution/index.md)
 - Próximo: [Estabilidade de Algoritmos de Mínimos Quadrados](../estabilidade-de-algoritmos-de-minimos-quadrados/index.md)

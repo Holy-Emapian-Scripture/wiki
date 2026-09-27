@@ -22,21 +22,6 @@ ordem_na_trilha: 49
 # Algoritmo QR com Shifts
 
 
-<a id="conexao-com-a-iteracao-do-quociente-de-rayleigh"></a>
-<a id="secao-52"></a>
-
-## Conexão com a Iteração do Quociente de Rayleigh
-
-Beleza, vimos que os shifts são bem poderosos para o cálculo das matrizes, mas aí tu pode tá se perguntando: “Q djabo eu faço pra escolher meus shift? Eu tenho q ser Mãe de Ná?”. E você está corretíssimo, precisamos de um método para escolher shifts interessantes para o algoritmo.
-
-Faz sentido a gente tentar usar o quociente de Rayleigh pra isso. A gente quer tentar fazer com que a última coluna de ${\underline{Q}}^{(k)}$ converja. Então faz sentido a gente usar o Quociente de Rayleigh com essa última coluna né? $$\mu^{(k)} = \frac{\left( q_{m}^{(k)} \right)^{T}Aq_{m}^{(k)}}{{q_{m}^{(k)}}^{T}q_{m}^{(k)}} = \left( q_{m}^{(k)} \right)^{T}Aq_{m}^{(k)})$$
-
-Se escolhermos esse valor, as estimativas $\mu^{(k)}$ (Estimativa de autovalor) e $q_{m}^{(k)}$ estimativa de autovetor são identicos àqueles computados pela iteração do quociente de rayleigh com o vetor inicial sendo $e_{m}$
-
-Tem um negócio bem massa que a gente pode ver com isso. Que o valor $A_{mm}^{(k)}$ é igual a $r\left( q_{m}^{(k)} \right)$ ($r$ sendo a função do quociente de rayleigh), a gente pode visualizar assim: $$A_{mm}^{(k)} = e_{m}^{T}A^{(k)}e_{m} = e_{m}^{T}\left( {\underline{Q}}^{(k)} \right)^{T}A{\underline{Q}}^{(k)}e_{m} = {q_{m}^{(k)}}^{T}Aq_{m}^{(k)}$$
-
-Ou seja, escolher $\mu^{(k)}$ como sendo o coeficiente de rayleigh de $q_{m}^{(k)}$ é a mesma coisa que escolher ele como sendo a última entrada de $A^{(k)}$. A gente chama isso de **Shift do Quociente de Rayleigh**.
-
 <a id="conexao-com-a-iteracao-reversa"></a>
 <a id="secao-50"></a>
 
@@ -89,6 +74,36 @@ Se você para pra olhar, é a mesma coisa que a gente definiu no [\[unshifted-qr
 
 Aí a gente não precisa entrar em detalhes da prova dessa equivalência. Isso acarreta que as colunas de ${\underline{Q}}^{(k)}$ aos poucos vão convergindo para autovetores de A. O livro da uma ênfase na primeira e na última coluna, onde cada uma é equivalente a apliar o algoritmo da iteração reversa com shifts nos vetores canônicos $e_{1}$ e $e_{m}$ respectivamente.
 
+<a id="conexao-com-a-iteracao-do-quociente-de-rayleigh"></a>
+<a id="secao-52"></a>
+
+## Conexão com a Iteração do Quociente de Rayleigh
+
+Beleza, vimos que os shifts são bem poderosos para o cálculo das matrizes, mas aí tu pode tá se perguntando: “Q djabo eu faço pra escolher meus shift? Eu tenho q ser Mãe de Ná?”. E você está corretíssimo, precisamos de um método para escolher shifts interessantes para o algoritmo.
+
+Faz sentido a gente tentar usar o quociente de Rayleigh pra isso. A gente quer tentar fazer com que a última coluna de ${\underline{Q}}^{(k)}$ converja. Então faz sentido a gente usar o Quociente de Rayleigh com essa última coluna né? $$\mu^{(k)} = \frac{\left( q_{m}^{(k)} \right)^{T}Aq_{m}^{(k)}}{{q_{m}^{(k)}}^{T}q_{m}^{(k)}} = \left( q_{m}^{(k)} \right)^{T}Aq_{m}^{(k)})$$
+
+Se escolhermos esse valor, as estimativas $\mu^{(k)}$ (Estimativa de autovalor) e $q_{m}^{(k)}$ estimativa de autovetor são identicos àqueles computados pela iteração do quociente de rayleigh com o vetor inicial sendo $e_{m}$
+
+Tem um negócio bem massa que a gente pode ver com isso. Que o valor $A_{mm}^{(k)}$ é igual a $r\left( q_{m}^{(k)} \right)$ ($r$ sendo a função do quociente de rayleigh), a gente pode visualizar assim: $$A_{mm}^{(k)} = e_{m}^{T}A^{(k)}e_{m} = e_{m}^{T}\left( {\underline{Q}}^{(k)} \right)^{T}A{\underline{Q}}^{(k)}e_{m} = {q_{m}^{(k)}}^{T}Aq_{m}^{(k)}$$
+
+Ou seja, escolher $\mu^{(k)}$ como sendo o coeficiente de rayleigh de $q_{m}^{(k)}$ é a mesma coisa que escolher ele como sendo a última entrada de $A^{(k)}$. A gente chama isso de **Shift do Quociente de Rayleigh**.
+
+<a id="wilkinson-shift"></a>
+<a id="secao-53"></a>
+
+## Wilkinson Shift
+
+A gente tem um problema com o método anterior. Nem sempre escolhermos $A_{mm}^{(k)}$ ou $r\left( q_{m}^{(k)} \right)$ como os shifts para convergência funciona. Um exemplo disso é a matriz: $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
+
+Isso ocorre porque temos uma simetria nos autovalores ($1$ e $- 1$) e $A_{mm}^{(k)} = 0$, o que acarreta que ao escolhermos esse valor como shift, o algoritmo tende a beneficiar ambos os autovalores igualmente (Ou seja, eu não tá mais próximo de nenhum, vou ta igualmente distante dos dois). A gente precisa de uma estimativa que quebre a simetria, vamo fazer o seguinte então:
+
+Deixe $B$ ser definida pelo bloco $2 \times 2$ inferior direito da matriz $A^{(k)}$ $$B = \begin{pmatrix} a_{m - 1} & b_{m - 1} \\ b_{m - 1} & a_{m} \end{pmatrix}$$
+
+O **Shift de Wilkinson** é definido como o autovalor mais próximo de $a_{m}$. Em caso de empate, eu seleciono qualquer um dos dois autovalores arbitrariamente. Aqui tem uma fórmula numericamente estável pra achar esses autovalores: $$\mu = a_{m} - \frac{\text{sign}(\delta)b_{m - 1}^{2}}{\vert \delta\vert  + \sqrt{\delta^{2} + b_{m - 1}^{2}}}$$
+
+onde $\delta = \frac{a_{m - 1} - a_{m}}{2}$. Se $\delta = 0$, eu posso definir $\text{sign}(\delta)$ como sendo $1$ ou $- 1$ arbitrariamente. O **Shift de Wilkinson** também atinge convergência cúbica e, nos piores casos, pelo menos quadrática (Pode ser mostrado). Em partiular, o algoritmo QR com shift de Wilkinson sempre converge.
+
 <a id="estabilidade-e-precisao"></a>
 <a id="secao-54"></a>
 
@@ -106,21 +121,6 @@ Isso mostra que temos resultados muito bom! Inclusive, juntando com alguns outro
 
 ------------------------------------------------------------------------
 
-<a id="wilkinson-shift"></a>
-<a id="secao-53"></a>
-
-## Wilkinson Shift
-
-A gente tem um problema com o método anterior. Nem sempre escolhermos $A_{mm}^{(k)}$ ou $r\left( q_{m}^{(k)} \right)$ como os shifts para convergência funciona. Um exemplo disso é a matriz: $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
-
-Isso ocorre porque temos uma simetria nos autovalores ($1$ e $- 1$) e $A_{mm}^{(k)} = 0$, o que acarreta que ao escolhermos esse valor como shift, o algoritmo tende a beneficiar ambos os autovalores igualmente (Ou seja, eu não tá mais próximo de nenhum, vou ta igualmente distante dos dois). A gente precisa de uma estimativa que quebre a simetria, vamo fazer o seguinte então:
-
-Deixe $B$ ser definida pelo bloco $2 \times 2$ inferior direito da matriz $A^{(k)}$ $$B = \begin{pmatrix} a_{m - 1} & b_{m - 1} \\ b_{m - 1} & a_{m} \end{pmatrix}$$
-
-O **Shift de Wilkinson** é definido como o autovalor mais próximo de $a_{m}$. Em caso de empate, eu seleciono qualquer um dos dois autovalores arbitrariamente. Aqui tem uma fórmula numericamente estável pra achar esses autovalores: $$\mu = a_{m} - \frac{\text{sign}(\delta)b_{m - 1}^{2}}{\vert \delta\vert  + \sqrt{\delta^{2} + b_{m - 1}^{2}}}$$
-
-onde $\delta = \frac{a_{m - 1} - a_{m}}{2}$. Se $\delta = 0$, eu posso definir $\text{sign}(\delta)$ como sendo $1$ ou $- 1$ arbitrariamente. O **Shift de Wilkinson** também atinge convergência cúbica e, nos piores casos, pelo menos quadrática (Pode ser mostrado). Em partiular, o algoritmo QR com shift de Wilkinson sempre converge.
-
 <!-- wiki:original:fim -->
 
 
@@ -128,5 +128,5 @@ onde $\delta = \frac{a_{m - 1} - a_{m}}{2}$. Se $\delta = 0$, eu posso definir $
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [Convergência do algoritmo QR](../algoritmo-qr-sem-shift/index.md#convergencia-do-algoritmo-qr)
-- Próximo: [Estabilidade e Precisão](#estabilidade-e-precisao)
+- Anterior: [Algoritmo QR sem Shift](../algoritmo-qr-sem-shift/index.md)
+- Próximo: [Discos de Gershgorin](../discos-de-gershgorin/index.md)

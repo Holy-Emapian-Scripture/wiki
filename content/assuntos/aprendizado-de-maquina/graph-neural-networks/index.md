@@ -22,17 +22,6 @@ ordem_na_trilha: 13
 # Graph Neural Networks
 
 
-<a id="graph-convolutional-network-gcn"></a>
-<a id="secao-21"></a>
-
-## Graph Convolutional Network (GCN)
-
-Popularizou as GNNs por sua simplicidade. É um modelo baseado em message-passing, onde a função de agregação é uma média ponderada dos vizinhos de um nó e a função de atualização é uma rede neural simples. A GCN é definida como: $$\begin{array}{rlr} m_{v}^{(t)} & = \sum_{u \in \mathcal{N}(v)}\frac{h_{u}^{(t - 1)}}{\sqrt{{\overline{d}}_{u}{\overline{d}}_{v}}}\text{\quad\quad} & \forall v \in V \\ h_{v}^{(t)} & = \sigma(\left( \frac{1}{{\overline{d}}_{v}}h_{v}^{(t - 1)} + m_{v}^{(t)} \right)\Theta_{t})\text{\quad\quad} & \forall v \in V \end{array}$$
-
-onde $\Theta_{t}$ é uma matriz de pesos aprendida durante o treinamento e ${\overline{d}}_{v}$ é o grau do nó $v$ com self-loops. A função de ativação $\sigma$ é geralmente uma função não-linear como ReLU ou sigmoid. Podemos reescrever a GCN de forma matricial como: $$H^{(t)} = \sigma(D^{- \frac{1}{2}}AD^{- \frac{1}{2}}H^{(t - 1)}\Theta_{t})$$
-
-------------------------------------------------------------------------
-
 <a id="introducao"></a>
 <a id="secao-17"></a>
 
@@ -55,17 +44,6 @@ Para facilitar a compreensão, vamos definir algumas notações comuns usadas em
 
 - Normalmente, é utilizada a matriz de adjacência normalizada com self loops, dada por $A' = (D + I)^{- \frac{1}{2}}(A + I)(D + I)^{- \frac{1}{2}}$, onde $D$ é a matriz diagonal de grau dos nós e $I$ é a matriz identidade onde $D_{ii} = \sum_{j}A_{ij} = \delta(v_{i}) = \text{ Grau de }v_{i}$
 
-<a id="passagem-de-mensagem"></a>
-<a id="secao-20"></a>
-
-## Passagem de Mensagem
-
-As redes em grafo funcionam de forma que as informações de cada nó são passadas para seus vizinhos, que por sua vez passam as informações para seus vizinhos, e assim por diante. Esse processo é chamado de **passagem de mensagem** (message passing). A passagem de mensagem é um processo iterativo que ocorre em $T$ rodadas, onde $T$ é um hiperparâmetro do modelo. Em cada rodada $t$, cada nó $v$ recebe mensagens de seus vizinhos $\mathcal{N}(v)$ e atualiza seu estado com base nessas mensagens. Podemos dividir o processo aplicado à cada nó como: $$\begin{array}{rlr} m_{v}^{(t)} & = \text{ AGGREGATE}^{(t)}\left( \left\{ h_{u}^{(t - 1)},\forall u \in \mathcal{N}(v) \right\} \right)\text{\quad\quad} & \forall v \in V \\ h_{v}^{(t)} & = \text{ UPDATE}^{(t)}\left( h_{v}^{(t - 1)},m_{v}^{(t)} \right)\text{\quad\quad} & \forall v \in V \end{array}$$ de forma que $h_{v}^{(0)} = x_{v}$
-
-As funções $\text{AGGREGATE}$ e $\text{UPDATE}$ são funções que variam dependendo da implementação, de forma que diferentes implementações de GNNs podem ser obtidas. A função $\text{AGGREGATE}$ é responsável por agregar as informações dos vizinhos de um nó, enquanto a função $\text{UPDATE}$ é responsável por atualizar o estado do nó com base nas informações agregadas. A escolha dessas funções é crucial para o desempenho da GNN e pode ser feita de várias maneiras, incluindo somas, médias, máximos ou redes neurais.
-
-Podemos reformular de forma mais compacta a passagem de mensagem definindo: $$\begin{array}{r} H^{(t)} = \begin{pmatrix} - & h_{1}^{(t)} & - \\ & \vdots & \\ - & h_{\vert V\vert }^{(t)} & - \end{pmatrix} \\ M^{(t)} = \begin{pmatrix} - & m_{1}^{(t)} & - \\ & \vdots & \\ - & m_{\vert V\vert }^{(t)} & - \end{pmatrix} \end{array}$$ então reescrevemos os passos anteriores como $$\begin{array}{r} M^{(t)} = \text{ AGGREGATE}^{(t)}\left( A,H^{(t - 1)} \right) \\ H^{(t)} = \text{ UPDATE}^{(t)}\left( H^{(t - 1)},M^{(t)} \right) \end{array}$$
-
 <a id="usos-de-gnns"></a>
 <a id="secao-19"></a>
 
@@ -81,6 +59,28 @@ Podemos reformular de forma mais compacta a passagem de mensagem definindo: $$\b
 
 *Figura 3. Representação visual de cada um dos três usos de GNNs discutidos*
 
+<a id="passagem-de-mensagem"></a>
+<a id="secao-20"></a>
+
+## Passagem de Mensagem
+
+As redes em grafo funcionam de forma que as informações de cada nó são passadas para seus vizinhos, que por sua vez passam as informações para seus vizinhos, e assim por diante. Esse processo é chamado de **passagem de mensagem** (message passing). A passagem de mensagem é um processo iterativo que ocorre em $T$ rodadas, onde $T$ é um hiperparâmetro do modelo. Em cada rodada $t$, cada nó $v$ recebe mensagens de seus vizinhos $\mathcal{N}(v)$ e atualiza seu estado com base nessas mensagens. Podemos dividir o processo aplicado à cada nó como: $$\begin{array}{rlr} m_{v}^{(t)} & = \text{ AGGREGATE}^{(t)}\left( \left\{ h_{u}^{(t - 1)},\forall u \in \mathcal{N}(v) \right\} \right)\text{\quad\quad} & \forall v \in V \\ h_{v}^{(t)} & = \text{ UPDATE}^{(t)}\left( h_{v}^{(t - 1)},m_{v}^{(t)} \right)\text{\quad\quad} & \forall v \in V \end{array}$$ de forma que $h_{v}^{(0)} = x_{v}$
+
+As funções $\text{AGGREGATE}$ e $\text{UPDATE}$ são funções que variam dependendo da implementação, de forma que diferentes implementações de GNNs podem ser obtidas. A função $\text{AGGREGATE}$ é responsável por agregar as informações dos vizinhos de um nó, enquanto a função $\text{UPDATE}$ é responsável por atualizar o estado do nó com base nas informações agregadas. A escolha dessas funções é crucial para o desempenho da GNN e pode ser feita de várias maneiras, incluindo somas, médias, máximos ou redes neurais.
+
+Podemos reformular de forma mais compacta a passagem de mensagem definindo: $$\begin{array}{r} H^{(t)} = \begin{pmatrix} - & h_{1}^{(t)} & - \\ & \vdots & \\ - & h_{\vert V\vert }^{(t)} & - \end{pmatrix} \\ M^{(t)} = \begin{pmatrix} - & m_{1}^{(t)} & - \\ & \vdots & \\ - & m_{\vert V\vert }^{(t)} & - \end{pmatrix} \end{array}$$ então reescrevemos os passos anteriores como $$\begin{array}{r} M^{(t)} = \text{ AGGREGATE}^{(t)}\left( A,H^{(t - 1)} \right) \\ H^{(t)} = \text{ UPDATE}^{(t)}\left( H^{(t - 1)},M^{(t)} \right) \end{array}$$
+
+<a id="graph-convolutional-network-gcn"></a>
+<a id="secao-21"></a>
+
+## Graph Convolutional Network (GCN)
+
+Popularizou as GNNs por sua simplicidade. É um modelo baseado em message-passing, onde a função de agregação é uma média ponderada dos vizinhos de um nó e a função de atualização é uma rede neural simples. A GCN é definida como: $$\begin{array}{rlr} m_{v}^{(t)} & = \sum_{u \in \mathcal{N}(v)}\frac{h_{u}^{(t - 1)}}{\sqrt{{\overline{d}}_{u}{\overline{d}}_{v}}}\text{\quad\quad} & \forall v \in V \\ h_{v}^{(t)} & = \sigma(\left( \frac{1}{{\overline{d}}_{v}}h_{v}^{(t - 1)} + m_{v}^{(t)} \right)\Theta_{t})\text{\quad\quad} & \forall v \in V \end{array}$$
+
+onde $\Theta_{t}$ é uma matriz de pesos aprendida durante o treinamento e ${\overline{d}}_{v}$ é o grau do nó $v$ com self-loops. A função de ativação $\sigma$ é geralmente uma função não-linear como ReLU ou sigmoid. Podemos reescrever a GCN de forma matricial como: $$H^{(t)} = \sigma(D^{- \frac{1}{2}}AD^{- \frac{1}{2}}H^{(t - 1)}\Theta_{t})$$
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -88,5 +88,5 @@ Podemos reformular de forma mais compacta a passagem de mensagem definindo: $$\b
 
 [Trilha: A2](../../../trilhas/aprendizado-de-maquina/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a2.md#apresentacao-original)
 
-- Anterior: [GPs para classificação](../processos-gaussianos/index.md#gps-para-classificacao)
-- Próximo: [Passagem de Mensagem](#passagem-de-mensagem)
+- Anterior: [Processos Gaussianos](../processos-gaussianos/index.md)
+- Próximo: [Convolutional Neural Networks (CNN)](../convolutional-neural-networks-cnn/index.md)

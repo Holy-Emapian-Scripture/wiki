@@ -220,6 +220,31 @@ class ProcessadorDePedido:
 
 Pinho também disse que ‘quanto mais você precisa dar scroll numa função, pior ela é’, ‘código longo com variáveis pouco significativas é ruim de manter” e é ‘pouco provável que você realmente precise de uma classe com $1000$ linhas” (fazendo referência a um código em produção real).
 
+<a id="por-que-o-processar-deveria-ser-varios-metodos-srp"></a>
+<a id="secao-3"></a>
+
+## Por que o `processar` deveria ser vários métodos (SRP)
+
+O problema dessa função é que ela tem várias (funções). Se listassemos, quem, na empresa, poderia pedir uma mudança em `ProcessadorDePedido.processar` — e apontando exatamente onde, dentro do método, cada um bateria:
+
+- a **contabilidade** precisar mudar a alíquota — o `0.18` fixo em `imposto = base_imposto * 0.18`;
+
+- o **marketing** criar um cupom novo — o bloco `if pedido.cupom == "NULLSAFE10": ...`
+
+- o **marketing** precisar mudar o e-mail — o bloco que monta `corpo` em HTML e manda pro “SMTP”;
+
+- o **gateway do cartão** mudar — a validação de `numero_cartao` (tamanho, dígitos, soma);
+
+- o **DBA** precisar mudar uma coluna — o `sql = "INSERT INTO pedidos ..."` montado por concatenação de string (que, à parte da aula, também é uma porta aberta pra SQL injection, já que `pedido.cliente` entra direto na query sem tratamento nenhum);
+
+- o **SEFAZ** mudar o layout da nota — o bloco `"=== NOTA FISCAL ELETRONICA ==="`;
+
+- os **Correios** mudarem o modo de calcular o peso — a fórmula `peso_kg = peso_kg + item.quantidade * (item.cacto.altura_cm * 0.05)`;
+
+- o **COO** querer oferecer outra forma de envio — o `if`/`elif` de `tipo_entrega`.
+
+É esse problema que o Princípio de Responsabilidade Única (SRP) corrige: cada componente deve apresentar uma única responsabilidade. É o primeiro dos cinco princípios do SOLID.
+
 <a id="loja-exercicio-de-correcao"></a>
 <a id="cod-aula1"></a>
 
@@ -301,31 +326,6 @@ loja2 = Loja2(CalculadoraTotal(), Recibo())
 print(loja2.processar(cliente, valor, peso_kg, 'Sao Paulo'))
 print(loja2.processar(cliente, valor, peso_kg, 'Manaus'))
 ```
-
-<a id="por-que-o-processar-deveria-ser-varios-metodos-srp"></a>
-<a id="secao-3"></a>
-
-## Por que o `processar` deveria ser vários métodos (SRP)
-
-O problema dessa função é que ela tem várias (funções). Se listassemos, quem, na empresa, poderia pedir uma mudança em `ProcessadorDePedido.processar` — e apontando exatamente onde, dentro do método, cada um bateria:
-
-- a **contabilidade** precisar mudar a alíquota — o `0.18` fixo em `imposto = base_imposto * 0.18`;
-
-- o **marketing** criar um cupom novo — o bloco `if pedido.cupom == "NULLSAFE10": ...`
-
-- o **marketing** precisar mudar o e-mail — o bloco que monta `corpo` em HTML e manda pro “SMTP”;
-
-- o **gateway do cartão** mudar — a validação de `numero_cartao` (tamanho, dígitos, soma);
-
-- o **DBA** precisar mudar uma coluna — o `sql = "INSERT INTO pedidos ..."` montado por concatenação de string (que, à parte da aula, também é uma porta aberta pra SQL injection, já que `pedido.cliente` entra direto na query sem tratamento nenhum);
-
-- o **SEFAZ** mudar o layout da nota — o bloco `"=== NOTA FISCAL ELETRONICA ==="`;
-
-- os **Correios** mudarem o modo de calcular o peso — a fórmula `peso_kg = peso_kg + item.quantidade * (item.cacto.altura_cm * 0.05)`;
-
-- o **COO** querer oferecer outra forma de envio — o `if`/`elif` de `tipo_entrega`.
-
-É esse problema que o Princípio de Responsabilidade Única (SRP) corrige: cada componente deve apresentar uma única responsabilidade. É o primeiro dos cinco princípios do SOLID.
 
 <a id="termos-da-aula-1"></a>
 <a id="secao-5"></a>

@@ -22,6 +22,36 @@ ordem_na_trilha: 13
 # Menor caminho em grafos
 
 
+<a id="caminho-mais-curto-em-um-dag"></a>
+<a id="secao-29"></a>
+
+## Caminho mais curto em um DAG
+
+**Dado um grafo $G = (V,E)$, como criar um algoritmo capaz de gerar a SPT de um DAG iniciando na sua única fonte?**
+
+Lembre-se: nesse código, estamos considerando uma ordenação topológica já pré-determinada, por isso nosso for é simples e não precisamos olhar vértices novamente.
+
+``` py
+def dag_spt(list_adj):
+    inf = len(list_adj)
+    distance = [inf] * inf
+    parent = [-1] * inf
+    distance[0] = 0
+    parent[0] = 0
+
+    for i in range(inf):
+        for vizinho in list_adj[i]:
+            if distance[i] + 1 < distance[vizinho]:
+                distance[vizinho] = distance[i] + 1
+                parent[vizinho] = i
+
+    return distance, parent
+```
+
+O código cria um vetor de distâncias e um vetor de pais de cada vértice, e preenche o inicial, considerando ordenação topológica. Graças a característica da ordenação topológica existente, o for que fazemos passa por cada vértice da lista, e depois por cada vizinho, verificando se suas arestas estão relaxadas ou não (considerando o peso de cada aresta sempre 1), se ela tiver tensa, então atualizamos com a distância do vetor pai $+ 1$.
+
+Criamos dois vetores $O(V)$, e o for de fora passa por todos os vértices ($O(V)$) e o for de dentro passa por todos os vértices (no total, não a cada iteração), trazendo $O(E)$ ao final dos dois fors. Portanto, a complexidade é $\Theta(V + E)$.
+
 <a id="caminho-mais-curto-em-grafo-nao-dirigido-com-ciclos"></a>
 <a id="secao-30"></a>
 
@@ -60,36 +90,6 @@ A complexidade é a mesma, já que o deque é $O(1)$ para tirar à esquerda e pa
 
 Podemos avaliar a corretude desse algoritmo através das suas invariantes: primeiro, toda aresta $\left( v_{i},v_{j} \right)$ de $T$ (a árvore definida por parent) está relaxada com relação à distance; segundo, para cada aresta $\left( v_{i},v_{j} \right)$, se $v_{i}$ está em $T$ e $v_{j}$ está fora de $T$, então $v_{i}$ está na fila. Ao término da execução, a fila está vazia e, a partir da invariante (2), conclui-se que toda aresta com $v_{i}$ em $T$ também possui $v_{j}$ em $T$. O vetor distance é um potencial relaxado, portanto, $T$ é uma SPT e distance fornece o comprimento do caminho entre a raiz e os demais vértices acessíveis a partir dela.
 
-<a id="caminho-mais-curto-em-um-dag"></a>
-<a id="secao-29"></a>
-
-## Caminho mais curto em um DAG
-
-**Dado um grafo $G = (V,E)$, como criar um algoritmo capaz de gerar a SPT de um DAG iniciando na sua única fonte?**
-
-Lembre-se: nesse código, estamos considerando uma ordenação topológica já pré-determinada, por isso nosso for é simples e não precisamos olhar vértices novamente.
-
-``` py
-def dag_spt(list_adj):
-    inf = len(list_adj)
-    distance = [inf] * inf
-    parent = [-1] * inf
-    distance[0] = 0
-    parent[0] = 0
-
-    for i in range(inf):
-        for vizinho in list_adj[i]:
-            if distance[i] + 1 < distance[vizinho]:
-                distance[vizinho] = distance[i] + 1
-                parent[vizinho] = i
-
-    return distance, parent
-```
-
-O código cria um vetor de distâncias e um vetor de pais de cada vértice, e preenche o inicial, considerando ordenação topológica. Graças a característica da ordenação topológica existente, o for que fazemos passa por cada vértice da lista, e depois por cada vizinho, verificando se suas arestas estão relaxadas ou não (considerando o peso de cada aresta sempre 1), se ela tiver tensa, então atualizamos com a distância do vetor pai $+ 1$.
-
-Criamos dois vetores $O(V)$, e o for de fora passa por todos os vértices ($O(V)$) e o for de dentro passa por todos os vértices (no total, não a cada iteração), trazendo $O(E)$ ao final dos dois fors. Portanto, a complexidade é $\Theta(V + E)$.
-
 <a id="djikstra-fast"></a>
 <a id="secao-31"></a>
 
@@ -102,5 +102,4 @@ Criamos dois vetores $O(V)$, e o for de fora passa por todos os vértices ($O(V)
 
 [Trilha: Exercícios de slides](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md#apresentacao-original)
 
-- Anterior: [Verificação de ordenação topológica (e determinação)](../busca-em-grafos/index.md#verificacao-de-ordenacao-topologica-e-determinacao)
-- Próximo: [Caminho mais curto em grafo não-dirigido/com ciclos](#caminho-mais-curto-em-grafo-nao-dirigido-com-ciclos)
+- Anterior: [Busca em Grafos](../busca-em-grafos/index.md)

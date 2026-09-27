@@ -1,40 +1,50 @@
 ---
-layout: default
-title: Modelo de página
-parent: Guias
-nav_order: 2
+title: "Título do Tópico Consolidado"
+tags:
+  - disciplina
+  - tema
 ---
 
-# Modelo de página
+# Título do Tópico Consolidado
 
-Copie este arquivo para começar uma nota em `assuntos/<disciplina>/<assunto>/index.md`. Na cópia, altere o cabeçalho e o título acima, remova esta orientação e preencha os campos abaixo.
+Breve introdução contextualizando o tema e os objetivos de estudo desta página.
 
-Para uma página de conteúdo, remova `parent` e `nav_order`, use `nav_exclude: true`, adicione `tipo: conteudo` e informe a `disciplina`. Registre `autores` e `origem` quando conhecidos. Adicione links no índice da disciplina e nas trilhas pertinentes.
+---
 
-## Visão geral
+<a id="primeiro-subtopico"></a>
+## Primeiro Subtópico
 
-[Apresente o assunto em poucas frases: o que é e por que estudá-lo.]
+Explicação dos conceitos fundamentais do primeiro subtópico. Use fórmulas matemáticas em linha como $f(x) = ax + b$ diretamente no texto quando fizer menção a variáveis ou expressões curtas.
 
-## Antes de começar
+Para equações destacadas em bloco, utilize linhas isoladas com `$$`:
 
-[Indique os conhecimentos prévios e conecte as notas que podem ajudar.]
+$$
+J(\theta) = \frac{1}{2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2
+$$
 
-## Conceitos principais
+### Detalhes de Implementação
 
-[Explique as ideias centrais, definindo os termos e símbolos usados.]
+Quando aplicável, inclua exemplos práticos de código com destaque de sintaxe:
 
-## Exemplo passo a passo
+```python
+def forward_pass(x, weights, bias):
+    return x @ weights + bias
+```
 
-[Apresente um problema, desenvolva a solução e explique o raciocínio de cada etapa.]
+---
 
-## Para praticar
+<a id="segundo-subtopico"></a>
+## Segundo Subtópico
 
-[Proponha uma pergunta ou exercício. Se houver resposta, explique como chegar a ela.]
+Desenvolvimento do subtópico subsequente, mantendo a progressão didática original da matéria.
 
-## Veja também
+> [!NOTE]
+> Você pode utilizar callouts do Obsidian/Quartz para destacar observações, propriedades ou avisos importantes.
 
-[Inclua links para páginas relacionadas da wiki.]
+---
 
-## Referências
+## Percurso de estudo
 
-[Informe autor, título e link ou localização da fonte. Para materiais de uma turma específica, registre também o período.]
+- **Anterior:** [Tópico Anterior](../topico-anterior/index.md)
+- **Próximo:** [Próximo Tópico](../proximo-topico/index.md)
+

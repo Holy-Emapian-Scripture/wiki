@@ -74,17 +74,6 @@ Logo a **a integral definida** da PDF é de fato uma probabilidade.
 
 <a id="definicao_PDF"></a>
 
-<a id="lotus-law-of-the-unconscious-statistician"></a>
-<a id="secao_lotus"></a>
-
-## LOTUS (Law of The Unconscious Statistician)
-
-Se $X$ é uma v.a contínua com PDF $f_{X}(\varphi)$ e $g:{\mathbb{R}} \rightarrow {\mathbb{R}}$ é contínua, então a esperança de $Y = g(X)$ é dada por:
-
-$$
-E\left( g(X) \right) = \int_{- \infty}^{\infty}g(\varphi)f_{X}(\varphi)d\varphi
-$$
-
 <a id="propriedades-da-cdf-e-pdf"></a>
 <a id="secao_propriedades_CDF_PDF"></a>
 
@@ -146,36 +135,16 @@ $$
 
 <a id="propriedade_derivada_inversa"></a>
 
-<a id="propriedades-da-esperanca-e-variancia"></a>
-<a id="secao_propriedades_esperanca_variancia"></a>
+<a id="lotus-law-of-the-unconscious-statistician"></a>
+<a id="secao_lotus"></a>
 
-## Propriedades da Esperança e Variância
+## LOTUS (Law of The Unconscious Statistician)
 
-Dadas v.a’s contínuas $X,Y$ com PDF $f_{X}(\varphi),f_{Y}(\varphi)$ e $a,b \in {\mathbb{R}}$, temos:
-
-<a id="propriedade_esperanca_variancia"></a>
-
-**Propriedade**
+Se $X$ é uma v.a contínua com PDF $f_{X}(\varphi)$ e $g:{\mathbb{R}} \rightarrow {\mathbb{R}}$ é contínua, então a esperança de $Y = g(X)$ é dada por:
 
 $$
-\begin{array}{r} E(aX + b) = aE(X) + b \\ E(X + Y) = E(X) + E(Y) \\ V(aX + b) = a^{2}V(X) \end{array}
+E\left( g(X) \right) = \int_{- \infty}^{\infty}g(\varphi)f_{X}(\varphi)d\varphi
 $$
-
-E caso $X,Y$ sejam independentes:
-
-$$
-\begin{array}{r} E(XY) = E(X)E(Y) \\ V(X + Y) = V(X) + V(Y) \end{array}
-$$
-
-**Propriedade**
-
-Podemos calcular a variância de $X$ usando a esperança:
-
-$$
-V(X) = E\left( X^{2} \right) - {E(X)}^{2}
-$$
-
-<a id="propriedade_varianca_via_esperanca"></a>
 
 <a id="variancia-e-esperanca"></a>
 <a id="secao-5"></a>
@@ -210,6 +179,37 @@ $$
 
 <a id="definicao_variancia_desviopadrao"></a>
 
+<a id="propriedades-da-esperanca-e-variancia"></a>
+<a id="secao_propriedades_esperanca_variancia"></a>
+
+## Propriedades da Esperança e Variância
+
+Dadas v.a’s contínuas $X,Y$ com PDF $f_{X}(\varphi),f_{Y}(\varphi)$ e $a,b \in {\mathbb{R}}$, temos:
+
+<a id="propriedade_esperanca_variancia"></a>
+
+**Propriedade**
+
+$$
+\begin{array}{r} E(aX + b) = aE(X) + b \\ E(X + Y) = E(X) + E(Y) \\ V(aX + b) = a^{2}V(X) \end{array}
+$$
+
+E caso $X,Y$ sejam independentes:
+
+$$
+\begin{array}{r} E(XY) = E(X)E(Y) \\ V(X + Y) = V(X) + V(Y) \end{array}
+$$
+
+**Propriedade**
+
+Podemos calcular a variância de $X$ usando a esperança:
+
+$$
+V(X) = E\left( X^{2} \right) - {E(X)}^{2}
+$$
+
+<a id="propriedade_varianca_via_esperanca"></a>
+
 <!-- wiki:original:fim -->
 
 
@@ -217,4 +217,4 @@ $$
 
 [Trilha: A2](../../../trilhas/probabilidade/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/probabilidade/a2.md#apresentacao-original)
 
-- Próximo: [Propriedades da Esperança e Variância](#propriedades-da-esperanca-e-variancia)
+- Próximo: [Distribuições Contínuas](../distribuicoes-continuas/index.md)

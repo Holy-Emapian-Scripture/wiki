@@ -88,5 +88,5 @@ Essa prova não será muito rigorosa matematicamente, vamos montar a prova para 
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [Algoritmo para resolver $Ax = b$](../estabilidade-da-triangularizacao-de-householder/index.md#algoritmo-para-resolver-ax-b)
+- Anterior: [Estabilidade da Triangularização de Householder](../estabilidade-da-triangularizacao-de-householder/index.md)
 - Próximo: [Condicionando Problemas de Mínimos Quadrados](../condicionando-problemas-de-minimos-quadrados/index.md)

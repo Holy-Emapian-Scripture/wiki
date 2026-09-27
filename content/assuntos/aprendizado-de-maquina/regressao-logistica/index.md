@@ -22,19 +22,6 @@ ordem_na_trilha: 11
 # Regressão Logística
 
 
-<a id="problemas-multiclasse-classificador-softmax"></a>
-<a id="secao-20"></a>
-
-## Problemas multiclasse, classificador *softmax*
-
-Nesse capítulo, nos focamos em problemas de classificação binária, em que $\vert \mathcal{Y}\vert  = 2$. No entanto, é fácil generalizar as técnicas que discutimos para problemas multi-classe (i.e., $\vert \mathcal{Y}\vert  > 2$). Para tal, basta substituir o nosso modelo observacional Bernoulli por uma distribuição categórica. Lembre que a Bernoulli é parametrizada por um parâmetro escalar que dita a probabilidade de cada classe. No caso da categórica, precisamos de um vetor de probabilidades, i.e., um vetor $r$ de tamanho $L = \vert \mathcal{Y}\vert$, em que cada entrada $r_{l}$ denota a probabilidade da classe $l$. Naturalmente, todas as entradas de $r$ devem ser não-negativas e $\sum_{l = 1}^{L}r_{l} = 1$. Resta-nos, então, expressar $r$ como uma função de $x$. Para tal, podemos generalizar nosso o procedimento que usamos para regressão logística.
-
-Primeiro, calculamos um vetor de logits $z$, desta vez usando uma transformação linear para cada uma das $L$ classes $$z = \begin{pmatrix} x^{T}\theta^{(1)} \\ x^{T}\theta^{(2)} \\ \vdots \\ x^{T}\theta^{(L)} \end{pmatrix}$$
-
-Finalmente, aplicamos a função Softmax para transformar $z$ em um vetor de probabilidades e obter $r$, que é dado por: $$r_{l} = \text{ Softmax}(z) = \frac{e^{z_{l}}}{\sum_{l' = 1}^{L}e^{z_{l'}}}$$
-
-------------------------------------------------------------------------
-
 <a id="regressao-logistica-bayesiana"></a>
 <a id="secao-18"></a>
 
@@ -80,6 +67,19 @@ Note que o procedimento acima envolve inverter $H$. Como $m$ é um mínimo local
 
 Para aplicar o método de Laplace ao nosso modelo de regressão logística Bayesiano, podemos usar alguma variação de gradiente descendente para achar $m$ e, assumindo $\mu = 0$ e $\Sigma = cI$ para $c > 0$, as entradas $H_{ij}$ da Hessiana $H$ são dadas por $$H_{ij} = \begin{cases} \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}x_{nj}\text{ se }i \neq j \\ \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}^{2} + c^{- 1}\text{ se }i = j \end{cases}$$
 
+<a id="problemas-multiclasse-classificador-softmax"></a>
+<a id="secao-20"></a>
+
+## Problemas multiclasse, classificador *softmax*
+
+Nesse capítulo, nos focamos em problemas de classificação binária, em que $\vert \mathcal{Y}\vert  = 2$. No entanto, é fácil generalizar as técnicas que discutimos para problemas multi-classe (i.e., $\vert \mathcal{Y}\vert  > 2$). Para tal, basta substituir o nosso modelo observacional Bernoulli por uma distribuição categórica. Lembre que a Bernoulli é parametrizada por um parâmetro escalar que dita a probabilidade de cada classe. No caso da categórica, precisamos de um vetor de probabilidades, i.e., um vetor $r$ de tamanho $L = \vert \mathcal{Y}\vert$, em que cada entrada $r_{l}$ denota a probabilidade da classe $l$. Naturalmente, todas as entradas de $r$ devem ser não-negativas e $\sum_{l = 1}^{L}r_{l} = 1$. Resta-nos, então, expressar $r$ como uma função de $x$. Para tal, podemos generalizar nosso o procedimento que usamos para regressão logística.
+
+Primeiro, calculamos um vetor de logits $z$, desta vez usando uma transformação linear para cada uma das $L$ classes $$z = \begin{pmatrix} x^{T}\theta^{(1)} \\ x^{T}\theta^{(2)} \\ \vdots \\ x^{T}\theta^{(L)} \end{pmatrix}$$
+
+Finalmente, aplicamos a função Softmax para transformar $z$ em um vetor de probabilidades e obter $r$, que é dado por: $$r_{l} = \text{ Softmax}(z) = \frac{e^{z_{l}}}{\sum_{l' = 1}^{L}e^{z_{l'}}}$$
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -87,5 +87,5 @@ Para aplicar o método de Laplace ao nosso modelo de regressão logística Bayes
 
 [Trilha: A1](../../../trilhas/aprendizado-de-maquina/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a1.md#apresentacao-original)
 
-- Anterior: [Modelo com expansão de base](../regressao-linear/index.md#modelo-com-expansao-de-base)
-- Próximo: [Problemas multiclasse, classificador *softmax*](#problemas-multiclasse-classificador-softmax)
+- Anterior: [Regressão Linear](../regressao-linear/index.md)
+- Próximo: [Redes Neurais](../redes-neurais/index.md)

@@ -117,5 +117,5 @@ $$
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Existência e unicidade](../fatoracao-qr/index.md#existencia-e-unicidade)
+- Anterior: [Fatoração QR](../fatoracao-qr/index.md)
 - Próximo: [Triangularização de Householder](../triangularizacao-de-householder/index.md)

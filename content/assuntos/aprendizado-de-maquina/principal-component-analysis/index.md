@@ -22,6 +22,13 @@ ordem_na_trilha: 4
 # Principal Component Analysis
 
 
+<a id="introducao"></a>
+<a id="secao-5"></a>
+
+## Introdução
+
+Nós que trabalhamos com análise de dados, muitas vezes nos deparamos com datasets assustadores, com muitas dimensões, o que acaba dificultando nossa capacidade de fazer análises e visualizações. Visando solucionar esse nosso problema, é que o PCA entra em cena. Ele é um método de redução de dimensionalidade que busca encontrar uma representação mais compacta dos dados, preservando ao máximo a variância dos dados originais. O PCA é amplamente utilizado em diversas áreas, como reconhecimento de padrões, compressão de imagens e análise exploratória de dados.
+
 <a id="definicoes"></a>
 <a id="secao-6"></a>
 
@@ -48,13 +55,6 @@ Seja $X$ uma matriz ${\mathbb{R}} \times {\mathbb{R}}$, a projeção do vetor $y
 **Teorema: Coeficientes de Base**
 
 Seja $\left\{ q_{1},\ldots,q_{D} \right\}$ uma base ortogonal do ${\mathbb{R}}^{D}$ e $x \in {\mathbb{R}}^{D}$ tal que $$x = \sum_{i = 1}^{D}\alpha_{i}q_{i}$$ então temos que $$Qx = \begin{pmatrix} \alpha_{1} & \ldots & \alpha_{D} \end{pmatrix}^{T}$$ onde $Q$ é a matriz cujas colunas são os vetores da base.
-
-<a id="introducao"></a>
-<a id="secao-5"></a>
-
-## Introdução
-
-Nós que trabalhamos com análise de dados, muitas vezes nos deparamos com datasets assustadores, com muitas dimensões, o que acaba dificultando nossa capacidade de fazer análises e visualizações. Visando solucionar esse nosso problema, é que o PCA entra em cena. Ele é um método de redução de dimensionalidade que busca encontrar uma representação mais compacta dos dados, preservando ao máximo a variância dos dados originais. O PCA é amplamente utilizado em diversas áreas, como reconhecimento de padrões, compressão de imagens e análise exploratória de dados.
 
 <a id="maxima-variancia"></a>
 <a id="secao-7"></a>
@@ -113,5 +113,5 @@ Novamente, chegamos na conclusão de que os autovetores de $S$ são as direçõe
 
 [Trilha: A3](../../../trilhas/aprendizado-de-maquina/a3.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a3.md#apresentacao-original)
 
-- Anterior: [O Algoritmo](../k-means/index.md#o-algoritmo)
+- Anterior: [K-means](../k-means/index.md)
 - Próximo: [Gaussian and Bernoulli Mixture Models](../gaussian-and-bernoulli-mixture-models/index.md)

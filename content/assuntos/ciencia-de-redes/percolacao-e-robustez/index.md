@@ -22,77 +22,6 @@ ordem_na_trilha: 5
 # Percolação e Robustez
 
 
-<a id="criterio-de-molloy-reed"></a>
-<a id="secao-8"></a>
-
-## Critério de Molloy-Reed
-
-**Teorema: Critério de Molloy-Reed**
-
-Dado que $K$ é a variável aleatória que representa o grau de um nó selecionado aleatoriamente dentro de uma rede $G(V,E)$. Para que uma componente gigante exista dentro dessa rede, ela deve satisfazer: $${\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2$$
-
-**Demonstração**
-
-Para que minha rede tenha uma componente gigante, um nó **da componente** deve ter grau médio maior ou igual a $2$, já que caso contrário, quer dizer que muitos nós possuem apenas uma ou menos conexões. Defina ${\mathbb{P}}(\delta(v_{i}) = k_{i}\vert v_{i} \leftarrow > v_{j})$ como a probabilidade de que $v_{i}$ tem grau $k$ dado que ele se liga com $j$ **e $j$ está na componente gigante**. Por questões de simplificação de notação, chamemos a probabilidade antes definida como ${\mathbb{P}}(k_{i}\vert i \leftarrow > j)$. Temos que: $${\mathbb{E}}\left\lbrack K = k_{i}\vert i \leftarrow > j \right\rbrack = \sum_{k_{i}}k_{i}{\mathbb{P}}(k_{i}\vert i \leftarrow > j) \geq 2$$ Vamos calcular alguns termos. Sabemos que: $${\mathbb{P}}(k_{i}\vert i \leftarrow > j) = \frac{{\mathbb{P}}(i \leftarrow > j\vert k_{i}) \cdot {\mathbb{P}}(k_{i})}{{\mathbb{P}}(i \leftarrow > j)}$$ E também temos que: $${\mathbb{P}}(i \leftarrow > j) = \frac{\vert E\vert }{\begin{pmatrix} \vert V\vert  \\ 2 \end{pmatrix}} = {\mathbb{E}}\frac{\lbrack K\rbrack}{\vert V\vert  - 1}$$ Além de que: $${\mathbb{P}}(i \leftarrow > j\vert k_{i}) = \frac{k_{i}}{\vert V\vert  - 1}$$ Então, substituindo, vamos ter: $${\mathbb{E}}\left\lbrack K = k_{i}\vert i \leftarrow > j \right\rbrack = \sum_{k_{i}}k_{i}\frac{k_{i}p\left( k_{i} \right)}{{\mathbb{E}}\lbrack K\rbrack} = {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2$$
-
-Olhando o caso específico de **redes aleatórias**, nós vamos obter que: $${\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2 \Leftrightarrow {\mathbb{E}}\lbrack K\rbrack\frac{1 + {\mathbb{E}}\lbrack K\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2 \Leftrightarrow {\mathbb{E}}\lbrack K\rbrack \geq 1$$
-
-O que coincide com os resultados vistos no primeiro resumo
-
-<a id="limite-critico"></a>
-<a id="secao-9"></a>
-
-## Limite Crítico
-
-Vamos agora utilizar do critério visto anteriormente para entender o porquê de as redes livre-de-escala serem robustas a falhas aleatórias. Primeiro de tudo, ao remover uma fração dos nós de uma rede **aleatoriamente**, existem duas consequências:
-
-- Altera o grau de alguns nós \[$k' \leq k$\]
-
-- Muda a distribuição dos graus \[$p_{k} \rightarrow p'_{k}'$\]
-
-Vamos primeiro descobrir a nova distribuição dos graus após a remoção da fração $f$. Vamos fixar que estamos analisando um nó $v \in V$ que, antes da remoção, tem grau $k$, ou seja, tem $k$ vizinhos. Para saber quantos vizinhos vão sobrar após remover a fração, definimos uma variável indicadora para cada um dos vizinhos do nó $v$ $${\mathbb{I}}_{j} = \begin{cases} 1\text{ se o vizinho NÃO foi removido com probabilidade }1 - f \\ 0\text{ se o vizinho foi removido com probabilidade }f \end{cases}$$
-
-então a quantidade de vizinhos de $v$ APÓS A REMOÇÃO dos $f$ nós é: $$\sum_{j = 1}^{k}{\mathbb{I}}_{j}$$
-
-e como isso é uma soma de bernoullis independentes, essa soma nos dá uma distribuição $\text{Binomial}(k,1 - f)$, então temos que: $${\mathbb{P}}(K' = k'\vert K = k) = \begin{pmatrix} k \\ k' \end{pmatrix}f^{k - k'}(1 - f)^{k}'$$
-
-Considere que $K$ é a variável aleatória do grau de um nó selecionado aleatoriamente na rede ANTERIOR à remoção da fração $f$ e $K'$ é selecionando um nó na rede POSTERIOR à remoção da fração. Então para achar a nova distribuição dos graus após as remoções, apenas fazemos: $$\begin{aligned} {\mathbb{P}}(K' = k') & = \sum_{i}^{\infty}{\mathbb{P}}(K' = k'\vert K = i){\mathbb{P}}(K = i) \\ & = \sum_{i}^{\infty}{\mathbb{P}}(K = i)\begin{pmatrix} i \\ k' \end{pmatrix}f^{i - k'}(1 - f)^{k'} \end{aligned}$$
-
-Agora vamos assumir que sabemos ${\mathbb{E}}\lbrack K\rbrack$ e ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ (distribuição original), e queremos calcular ${\mathbb{E}}\lbrack K'\rbrack$ e ${\mathbb{E}}\left\lbrack K'^{2} \right\rbrack$, então fazemos: $${\mathbb{E}}\lbrack K'\rbrack = {\mathbb{E}}\lbrack\underset{\text{ Bin}(k,1 - f)}{\underbrace{{\mathbb{E}}\left\lbrack K'\vert K \right\rbrack}}\rbrack = {\mathbb{E}}\left\lbrack (1 - f)K \right\rbrack = (1 - f){\mathbb{E}}\lbrack K\rbrack$$ $$\begin{aligned} {\mathbb{E}}\left\lbrack K'^{2} \right\rbrack & = {\mathbb{V}}\lbrack K'\rbrack + \left( {\mathbb{E}}\lbrack K'\rbrack \right)^{2} \\ & = {\mathbb{V}}\lbrack K'\rbrack + (1 - f)^{2}\left( {\mathbb{E}}\lbrack K\rbrack \right)^{2} \\ {\mathbb{V}}\lbrack K'\rbrack & = {\mathbb{E}}\left\lbrack {\mathbb{V}}\left\lbrack K'\vert K \right\rbrack \right\rbrack + {\mathbb{V}}\left\lbrack {\mathbb{E}}\left\lbrack K'\vert K \right\rbrack \right\rbrack \\ & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{V}}\lbrack K\rbrack \end{aligned}$$ $$\begin{aligned} \Rightarrow {\mathbb{E}}\left\lbrack K'^{2} \right\rbrack & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}\left( {\mathbb{V}}\lbrack K\rbrack + {\mathbb{E}}\lbrack K\rbrack^{2} \right) \\ & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{E}}\left\lbrack K^{2} \right\rbrack \end{aligned}$$
-
-Agora que sabemos os momentos da distribuição após a remoção dos $f$, podemos aplicar o critério de Molloy-Reed na rede posterior à remoção $$\begin{array}{r} {\mathbb{E}}\frac{\left\lbrack K'^{2} \right\rbrack}{\mathbb{E}}\lbrack K'\rbrack = 2 \Leftrightarrow \frac{(1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{E}}\left\lbrack K^{2} \right\rbrack}{(1 - f){\mathbb{E}}\lbrack K\rbrack} = 2 \\ f + {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - f{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack = 2 \\ f\left( 1 - {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \right) = 2 - {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \\ f = 1 - \frac{1}{{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - 1} \end{array}$$
-
-Note que a fração limite depende única e exclusivamente das informações da distribuição. Se olharmos o caso **específico** das redes aleatórias: $$f_{c} = 1 - \frac{1}{{\mathbb{E}}\lbrack K\rbrack}$$
-
-Ou seja, quanto mais densa a rede, maior a fração crítica de nós necessários para a remoção. Agora, para redes livre-de-escala, vamos fazer um passo-a-passo diferente. Vamos primeiro calcular o $m$-ésimo momento do grau de uma rede livre-de-escala: $$\begin{aligned} {\mathbb{E}}\left\lbrack K^{m} \right\rbrack & = (\gamma - 1)k_{\text{min}}^{\gamma - 1}\int_{k_{\text{min}}}^{k_{\text{max}}}k^{m - \gamma}dk \\ & = \frac{\gamma - 1}{m - \gamma + 1}k_{\text{min}}^{\gamma - 1}\left\lbrack k^{m - \gamma + 1} \right\rbrack_{k_{\text{min}}}^{k_{\text{max}}} \\ & = \frac{\gamma - 1}{m - \gamma + 1}k_{\text{min}}^{\gamma - 1}\left\lbrack k_{\text{max}}^{m - \gamma + 1} - k_{\text{min}}^{m - \gamma + 1} \right\rbrack \end{aligned}$$
-
-Agora calculamos o limite crítico $f_{c}$ $$\kappa = {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack = \frac{(2 - \gamma)k_{\text{max}}^{3 - \gamma} - k_{\text{min}}^{3 - \gamma}}{(3 - \gamma)k_{\text{max}}^{2 - \gamma} - k_{\text{min}}^{2 - \gamma}}$$ então, obtemos: $$\kappa = \vert \frac{2 - \gamma}{3 - \gamma}\vert \begin{cases} k_{\text{min }}\text{ se }\gamma > 3 \\ k_{\text{max}}^{3 - \gamma}k_{\text{min}}^{\gamma - 2}\text{ se }2 < \gamma < 3 \\ k_{\text{max }}\text{ se }1 < \gamma < 2 \end{cases}$$ daí, utilizando todas as contas que vimos agora relebrando o fato, visto no último resumo, que: $$k_{\text{max }} = k_{\text{min }}N^{\frac{1}{\gamma - 1}}$$
-
-vamos obter que: $$\begin{aligned} f_{c} & = 1 - \frac{1}{\kappa - 1} \\ & = 1 - \frac{C}{N^{\frac{3 - \gamma}{\gamma - 1}}} \end{aligned}$$
-
-<a id="melhorando-a-robustez"></a>
-<a id="secao-11"></a>
-
-## Melhorando a Robustez
-
-Certo, temos uma rede, é possível melhorar a sua tolerância, tanto a ataques, quanto a falhas aleatórias? Um primeiro pensamento que opdemos ter é conectar todos os nós periféricos em um hub, além de conectar eles entre si. Porém, na vida real, isso pode não ser aplicável, tendo em vista que, se cada aresta tem um custo para ser mantida, o custo de manutenção da rede pode exceder o viável
-
-Da para maximizar a robustez para ataques e falhas aleatórias sem alterar o custo? Queremos aumentar o limite $f_{c}$, então temos que aumentar ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ sem alterar o custo médio ${\mathbb{E}}\lbrack K\rbrack$. Isso vai ocorrer em uma distribuição **bimodal** onde todo nó tem grau $k_{\min}$ ou $k_{\max}$, seguindo a seguinte distribuição: $$p(k) = (1 - r)\delta(k - k_{\min}) + r\delta(k - k_{\max})$$
-
-onde $r$ é a fração de nós com grau $k_{\max}$. Então vamos querer maximizar: $$f_{c}^{\text{tot}} = f_{c}^{\text{rand}} + f_{c}^{\text{targ}}$$
-
-onde $f_{c}^{\text{rand}}$ é o limite crítico de falhas aleatórias e $f_{c}^{\text{targ}}$ o limite crítico dos ataques direcionados. Dado a distribuição bimodal citada anteriormente: $$\begin{aligned} {\mathbb{E}}\lbrack K\rbrack & = (1 - r)k_{\min} + rk_{\max} \\ {\mathbb{E}}\left\lbrack K^{2} \right\rbrack & = (1 - r)k_{\min}^{2} + rk_{\max}^{2} \end{aligned}$$
-
-substituindo isso em $f_{c}^{\text{rand}}$ $$f_{c}^{\text{rand }} = 1 - \frac{1}{{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - 1} = \frac{{\mathbb{E}}\lbrack K\rbrack^{2} - 2rk_{\max}{\mathbb{E}}\lbrack K\rbrack - 2(1 - r){\mathbb{E}}\lbrack K\rbrack + rk_{\max}^{2}}{{\mathbb{E}}\lbrack K\rbrack^{2} - 2rk_{\max}{\mathbb{E}}\lbrack K\rbrack - (1 - r){\mathbb{E}}\lbrack K\rbrack + rk_{\max}^{2}}$$
-
-Agora, para achar $f_{c}^{\text{targ}}$, vamos fazer uma análise mais cuidadosa $$\begin{array}{r} f_{c}^{\text{targ}} > r \Rightarrow \text{ Todos os hubs foram removidos } \\ \Rightarrow f_{c}^{\text{targ}} = r + \frac{1 - r}{{\mathbb{E}}\lbrack K\rbrack - rk_{\max}}\left( {\mathbb{E}}\lbrack K\rbrack\frac{{\mathbb{E}}\lbrack K\rbrack - rk_{\max} - 2(1 - r)}{{\mathbb{E}}\lbrack K\rbrack - rk_{\max} - (1 - r)} - rk_{\max} \right) \end{array}$$ $$\begin{array}{r} f_{c}^{\text{targ}} < r \Rightarrow \text{ Sobrou alguns hubs } \\ \Rightarrow f_{c}^{\text{targ}} = \frac{{\mathbb{E}}\lbrack K\rbrack^{2} - 2r{\mathbb{E}}\lbrack K\rbrack k_{\max} + rk_{\max}^{2} - 2(1 - r){\mathbb{E}}\lbrack K\rbrack}{k_{\max}\left( k_{\max} - 1 \right)(1 - r)} \end{array}$$
-
-E nós estamos procurando o valor de $k$ que maximiza $f_{c}^{\text{tot}}$. Usando as equações encontradas para $f_{c}^{\text{targ}}$ e $f_{c}^{\text{rand}}$, descobrimos que podemos aproximar $k_{\max}$ por: $$\begin{aligned} k_{\max} & \approx Ar^{- \frac{2}{3}} \\ A & = \left\lbrack \frac{2\left( {\mathbb{E}}\lbrack K\rbrack \right)^{2}\left( {\mathbb{E}}\lbrack K\rbrack - 1 \right)^{2}}{2{\mathbb{E}}\lbrack K\rbrack - 1} \right\rbrack^{\frac{1}{3}} \end{aligned}$$
-
-então obtemos que, para $r$ pequeno: $$f_{c}^{\text{tot }} = 2 - \frac{1}{{\mathbb{E}}\lbrack K\rbrack - 1} - \frac{3{\mathbb{E}}\lbrack K\rbrack}{A^{2}}r^{\frac{1}{3}} + O\left( r^{\frac{2}{3}} \right)$$
-
-Para uma rede com $N$ nós, o máximo de $f_{c}^{\text{tot}}$ ocorre com $r = \frac{1}{N}$ $$\Rightarrow k_{\max} = AN^{\frac{2}{3}}$$ ou seja, em redes em que apenas $1$ nó possui grau $k_{\max}$ enquanto o resto possui $k_{\min}$
-
 <a id="percolacao"></a>
 <a id="secao-6"></a>
 
@@ -157,6 +86,54 @@ Vimos um exemplo específico com redes quadriculadas, mas e se não seguirmos es
 
 Os gráficos acima indicam uma resistência muito forte das redes livre-de-escala contra falhas aleatórias dentro da mesma. Será que podemos encontrar um meio matemático de entender o porquê que isso acontece?
 
+<a id="criterio-de-molloy-reed"></a>
+<a id="secao-8"></a>
+
+## Critério de Molloy-Reed
+
+**Teorema: Critério de Molloy-Reed**
+
+Dado que $K$ é a variável aleatória que representa o grau de um nó selecionado aleatoriamente dentro de uma rede $G(V,E)$. Para que uma componente gigante exista dentro dessa rede, ela deve satisfazer: $${\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2$$
+
+**Demonstração**
+
+Para que minha rede tenha uma componente gigante, um nó **da componente** deve ter grau médio maior ou igual a $2$, já que caso contrário, quer dizer que muitos nós possuem apenas uma ou menos conexões. Defina ${\mathbb{P}}(\delta(v_{i}) = k_{i}\vert v_{i} \leftarrow > v_{j})$ como a probabilidade de que $v_{i}$ tem grau $k$ dado que ele se liga com $j$ **e $j$ está na componente gigante**. Por questões de simplificação de notação, chamemos a probabilidade antes definida como ${\mathbb{P}}(k_{i}\vert i \leftarrow > j)$. Temos que: $${\mathbb{E}}\left\lbrack K = k_{i}\vert i \leftarrow > j \right\rbrack = \sum_{k_{i}}k_{i}{\mathbb{P}}(k_{i}\vert i \leftarrow > j) \geq 2$$ Vamos calcular alguns termos. Sabemos que: $${\mathbb{P}}(k_{i}\vert i \leftarrow > j) = \frac{{\mathbb{P}}(i \leftarrow > j\vert k_{i}) \cdot {\mathbb{P}}(k_{i})}{{\mathbb{P}}(i \leftarrow > j)}$$ E também temos que: $${\mathbb{P}}(i \leftarrow > j) = \frac{\vert E\vert }{\begin{pmatrix} \vert V\vert  \\ 2 \end{pmatrix}} = {\mathbb{E}}\frac{\lbrack K\rbrack}{\vert V\vert  - 1}$$ Além de que: $${\mathbb{P}}(i \leftarrow > j\vert k_{i}) = \frac{k_{i}}{\vert V\vert  - 1}$$ Então, substituindo, vamos ter: $${\mathbb{E}}\left\lbrack K = k_{i}\vert i \leftarrow > j \right\rbrack = \sum_{k_{i}}k_{i}\frac{k_{i}p\left( k_{i} \right)}{{\mathbb{E}}\lbrack K\rbrack} = {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2$$
+
+Olhando o caso específico de **redes aleatórias**, nós vamos obter que: $${\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2 \Leftrightarrow {\mathbb{E}}\lbrack K\rbrack\frac{1 + {\mathbb{E}}\lbrack K\rbrack}{\mathbb{E}}\lbrack K\rbrack \geq 2 \Leftrightarrow {\mathbb{E}}\lbrack K\rbrack \geq 1$$
+
+O que coincide com os resultados vistos no primeiro resumo
+
+<a id="limite-critico"></a>
+<a id="secao-9"></a>
+
+## Limite Crítico
+
+Vamos agora utilizar do critério visto anteriormente para entender o porquê de as redes livre-de-escala serem robustas a falhas aleatórias. Primeiro de tudo, ao remover uma fração dos nós de uma rede **aleatoriamente**, existem duas consequências:
+
+- Altera o grau de alguns nós \[$k' \leq k$\]
+
+- Muda a distribuição dos graus \[$p_{k} \rightarrow p'_{k}'$\]
+
+Vamos primeiro descobrir a nova distribuição dos graus após a remoção da fração $f$. Vamos fixar que estamos analisando um nó $v \in V$ que, antes da remoção, tem grau $k$, ou seja, tem $k$ vizinhos. Para saber quantos vizinhos vão sobrar após remover a fração, definimos uma variável indicadora para cada um dos vizinhos do nó $v$ $${\mathbb{I}}_{j} = \begin{cases} 1\text{ se o vizinho NÃO foi removido com probabilidade }1 - f \\ 0\text{ se o vizinho foi removido com probabilidade }f \end{cases}$$
+
+então a quantidade de vizinhos de $v$ APÓS A REMOÇÃO dos $f$ nós é: $$\sum_{j = 1}^{k}{\mathbb{I}}_{j}$$
+
+e como isso é uma soma de bernoullis independentes, essa soma nos dá uma distribuição $\text{Binomial}(k,1 - f)$, então temos que: $${\mathbb{P}}(K' = k'\vert K = k) = \begin{pmatrix} k \\ k' \end{pmatrix}f^{k - k'}(1 - f)^{k}'$$
+
+Considere que $K$ é a variável aleatória do grau de um nó selecionado aleatoriamente na rede ANTERIOR à remoção da fração $f$ e $K'$ é selecionando um nó na rede POSTERIOR à remoção da fração. Então para achar a nova distribuição dos graus após as remoções, apenas fazemos: $$\begin{aligned} {\mathbb{P}}(K' = k') & = \sum_{i}^{\infty}{\mathbb{P}}(K' = k'\vert K = i){\mathbb{P}}(K = i) \\ & = \sum_{i}^{\infty}{\mathbb{P}}(K = i)\begin{pmatrix} i \\ k' \end{pmatrix}f^{i - k'}(1 - f)^{k'} \end{aligned}$$
+
+Agora vamos assumir que sabemos ${\mathbb{E}}\lbrack K\rbrack$ e ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ (distribuição original), e queremos calcular ${\mathbb{E}}\lbrack K'\rbrack$ e ${\mathbb{E}}\left\lbrack K'^{2} \right\rbrack$, então fazemos: $${\mathbb{E}}\lbrack K'\rbrack = {\mathbb{E}}\lbrack\underset{\text{ Bin}(k,1 - f)}{\underbrace{{\mathbb{E}}\left\lbrack K'\vert K \right\rbrack}}\rbrack = {\mathbb{E}}\left\lbrack (1 - f)K \right\rbrack = (1 - f){\mathbb{E}}\lbrack K\rbrack$$ $$\begin{aligned} {\mathbb{E}}\left\lbrack K'^{2} \right\rbrack & = {\mathbb{V}}\lbrack K'\rbrack + \left( {\mathbb{E}}\lbrack K'\rbrack \right)^{2} \\ & = {\mathbb{V}}\lbrack K'\rbrack + (1 - f)^{2}\left( {\mathbb{E}}\lbrack K\rbrack \right)^{2} \\ {\mathbb{V}}\lbrack K'\rbrack & = {\mathbb{E}}\left\lbrack {\mathbb{V}}\left\lbrack K'\vert K \right\rbrack \right\rbrack + {\mathbb{V}}\left\lbrack {\mathbb{E}}\left\lbrack K'\vert K \right\rbrack \right\rbrack \\ & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{V}}\lbrack K\rbrack \end{aligned}$$ $$\begin{aligned} \Rightarrow {\mathbb{E}}\left\lbrack K'^{2} \right\rbrack & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}\left( {\mathbb{V}}\lbrack K\rbrack + {\mathbb{E}}\lbrack K\rbrack^{2} \right) \\ & = (1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{E}}\left\lbrack K^{2} \right\rbrack \end{aligned}$$
+
+Agora que sabemos os momentos da distribuição após a remoção dos $f$, podemos aplicar o critério de Molloy-Reed na rede posterior à remoção $$\begin{array}{r} {\mathbb{E}}\frac{\left\lbrack K'^{2} \right\rbrack}{\mathbb{E}}\lbrack K'\rbrack = 2 \Leftrightarrow \frac{(1 - f)f{\mathbb{E}}\lbrack K\rbrack + (1 - f)^{2}{\mathbb{E}}\left\lbrack K^{2} \right\rbrack}{(1 - f){\mathbb{E}}\lbrack K\rbrack} = 2 \\ f + {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - f{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack = 2 \\ f\left( 1 - {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \right) = 2 - {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack \\ f = 1 - \frac{1}{{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - 1} \end{array}$$
+
+Note que a fração limite depende única e exclusivamente das informações da distribuição. Se olharmos o caso **específico** das redes aleatórias: $$f_{c} = 1 - \frac{1}{{\mathbb{E}}\lbrack K\rbrack}$$
+
+Ou seja, quanto mais densa a rede, maior a fração crítica de nós necessários para a remoção. Agora, para redes livre-de-escala, vamos fazer um passo-a-passo diferente. Vamos primeiro calcular o $m$-ésimo momento do grau de uma rede livre-de-escala: $$\begin{aligned} {\mathbb{E}}\left\lbrack K^{m} \right\rbrack & = (\gamma - 1)k_{\text{min}}^{\gamma - 1}\int_{k_{\text{min}}}^{k_{\text{max}}}k^{m - \gamma}dk \\ & = \frac{\gamma - 1}{m - \gamma + 1}k_{\text{min}}^{\gamma - 1}\left\lbrack k^{m - \gamma + 1} \right\rbrack_{k_{\text{min}}}^{k_{\text{max}}} \\ & = \frac{\gamma - 1}{m - \gamma + 1}k_{\text{min}}^{\gamma - 1}\left\lbrack k_{\text{max}}^{m - \gamma + 1} - k_{\text{min}}^{m - \gamma + 1} \right\rbrack \end{aligned}$$
+
+Agora calculamos o limite crítico $f_{c}$ $$\kappa = {\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack = \frac{(2 - \gamma)k_{\text{max}}^{3 - \gamma} - k_{\text{min}}^{3 - \gamma}}{(3 - \gamma)k_{\text{max}}^{2 - \gamma} - k_{\text{min}}^{2 - \gamma}}$$ então, obtemos: $$\kappa = \vert \frac{2 - \gamma}{3 - \gamma}\vert \begin{cases} k_{\text{min }}\text{ se }\gamma > 3 \\ k_{\text{max}}^{3 - \gamma}k_{\text{min}}^{\gamma - 2}\text{ se }2 < \gamma < 3 \\ k_{\text{max }}\text{ se }1 < \gamma < 2 \end{cases}$$ daí, utilizando todas as contas que vimos agora relebrando o fato, visto no último resumo, que: $$k_{\text{max }} = k_{\text{min }}N^{\frac{1}{\gamma - 1}}$$
+
+vamos obter que: $$\begin{aligned} f_{c} & = 1 - \frac{1}{\kappa - 1} \\ & = 1 - \frac{C}{N^{\frac{3 - \gamma}{\gamma - 1}}} \end{aligned}$$
+
 <a id="tolerancia-a-ataques"></a>
 <a id="secao-10"></a>
 
@@ -196,6 +173,29 @@ Então consegumos chegar no limiar crítico da fração de nós $$f_{c}^{\frac{2
 
 Perceba que, se $\gamma \rightarrow \infty$, então $f_{c} \rightarrow 1 - \frac{1}{k_{\min} - 1}$
 
+<a id="melhorando-a-robustez"></a>
+<a id="secao-11"></a>
+
+## Melhorando a Robustez
+
+Certo, temos uma rede, é possível melhorar a sua tolerância, tanto a ataques, quanto a falhas aleatórias? Um primeiro pensamento que opdemos ter é conectar todos os nós periféricos em um hub, além de conectar eles entre si. Porém, na vida real, isso pode não ser aplicável, tendo em vista que, se cada aresta tem um custo para ser mantida, o custo de manutenção da rede pode exceder o viável
+
+Da para maximizar a robustez para ataques e falhas aleatórias sem alterar o custo? Queremos aumentar o limite $f_{c}$, então temos que aumentar ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ sem alterar o custo médio ${\mathbb{E}}\lbrack K\rbrack$. Isso vai ocorrer em uma distribuição **bimodal** onde todo nó tem grau $k_{\min}$ ou $k_{\max}$, seguindo a seguinte distribuição: $$p(k) = (1 - r)\delta(k - k_{\min}) + r\delta(k - k_{\max})$$
+
+onde $r$ é a fração de nós com grau $k_{\max}$. Então vamos querer maximizar: $$f_{c}^{\text{tot}} = f_{c}^{\text{rand}} + f_{c}^{\text{targ}}$$
+
+onde $f_{c}^{\text{rand}}$ é o limite crítico de falhas aleatórias e $f_{c}^{\text{targ}}$ o limite crítico dos ataques direcionados. Dado a distribuição bimodal citada anteriormente: $$\begin{aligned} {\mathbb{E}}\lbrack K\rbrack & = (1 - r)k_{\min} + rk_{\max} \\ {\mathbb{E}}\left\lbrack K^{2} \right\rbrack & = (1 - r)k_{\min}^{2} + rk_{\max}^{2} \end{aligned}$$
+
+substituindo isso em $f_{c}^{\text{rand}}$ $$f_{c}^{\text{rand }} = 1 - \frac{1}{{\mathbb{E}}\frac{\left\lbrack K^{2} \right\rbrack}{\mathbb{E}}\lbrack K\rbrack - 1} = \frac{{\mathbb{E}}\lbrack K\rbrack^{2} - 2rk_{\max}{\mathbb{E}}\lbrack K\rbrack - 2(1 - r){\mathbb{E}}\lbrack K\rbrack + rk_{\max}^{2}}{{\mathbb{E}}\lbrack K\rbrack^{2} - 2rk_{\max}{\mathbb{E}}\lbrack K\rbrack - (1 - r){\mathbb{E}}\lbrack K\rbrack + rk_{\max}^{2}}$$
+
+Agora, para achar $f_{c}^{\text{targ}}$, vamos fazer uma análise mais cuidadosa $$\begin{array}{r} f_{c}^{\text{targ}} > r \Rightarrow \text{ Todos os hubs foram removidos } \\ \Rightarrow f_{c}^{\text{targ}} = r + \frac{1 - r}{{\mathbb{E}}\lbrack K\rbrack - rk_{\max}}\left( {\mathbb{E}}\lbrack K\rbrack\frac{{\mathbb{E}}\lbrack K\rbrack - rk_{\max} - 2(1 - r)}{{\mathbb{E}}\lbrack K\rbrack - rk_{\max} - (1 - r)} - rk_{\max} \right) \end{array}$$ $$\begin{array}{r} f_{c}^{\text{targ}} < r \Rightarrow \text{ Sobrou alguns hubs } \\ \Rightarrow f_{c}^{\text{targ}} = \frac{{\mathbb{E}}\lbrack K\rbrack^{2} - 2r{\mathbb{E}}\lbrack K\rbrack k_{\max} + rk_{\max}^{2} - 2(1 - r){\mathbb{E}}\lbrack K\rbrack}{k_{\max}\left( k_{\max} - 1 \right)(1 - r)} \end{array}$$
+
+E nós estamos procurando o valor de $k$ que maximiza $f_{c}^{\text{tot}}$. Usando as equações encontradas para $f_{c}^{\text{targ}}$ e $f_{c}^{\text{rand}}$, descobrimos que podemos aproximar $k_{\max}$ por: $$\begin{aligned} k_{\max} & \approx Ar^{- \frac{2}{3}} \\ A & = \left\lbrack \frac{2\left( {\mathbb{E}}\lbrack K\rbrack \right)^{2}\left( {\mathbb{E}}\lbrack K\rbrack - 1 \right)^{2}}{2{\mathbb{E}}\lbrack K\rbrack - 1} \right\rbrack^{\frac{1}{3}} \end{aligned}$$
+
+então obtemos que, para $r$ pequeno: $$f_{c}^{\text{tot }} = 2 - \frac{1}{{\mathbb{E}}\lbrack K\rbrack - 1} - \frac{3{\mathbb{E}}\lbrack K\rbrack}{A^{2}}r^{\frac{1}{3}} + O\left( r^{\frac{2}{3}} \right)$$
+
+Para uma rede com $N$ nós, o máximo de $f_{c}^{\text{tot}}$ ocorre com $r = \frac{1}{N}$ $$\Rightarrow k_{\max} = AN^{\frac{2}{3}}$$ ou seja, em redes em que apenas $1$ nó possui grau $k_{\max}$ enquanto o resto possui $k_{\min}$
+
 <!-- wiki:original:fim -->
 
 
@@ -203,5 +203,4 @@ Perceba que, se $\gamma \rightarrow \infty$, então $f_{c} \rightarrow 1 - \frac
 
 [Trilha: A2](../../../trilhas/ciencia-de-redes/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/ciencia-de-redes/a2.md#apresentacao-original)
 
-- Anterior: [Cutoffs](../correlacao-de-graus/index.md#cutoffs)
-- Próximo: [Melhorando a Robustez](#melhorando-a-robustez)
+- Anterior: [Correlação de Graus](../correlacao-de-graus/index.md)

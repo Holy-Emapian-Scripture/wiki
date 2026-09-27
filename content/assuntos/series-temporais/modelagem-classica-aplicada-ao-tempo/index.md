@@ -36,5 +36,5 @@ ordem_na_trilha: 4
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Por que modelar séries temporais é importante?](../introducao-as-series-temporais/index.md#por-que-modelar-series-temporais-e-importante)
-- Próximo: [Modelo linear padrão](modelo-linear-padrao/index.md)
+- Anterior: [Introdução às Séries Temporais](../introducao-as-series-temporais/index.md)
+- Próximo: [Diagnóstico Visual](../diagnostico-visual/index.md)

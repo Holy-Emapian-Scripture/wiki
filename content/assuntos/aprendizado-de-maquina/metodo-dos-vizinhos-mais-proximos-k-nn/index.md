@@ -22,19 +22,6 @@ ordem_na_trilha: 1
 # Método dos Vizinhos mais próximos (k-NN)
 
 
-<a id="classificacao"></a>
-<a id="secao-3"></a>
-
-## Classificação
-
-Seja $\mathcal{D} ≔ \left\{ \left( x_{1},y_{1} \right),\ldots,\left( x_{N},y_{N} \right) \right\} \subset \mathcal{X} \times \mathcal{Y}$ o conjunto de treinamento e $d:\mathcal{D} \times \mathcal{D} \rightarrow {\mathbb{R}}^{+} \cup \left\{ 0 \right\}$ uma função de **distância**. Vamos supor que queremos classificar um vetor $x \in \mathcal{X}$ arbitrário.
-
-O método k-NN classifica o vetor $x$ atribuindo a ele a classe mais comum entre os rótulos dos pontos em $\mathcal{V}_{k}(x)$, ou seja: $$h(x) ≔ \text{ argmax}_{\left\{ y \in \mathcal{Y} \right\}}\sum_{\left\{ \left( x_{i},y_{i} \right) \in \mathcal{V}_{k}(x) \right\}}{\mathbb{I}}_{\left\{ y_{i} = y \right\}}$$ (De forma simplificada, o rótulo mais comum dentro do conjunto de vizinhos é o rótulo atribuído ao ponto $x$)
-
-![Exemplo de classificação usando o método k-NN. O ponto $x$ é o ponto a ser classificado, os pontos azuis e vermelhos são os pontos do conjunto de treinamento, e as linhas tracejadas indicam as fronteiras de decisão do modelo. Aqui, se $k = 5$, ele vai classificar como **Classe 1** (vermelho)](../assets/knn-classification.png)
-
-*Figura 1. Exemplo de classificação usando o método k-NN. O ponto $x$ é o ponto a ser classificado, os pontos azuis e vermelhos são os pontos do conjunto de treinamento, e as linhas tracejadas indicam as fronteiras de decisão do modelo. Aqui, se $k = 5$, ele vai classificar como **Classe 1** (vermelho)*
-
 <a id="introducao-intuitiva"></a>
 <a id="secao-2"></a>
 
@@ -48,22 +35,29 @@ Um das hipóteses fundamentais em ML é que existe algum nível de suavidade no 
 
 Nesse capítulo, vamos estudar como k-NN pode ser usados para problemas de classificação e regressão. Discutiremos o impacto do k e também da escolha de distância (ou métrica) para o espaço $\mathcal{X}$, que é primordial para a aplicação do método. Finalmente, estudaremos o comportamento do método k-NN quando a dimensionalidade do espaço $\mathcal{X}$ é alta
 
-<a id="maldicao-da-dimensionalidade"></a>
-<a id="secao-9"></a>
+<a id="classificacao"></a>
+<a id="secao-3"></a>
 
-## Maldição da Dimensionalidade
+## Classificação
 
-A expressão maldição da dimensionalidade foi introduzida por Bellman (1957) e é comumente usada para descrever problemas causados pelo aumento exponencial do volume associado em função da dimensionalidade em espaços euclidianos. No caso do k-NN, esse aumento implica na esparsidade dos exemplos de treino, fazendo com que os k-vizinhos que procuramos estejam muito distantes.
+Seja $\mathcal{D} ≔ \left\{ \left( x_{1},y_{1} \right),\ldots,\left( x_{N},y_{N} \right) \right\} \subset \mathcal{X} \times \mathcal{Y}$ o conjunto de treinamento e $d:\mathcal{D} \times \mathcal{D} \rightarrow {\mathbb{R}}^{+} \cup \left\{ 0 \right\}$ uma função de **distância**. Vamos supor que queremos classificar um vetor $x \in \mathcal{X}$ arbitrário.
 
-Para ilustrar tal efeito, suponha que a distribuição ${\mathbb{P}}_{x}$ sobre os vetores de entrada $x_{1},\ldots,x_{N}$ seja uniforme sobre uma hiperbola $D$-dimensional $S_{D}$ centrada na origem e com raio unitário (Ou seja, todo ponto dentro dessa bola é uniformemente provável de ser escolhida para ser um vetor de entrada). Suponha também que queremos classificar o vetor de origem $z = (0,\ldots,0)^{T}$. Defina $r$ como o raio da hiperbola $S'_{D} \subseteq S_{D}$ que **contém os k vizinhos mais próximos de $z$**. Em esperança, o quão grande devemos esperar que $r$ seja? Antes, é intuitivo notar que ${\mathbb{P}}\left( x_{i} \in S'_{D} \right)$ é a razão dos volumes de $S'_{D}$ e $S_{D}$, ou seja: $${\mathbb{P}}\left( x_{i} \in S'_{D} \right) = {\mathbb{E}}_{x_{i} \sim {\mathbb{P}}_{x}}\left\lbrack {\mathbb{I}}_{x_{i} \in S'_{D}} \right\rbrack = \frac{\pi^{\frac{D}{2}}r^{D}}{\pi^{\frac{D}{2}}1^{D}} = r^{D}$$ Segue então que o número esperado de amostra, dentre as $N$ que possuímos, dentro de $S'_{D}$ é: $$\sum_{i = 1}^{N}{\mathbb{P}}\left( x_{i} \in S'_{D} \right) = Nr^{D}$$ Então, para que tenhamos, em esperança, $k$ vizinhos dentro de $S'_{D}$, devemos escolher $r$ tal que $r = \left( \frac{k}{N} \right)^{\frac{1}{D}}$, e a medida que $D$ cresce, temos: $$\lim\limits_{D \rightarrow \infty}r = \lim\limits_{D \rightarrow \infty}\left( \frac{k}{N} \right)^{\frac{1}{D}} = 1$$ Ou seja, quanto maior é a dimensão, maior é o raio de $S'_{D}$, o que mostra que a propriedade de “vizinhos próximos tem propriedades parecidas” é quebrada em altas dimensões, o que é um grande problema para o método k-NN.
+O método k-NN classifica o vetor $x$ atribuindo a ele a classe mais comum entre os rótulos dos pontos em $\mathcal{V}_{k}(x)$, ou seja: $$h(x) ≔ \text{ argmax}_{\left\{ y \in \mathcal{Y} \right\}}\sum_{\left\{ \left( x_{i},y_{i} \right) \in \mathcal{V}_{k}(x) \right\}}{\mathbb{I}}_{\left\{ y_{i} = y \right\}}$$ (De forma simplificada, o rótulo mais comum dentro do conjunto de vizinhos é o rótulo atribuído ao ponto $x$)
 
-<a id="secao-10"></a>
+![Exemplo de classificação usando o método k-NN. O ponto $x$ é o ponto a ser classificado, os pontos azuis e vermelhos são os pontos do conjunto de treinamento, e as linhas tracejadas indicam as fronteiras de decisão do modelo. Aqui, se $k = 5$, ele vai classificar como **Classe 1** (vermelho)](../assets/knn-classification.png)
 
-### Manifolds de baixa dimensão.
+*Figura 1. Exemplo de classificação usando o método k-NN. O ponto $x$ é o ponto a ser classificado, os pontos azuis e vermelhos são os pontos do conjunto de treinamento, e as linhas tracejadas indicam as fronteiras de decisão do modelo. Aqui, se $k = 5$, ele vai classificar como **Classe 1** (vermelho)*
 
-Na prática, não é incomum ver k-NN sendo utilizado em espaços de alta dimensão, como de imagens, e atingindo boas taxas de acurácia. Uma explicação para esse fenômeno é que os dados não estão uniformemente distribuídos e, na verdade, residem em um subespaço de baixa dimensão. Por exemplo, suponha que $\mathcal{X} \subset {\mathbb{R}}^{256 \times 256 \times 3}$ é o espaço de imagens de tamanho $256 \times 256$ com três canais de cores — red, green, and blue (RGB) — que contém um gato. Nós esperamos que ${\mathbb{P}}_{x}$ aloque massa zero para fotos de paisagens, obras de arte, etc
+<a id="regressao"></a>
+<a id="secao-4"></a>
 
-------------------------------------------------------------------------
+## Regressão
+
+O k-NN pode também ser empregado em problemas de regressão. Para isso, precisamos de uma forma de combinar as saídas em $\mathcal{V}_{k( \cdot )}$. Uma das estratégias mais comuns consiste em computar a média ponderada pelo inverso da distância: $$h(x) ≔ \frac{1}{Z}\sum_{(x',y') \in \mathcal{V}_{k}(x)}y\frac{'}{d(x,x')}\text{\quad\quad}Z ≔ \sum_{(x',y') \in \mathcal{V}_{k}(x)}\frac{1}{d(x,x')}$$
+
+permitindo que pontos mais próximos a $x$ exerçam maior influência no cômputo da predição $h(x)$. Ideia semelhante pode também ser aplicada a classificação.
+
+Observe que o algoritmo k-NN não necessita de treinamento, ou equivalentemente, o treinamento consiste em simplesmente armazenar o conjunto de dados $\mathcal{D}$. Por conta disso, k-NN é dito ser uma abordagem de lazy learning (Atkeson et al., 1997)
 
 <a id="qual-distancia-escolher"></a>
 <a id="secao-5"></a>
@@ -96,16 +90,22 @@ As distâncias estudadas até aqui são consideradas medidas de dissimilaridade 
 
 Além de usar distâncias clássicas, como as $L^{p}$ e a de Mahalanobis, é possível aprender métrica (ou pseudo-métrica) de distância de modo supervisionado, com base na taxa de classificacão. Existe uma área de pesquisa em ML conhecida como aprendizado de métrica (metric learning) que se dedica a essa finalidade. Nesse nicho, um dos métodos mais comuns é o chamado large margin nearest neighbor [(Weinberger et al., 2006)](https://jmlr.csail.mit.edu/papers/volume10/weinberger09a/weinberger09a.pdf).
 
-<a id="regressao"></a>
-<a id="secao-4"></a>
+<a id="maldicao-da-dimensionalidade"></a>
+<a id="secao-9"></a>
 
-## Regressão
+## Maldição da Dimensionalidade
 
-O k-NN pode também ser empregado em problemas de regressão. Para isso, precisamos de uma forma de combinar as saídas em $\mathcal{V}_{k( \cdot )}$. Uma das estratégias mais comuns consiste em computar a média ponderada pelo inverso da distância: $$h(x) ≔ \frac{1}{Z}\sum_{(x',y') \in \mathcal{V}_{k}(x)}y\frac{'}{d(x,x')}\text{\quad\quad}Z ≔ \sum_{(x',y') \in \mathcal{V}_{k}(x)}\frac{1}{d(x,x')}$$
+A expressão maldição da dimensionalidade foi introduzida por Bellman (1957) e é comumente usada para descrever problemas causados pelo aumento exponencial do volume associado em função da dimensionalidade em espaços euclidianos. No caso do k-NN, esse aumento implica na esparsidade dos exemplos de treino, fazendo com que os k-vizinhos que procuramos estejam muito distantes.
 
-permitindo que pontos mais próximos a $x$ exerçam maior influência no cômputo da predição $h(x)$. Ideia semelhante pode também ser aplicada a classificação.
+Para ilustrar tal efeito, suponha que a distribuição ${\mathbb{P}}_{x}$ sobre os vetores de entrada $x_{1},\ldots,x_{N}$ seja uniforme sobre uma hiperbola $D$-dimensional $S_{D}$ centrada na origem e com raio unitário (Ou seja, todo ponto dentro dessa bola é uniformemente provável de ser escolhida para ser um vetor de entrada). Suponha também que queremos classificar o vetor de origem $z = (0,\ldots,0)^{T}$. Defina $r$ como o raio da hiperbola $S'_{D} \subseteq S_{D}$ que **contém os k vizinhos mais próximos de $z$**. Em esperança, o quão grande devemos esperar que $r$ seja? Antes, é intuitivo notar que ${\mathbb{P}}\left( x_{i} \in S'_{D} \right)$ é a razão dos volumes de $S'_{D}$ e $S_{D}$, ou seja: $${\mathbb{P}}\left( x_{i} \in S'_{D} \right) = {\mathbb{E}}_{x_{i} \sim {\mathbb{P}}_{x}}\left\lbrack {\mathbb{I}}_{x_{i} \in S'_{D}} \right\rbrack = \frac{\pi^{\frac{D}{2}}r^{D}}{\pi^{\frac{D}{2}}1^{D}} = r^{D}$$ Segue então que o número esperado de amostra, dentre as $N$ que possuímos, dentro de $S'_{D}$ é: $$\sum_{i = 1}^{N}{\mathbb{P}}\left( x_{i} \in S'_{D} \right) = Nr^{D}$$ Então, para que tenhamos, em esperança, $k$ vizinhos dentro de $S'_{D}$, devemos escolher $r$ tal que $r = \left( \frac{k}{N} \right)^{\frac{1}{D}}$, e a medida que $D$ cresce, temos: $$\lim\limits_{D \rightarrow \infty}r = \lim\limits_{D \rightarrow \infty}\left( \frac{k}{N} \right)^{\frac{1}{D}} = 1$$ Ou seja, quanto maior é a dimensão, maior é o raio de $S'_{D}$, o que mostra que a propriedade de “vizinhos próximos tem propriedades parecidas” é quebrada em altas dimensões, o que é um grande problema para o método k-NN.
 
-Observe que o algoritmo k-NN não necessita de treinamento, ou equivalentemente, o treinamento consiste em simplesmente armazenar o conjunto de dados $\mathcal{D}$. Por conta disso, k-NN é dito ser uma abordagem de lazy learning (Atkeson et al., 1997)
+<a id="secao-10"></a>
+
+### Manifolds de baixa dimensão.
+
+Na prática, não é incomum ver k-NN sendo utilizado em espaços de alta dimensão, como de imagens, e atingindo boas taxas de acurácia. Uma explicação para esse fenômeno é que os dados não estão uniformemente distribuídos e, na verdade, residem em um subespaço de baixa dimensão. Por exemplo, suponha que $\mathcal{X} \subset {\mathbb{R}}^{256 \times 256 \times 3}$ é o espaço de imagens de tamanho $256 \times 256$ com três canais de cores — red, green, and blue (RGB) — que contém um gato. Nós esperamos que ${\mathbb{P}}_{x}$ aloque massa zero para fotos de paisagens, obras de arte, etc
+
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
@@ -114,4 +114,4 @@ Observe que o algoritmo k-NN não necessita de treinamento, ou equivalentemente,
 
 [Trilha: A1](../../../trilhas/aprendizado-de-maquina/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a1.md#apresentacao-original)
 
-- Próximo: [Qual distância escolher?](#qual-distancia-escolher)
+- Próximo: [Regressão Linear](../regressao-linear/index.md)

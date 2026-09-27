@@ -22,121 +22,6 @@ ordem_na_trilha: 13
 # Variáveis Aleatórias Contínuas Bidimensionais
 
 
-<a id="covariancia-e-correlacao"></a>
-<a id="secao_covariancia_correlacao"></a>
-
-## Covariância e Correlação
-
-A Covariância e correlação são **análogas** ao caso discreto:
-
-**Definição**
-
-(Covariância)  
-A covariância de $X$ e $Y$ é dada por:
-
-$$
-\text{ Cov}(X,Y) = E(XY) - E(X)E(Y)
-$$
-
-<a id="definicao_covariancia"></a>
-
-**Definição**
-
-(Correlação)  
-A correlação de $X$ e $Y$ é dada por:
-
-$$
-\rho(X,Y) = \frac{\text{ Cov}(X,Y)}{\sigma(X)\sigma(Y)}
-$$
-
-<a id="definicao_correlacao"></a>
-
-<a id="distribuicoes-marginais-e-condicionais"></a>
-<a id="secao_distr_marginais_condicionais"></a>
-
-## Distribuições Marginais e Condicionais
-
-Lembrando o caso discreto, dadas $X,Y$ v.a’s discretas com densidade conjunta $p(x,y) = P(X = x \cap Y = y)$, temos os conceitos e covariância e correlação:
-
-$$
-\begin{array}{r} \text{ Cov}(X,Y) = E(XY) - E(X)E(Y) \\ \rho(X,Y) = \frac{\text{ Cov}(X,Y)}{\sigma(X)\sigma(Y)} \end{array}
-$$
-
-Também temos as distribuições marginais e condicionais (Pelo teorema de Bayes e a Lei da Probabilidade Total):
-
-$$
-\begin{array}{r} p_{X}(x) = P(X = x) = \sum_{y}p(x,y) \\ p_{Y}(y) = P(Y = y) = \sum_{x}p(x,y) \\ p_{X\vert Y}\left( x\vert y \right) = P\left( X = x~\vert ~Y = y \right) = \frac{p(x,y)}{p_{Y}(y)} \end{array}
-$$
-
-Com $f(x,y)$ sendo uma densidade conjunta, a diferença agora é a transição de $\sum \rightarrow \int$:
-
-**Definição**
-
-(Distribuição Marginal)  
-A distribuição marginal de $X$ é dada por:
-
-$$
-f_{X}(x) = \int_{- \infty}^{\infty}f(x,y)dy
-$$
-
-<a id="definicao_distr_marginal"></a>
-
-**Definição**
-
-(Distribuição Condicional)  
-A distribuição condicional de $X$ dado $Y$ é dada por:
-
-$$
-f_{X\vert Y}\left( x\vert y \right) = \frac{f(x,y)}{f_{Y}(y)}
-$$
-
-<a id="definicao_distr_condicional"></a>
-
-<a id="esperanca-condicional"></a>
-<a id="secao-30"></a>
-
-## Esperança Condicional
-
-Isso é bem útil:
-
-**Definição**
-
-A esperança condicional de $X$ na certeza de $Y = y$ é:
-
-$$
-E\left( X~\vert ~Y = y \right) = \int_{- \infty}^{\infty}xf_{X\vert Y}\left( x\vert y \right)dx
-$$
-
-(As vezes denotado por $E\left\lbrack X\vert y \right\rbrack$).
-
-Os teoremas da gênesis também são úteis:
-
-**Teorema**
-
-(Lei de Adão)  
-$\forall$ v.a’s $X,Y$ temos:
-
-$$
-E\left( E\left( X\vert Y \right) \right) = E(X)
-$$
-
-**Demonstração**
-
-Trivial
-
-**Teorema**
-
-(Lei de Eva)  
-$\forall$ v.a’s $X,Y$, temos:
-
-$$
-V(Y) = E\left( V\left( Y\vert X \right) \right) + V\left( E\left( Y\vert X \right) \right)
-$$
-
-**Demonstração**
-
-Trivial
-
 <a id="funcao-de-densidade-conjunta"></a>
 <a id="secao_fdc"></a>
 
@@ -205,6 +90,121 @@ $$
 f(x,y) = \begin{cases} 0\text{, }\text{ se }(x,y) \notin S \\ \frac{1}{\text{Área}(S)}\text{, }\text{ se }(x,y) \in S \end{cases}
 $$
 
+<a id="distribuicoes-marginais-e-condicionais"></a>
+<a id="secao_distr_marginais_condicionais"></a>
+
+## Distribuições Marginais e Condicionais
+
+Lembrando o caso discreto, dadas $X,Y$ v.a’s discretas com densidade conjunta $p(x,y) = P(X = x \cap Y = y)$, temos os conceitos e covariância e correlação:
+
+$$
+\begin{array}{r} \text{ Cov}(X,Y) = E(XY) - E(X)E(Y) \\ \rho(X,Y) = \frac{\text{ Cov}(X,Y)}{\sigma(X)\sigma(Y)} \end{array}
+$$
+
+Também temos as distribuições marginais e condicionais (Pelo teorema de Bayes e a Lei da Probabilidade Total):
+
+$$
+\begin{array}{r} p_{X}(x) = P(X = x) = \sum_{y}p(x,y) \\ p_{Y}(y) = P(Y = y) = \sum_{x}p(x,y) \\ p_{X\vert Y}\left( x\vert y \right) = P\left( X = x~\vert ~Y = y \right) = \frac{p(x,y)}{p_{Y}(y)} \end{array}
+$$
+
+Com $f(x,y)$ sendo uma densidade conjunta, a diferença agora é a transição de $\sum \rightarrow \int$:
+
+**Definição**
+
+(Distribuição Marginal)  
+A distribuição marginal de $X$ é dada por:
+
+$$
+f_{X}(x) = \int_{- \infty}^{\infty}f(x,y)dy
+$$
+
+<a id="definicao_distr_marginal"></a>
+
+**Definição**
+
+(Distribuição Condicional)  
+A distribuição condicional de $X$ dado $Y$ é dada por:
+
+$$
+f_{X\vert Y}\left( x\vert y \right) = \frac{f(x,y)}{f_{Y}(y)}
+$$
+
+<a id="definicao_distr_condicional"></a>
+
+<a id="covariancia-e-correlacao"></a>
+<a id="secao_covariancia_correlacao"></a>
+
+## Covariância e Correlação
+
+A Covariância e correlação são **análogas** ao caso discreto:
+
+**Definição**
+
+(Covariância)  
+A covariância de $X$ e $Y$ é dada por:
+
+$$
+\text{ Cov}(X,Y) = E(XY) - E(X)E(Y)
+$$
+
+<a id="definicao_covariancia"></a>
+
+**Definição**
+
+(Correlação)  
+A correlação de $X$ e $Y$ é dada por:
+
+$$
+\rho(X,Y) = \frac{\text{ Cov}(X,Y)}{\sigma(X)\sigma(Y)}
+$$
+
+<a id="definicao_correlacao"></a>
+
+<a id="esperanca-condicional"></a>
+<a id="secao-30"></a>
+
+## Esperança Condicional
+
+Isso é bem útil:
+
+**Definição**
+
+A esperança condicional de $X$ na certeza de $Y = y$ é:
+
+$$
+E\left( X~\vert ~Y = y \right) = \int_{- \infty}^{\infty}xf_{X\vert Y}\left( x\vert y \right)dx
+$$
+
+(As vezes denotado por $E\left\lbrack X\vert y \right\rbrack$).
+
+Os teoremas da gênesis também são úteis:
+
+**Teorema**
+
+(Lei de Adão)  
+$\forall$ v.a’s $X,Y$ temos:
+
+$$
+E\left( E\left( X\vert Y \right) \right) = E(X)
+$$
+
+**Demonstração**
+
+Trivial
+
+**Teorema**
+
+(Lei de Eva)  
+$\forall$ v.a’s $X,Y$, temos:
+
+$$
+V(Y) = E\left( V\left( Y\vert X \right) \right) + V\left( E\left( Y\vert X \right) \right)
+$$
+
+**Demonstração**
+
+Trivial
+
 <a id="independencia"></a>
 <a id="secao-31"></a>
 
@@ -223,5 +223,4 @@ $$
 
 [Trilha: A2](../../../trilhas/probabilidade/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/probabilidade/a2.md#apresentacao-original)
 
-- Anterior: [Taxa de Falhas](../distribuicoes-continuas/index.md#taxa-de-falhas)
-- Próximo: [Distribuições Marginais e Condicionais](#distribuicoes-marginais-e-condicionais)
+- Anterior: [Distribuições Contínuas](../distribuicoes-continuas/index.md)

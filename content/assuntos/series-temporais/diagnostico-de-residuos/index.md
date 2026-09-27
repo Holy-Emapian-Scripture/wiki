@@ -30,5 +30,5 @@ ordem_na_trilha: 34
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Valores Ajustados V.S Previsões](../previsao-e-baselines/valores-ajustados-v-s-previsoes/index.md)
+- Anterior: [Previsão e Baselines](../previsao-e-baselines/index.md)
 - Próximo: [Métricas de Avaliação](../metricas-de-avaliacao/index.md)

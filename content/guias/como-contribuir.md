@@ -7,75 +7,111 @@ nav_order: 1
 
 # Como contribuir
 
-Uma contribuição pode ser pequena: corrigir uma explicação, acrescentar uma referência ou escrever um exemplo já ajuda.
+Uma contribuição pode ser pequena: corrigir uma explicação, acrescentar uma referência, incluir um exemplo resolvido ou sanar uma imprecisão técnica já faz uma enorme diferença para quem está estudando.
 
-## Crie uma página
+---
 
-1. Copie o arquivo `guias/modelo-de-pagina.md` para uma pasta em `assuntos/<disciplina>/<assunto>/` e salve-o como `index.md`.
-2. Escolha nomes curtos para as pastas, em minúsculas e com hífens, como `algebra-linear`.
-3. Ajuste o título e a seção no cabeçalho do arquivo.
-4. Substitua os campos entre colchetes pelo conteúdo da nota e remova seções vazias.
-5. Adicione um link para a nova página no índice da seção.
+## Estrutura e Granularidade das Anotações
 
-O cabeçalho entre `---` guarda os metadados da página. `title` define o título, `parent` indica a seção no menu e `nav_order` define a ordem dentro dela. Os índices de disciplinas usam `parent: Assuntos`. As páginas de conteúdo usam `nav_exclude: true` e são acessadas pelos índices e trilhas, mantendo o menu principal compacto.
+Para evitar uma proliferação de micro-arquivos excessivamente curtos e manter uma leitura contínua e agradável, a wiki adota uma estrutura consolidada por temas:
 
-Registre `disciplina`, `autores` e, quando conhecidos, `semestre` e `origem`. Não deduza autoria ou datas ausentes. Consulte a [organização da wiki](organizacao-da-wiki.md) para a estrutura completa.
+1. **Agrupamento por Tema Principal:**
+   - Em vez de criar um arquivo isolado para cada pequeno subtópico, reunimos as anotações de um mesmo tema em um único arquivo de índice temático: `content/assuntos/<disciplina>/<tema>/index.md` (por exemplo, `assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas/index.md`).
+2. **Subtópicos e Âncoras Explícitas:**
+   - Cada subtópico dentro do documento é introduzido por um título de nível 2 (`## Nome do Subtópico`) acompanhado por uma âncora HTML explícita:
+     ```markdown
+     <a id="u-net"></a>
+     ## U-Net
+     ```
+   - Isso permite referenciar diretamente qualquer subtópico a partir de outras páginas (`[U-Net](../arquiteturas/index.md#u-net)`) ou fazer transclusão no Obsidian (`![[arquiteturas#U-Net]]`).
+3. **Índice Automático (TOC):**
+   - O Quartz e o tema da wiki geram automaticamente um sumário na barra lateral direita com todos os subtópicos da página (`##`), facilitando a navegação rápida.
+4. **Ordem Pedagógica e Canônica:**
+   - A sequência dos subtópicos dentro do arquivo deve respeitar estritamente o percurso didático dos materiais originais (aulas e documentos de revisão dos cursos), em vez de uma ordenação alfabética arbitrária.
 
-## Conecte as notas
+---
 
-Use links Markdown com caminhos relativos ao arquivo atual. Por exemplo, de uma página dentro de `guias/`:
+## Como Criar ou Expandir uma Página
 
-```markdown
-[Página inicial](../index.md)
-[Disciplinas](../disciplinas/index.md)
-[Como contribuir](como-contribuir.md)
-```
+1. **Consulte o Modelo:**
+   - Veja o [`modelo-de-pagina.md`](modelo-de-pagina.md) para a estrutura padrão recomendada.
+2. **Local do Arquivo:**
+   - Salve a nova página em `content/assuntos/<disciplina>/<tema>/index.md`. Use nomes curtos em minúsculas e separados por hífen (kebab-case).
+3. **Cabeçalho (Frontmatter):**
+   - No topo do arquivo, defina os metadados entre `---`:
+     ```yaml
+     ---
+     title: "Nome do Assunto ou Tema"
+     tags:
+       - disciplina
+       - assunto
+     ---
+     ```
+4. **Navegação de Percurso (`## Percurso de estudo`):**
+   - Ao final do documento, inclua sempre os links para o tópico anterior e seguinte da matéria/trilha:
+     ```markdown
+     ## Percurso de estudo
 
-Ao mover ou renomear um arquivo, confira os links que apontam para ele.
+     - **Anterior:** [Tópico Anterior](../topico-anterior/index.md)
+     - **Próximo:** [Próximo Tópico](../proximo-topico/index.md)
+     ```
 
-## Edite no Obsidian
+---
 
-Abra a pasta da wiki como um vault. Nas configurações de arquivos e links, prefira links Markdown, caminhos relativos e atualização automática de links ao renomear arquivos.
+## Formatação Matemática (LaTeX / KaTeX)
 
-Salve as imagens em `assuntos/<disciplina>/assets/`. Em uma nota em `assuntos/<disciplina>/<assunto>/index.md`, a sintaxe seria:
+A wiki utiliza **KaTeX** para renderização rápida e precisa de fórmulas matemáticas. Para garantir a renderização perfeita tanto no Quartz quanto no Obsidian, siga rigorosamente as duas regras abaixo:
 
-```markdown
-![Descrição do conteúdo da imagem](../assets/nome-da-imagem.png)
-```
+### 1. Fórmulas em linha (inline math)
+- Delimite com um único cifrão colado ao texto: `$f(x) = \sin(x)$`.
+- **Nunca insira quebras de linha** dentro dos cifrões de matemática em linha.
+- Exemplo: `A probabilidade condicional $P(A \mid B)$ satisfaz a regra do produto.`
 
-Esse exemplo exige que a imagem correspondente exista.
+### 2. Equações destacadas em bloco (display/block math)
+- Delimite com `$$` em linhas isoladas, precedidas e sucedidas por uma linha em branco:
+  ```markdown
+  A média amostral converge quase certamente para o valor esperado:
 
-## Escreva para quem está aprendendo
+  $$
+  \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n X_i = \mathbb{E}[X]
+  $$
 
-- Apresente a ideia antes da notação ou dos detalhes.
-- Explique os passos de uma resolução e por que eles funcionam.
-- Diferencie uma definição, um exemplo e uma opinião pessoal.
-- Cite a origem dos materiais e indique quando uma informação depende do período ou da turma.
+  conforme garantido pela Lei Forte dos Grandes Números.
+  ```
+- **Atenção:** Nunca coloque `$$...$$` no meio de uma linha de texto contínuo. As equações em bloco devem ficar isoladas para que o KaTeX possa aplicar a centralização estética correta.
 
-## Use tabelas e equações
+---
 
-Uma tabela simples:
+## Links, Anexos e Obsidian
 
-```markdown
-| Material | Assunto | Observação |
-|----------|---------|------------|
-| Nota de estudo | Vetores | Introdução com exemplos |
-```
+A wiki foi projetada para funcionar perfeitamente tanto como site publicado (Quartz 5) quanto como vault local no **Obsidian**:
 
-No Obsidian, escreva matemática dentro de frases com `$...$` e equações destacadas com `$$...$$`:
+1. **Tipos de Links:**
+   - Links Markdown relativos tradicionais (`[Texto](../outro-topico/index.md)`) e Wikilinks (`[[outro-topico]]` ou `[[arquiteturas#U-Net|U-Net]]`) são totalmente suportados.
+2. **Imagens e Anexos:**
+   - Salve as imagens na pasta `assets/` da disciplina correspondente: `content/assuntos/<disciplina>/assets/nome-da-imagem.png`.
+   - Insira no Markdown usando caminho relativo:
+     ```markdown
+     ![Diagrama da arquitetura U-Net](../assets/u-net-diagrama.png)
+     ```
+3. **Blocos de Código:**
+   - Especifique sempre a linguagem para syntax highlighting (ex.: ````python`, ````bash`, ````latex`).
 
-```text
-A função $f(x) = x^2$ tem derivada $f'(x) = 2x$.
+---
 
-$$
-\int_0^1 x^2\,dx = \frac{1}{3}
-$$
-```
+## Testando Suas Alterações Localmente
 
-## Antes de publicar
+Antes de enviar suas contribuições via Pull Request, você pode visualizar exatamente como o site ficará:
 
-Confira se o texto está claro, se os links abrem e se as fontes estão identificadas. Compartilhe arquivos de terceiros apenas quando houver permissão; quando possível, faça um link para a fonte original.
-
-Nesta etapa, a wiki está estruturada em Markdown. A publicação no GitHub Pages, a conversão de links `.md` e a exibição de equações no site ainda serão configuradas.
+1. **Instale as dependências** (caso ainda não tenha feito):
+   ```bash
+   npm install
+   ```
+2. **Inicie o servidor de testes do Quartz:**
+   ```bash
+   npx quartz build --serve
+   ```
+3. Abra seu navegador em `http://localhost:8080`.
+4. Verifique se os links funcionam, se as equações estão centralizadas e se o sumário lateral exibe corretamente os subtópicos.
 
 [Voltar aos guias](index.md)

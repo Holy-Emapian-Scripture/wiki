@@ -22,21 +22,6 @@ ordem_na_trilha: 13
 # Estatística Frequentista
 
 
-<a id="computacao-numerica"></a>
-<a id="secao-16"></a>
-
-## Computação Numérica
-
-Muitos problemas possuem um EVM $\hat{\theta}$ de um parâmetro $\theta$, porém esses não podem ser computados com fórmulas fechadas. Nesses casos, precisamos utilizar de métodos numéricos para aproximações. Existem **inúmeros** métodos de aproximação numérica de funções, porém, aqui vamos abordar brevemente apenas um
-
-**Definição: Método de Newton**
-
-Seja $f(\theta)$ uma função real de uma variável e suponha que nós desejamos resolver a equação $f(\theta) = 0$. Seja $\theta_{0}$ um chute inicial da solução e $\theta_{t}$ o valor obtido na $t$-ésima iteração do programa. O método de Newton atualiza nossa resposta da seguinte forma: $$\theta_{t + 1} = \theta_{t} - \frac{f\left( \theta_{t} \right)}{f'\left( \theta_{t} \right)}$$
-
-Se pararmos para interpretar, o que o algoritmo faz é checar se eu tenho que mexer $\theta_{t}$ para frente ou para trás dependendo do sinal e da inclinação de $f$. Quando $f\left( \theta_{t} \right)$ é negativo e $f'\left( \theta_{t} \right)$ é positivo, então eu preciso mover para a direita para poder chegar próximo a raíz, e aí vai
-
-------------------------------------------------------------------------
-
 <a id="estimadores-estimacoes-de-maxima-verossimilhanca"></a>
 <a id="secao-14"></a>
 
@@ -97,6 +82,21 @@ Dado $\hat{\theta}$ sendo o EMV de $\theta$ e $g:\Omega \rightarrow G$, então: 
 
 Como $L^{\ast (t)}$ é o máximo de $\log f\left( \underline{x}\vert \theta \right)$ em $\theta$ num subconjunto de $\Omega$, e como $\log f\left( \underline{x}\vert \hat{\theta} \right)$ é o máximo sob todos os $\theta$, então sabemos que $L^{\ast (t)} \leq \log f\left( \underline{x}\vert \theta \right)\ \forall t \in G$. Denote $\hat{t} = g\left( \hat{\theta} \right)$. Perceba que $\hat{\theta} \in G_{\hat{t}}$. Como $\hat{\theta}$ maximiza $f\left( \underline{x}\vert \theta \right)$ em todos $\theta$, então ele também maximiza $f\left( \underline{x}\vert \theta \right)$ sob todos os $\theta \in G_{\hat{t}}$. Por isso, $L^{\ast \left( \hat{t} \right)} = \log f\left( \underline{x}\vert \hat{\theta} \right)$ e $\hat{t} = g\left( \hat{\theta} \right)$ é um EVM de $g(\theta)$
 
+<a id="computacao-numerica"></a>
+<a id="secao-16"></a>
+
+## Computação Numérica
+
+Muitos problemas possuem um EVM $\hat{\theta}$ de um parâmetro $\theta$, porém esses não podem ser computados com fórmulas fechadas. Nesses casos, precisamos utilizar de métodos numéricos para aproximações. Existem **inúmeros** métodos de aproximação numérica de funções, porém, aqui vamos abordar brevemente apenas um
+
+**Definição: Método de Newton**
+
+Seja $f(\theta)$ uma função real de uma variável e suponha que nós desejamos resolver a equação $f(\theta) = 0$. Seja $\theta_{0}$ um chute inicial da solução e $\theta_{t}$ o valor obtido na $t$-ésima iteração do programa. O método de Newton atualiza nossa resposta da seguinte forma: $$\theta_{t + 1} = \theta_{t} - \frac{f\left( \theta_{t} \right)}{f'\left( \theta_{t} \right)}$$
+
+Se pararmos para interpretar, o que o algoritmo faz é checar se eu tenho que mexer $\theta_{t}$ para frente ou para trás dependendo do sinal e da inclinação de $f$. Quando $f\left( \theta_{t} \right)$ é negativo e $f'\left( \theta_{t} \right)$ é positivo, então eu preciso mover para a direita para poder chegar próximo a raíz, e aí vai
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -104,5 +104,5 @@ Como $L^{\ast (t)}$ é o máximo de $\log f\left( \underline{x}\vert \theta \rig
 
 [Trilha: A1](../../../trilhas/inferencia-estatistica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a1.md#apresentacao-original)
 
-- Anterior: [Estimadores para Parâmetros mais gerais](../estimadores-de-bayes/index.md#estimadores-para-parametros-mais-gerais)
-- Próximo: [Computação Numérica](#computacao-numerica)
+- Anterior: [Estimadores de Bayes](../estimadores-de-bayes/index.md)
+- Próximo: [Método dos Momentos](../metodo-dos-momentos/index.md)

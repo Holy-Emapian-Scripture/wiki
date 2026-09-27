@@ -41,6 +41,23 @@ Aqui eu vou definir melhor a interpretação com relação a essa definição, q
 
 Dada a amostra $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$. $\forall\gamma \in \lbrack 0,1\rbrack$, o intervalo $(A,B)$ com seguintes pontos: $$\begin{array}{r} A = {\overline{X}}_{n} - \sigma\frac{'}{\sqrt{n}}\ T_{n - 1}^{- 1}\left( \frac{1 + \gamma}{2} \right) \\ B = {\overline{X}}_{n} + \sigma\frac{'}{\sqrt{n}}\ T_{n - 1}^{- 1}\left( \frac{1 + \gamma}{2} \right) \end{array}$$ é um intervalo de confiança $\gamma$-exato
 
+<a id="intervalos-de-confianca-unilaterais"></a>
+<a id="secao-10"></a>
+
+## Intervalos de Confiança Unilaterais
+
+Nós vimos como encontrar intervalos aleatórios $(A,B)$ que tem probabilidade $\gamma$ de conter o parâmetro $\theta$, porém, podem acontecer situações que apenas obter um limite superior ou inferior seja suficiente para nós
+
+Dados $\gamma_{1}$ e $\gamma_{2}$ com $\gamma_{2} > \gamma_{1}$ e $\gamma_{2} - \gamma_{1} = \gamma$, então: $${\mathbb{P}}(T_{n - 1}^{- 1}\left( \gamma_{1} \right) < U < T_{n - 1}^{- 1}\left( \gamma_{1} \right)) = \gamma$$ E então obtemos que, perante todos os intervalos aleatórios possíveis, o intervalo de confiança $\gamma$ com o menor tamanho é o simétrico $$\gamma_{1} = 1 - \gamma_{2}$$ Porém, há casos que um intervalo não-simétrico é útil (Como mencionei o caso anterior de apenas limites superiores ou intefiores)
+
+**Definição: Intervalo de Confiança Generalizado**
+
+Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra de uma distribuição parametrizada por $\theta$. Seja $g(\theta):\Omega \rightarrow {\mathbb{R}}$ e seja $A$ uma estatística tal que: $${\mathbb{P}}(A < g(\theta)) \geq \gamma\text{\quad\quad}\forall\theta$$ Então o intervalo aleatório $(A, + \infty)$ é chamado de intervalo de confiança unilateral $\gamma$ de limite inferior $A$. A mesma definição vale para a estatística $B$ tal que: $${\mathbb{P}}(g(\theta) < B) \geq \gamma$$ Então o intervalo aleatório $( - \infty,B)$ é chamado de intervalo de confiança unilateral $\gamma$ de limite superior $B$. Se a desigualdade “$\geq \gamma$” é uma igualdade para todo $\theta$, então tanto o intervalo quanto os limites são chamados de exatos
+
+**Teorema: Intervalo unilateral da média da normal**
+
+Seja $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$, as estatísticas a seguir são, respectivamente, limites inferior e superior exatos com coeficiente $\gamma$ para $\mu$: $$\begin{array}{r} A = {\overline{X}}_{n} - T_{n - 1}^{- 1}(\gamma)\sigma\frac{'}{\sqrt{n}} \\ B = {\overline{X}}_{n} + T_{n - 1}^{- 1}(\gamma)\sigma\frac{'}{\sqrt{n}} \end{array}$$
+
 <a id="intervalo-de-confianca-para-outros-parametros"></a>
 <a id="secao-11"></a>
 
@@ -76,23 +93,6 @@ Isto é, eles querem ter **$90\%$ de confiança** de que a proporção de sucess
 
 ------------------------------------------------------------------------
 
-<a id="intervalos-de-confianca-unilaterais"></a>
-<a id="secao-10"></a>
-
-## Intervalos de Confiança Unilaterais
-
-Nós vimos como encontrar intervalos aleatórios $(A,B)$ que tem probabilidade $\gamma$ de conter o parâmetro $\theta$, porém, podem acontecer situações que apenas obter um limite superior ou inferior seja suficiente para nós
-
-Dados $\gamma_{1}$ e $\gamma_{2}$ com $\gamma_{2} > \gamma_{1}$ e $\gamma_{2} - \gamma_{1} = \gamma$, então: $${\mathbb{P}}(T_{n - 1}^{- 1}\left( \gamma_{1} \right) < U < T_{n - 1}^{- 1}\left( \gamma_{1} \right)) = \gamma$$ E então obtemos que, perante todos os intervalos aleatórios possíveis, o intervalo de confiança $\gamma$ com o menor tamanho é o simétrico $$\gamma_{1} = 1 - \gamma_{2}$$ Porém, há casos que um intervalo não-simétrico é útil (Como mencionei o caso anterior de apenas limites superiores ou intefiores)
-
-**Definição: Intervalo de Confiança Generalizado**
-
-Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra de uma distribuição parametrizada por $\theta$. Seja $g(\theta):\Omega \rightarrow {\mathbb{R}}$ e seja $A$ uma estatística tal que: $${\mathbb{P}}(A < g(\theta)) \geq \gamma\text{\quad\quad}\forall\theta$$ Então o intervalo aleatório $(A, + \infty)$ é chamado de intervalo de confiança unilateral $\gamma$ de limite inferior $A$. A mesma definição vale para a estatística $B$ tal que: $${\mathbb{P}}(g(\theta) < B) \geq \gamma$$ Então o intervalo aleatório $( - \infty,B)$ é chamado de intervalo de confiança unilateral $\gamma$ de limite superior $B$. Se a desigualdade “$\geq \gamma$” é uma igualdade para todo $\theta$, então tanto o intervalo quanto os limites são chamados de exatos
-
-**Teorema: Intervalo unilateral da média da normal**
-
-Seja $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$, as estatísticas a seguir são, respectivamente, limites inferior e superior exatos com coeficiente $\gamma$ para $\mu$: $$\begin{array}{r} A = {\overline{X}}_{n} - T_{n - 1}^{- 1}(\gamma)\sigma\frac{'}{\sqrt{n}} \\ B = {\overline{X}}_{n} + T_{n - 1}^{- 1}(\gamma)\sigma\frac{'}{\sqrt{n}} \end{array}$$
-
 <!-- wiki:original:fim -->
 
 
@@ -100,5 +100,5 @@ Seja $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$, as estatísticas 
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Propriedades](../distribuicoes-t/index.md#propriedades)
-- Próximo: [Intervalo de confiança para outros parâmetros](#intervalo-de-confianca-para-outros-parametros)
+- Anterior: [Distribuições $t$](../distribuicoes-t/index.md)
+- Próximo: [Análise Bayesiana de Amostras Normais](../analise-bayesiana-de-amostras-normais/index.md)

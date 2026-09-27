@@ -40,5 +40,5 @@ ordem_na_trilha: 58
 
 [Trilha: A1](../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [RNN Bidirecionais](../recurrent-neural-networks-rnns/rnn-bidirecionais/index.md)
-- Próximo: [Motivação e Modelos Generativos](motivacao-e-modelos-generativos/index.md)
+- Anterior: [Recurrent Neural Networks (RNNs)](../recurrent-neural-networks-rnns/index.md)
+- Próximo: [Referências](../referencias/index.md)

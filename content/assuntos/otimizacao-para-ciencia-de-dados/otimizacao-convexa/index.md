@@ -261,5 +261,5 @@ Precisamos provar apenas $( \Longleftarrow )$ do [\[first-order-condition-convex
 
 [Trilha: A1](../../../trilhas/otimizacao-para-ciencia-de-dados/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/otimizacao-para-ciencia-de-dados/a1.md#apresentacao-original)
 
-- Anterior: [Funções quadráticas](../otimizacao-irrestrita/index.md#funcoes-quadraticas)
+- Anterior: [Otimização Irrestrita](../otimizacao-irrestrita/index.md)
 - Próximo: [Otimização com restrições lineares](../otimizacao-com-restricoes-lineares/index.md)

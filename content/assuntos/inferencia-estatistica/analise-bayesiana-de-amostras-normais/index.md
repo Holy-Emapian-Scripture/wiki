@@ -22,15 +22,6 @@ ordem_na_trilha: 12
 # Análise Bayesiana de Amostras Normais
 
 
-<a id="distribuicoes-improprias"></a>
-<a id="secao-15"></a>
-
-## Distribuições Impróprias
-
-Utilizamos esses parâmetros mais por conveniência do que por qualquer outro motivo (Como uma convicção). Para a posteriori, utilizamos os seguintes hiperparâmetros: $$\alpha_{0} = - \frac{1}{2}\text{\quad\quad}\beta_{0} = 0\text{\quad\quad}\mu_{0} = 0\text{\quad\quad}\lambda_{0} = 0$$ assim, obtemos as seguintes pdf’s **a priori**: $$p(\mu) = 1\text{\quad\quad}p(\tau) = \frac{1}{2}\tau^{- 1}\text{\quad\quad}p(\mu,\tau) = \frac{1}{\tau}$$ Dessa forma, a posteriori fica: $$p(\mu,\tau) \propto \left\{ \tau^{\frac{1}{2}}\exp\left\lbrack \frac{- (n\pi)}{2}\left( \mu - {\overline{x}}_{n} \right)^{2} \right\rbrack \right\}\tau^{\frac{n - 1}{2} - 1}\exp\left\lbrack - \tau\frac{s_{n}^{2}}{2} \right\rbrack$$
-
-------------------------------------------------------------------------
-
 <a id="familia-de-conjugados"></a>
 <a id="secao-13"></a>
 
@@ -65,6 +56,15 @@ Por conta disso, obtemos o seguinte
 
 Se $\alpha_{0} > \frac{1}{2} \Rightarrow {\mathbb{E}}\lbrack\mu\rbrack = \mu_{0}$. Se $\alpha_{0} > 1 \Rightarrow {\mathbb{V}}\lbrack\mu\rbrack = \frac{\beta_{0}}{\lambda_{0}\left( \alpha_{0} - 1 \right)}$
 
+<a id="distribuicoes-improprias"></a>
+<a id="secao-15"></a>
+
+## Distribuições Impróprias
+
+Utilizamos esses parâmetros mais por conveniência do que por qualquer outro motivo (Como uma convicção). Para a posteriori, utilizamos os seguintes hiperparâmetros: $$\alpha_{0} = - \frac{1}{2}\text{\quad\quad}\beta_{0} = 0\text{\quad\quad}\mu_{0} = 0\text{\quad\quad}\lambda_{0} = 0$$ assim, obtemos as seguintes pdf’s **a priori**: $$p(\mu) = 1\text{\quad\quad}p(\tau) = \frac{1}{2}\tau^{- 1}\text{\quad\quad}p(\mu,\tau) = \frac{1}{\tau}$$ Dessa forma, a posteriori fica: $$p(\mu,\tau) \propto \left\{ \tau^{\frac{1}{2}}\exp\left\lbrack \frac{- (n\pi)}{2}\left( \mu - {\overline{x}}_{n} \right)^{2} \right\rbrack \right\}\tau^{\frac{n - 1}{2} - 1}\exp\left\lbrack - \tau\frac{s_{n}^{2}}{2} \right\rbrack$$
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -72,5 +72,5 @@ Se $\alpha_{0} > \frac{1}{2} \Rightarrow {\mathbb{E}}\lbrack\mu\rbrack = \mu_{0}
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Intervalo de confiança para outros parâmetros](../intervalos-de-confianca/index.md#intervalo-de-confianca-para-outros-parametros)
-- Próximo: [Distribuições Impróprias](#distribuicoes-improprias)
+- Anterior: [Intervalos de Confiança](../intervalos-de-confianca/index.md)
+- Próximo: [Estimadores não-viezados](../estimadores-nao-viezados/index.md)

@@ -22,6 +22,63 @@ ordem_na_trilha: 6
 # Aula 2 - Simple Factory, Factory Method e OCP
 
 
+<a id="simple-factory"></a>
+<a id="secao-7"></a>
+
+## Simple Factory
+
+Simple Factory resolve o problema das classes: tira o `if` de dentro da loja e concentra numa única classe. A ideia, resumida em aula, é simplesmente mudar o if de lugar:
+
+``` python
+class FabricaDeFrete:
+    def criar(self, centro):
+        if centro == 'Sao Paulo':
+            return FreteRodoviario()
+        elif centro == 'Manaus':
+            return FreteFluvial()
+        else:
+            return FreteRodoviario()
+
+
+class SimuladorDeFrete:
+    def __init__(self, fabrica):
+        self.fabrica = fabrica
+
+    def simular(self, centro, peso_kg):
+        return self.fabrica.criar(centro).custo(peso_kg)
+
+
+class Loja3:
+    def __init__(self, fabrica, calculadora, recibo):
+        self.fabrica = fabrica
+        self.calculadora = calculadora
+        self.recibo = recibo
+
+    def processar(self, cliente, valor, peso_kg, centro):
+        frete = self.fabrica.criar(centro)
+        total = self.calculadora.total(valor, frete.custo(peso_kg))
+        return self.recibo.gerar(cliente, total, centro)
+```
+
+Agora, a loja não precisa mais entender de frete. O ganho aparece em isolar o if do resto do código: o acoplamento entre `Loja` e a lógica de frete diminui. Pinho disse isso numa frase: ‘toda vez que uma mudança no código não obriga o `main` a mudar junto, o design melhorou’. De fato, a etapa 3 do `main` só precisa montar a fábrica e injetá-la:
+
+``` python
+print("ETAPA 3 - SRP simple factory")
+fabrica = FabricaDeFrete()
+loja3 = Loja3(fabrica, CalculadoraTotal(), Recibo())
+print(loja3.processar(cliente, valor, peso_kg, 'Sao Paulo'))
+print(loja3.processar(cliente, valor, peso_kg, 'Manaus'))
+custo = SimuladorDeFrete(fabrica).simular("Belém", peso_kg)
+
+print("Simulação Belém", custo)
+```
+
+Note que essa última linha ainda esconde o mesmo bug do `else`. Como `FabricaDeFrete.criar` só reconhece `'Sao Paulo'` e `'Manaus'`, simular pra “Belém” cai no `else` e devolve `FreteRodoviario`, o que pode não ser o certo pro caso.
+
+Nesse ponto a aula sai do código e coloca o Simple Factory dentro de um vocabulário maior de arquitetura. O professor ajuda a definir alguns termos, que vou definir melhor aqui, não exatamente do jeito dito: um **padrão de projeto** é uma saída clássica, já testada, para um problema recorrente de modelagem; a referência dada foi o livro de 1994 do **GoF** (Gang of Four).
+
+O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões criacionais** (como criar objetos — Factory Method, Abstract Factory, Builder, Prototype, Singleton), **padrões estruturais** (como compor classes e objetos — Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy) e **padrões comportamentais** (como objetos interagem e distribuem responsabilidade — Observer, Strategy, State, Template Method, entre outros). O Simple Factory é um idioma didático, usado como degrau pra chegar no Factory Method — esse sim um dos criacionais reconhecidos pelo GoF.
+
 <a id="factory-method"></a>
 <a id="secao-8"></a>
 
@@ -86,63 +143,6 @@ O mesmo raciocínio vale pra produtos: pra cada produto novo que precise de fáb
 
 Comparado ao Simple Factory, adicionar um centro de distribuição novo passa a significar **criar** uma subclasse, e não editar nenhuma existente: nada do código antigo precisou mudar pra isso, nem o `CentroDeDistribuicao` já existente precisou ser tocado pra nascer um tipo novo. Esse é, literalmente, o enunciado do Open/Closed Principle, o O do SOLID: uma classe deve estar fechada para modificação e aberta para extensão.
 
-<a id="simple-factory"></a>
-<a id="secao-7"></a>
-
-## Simple Factory
-
-Simple Factory resolve o problema das classes: tira o `if` de dentro da loja e concentra numa única classe. A ideia, resumida em aula, é simplesmente mudar o if de lugar:
-
-``` python
-class FabricaDeFrete:
-    def criar(self, centro):
-        if centro == 'Sao Paulo':
-            return FreteRodoviario()
-        elif centro == 'Manaus':
-            return FreteFluvial()
-        else:
-            return FreteRodoviario()
-
-
-class SimuladorDeFrete:
-    def __init__(self, fabrica):
-        self.fabrica = fabrica
-
-    def simular(self, centro, peso_kg):
-        return self.fabrica.criar(centro).custo(peso_kg)
-
-
-class Loja3:
-    def __init__(self, fabrica, calculadora, recibo):
-        self.fabrica = fabrica
-        self.calculadora = calculadora
-        self.recibo = recibo
-
-    def processar(self, cliente, valor, peso_kg, centro):
-        frete = self.fabrica.criar(centro)
-        total = self.calculadora.total(valor, frete.custo(peso_kg))
-        return self.recibo.gerar(cliente, total, centro)
-```
-
-Agora, a loja não precisa mais entender de frete. O ganho aparece em isolar o if do resto do código: o acoplamento entre `Loja` e a lógica de frete diminui. Pinho disse isso numa frase: ‘toda vez que uma mudança no código não obriga o `main` a mudar junto, o design melhorou’. De fato, a etapa 3 do `main` só precisa montar a fábrica e injetá-la:
-
-``` python
-print("ETAPA 3 - SRP simple factory")
-fabrica = FabricaDeFrete()
-loja3 = Loja3(fabrica, CalculadoraTotal(), Recibo())
-print(loja3.processar(cliente, valor, peso_kg, 'Sao Paulo'))
-print(loja3.processar(cliente, valor, peso_kg, 'Manaus'))
-custo = SimuladorDeFrete(fabrica).simular("Belém", peso_kg)
-
-print("Simulação Belém", custo)
-```
-
-Note que essa última linha ainda esconde o mesmo bug do `else`. Como `FabricaDeFrete.criar` só reconhece `'Sao Paulo'` e `'Manaus'`, simular pra “Belém” cai no `else` e devolve `FreteRodoviario`, o que pode não ser o certo pro caso.
-
-Nesse ponto a aula sai do código e coloca o Simple Factory dentro de um vocabulário maior de arquitetura. O professor ajuda a definir alguns termos, que vou definir melhor aqui, não exatamente do jeito dito: um **padrão de projeto** é uma saída clássica, já testada, para um problema recorrente de modelagem; a referência dada foi o livro de 1994 do **GoF** (Gang of Four).
-
-O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões criacionais** (como criar objetos — Factory Method, Abstract Factory, Builder, Prototype, Singleton), **padrões estruturais** (como compor classes e objetos — Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy) e **padrões comportamentais** (como objetos interagem e distribuem responsabilidade — Observer, Strategy, State, Template Method, entre outros). O Simple Factory é um idioma didático, usado como degrau pra chegar no Factory Method — esse sim um dos criacionais reconhecidos pelo GoF.
-
 <a id="termos-da-aula-2"></a>
 <a id="secao-9"></a>
 
@@ -169,5 +169,5 @@ O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões cr
 
 [Trilha: Notas de aula](../../../trilhas/engenharia-de-software/notas-de-aula.md) · [Apresentação e contexto da fonte](../../../trilhas/engenharia-de-software/notas-de-aula.md#apresentacao-original)
 
-- Anterior: [Termos da Aula 1](../aula-1-documentacao-contratos-e-srp/index.md#termos-da-aula-1)
+- Anterior: [Aula 1 - Documentação, Contratos e SRP](../aula-1-documentacao-contratos-e-srp/index.md)
 - Próximo: [Aula 3 - Builder e Singleton](../aula-3-builder-e-singleton/index.md)

@@ -202,5 +202,5 @@ Para um exemplo em código, acesse [Machine Learning - João Pedro Jerônimo](ht
 
 [Trilha: A1](../../../trilhas/aprendizado-de-maquina/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a1.md#apresentacao-original)
 
-- Anterior: [Problemas multiclasse, classificador *softmax*](../regressao-logistica/index.md#problemas-multiclasse-classificador-softmax)
+- Anterior: [Regressão Logística](../regressao-logistica/index.md)
 - Próximo: [Inferência Variacional](../inferencia-variacional/index.md)

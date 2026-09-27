@@ -61,5 +61,5 @@ O vetor $\hat{n}$ é o vetor unitário normal à superfície $S$. Note que $\iin
 
 [Trilha: A2](../../../trilhas/calculo-vetorial/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/calculo-vetorial/a2.md#apresentacao-original)
 
-- Anterior: [Integrais de Linha](../revisao-da-a1/index.md#integrais-de-linha)
+- Anterior: [Revisão da A1](../revisao-da-a1/index.md)
 - Próximo: [Operadores Diferenciais](../operadores-diferenciais/index.md)

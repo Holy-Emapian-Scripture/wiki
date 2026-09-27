@@ -22,69 +22,31 @@ ordem_na_trilha: 19
 # Convolutional Neural Networks (CNN)
 
 
-<a id="arquiteturas"></a>
-<a id="secao-32"></a>
+<a id="introducao"></a>
+<a id="secao-23"></a>
 
-## Arquiteturas
+## Introdução
 
-Mas como podemos combinar todas essas operações para formar uma rede neural convolucional? A resposta é através de arquiteturas. Uma arquitetura de CNN é composta por várias camadas, cada uma com suas próprias operações de convolução, pooling e funções de ativação. As camadas são organizadas em uma sequência, onde a saída de uma camada é a entrada da próxima camada. As arquiteturas podem variar em profundidade, largura e complexidade, dependendo do problema e da aplicação.
+Dentro do campo de aprendizado de máquina, redes neurais convolucionais (CNNs) são uma classe de redes neurais artificiais projetadas para processar dados com uma estrutura de grade, como imagens. Elas são inspiradas na organização do córtex visual dos animais e são particularmente eficazes em tarefas de visão computacional, como reconhecimento de objetos, detecção de objetos e segmentação de imagens.
 
-![Representação visual da arquitetura da AlexNet, uma das primeiras CNNs a alcançar sucesso em tarefas de visão computacional. A AlexNet é composta por várias camadas de convolução, pooling e funções de ativação, além de camadas totalmente conectadas no final](../assets/alex-net.png)
+O campo de visão computacional tem sido um dos principais impulsionadores do desenvolvimento de CNNs, com aplicações em reconhecimento facial, análise de imagens médicas, veículos autônomos e muito mais. As CNNs são capazes de aprender automaticamente características hierárquicas dos dados, permitindo que elas capturem padrões complexos e invariantes a transformações, como rotação e escala. Algumas aplicações de machine learning no campo da visão computacional são:
 
-*Figura 9. Representação visual da arquitetura da AlexNet, uma das primeiras CNNs a alcançar sucesso em tarefas de visão computacional. A AlexNet é composta por várias camadas de convolução, pooling e funções de ativação, além de camadas totalmente conectadas no final*
+- **Classificação de imagens**: Identificar a categoria a que uma imagem pertence, como classificar fotos de animais em diferentes espécies.
 
-<a id="convolucao-multidimensional"></a>
-<a id="secao-30"></a>
+- **Detecção de objetos**: Localizar e identificar objetos específicos dentro de uma imagem, como detectar carros, pedestres ou sinais de trânsito em imagens de ruas.
 
-## Convolução Multidimensional
+- **Segmentação de imagens**: Dividir uma imagem em regiões significativas, como segmentar diferentes órgãos em imagens médicas para análise diagnóstica.
 
-Até o momento, falamos das operações em matrizes bidimensionais ($2$ valores), porém, a maioria das imagem são coloridas, então teríamos 3 matrizes, uma para cada canal de cor. Expandir essa operação para múltiplos canais é relativamente simples. Se minha imagem $I$ tem dimensões $H \times W \times C$ (altura, largura e quantidade de canais) e o filtro $K$ tem dimensões $M \times M \times C$, eu vou utilizar cada feature map $M \times M$ com seu respectivo canal da imagem, e somar os resultados. A feature map resultante terá dimensões $(H - M + 1) \times (W - M + 1)$, e cada valor de ativação representará a presença de um padrão específico na região correspondente da imagem, considerando todos os canais de cor. Essa operação é chamada de **convolução multidimensional** e é fundamental para o processamento de imagens coloridas em CNNs.
+- **Reconhecimento facial**: Identificar ou verificar a identidade de uma pessoa com base em sua imagem facial, utilizado em sistemas de segurança e autenticação.
 
-![Representação visual da operação de convolução multidimensional](../assets/multidimensional-convolution.png)
+- **Síntese**: Gerar novas imagens a partir de descrições textuais ou de outras imagens, como criar imagens realistas de pessoas ou objetos que não existem.
 
-*Figura 7. Representação visual da operação de convolução multidimensional*
+<a id="imagens-como-dados"></a>
+<a id="secao-24"></a>
 
-No entanto, essa feature map que formamos, é capaz de detectar apenas um certo padrão de formatos. Por exemplo, ela só pode detectar olhos, mas não pode detectar narizes. Para resolver esse problema, podemos utilizar múltiplos filtros, cada um capaz de detectar um padrão diferente. Dessa forma, dado uma imagem de tamanho $H \times W \times C$, o filtro agora terá tamanho $M \times M \times C \times C_{\text{OUT}}$ onde $C_{\text{OUT}}$ é a quantidade de feature maps resultantes. Cada feature map possui seu próprio bias, dessa forma, o número total de parâmetros do modelo será $C_{\text{OUT }}\left( M^{2}C + 1 \right)$.
+## Imagens como dados
 
-<a id="secao-31"></a>
-
-### Pooling
-
-Nós vimos anteriormente como obter equivariância à translação, porém, em certas aplicações, queremos que a mesma imagem, mesmo que transladada, seja classificada da mesma forma. Para isso, podemos utilizar uma operação chamada **pooling**, que é uma operação de downsampling que reduz a dimensionalidade da feature map, mantendo as informações mais importantes. Existem diferentes tipos de pooling, como **max pooling**, **average pooling** e **global pooling**.
-
-<a id="max-pooling"></a>
-
-![Operação de max-pooling em um feature map $4 \times 4$ com uma janela de $2 \times 2$ e stride de $2$, resultando em um feature map $2 \times 2$. A operação de $\max$ pega o valor máximo da janela de pooling](../assets/max-pooling.png)
-
-*Figura 8. Operação de max-pooling em um feature map $4 \times 4$ com uma janela de $2 \times 2$ e stride de $2$, resultando em um feature map $2 \times 2$. A operação de $\max$ pega o valor máximo da janela de pooling*
-
-Seguindo o exemplo da [\[max-pooling\]](#max-pooling), podemos ver que a operação de pooling reduz a dimensionalidade da feature map, mantendo as informações mais importantes. A operação de pooling é importante em CNNs, pois permite que a rede aprenda padrões invariantes à posição do objeto na imagem, além de reduzir o número de parâmetros do modelo e evitar overfitting. Além de max-pooling, também podemos utilizar **average pooling**, que calcula a média dos valores da janela de pooling, e **global pooling**, que calcula a média ou o máximo de toda a feature map. A escolha do tipo de pooling depende da aplicação e do problema em questão.
-
-<a id="convolucoes-com-stride"></a>
-<a id="secao-29"></a>
-
-## Convoluções com Stride
-
-Além do padding, outra técnica importante em CNNs é o **stride**, que é o passo. O stride define quantos pixels o filtro se move a cada aplicação da convolução. Por exemplo, se o stride for $1$, o filtro se move um pixel de cada vez, enquanto se o stride for $2$, o filtro se move dois pixels de cada vez. O uso do stride permite que a rede aprenda padrões em diferentes escalas e resoluções, além de reduzir o tamanho da feature map resultante. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, e eu aplico o mesmo passo $S$ tanto verticalmente quanto horizontalmente, e eu apliquei um **padding completo**, então a dimensão do feature map será: $$\left\lfloor {\frac{H + 2P - M}{S} - 1} \right\rfloor \times \left\lfloor {\frac{W + 2P - M}{S} - 1} \right\rfloor$$
-
-<a id="equivariancia-em-translacao"></a>
-<a id="secao-27"></a>
-
-## Equivariância em Translação
-
-Imagine que estamos tentando identificar um rosto em uma imagem, se o rosto estiver em uma posição diferente na imagem, a rede ainda deve ser capaz de reconhecê-lo. Nossa rede neural precisa ser capaz de capturar essa propriedade, mas como? Se um filtro é capaz de identificar uma borda em uma região da imagem, ele deve ser capaz de identificar a mesma borda em qualquer outra região da imagem. Isso significa que os filtros devem ser aplicados a toda a imagem, permitindo que a rede aprenda padrões invariantes à posição do objeto na imagem. Essa propriedade é chamada de **equivariância em translação**, e é uma das principais vantagens das CNNs em relação às redes neurais tradicionais.
-
-**Definição: Feature Map/Convolução**
-
-Para uma imagem $I$ com intensidades de pixel $I(j,k)$ e um filtro $K$ com valores $K(l,m)$, a feature map $C$ tem valores de ativação: $$C(j,k) = \sum_{l}\sum_{m}I(j + l,k + m)K(l,m)$$ é comum representar essa operação como $C = I \ast K$, onde $\ast$ denota a operação de convolução. A feature map é uma representação da imagem original, onde cada valor de ativação representa a presença de um padrão específico na região correspondente da imagem. Vale também ressaltar que essa operação, mesmo se chamando convolução, difere da convolução matemática tradicional.
-
-Se $I \in {\mathbb{R}}^{H \times W}$ e $K \in {\mathbb{R}}^{h \times w}$, então $C \in {\mathbb{R}}^{(H - h + 1) \times (W - w + 1)}$
-
-<a id="convolution-representation"></a>
-
-![Representação visual da operação de convolução, onde a feature map $C$ é obtida aplicando o filtro $K$ à imagem $I$](../assets/convolution-representation.png)
-
-*Figura 5. Representação visual da operação de convolução, onde a feature map $C$ é obtida aplicando o filtro $K$ à imagem $I$*
+Podemos interpretar imagens como dados estruturados em uma grade bidimensional, onde cada pixel representa uma unidade de informação. Cada pixel possui valores que representam a intensidade da cor em diferentes canais (como vermelho, verde e azul para imagens RGB). Essa estrutura de grade permite que as CNNs explorem a relação espacial entre os pixels, capturando padrões locais e hierárquicos. $$I \in {\mathbb{R}}^{H \times W \times C}$$ onde $H$, $W$ e $C$ representam a altura, largura e número de canais da imagem, respectivamente. No caso, se a imagem é colorida, $C = 3$ e se ela é preto e branco, $C = 1$ (O que podemos entender como uma matriz com dimensões $H \times W$)
 
 <a id="filtros"></a>
 <a id="secao-25"></a>
@@ -113,31 +75,80 @@ Por simplicidade, no momento vamos assumir que nossas imagens estão na escala d
 
 Uma forma mais interessante que reflete o que fizemos até o momento, é aplicar uma matriz de pesos à esses pixels. $$z = \text{ ReLU}\left( w^{T}x + w_{0} \right)$$ onde $x$ é o vetor de pixels da região, $w$ é o vetor de pesos e $w_{0}$ é o viés. Essa abordagem permite que a rede aprenda padrões mais complexos, como bordas ou texturas, ao invés de apenas calcular a média da região. Além disso, podemos aplicar diferentes matrizes de pesos a diferentes regiões da imagem, permitindo que a rede aprenda diferentes padrões em diferentes partes da imagem. Esses filtros também são chamados popularmente de **kernels** e são aplicados a toda a imagem, permitindo que a rede aprenda padrões invariantes à posição do objeto na imagem. A operação de aplicar um filtro a uma região da imagem é chamada de **convolução**, e é a base das CNNs.
 
-<a id="imagens-como-dados"></a>
-<a id="secao-24"></a>
+<a id="equivariancia-em-translacao"></a>
+<a id="secao-27"></a>
 
-## Imagens como dados
+## Equivariância em Translação
 
-Podemos interpretar imagens como dados estruturados em uma grade bidimensional, onde cada pixel representa uma unidade de informação. Cada pixel possui valores que representam a intensidade da cor em diferentes canais (como vermelho, verde e azul para imagens RGB). Essa estrutura de grade permite que as CNNs explorem a relação espacial entre os pixels, capturando padrões locais e hierárquicos. $$I \in {\mathbb{R}}^{H \times W \times C}$$ onde $H$, $W$ e $C$ representam a altura, largura e número de canais da imagem, respectivamente. No caso, se a imagem é colorida, $C = 3$ e se ela é preto e branco, $C = 1$ (O que podemos entender como uma matriz com dimensões $H \times W$)
+Imagine que estamos tentando identificar um rosto em uma imagem, se o rosto estiver em uma posição diferente na imagem, a rede ainda deve ser capaz de reconhecê-lo. Nossa rede neural precisa ser capaz de capturar essa propriedade, mas como? Se um filtro é capaz de identificar uma borda em uma região da imagem, ele deve ser capaz de identificar a mesma borda em qualquer outra região da imagem. Isso significa que os filtros devem ser aplicados a toda a imagem, permitindo que a rede aprenda padrões invariantes à posição do objeto na imagem. Essa propriedade é chamada de **equivariância em translação**, e é uma das principais vantagens das CNNs em relação às redes neurais tradicionais.
 
-<a id="introducao"></a>
-<a id="secao-23"></a>
+**Definição: Feature Map/Convolução**
 
-## Introdução
+Para uma imagem $I$ com intensidades de pixel $I(j,k)$ e um filtro $K$ com valores $K(l,m)$, a feature map $C$ tem valores de ativação: $$C(j,k) = \sum_{l}\sum_{m}I(j + l,k + m)K(l,m)$$ é comum representar essa operação como $C = I \ast K$, onde $\ast$ denota a operação de convolução. A feature map é uma representação da imagem original, onde cada valor de ativação representa a presença de um padrão específico na região correspondente da imagem. Vale também ressaltar que essa operação, mesmo se chamando convolução, difere da convolução matemática tradicional.
 
-Dentro do campo de aprendizado de máquina, redes neurais convolucionais (CNNs) são uma classe de redes neurais artificiais projetadas para processar dados com uma estrutura de grade, como imagens. Elas são inspiradas na organização do córtex visual dos animais e são particularmente eficazes em tarefas de visão computacional, como reconhecimento de objetos, detecção de objetos e segmentação de imagens.
+Se $I \in {\mathbb{R}}^{H \times W}$ e $K \in {\mathbb{R}}^{h \times w}$, então $C \in {\mathbb{R}}^{(H - h + 1) \times (W - w + 1)}$
 
-O campo de visão computacional tem sido um dos principais impulsionadores do desenvolvimento de CNNs, com aplicações em reconhecimento facial, análise de imagens médicas, veículos autônomos e muito mais. As CNNs são capazes de aprender automaticamente características hierárquicas dos dados, permitindo que elas capturem padrões complexos e invariantes a transformações, como rotação e escala. Algumas aplicações de machine learning no campo da visão computacional são:
+<a id="convolution-representation"></a>
 
-- **Classificação de imagens**: Identificar a categoria a que uma imagem pertence, como classificar fotos de animais em diferentes espécies.
+![Representação visual da operação de convolução, onde a feature map $C$ é obtida aplicando o filtro $K$ à imagem $I$](../assets/convolution-representation.png)
 
-- **Detecção de objetos**: Localizar e identificar objetos específicos dentro de uma imagem, como detectar carros, pedestres ou sinais de trânsito em imagens de ruas.
+*Figura 5. Representação visual da operação de convolução, onde a feature map $C$ é obtida aplicando o filtro $K$ à imagem $I$*
 
-- **Segmentação de imagens**: Dividir uma imagem em regiões significativas, como segmentar diferentes órgãos em imagens médicas para análise diagnóstica.
+<a id="padding"></a>
+<a id="secao-28"></a>
 
-- **Reconhecimento facial**: Identificar ou verificar a identidade de uma pessoa com base em sua imagem facial, utilizado em sistemas de segurança e autenticação.
+## Padding
 
-- **Síntese**: Gerar novas imagens a partir de descrições textuais ou de outras imagens, como criar imagens realistas de pessoas ou objetos que não existem.
+Podemos ver da [\[convolution-representation\]](../equivariancia-em-translacao/index.md#convolution-representation) que a feature map $C$ é menor que a imagem original $I$. Isso ocorre porque a convolução é aplicada apenas às regiões da imagem onde o filtro pode ser completamente sobreposto. Para evitar essa redução de tamanho, podemos aplicar **padding** à imagem original, adicionando uma borda de zeros ao redor da imagem após uma normalização (Assim, o 0 representa o valor médio de pixel da imagem). Isso permite que o filtro seja aplicado a todas as regiões da imagem, incluindo as bordas, resultando em uma feature map do mesmo tamanho que a imagem original. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, então a feature map $C$ terá dimensões $(H - M + 1) \times (W - M + 1)$, se eu aplicar um padding de tamanho $P$, então a feature map $C$ terá dimensões $(H - M + 1 + 2P) \times (W - M + 1 + 2P)$. Isso se chama uma **padding válido**. Quando o padding é escolhido de forma que o tamanho da feature map seja o mesmo que o tamanho da imagem original, chamamos de **padding completo** ($P = (M - 1)/2$). O padding é uma técnica importante em CNNs, pois permite que a rede aprenda padrões em todas as regiões da imagem, incluindo as bordas.
+
+![Padding de $1$ pixel aplicado à uma imagem $4 \times 4$, transformando ela em uma imagem $6 \times 6$ com uma borda de zeros ao redor da imagem original](../assets/padding.png)
+
+*Figura 6. Padding de $1$ pixel aplicado à uma imagem $4 \times 4$, transformando ela em uma imagem $6 \times 6$ com uma borda de zeros ao redor da imagem original*
+
+<a id="convolucoes-com-stride"></a>
+<a id="secao-29"></a>
+
+## Convoluções com Stride
+
+Além do padding, outra técnica importante em CNNs é o **stride**, que é o passo. O stride define quantos pixels o filtro se move a cada aplicação da convolução. Por exemplo, se o stride for $1$, o filtro se move um pixel de cada vez, enquanto se o stride for $2$, o filtro se move dois pixels de cada vez. O uso do stride permite que a rede aprenda padrões em diferentes escalas e resoluções, além de reduzir o tamanho da feature map resultante. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, e eu aplico o mesmo passo $S$ tanto verticalmente quanto horizontalmente, e eu apliquei um **padding completo**, então a dimensão do feature map será: $$\left\lfloor {\frac{H + 2P - M}{S} - 1} \right\rfloor \times \left\lfloor {\frac{W + 2P - M}{S} - 1} \right\rfloor$$
+
+<a id="convolucao-multidimensional"></a>
+<a id="secao-30"></a>
+
+## Convolução Multidimensional
+
+Até o momento, falamos das operações em matrizes bidimensionais ($2$ valores), porém, a maioria das imagem são coloridas, então teríamos 3 matrizes, uma para cada canal de cor. Expandir essa operação para múltiplos canais é relativamente simples. Se minha imagem $I$ tem dimensões $H \times W \times C$ (altura, largura e quantidade de canais) e o filtro $K$ tem dimensões $M \times M \times C$, eu vou utilizar cada feature map $M \times M$ com seu respectivo canal da imagem, e somar os resultados. A feature map resultante terá dimensões $(H - M + 1) \times (W - M + 1)$, e cada valor de ativação representará a presença de um padrão específico na região correspondente da imagem, considerando todos os canais de cor. Essa operação é chamada de **convolução multidimensional** e é fundamental para o processamento de imagens coloridas em CNNs.
+
+![Representação visual da operação de convolução multidimensional](../assets/multidimensional-convolution.png)
+
+*Figura 7. Representação visual da operação de convolução multidimensional*
+
+No entanto, essa feature map que formamos, é capaz de detectar apenas um certo padrão de formatos. Por exemplo, ela só pode detectar olhos, mas não pode detectar narizes. Para resolver esse problema, podemos utilizar múltiplos filtros, cada um capaz de detectar um padrão diferente. Dessa forma, dado uma imagem de tamanho $H \times W \times C$, o filtro agora terá tamanho $M \times M \times C \times C_{\text{OUT}}$ onde $C_{\text{OUT}}$ é a quantidade de feature maps resultantes. Cada feature map possui seu próprio bias, dessa forma, o número total de parâmetros do modelo será $C_{\text{OUT }}\left( M^{2}C + 1 \right)$.
+
+<a id="secao-31"></a>
+
+### Pooling
+
+Nós vimos anteriormente como obter equivariância à translação, porém, em certas aplicações, queremos que a mesma imagem, mesmo que transladada, seja classificada da mesma forma. Para isso, podemos utilizar uma operação chamada **pooling**, que é uma operação de downsampling que reduz a dimensionalidade da feature map, mantendo as informações mais importantes. Existem diferentes tipos de pooling, como **max pooling**, **average pooling** e **global pooling**.
+
+<a id="max-pooling"></a>
+
+![Operação de max-pooling em um feature map $4 \times 4$ com uma janela de $2 \times 2$ e stride de $2$, resultando em um feature map $2 \times 2$. A operação de $\max$ pega o valor máximo da janela de pooling](../assets/max-pooling.png)
+
+*Figura 8. Operação de max-pooling em um feature map $4 \times 4$ com uma janela de $2 \times 2$ e stride de $2$, resultando em um feature map $2 \times 2$. A operação de $\max$ pega o valor máximo da janela de pooling*
+
+Seguindo o exemplo da [\[max-pooling\]](#max-pooling), podemos ver que a operação de pooling reduz a dimensionalidade da feature map, mantendo as informações mais importantes. A operação de pooling é importante em CNNs, pois permite que a rede aprenda padrões invariantes à posição do objeto na imagem, além de reduzir o número de parâmetros do modelo e evitar overfitting. Além de max-pooling, também podemos utilizar **average pooling**, que calcula a média dos valores da janela de pooling, e **global pooling**, que calcula a média ou o máximo de toda a feature map. A escolha do tipo de pooling depende da aplicação e do problema em questão.
+
+<a id="arquiteturas"></a>
+<a id="secao-32"></a>
+
+## Arquiteturas
+
+Mas como podemos combinar todas essas operações para formar uma rede neural convolucional? A resposta é através de arquiteturas. Uma arquitetura de CNN é composta por várias camadas, cada uma com suas próprias operações de convolução, pooling e funções de ativação. As camadas são organizadas em uma sequência, onde a saída de uma camada é a entrada da próxima camada. As arquiteturas podem variar em profundidade, largura e complexidade, dependendo do problema e da aplicação.
+
+![Representação visual da arquitetura da AlexNet, uma das primeiras CNNs a alcançar sucesso em tarefas de visão computacional. A AlexNet é composta por várias camadas de convolução, pooling e funções de ativação, além de camadas totalmente conectadas no final](../assets/alex-net.png)
+
+*Figura 9. Representação visual da arquitetura da AlexNet, uma das primeiras CNNs a alcançar sucesso em tarefas de visão computacional. A AlexNet é composta por várias camadas de convolução, pooling e funções de ativação, além de camadas totalmente conectadas no final*
 
 <a id="os-gradientes"></a>
 <a id="secao-33"></a>
@@ -391,17 +402,6 @@ Então o backward será simplesmente a operação: $$\nabla_{X}L = D_{P}^{\ast} 
 
 - Operador de expansão $D_{S}^{\ast}$ (O mesmo definido em [\[input-gradient-with-stride\]](../os-gradientes/index.md#input-gradient-with-stride))
 
-<a id="padding"></a>
-<a id="secao-28"></a>
-
-## Padding
-
-Podemos ver da [\[convolution-representation\]](../equivariancia-em-translacao/index.md#convolution-representation) que a feature map $C$ é menor que a imagem original $I$. Isso ocorre porque a convolução é aplicada apenas às regiões da imagem onde o filtro pode ser completamente sobreposto. Para evitar essa redução de tamanho, podemos aplicar **padding** à imagem original, adicionando uma borda de zeros ao redor da imagem após uma normalização (Assim, o 0 representa o valor médio de pixel da imagem). Isso permite que o filtro seja aplicado a todas as regiões da imagem, incluindo as bordas, resultando em uma feature map do mesmo tamanho que a imagem original. Se minha imagem $I$ tem dimensões $H \times W$ e o filtro $K$ tem dimensões $M \times M$, então a feature map $C$ terá dimensões $(H - M + 1) \times (W - M + 1)$, se eu aplicar um padding de tamanho $P$, então a feature map $C$ terá dimensões $(H - M + 1 + 2P) \times (W - M + 1 + 2P)$. Isso se chama uma **padding válido**. Quando o padding é escolhido de forma que o tamanho da feature map seja o mesmo que o tamanho da imagem original, chamamos de **padding completo** ($P = (M - 1)/2$). O padding é uma técnica importante em CNNs, pois permite que a rede aprenda padrões em todas as regiões da imagem, incluindo as bordas.
-
-![Padding de $1$ pixel aplicado à uma imagem $4 \times 4$, transformando ela em uma imagem $6 \times 6$ com uma borda de zeros ao redor da imagem original](../assets/padding.png)
-
-*Figura 6. Padding de $1$ pixel aplicado à uma imagem $4 \times 4$, transformando ela em uma imagem $6 \times 6$ com uma borda de zeros ao redor da imagem original*
-
 <a id="pooling"></a>
 <a id="secao-40"></a>
 
@@ -451,5 +451,5 @@ Definindo a matriz $$Q = \frac{1}{k^{2}}\begin{pmatrix} 1 & 1 & 1 & \ldots & 1 \
 
 [Trilha: A2](../../../trilhas/aprendizado-de-maquina/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a2.md#apresentacao-original)
 
-- Anterior: [Graph Convolutional Network (GCN)](../graph-neural-networks/index.md#graph-convolutional-network-gcn)
+- Anterior: [Graph Neural Networks](../graph-neural-networks/index.md)
 - Próximo: [Referências](../referencias/index.md)

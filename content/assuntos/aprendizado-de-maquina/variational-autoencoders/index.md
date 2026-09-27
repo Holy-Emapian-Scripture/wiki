@@ -22,6 +22,35 @@ ordem_na_trilha: 16
 # Variational Autoencoders
 
 
+<a id="introducao"></a>
+<a id="secao-17"></a>
+
+## Introdução
+
+Autoencoders são modelos de aprendizado não supervisionado projetados para aprender representações compactas dos dados. Seu objetivo é comprimir uma entrada em uma representação de menor dimensão e, em seguida, reconstruir a entrada original a partir dessa representação.
+
+A arquitetura de um autoencoder é composta por duas partes principais:
+
+- **Encoder:** transforma a entrada original em uma representação latente, também chamada de **código** ou **embedding**.
+
+- **Decoder:** utiliza essa representação latente para reconstruir uma aproximação da entrada original.
+
+De forma simplificada, dado um dado de entrada (x), o encoder produz uma representação (z),
+
+$$
+z = f(x),
+$$
+
+e o decoder gera uma reconstrução ($\hat{x}$),
+
+$$
+\hat{x} = g(z).
+$$
+
+Durante o treinamento, os parâmetros do modelo são ajustados para minimizar a diferença entre (x) e ($\hat{x}$), fazendo com que a representação latente retenha as características mais relevantes dos dados.
+
+Ao aprender a reconstruir as entradas a partir de uma representação comprimida, os autoencoders podem descobrir estruturas e padrões presentes nos dados, sendo amplamente utilizados para redução de dimensionalidade, compressão, remoção de ruído, detecção de anomalias e aprendizado de representações.
+
 <a id="autoencoders-deterministicos"></a>
 <a id="secao-18"></a>
 
@@ -156,35 +185,6 @@ Para consertar isso, utilizamos do **truque da reparametrização**. Nessa abord
 
 ------------------------------------------------------------------------
 
-<a id="introducao"></a>
-<a id="secao-17"></a>
-
-## Introdução
-
-Autoencoders são modelos de aprendizado não supervisionado projetados para aprender representações compactas dos dados. Seu objetivo é comprimir uma entrada em uma representação de menor dimensão e, em seguida, reconstruir a entrada original a partir dessa representação.
-
-A arquitetura de um autoencoder é composta por duas partes principais:
-
-- **Encoder:** transforma a entrada original em uma representação latente, também chamada de **código** ou **embedding**.
-
-- **Decoder:** utiliza essa representação latente para reconstruir uma aproximação da entrada original.
-
-De forma simplificada, dado um dado de entrada (x), o encoder produz uma representação (z),
-
-$$
-z = f(x),
-$$
-
-e o decoder gera uma reconstrução ($\hat{x}$),
-
-$$
-\hat{x} = g(z).
-$$
-
-Durante o treinamento, os parâmetros do modelo são ajustados para minimizar a diferença entre (x) e ($\hat{x}$), fazendo com que a representação latente retenha as características mais relevantes dos dados.
-
-Ao aprender a reconstruir as entradas a partir de uma representação comprimida, os autoencoders podem descobrir estruturas e padrões presentes nos dados, sendo amplamente utilizados para redução de dimensionalidade, compressão, remoção de ruído, detecção de anomalias e aprendizado de representações.
-
 <!-- wiki:original:fim -->
 
 
@@ -192,5 +192,5 @@ Ao aprender a reconstruir as entradas a partir de uma representação comprimida
 
 [Trilha: A3](../../../trilhas/aprendizado-de-maquina/a3.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a3.md#apresentacao-original)
 
-- Anterior: [Singularidades e Identificabilidade](../gaussian-and-bernoulli-mixture-models/index.md#singularidades-e-identificabilidade)
-- Próximo: [Autoencoders Determinísticos](#autoencoders-deterministicos)
+- Anterior: [Gaussian and Bernoulli Mixture Models](../gaussian-and-bernoulli-mixture-models/index.md)
+- Próximo: [Generative Adversarial Networks](../generative-adversarial-networks/index.md)

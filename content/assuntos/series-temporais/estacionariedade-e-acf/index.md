@@ -22,22 +22,43 @@ ordem_na_trilha: 19
 # Estacionariedade e ACF
 
 
-<a id="acf-e-acvf"></a>
-<a id="secao-28"></a>
+<a id="introducao"></a>
+<a id="secao-25"></a>
 
-## ACF e ACVF
+## Introdução
 
-Como falamos, a covariância de uma série temporal estacionária fraca depende apenas da diferença entre os instantes, então podemos definir a função de covariância como uma função do lag $h = \vert r - s\vert$, assim:
+Visualizamos anteriormente como utilizar de métodos **visuais** para identificar séries temporais, agora nosso foco vai ser formalizar esse conceito. Para tal, no entanto, precisamos definir alguns conceitos muito importantes, como média, covariância e a noção de **estacionariedade**
 
-**Definição: ACVF**
+<a id="exemplos-de-serie"></a>
+<a id="secao-26"></a>
 
-Dada a série temporal $\left\{ Y_{t} \right\}$ estacionária fraca, definimos a função de autocovariância como $$\gamma_{Y}(h) = {\mathbb{E}}\left\lbrack \left( Y_{r} - \mu_{Y} \right)\left( Y_{r + h} - \mu_{Y} \right) \right\rbrack$$
+## Exemplos de Série
 
-**Definição: ACF**
+Esses serão os exemplos que vamos utilizar de forma recorrente
 
-Dada a série temporal $\left\{ Y_{t} \right\}$ estacionária fraca, definimos a função de autocorrelação como $$\rho_{Y}(h) = \frac{\gamma_{Y}(h)}{\gamma_{Y}(0)}$$
+**Exemplo: Ruído Branco**
 
-A ACF é uma função que mede a correlação entre os valores da série temporal em diferentes lags. Ela nos ajuda a identificar padrões de dependência temporal e a determinar a ordem de modelos AR e MA, é como se ela fosse a função que mede a **memória** da série temporal. Vale ressaltar que não é porque uma série tem estacionaridade fraca que ela não possui memória, como vimos no caso do AR, que é estacionário fraco, mas possui memória curta. O mesmo não ocorre com o passeio aleatório, que não é estacionário fraco e possui memória longa
+$$Y_{t} = \varepsilon_{t}$$ Não existe memória, cada instante contém um ruído que não conseguimos traçar a partir dos anteriores
+
+![](../assets/A1/whitenoise.png)
+
+**Exemplo: AR**
+
+$$Y_{t} = \varphi Y_{t - 1} + \varepsilon_{t},\text{\quad\quad}\vert \varphi\vert  < 1$$ Depende diretamente do valor anterior, mas não de valores mais antigos. A memória é curta, mas existe
+
+![](../assets/A1/AR.png)
+
+**Exemplo: Passeio Aleatório**
+
+$$Y_{t} = Y_{t - 1} + \varepsilon_{t}$$ Acumula os ruídos passados, de forma que a memória é longa e o valor atual depende de todos os valores anteriores
+
+![](../assets/A1/randomwalk.png)
+
+**Exemplo: Tendência Linear**
+
+$$Y_{t} = \beta_{0} + \beta_{1}t + \varepsilon_{t}$$ A tendência linear é um caso especial de passeio aleatório, onde o valor atual depende do tempo e de todos os valores anteriores
+
+![](../assets/A1/lineartrend.png)
 
 <a id="conceitos"></a>
 <a id="secao-27"></a>
@@ -83,6 +104,48 @@ Dizemos que uma série temporal $\left\{ Y_{t} \right\}$ é **estacionária frac
 - Covariância $\gamma_{Y}(r,s)$ depende apenas da diferença $\vert r - s\vert$ e não dos instantes absolutos $r$ e $s$
 
 Como vemos pelos exemplos, as únicas séries que são estacionárias fracas são o **ruído branco** e o **AR**. A tendência linear e o passeio aleatório não são estacionários fracos, pois a média e a covariância dependem do tempo
+
+<a id="acf-e-acvf"></a>
+<a id="secao-28"></a>
+
+## ACF e ACVF
+
+Como falamos, a covariância de uma série temporal estacionária fraca depende apenas da diferença entre os instantes, então podemos definir a função de covariância como uma função do lag $h = \vert r - s\vert$, assim:
+
+**Definição: ACVF**
+
+Dada a série temporal $\left\{ Y_{t} \right\}$ estacionária fraca, definimos a função de autocovariância como $$\gamma_{Y}(h) = {\mathbb{E}}\left\lbrack \left( Y_{r} - \mu_{Y} \right)\left( Y_{r + h} - \mu_{Y} \right) \right\rbrack$$
+
+**Definição: ACF**
+
+Dada a série temporal $\left\{ Y_{t} \right\}$ estacionária fraca, definimos a função de autocorrelação como $$\rho_{Y}(h) = \frac{\gamma_{Y}(h)}{\gamma_{Y}(0)}$$
+
+A ACF é uma função que mede a correlação entre os valores da série temporal em diferentes lags. Ela nos ajuda a identificar padrões de dependência temporal e a determinar a ordem de modelos AR e MA, é como se ela fosse a função que mede a **memória** da série temporal. Vale ressaltar que não é porque uma série tem estacionaridade fraca que ela não possui memória, como vimos no caso do AR, que é estacionário fraco, mas possui memória curta. O mesmo não ocorre com o passeio aleatório, que não é estacionário fraco e possui memória longa
+
+<a id="iid-v-s-ruido-branco"></a>
+<a id="secao-29"></a>
+
+## IID v.s Ruído Branco
+
+A distinção entre um processo **I.I.D.** (independente e identicamente distribuído) e um **Ruído Branco** (White Noise - WN) baseia-se na intensidade da independência estocástica exigida entre os instantes de tempo
+
+**Definição: Ruído IID**
+
+$\left\{ Y_{t} \right\} \sim \text{ I.I.D}\left( 0,\sigma^{2} \right)$ com $\sigma^{2} < \infty$ se $$\begin{aligned} {\mathbb{E}}\left\lbrack Y_{t} \right\rbrack & = 0 \\ \gamma_{Y}(h) & = \begin{cases} \sigma^{2}\text{\quad\quad}h = 0 \\ 0\text{\quad\quad}h \neq 0 \end{cases} \end{aligned}$$
+
+Exige independência estocástica completa entre todas as variáveis aleatórias $Y_{t}$ e $Y_{s}$ ($t \neq s$). Não há qualquer dependência (linear ou não-linear) ou variação nas distribuições marginais
+
+**Definição: Ruído Branco**
+
+$\left\{ Y_{t} \right\} \sim \text{ WN}\left( 0,\sigma^{2} \right)$ com $\sigma^{2} < \infty$ se $$\begin{aligned} {\mathbb{E}}\left\lbrack Y_{t} \right\rbrack & = 0 \\ \gamma_{Y}(h) & = \begin{cases} \sigma^{2}\text{\quad\quad}h = 0 \\ 0\text{\quad\quad}h \neq 0 \end{cases} \end{aligned}$$
+
+Exige apenas ausência de correlação linear ($\text{Cov}\left( Y_{t + h},Y_{t} \right) = 0$ para $h \neq 0$) e estacionariedade de 2ª ordem
+
+**Teorema: Relação entre IID e White Noise**
+
+$$
+\text{ I.I.D }\left( 0,\sigma^{2} \right) \Rightarrow \text{ WN}\left( 0,\sigma^{2} \right)
+$$
 
 <a id="estimacao-amostral"></a>
 <a id="secao-30"></a>
@@ -169,69 +232,6 @@ se o valor amostral $\hat{\rho}(h)$ ultrapassar um desses limites, então rejeit
 
 ------------------------------------------------------------------------
 
-<a id="exemplos-de-serie"></a>
-<a id="secao-26"></a>
-
-## Exemplos de Série
-
-Esses serão os exemplos que vamos utilizar de forma recorrente
-
-**Exemplo: Ruído Branco**
-
-$$Y_{t} = \varepsilon_{t}$$ Não existe memória, cada instante contém um ruído que não conseguimos traçar a partir dos anteriores
-
-![](../assets/A1/whitenoise.png)
-
-**Exemplo: AR**
-
-$$Y_{t} = \varphi Y_{t - 1} + \varepsilon_{t},\text{\quad\quad}\vert \varphi\vert  < 1$$ Depende diretamente do valor anterior, mas não de valores mais antigos. A memória é curta, mas existe
-
-![](../assets/A1/AR.png)
-
-**Exemplo: Passeio Aleatório**
-
-$$Y_{t} = Y_{t - 1} + \varepsilon_{t}$$ Acumula os ruídos passados, de forma que a memória é longa e o valor atual depende de todos os valores anteriores
-
-![](../assets/A1/randomwalk.png)
-
-**Exemplo: Tendência Linear**
-
-$$Y_{t} = \beta_{0} + \beta_{1}t + \varepsilon_{t}$$ A tendência linear é um caso especial de passeio aleatório, onde o valor atual depende do tempo e de todos os valores anteriores
-
-![](../assets/A1/lineartrend.png)
-
-<a id="iid-v-s-ruido-branco"></a>
-<a id="secao-29"></a>
-
-## IID v.s Ruído Branco
-
-A distinção entre um processo **I.I.D.** (independente e identicamente distribuído) e um **Ruído Branco** (White Noise - WN) baseia-se na intensidade da independência estocástica exigida entre os instantes de tempo
-
-**Definição: Ruído IID**
-
-$\left\{ Y_{t} \right\} \sim \text{ I.I.D}\left( 0,\sigma^{2} \right)$ com $\sigma^{2} < \infty$ se $$\begin{aligned} {\mathbb{E}}\left\lbrack Y_{t} \right\rbrack & = 0 \\ \gamma_{Y}(h) & = \begin{cases} \sigma^{2}\text{\quad\quad}h = 0 \\ 0\text{\quad\quad}h \neq 0 \end{cases} \end{aligned}$$
-
-Exige independência estocástica completa entre todas as variáveis aleatórias $Y_{t}$ e $Y_{s}$ ($t \neq s$). Não há qualquer dependência (linear ou não-linear) ou variação nas distribuições marginais
-
-**Definição: Ruído Branco**
-
-$\left\{ Y_{t} \right\} \sim \text{ WN}\left( 0,\sigma^{2} \right)$ com $\sigma^{2} < \infty$ se $$\begin{aligned} {\mathbb{E}}\left\lbrack Y_{t} \right\rbrack & = 0 \\ \gamma_{Y}(h) & = \begin{cases} \sigma^{2}\text{\quad\quad}h = 0 \\ 0\text{\quad\quad}h \neq 0 \end{cases} \end{aligned}$$
-
-Exige apenas ausência de correlação linear ($\text{Cov}\left( Y_{t + h},Y_{t} \right) = 0$ para $h \neq 0$) e estacionariedade de 2ª ordem
-
-**Teorema: Relação entre IID e White Noise**
-
-$$
-\text{ I.I.D }\left( 0,\sigma^{2} \right) \Rightarrow \text{ WN}\left( 0,\sigma^{2} \right)
-$$
-
-<a id="introducao"></a>
-<a id="secao-25"></a>
-
-## Introdução
-
-Visualizamos anteriormente como utilizar de métodos **visuais** para identificar séries temporais, agora nosso foco vai ser formalizar esse conceito. Para tal, no entanto, precisamos definir alguns conceitos muito importantes, como média, covariância e a noção de **estacionariedade**
-
 <!-- wiki:original:fim -->
 
 
@@ -239,5 +239,5 @@ Visualizamos anteriormente como utilizar de métodos **visuais** para identifica
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Split Temporal](../diagnostico-visual/index.md#split-temporal)
-- Próximo: [Exemplos de Série](#exemplos-de-serie)
+- Anterior: [Diagnóstico Visual](../diagnostico-visual/index.md)
+- Próximo: [Previsão e Baselines](../previsao-e-baselines/index.md)

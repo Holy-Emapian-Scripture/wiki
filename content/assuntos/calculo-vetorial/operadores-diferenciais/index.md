@@ -31,17 +31,6 @@ O gradiente $\nabla$ de $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é:
 
 $$\nabla f = \left( \frac{\partial f}{\partial x_{1}},\ldots,\frac{\partial f}{\partial x_{n}} \right)$$ <a id="equation_definition_gradiente"></a>
 
-<a id="laplaciano"></a>
-<a id="section_laplaciano"></a>
-
-## Laplaciano
-
-Dada $f:{\mathbb{R}}^{\rightarrow}{\mathbb{R}}$, o laplaciano é:
-
-$$\mathrm{\Delta}f = {\text{div}(\nabla f)} = \frac{\partial^{2}f}{\partial x_{1}^{2}} + \ldots + \frac{\partial^{2}f}{\partial x_{n}^{2}}$$ <a id="equation_definition_laplaciano"></a>
-
-Se $\mathrm{\Delta}f = 0$, $f$ é dita *harmônica*.
-
 <a id="rotacional"></a>
 <a id="section_rotacional"></a>
 
@@ -59,6 +48,17 @@ $$
 {\text{rot}(F)} = \frac{\partial F_{2}}{\partial x} - \frac{\partial F_{1}}{\partial y}
 $$
 
+<a id="laplaciano"></a>
+<a id="section_laplaciano"></a>
+
+## Laplaciano
+
+Dada $f:{\mathbb{R}}^{\rightarrow}{\mathbb{R}}$, o laplaciano é:
+
+$$\mathrm{\Delta}f = {\text{div}(\nabla f)} = \frac{\partial^{2}f}{\partial x_{1}^{2}} + \ldots + \frac{\partial^{2}f}{\partial x_{n}^{2}}$$ <a id="equation_definition_laplaciano"></a>
+
+Se $\mathrm{\Delta}f = 0$, $f$ é dita *harmônica*.
+
 <!-- wiki:original:fim -->
 
 
@@ -66,5 +66,5 @@ $$
 
 [Trilha: A2](../../../trilhas/calculo-vetorial/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/calculo-vetorial/a2.md#apresentacao-original)
 
-- Anterior: [Integrais de Superfície Vetoriais](../integrais-de-superficie/index.md#integrais-de-superficie-vetoriais)
-- Próximo: [Laplaciano](#laplaciano)
+- Anterior: [Integrais de Superfície](../integrais-de-superficie/index.md)
+- Próximo: [Propriedades dos Operadores Diferenciais](../propriedades-dos-operadores-diferenciais/index.md)

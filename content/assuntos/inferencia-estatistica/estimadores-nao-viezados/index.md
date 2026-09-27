@@ -59,5 +59,5 @@ Esse estimador citado agora é chamado de **variância amostral** em diversas li
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Distribuições Impróprias](../analise-bayesiana-de-amostras-normais/index.md#distribuicoes-improprias)
+- Anterior: [Análise Bayesiana de Amostras Normais](../analise-bayesiana-de-amostras-normais/index.md)
 - Próximo: [Análise e Teste de Hipóteses](../analise-e-teste-de-hipoteses/index.md)

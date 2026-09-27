@@ -85,285 +85,52 @@ void bubbleSortOptimized(int v[], int n) {
 
 Essa otimização checa se dentro do loop maior houve alguma troca, se não houve nenhuma, então o algoritmo é encerrado, pois significa que está ordenado. Ao fazer isso, a complexidade do melhor caso desce para $\Theta(n)$.
 
-<a id="bucket-sort"></a>
-<a id="secao-29"></a>
+<a id="selection-sort"></a>
+<a id="secao-22"></a>
 
-## Bucket Sort
+## Selection Sort
 
-Esse algoritmo vai utilizar de hash tables para fazer ordenação de números potencialmente uniformes. Vamos pegar uma sequência de números **fracionários** $v$ com $n$ elementos e dividí-la em $n$ grupos (baldes).
+No selection sort, fazemos uma busca em **cada posição** pelo $i$-ésimo valor que **deveria** estar naquela posição
 
-![Lista de valores em $\lbrack 0,1)$ para exemplificação do algoritmo Bucketsort](../assets/fractions-list.png)
+![Exemplificação do algoritmo Selection Sort](../assets/selection-sort-exemplification.png)
 
-*Figura 35. Lista de valores em $\lbrack 0,1)$ para exemplificação do algoritmo Bucketsort*
+*Figura 16. Exemplificação do algoritmo Selection Sort*
 
-Vamos pressupor que os valores estão **todos** normalizados entre $\lbrack 0,1\rbrack$
+Dada uma posição $i$, e assumindo que todas as posições anteriores já estão ordenadas, o algoritmo irá procurar dentre as próximas $n - i$ posições um valor menor que o da posição $i$. Se isso acontece, significa que esse valor deveria estar na posição que $i$, e então trocamos de posição.
 
-- Criar um vetor $b$ com tamanho $n$
+**Exemplo**
 
-  - Cada elemento de $b$ é uma lista encadeada
+Considere o caso:
 
-- Para cada elemento $v\lbrack i\rbrack$
+![Lista para exemplo do algoritmo Selection Sort](../assets/selection-sort-example-case.png)
 
-  - Inserir em $b$ na posição $\left\lfloor {n \cdot v\lbrack i\rbrack} \right\rfloor$
+*Figura 17. Lista para exemplo do algoritmo Selection Sort*
 
-- Para cada lista $b\lbrack i\rbrack$
+E assim, o fluxo durante a execução do programa será:
 
-  - Ordenar os seus elementos utilizando algum algoritmo conhecido
+![Fluxo do código do algoritmo Selection Sort](../assets/selection-sort-example-code-flow.png)
 
-    - Ex: Insertion Sort
+*Figura 18. Fluxo do código do algoritmo Selection Sort*
 
-- Para cada lista $b\lbrack i\rbrack$
-
-  - Para cada elemento $j$ de $b\lbrack i\rbrack$
-
-    - Inserir na lista original $v$
+**IMPLEMENTAÇÃO**
 
 ``` cpp
-void bucketSort(float v[], int n) {
-  vector<float> b[n];
-  for (int i = 0; i < n; i++) {
-    int inx = n * v[i];
-    b[inx].push_back(v[i]);
-  }
-  for (int i = 0; i < n; i++) {
-    insertionSort(b[i]);
-  }
-  int index = 0;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < b[i].size(); j++) {
-      v[index++] = b[i][j];
+void selectionSort(int v[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    int minInx = i;
+    for (int j = i + 1; j < n; j++) {
+      if (v[j] < v[minInx]) {
+        minInx = j;
+      }
     }
+    swap(v, i, minInx);
   }
 }
 ```
 
-O algoritmo inicia criando um vetor `b`(um array de n buckets, e cada bucket é um std::vector) de tamanho `n`, e após declara um **inteiro**(vai servir como a função piso) e multiplica o elemento no índice `i` por `n`, Exemplo: `v[i] = 0.23` e `n = 10`, então `inx = 2`.
+No primeiro for, pegamos o índice `i`, e no segundo loop passamos em todos os índices a frente de `i`, e se for menor que o `v[i]`(ou algum que foi substituído), realiza a troca depois de todas as verificações. Dessa forma, sempre pegamos o menor valor de da lista do índice `i` para frente.
 
-Após adicionar cada elemento à seu respectivo bucket, ordena cada bucket com o algoritmo insertionSort e, por fim, faz dois fors, percorrendo cada bucket no de fora e cada elemento do bucket no de dentro, e como estão ordenados, apenas os adiciona na lista original.
-
-Podemos avaliar o desempenho do algoritmo através da seguinte função: $$T(n) = \Theta(n) + \sum_{i = 0}^{n - 1}n_{i}^{2}$$ Portanto, temos que:
-
-- O melhor caso é $\Theta(n)$ - cada balde recebe exatamente um elemento.
-
-- O pior caso é $\Theta(n^{2})$ - um único balde recebe n elementos.
-
-- O caso médio é $\Theta(n)$ - considerando a distribuição uniforme esperada, poucos elementos caem no mesmo balde.
-
-- Exige $O(n)$ de espaço adicional.
-
-------------------------------------------------------------------------
-
-<a id="counting-sort"></a>
-<a id="secao-27"></a>
-
-## Counting Sort
-
-O algoritmo de ordenação por contagem consiste em computar para cada elemento quantos elementos menores existem na lista, pois, sabendo que o elemento $v_{i}$ possui $j$ elementos menores do que ele, podemos definir sua posição final como $j + 1$
-
-Vamos enunciar novamente nosso problema:
-
-Desejamos ordenar os elementos do vetor $v\lbrack 0,\ldots,n - 1\rbrack$ considerando as seguintes restrições:
-
-- Os elementos são números inteiros.
-
-- Os números estão presentes no intervalo $\lbrack 0,\ldots,k - 1\rbrack$
-
-- O universo possui tamanho $k$.
-
-- $k$ é pequeno
-
-![Array de Exemplo](../assets/example-array.png)
-
-*Figura 30. Array de Exemplo*
-
-Nesse exemplo, temos um total de $11$ elementos e $6$ opções entre eles (os elementos vão de $0$ à $5$)
-
-![Array de frequência de cada número $f$](../assets/auxiliar-sequence.png)
-
-*Figura 31. Array de frequência de cada número $f$*
-
-Criamos então um a **sequência auxiliar** de tamanho $k$. Nessa sequência, cada índice representa um elemento específico do array e os elemento representam **quantas vezes esses elementos aparecem na lista original**. Com essa sequência $f$, vamos gerar **outra** sequência auxiliar $sf$, de tal forma que: $$sf_{i} = \sum_{j = 0}^{i - 1}f\lbrack j\rbrack = f\lbrack i - 1\rbrack - sf\lbrack i - 1\rbrack\text{\quad\quad}(i > 0)$$ Ou seja, o elemento $i$ de $sf$ é a **quantidade de elementos menores que $i$**
-
-![Segunda lista auxiliar $sf$](../assets/second-auxiliar-sequence.png)
-
-*Figura 32. Segunda lista auxiliar $sf$*
-
-Então, utilizando $sf$, podemos criar uma nova lista ordenada, de forma que o elemento $i \in \lbrack 0,k\rbrack$ estará localizado no índice $sf_{i}$
-
-![Lista ordenada](../assets/ordered-list.png)
-
-*Figura 33. Lista ordenada*
-
-**IMPLEMENTAÇÃO**
-
-``` cpp
-void countingSort(int v[], int n, int k) {
-  int fs[k + 2];                 //+1 indexação de arrays +1  de fs[0] = 0
-  int temp[n];
-  for (int j = 0; j < k + 2; j++) {
-    fs[j] = 0;
-  }
-  for (int i = 0; i < n; i++) {
-    fs[v[i] + 1] += 1;            //note que fs[0] = 0
-  }
-  for (int j = 1; j <= k; j++) {
-    fs[j] += fs[j - 1];
-  }
-  for (int i = 0; i < n; i++) {
-    int j = v[i];
-    temp[fs[j]] = v[i];
-    fs[j]++;
-  }
-  for (int i = 0; i < n; i++) {
-    v[i] = temp[i];
-  }
-}
-```
-
-Criamos o vetor da soma de frequências com $k + 1$ entradas, e o vetor temp, que servirá para ordenar depois das frequências contadas. O primeiro for simplesmente preenche cada elemento de `fs` como $0$. O segundo for conta quantas vezes cada valor aparece (armazenando em `fs[v[i] + 1]`).
-
-O terceiro loop somará todas as frequências anteriores para definir a posição correta dos elementos de índice $j$, transformando `fs` em um array de prefixos acumulados. No quarto loop pegamos j que é o valor de `v[i]` e vemos qual o começo desse valor na lista de frequências, e adicionamos no lugar certo de temp graças a isso. Após, incrementamos o valor de `fs[j]`, pois, se o mesmo número aparecer, ele deve ir no próximo elemento depois do adicionado na iteração.
-
-Por fim, o último loop apenas passa a lista ordenada em `temp` para `v`.
-
-Podemos avaliar o desempenho do algoritmo Counting Sort através da seguinte função: $$\begin{aligned} f(n,k) & = c_{1}k + c_{2}n + c_{3}k + c_{4}n + c_{5}n \\ & = \left( c_{1} + c_{3} \right)k + \left( c_{2} + c_{4} + c_{5} \right)n \\ & = \Theta(k + n) \end{aligned}$$
-
-Exige $O(n + k)$ de espaço adicional. Portanto, se k for muito pequeno a complexidade será $\Theta(n)$. É considerado um algoritmo eficiente para ordenar sequências com elementos repetidos.
-
-<a id="heapsort"></a>
-<a id="secao-26"></a>
-
-## Heapsort
-
-O algoritmo Heapsort consiste em organizar os elementos em um heap binário e reinseri-los utilizando uma estratégia semelhante à do algoritmo de ordenação por seleção.
-
-O heap (monte) é uma estrutura de dados capaz de representar um vetor sob a forma de uma árvore binária, que apresenta as seguintes propriedades:
-
-- É uma árvore quase completa
-
-- Todos os níveis devem estar preenchidos exceto pelo último.
-
-- É mínimo ou máximo
-
-  - Heap mínimo – cada filho será maior ou igual ao seu pai.
-
-  - Heap máximo – cada filho será menor ou igual ao seu pai.
-
-Por enquanto, vamos considerar os **heaps máximos**. A altura de um **heap** com $n$ nós é dada por $\left\lfloor {\log_{2}(n)} \right\rfloor$. Podemos representar um heap utilizando um **array**, de forma que ele segue as seguintes regras:
-
-- O índice $1$ é a raíz da árvore
-
-- O pai de qualquer índice $p$ é $\frac{p}{2}$, com exceção do nó raíz
-
-- O filho esquerdo de um nó $p$ é $2p$
-
-- O filho esquerdo de um nó $p$ é $2p + 1$
-
-Essa abordagem de implementação elimina a necessidade de ponteiros para o pai e para os filhos.
-
-<a id="heap-example"></a>
-
-![Exemplo de HEAP](../assets/heap-example.png)
-
-*Figura 26. Exemplo de HEAP*
-
-![Forma da [\[heap-example\]](#heap-example) como vetor](../assets/heap-array-example.png)
-
-*Figura 27. Forma da [\[heap-example\]](#heap-example) como vetor*
-
-Podemos ordenar uma árvore em um heap caso as propriedades do vetor não sejam satisfeitas. Para isso, utilizamos o algoritmo **max-heapify**
-
-- Assume-se que as sub-árvores do nó são heaps-máximos(ou mínimos no outro caso).
-
-- Caso $v\lbrack p\rbrack$ seja menor que $v\lbrack 2p\rbrack$ ou $v\lbrack 2p + 1\rbrack$ escolhe o maior e executa a troca.
-
-- Em seguida executa max-heapify recursivamente no nó filho alterado.
-
-![Visualização do algoritmo max-heapify](../assets/heapify-visualization.png)
-
-*Figura 28. Visualização do algoritmo max-heapify*
-
-**IMPLEMENTAÇÃO**
-
-``` cpp
-void heapify(int v[], int n, int i) {
-  int inx = i;
-  int leftInx = 2 * i + 1;    
-  int rightInx = 2 * i + 2;
-  if ((leftInx < n) && (v[leftInx] > v[inx])) {
-    inx = leftInx;
-  }
-  if ((rightInx < n) && (v[rightInx] > v[inx])) {
-    inx = rightInx;
-  }
-  if (inx != i) {
-    swap(v, i, inx);
-    heapify(v, n, inx);
-  }
-}
-```
-
-Os índices da esquerda e da direita são criados como $2 \ast i + 1$ e $2 \ast i + 2$, em vez de $2 \ast i$ e $2 \ast i + 1$ por causa da indexação inicial de vetores nas linguagens. o inteiro `i` é o índice do nó que queremos corrigir.
-
-Na primeira verificação vemos se o índice a esquerda que calculamos existe(sendo menor que $n$) e se o filho a esquerda do elemento `i` é maior. Fazemos a mesma coisa só que com o filho a direita de `v[i]`(note que a verificação do da direita compara não só com o pai, mas também com o filho a esquerda).
-
-Se o índice mudou, ou seja, se algum filho é maior que o pai, então trocamos o pai pelo maior filho e fazemos heapify novamente.
-
-A complexidade desse algoritmo é $T(n) = O\left( \log n \right)$, pela propriedade do heap que é criado como uma árvore quase completa, com a altura crescendo proporcionalmente com o número de elementos.
-
-Agora, vamos aprender a construir esse heap:
-
-**IMPLEMENTAÇÃO**
-
-``` cpp
-void buildHeap(int v[], int n) {
-  for (int i=(n/2-1); i >= 0; i--) {
-    heapify(v, n, i);
-  }
-}
-```
-
-Bom, não é nada muito difícil. Todos os nós depois de $\frac{n}{2}$ são folhas, logo, como o heapify garante a propriedade de heap para o nó i e sua subárvore, “afundando” o valor de `v[i]` se necessário, fazemos um for que ordenará desde a raiz até o último pai, garantindo a propriedade do heap por construção.
-
-Vamos ver a complexidade do buildHeap:
-
-![Aproximação de um algoritmo heapsort](../assets/heap-construction.png)
-
-*Figura 29. Aproximação de um algoritmo heapsort*
-
-Cada nível $i$, de baixo para cima, tem aproximadamente $n/2^{i}$ nós, ou seja, o custo total vai ser: $$T(n) = \sum_{i = 1}^{\log(n)}i \cdot \frac{n}{2^{i}} = O(n)$$
-
-pois o somatório converge. Agora, dado o devido contexto sobre os **heaps**, vamos voltar para o algoritmo de **heapsort**. Esse algoritmo tem dois passos principais:
-
-1.  Organizar o vetor de entradas em um **heap**
-
-2.  Ordenar os elementos executando os seguintes passos para $v\lbrack n,\ldots,1\rbrack$:
-
-    - Trocar o elemento atual $v\lbrack i\rbrack$ pela raíz $v\lbrack 1\rbrack$ ($v\lbrack 1\rbrack$ é o maior elemento do heap)
-
-    - Corrigir o **heap** usando o **heapify** para a raíz
-
-Dessa forma ignoramos a parte já ordenada que colocamos de `v[i]` para frente e fazemos heapify com o restante da lista.
-
-**IMPLEMENTAÇÃO**
-
-``` cpp
-void heapSort(int v[], int n) {
-  buildHeap(v, n);
-  for (int i=n-1; i > 0; i--) {
-    swap(v, 0, i);
-    heapify(v, i, 0);
-  }
-}
-```
-
-Para analisar o desempenho, podemos fazer o seguinte:
-
-- **Construção do heap**: Executa um **heapify** em um vetor de $\approx n/2$ posições, logo $O\left( n\log(n) \right)$
-
-- **Ordenação**: Executa o **heapify** para cada elemento em um vetor de $n - 1$ posições, logo, temos um $O\left( n\log(n) \right)$
-
-No final, somando tudo, temos que $T(n) = \Theta(n\log(n))$.
+Para avaliar o desempenho, podemos montar seu custo total percebendo que, a cada iteração, o algoritmo avalia um elemento a menos, de forma que podemos expressar a **função de complexidade** como: $$\begin{aligned} T(n) & = (n - 1) + (n - 2) + \ldots + 1 + 0 \\ & = \sum_{i = 0}^{n - 1}i = \frac{n(n - 1)}{2} \end{aligned}$$ Ou seja, obtemos que $T(n) = \Theta(n^{2})$, que também é a complexidade no melhor caso, já que, novamente, os fors dependem totalmente de $n$.
 
 <a id="insertion-sort"></a>
 <a id="secao-23"></a>
@@ -560,6 +327,218 @@ Já o caso médio ocorre quando o algoritmo divide em partições de tamanho dif
 
 Podemos avaliar como $\Theta(n\log(n))$, ou seja, é o mesmo caso do melhor caso possível, mas tem uma constante maior. Então, conseguimos perceber que o desempenho do algoritmo depende da **escolha do pivô**. O pior caso é $\Theta(n^{2})$, porém só ocorre em casos muito extremos.
 
+<a id="heapsort"></a>
+<a id="secao-26"></a>
+
+## Heapsort
+
+O algoritmo Heapsort consiste em organizar os elementos em um heap binário e reinseri-los utilizando uma estratégia semelhante à do algoritmo de ordenação por seleção.
+
+O heap (monte) é uma estrutura de dados capaz de representar um vetor sob a forma de uma árvore binária, que apresenta as seguintes propriedades:
+
+- É uma árvore quase completa
+
+- Todos os níveis devem estar preenchidos exceto pelo último.
+
+- É mínimo ou máximo
+
+  - Heap mínimo – cada filho será maior ou igual ao seu pai.
+
+  - Heap máximo – cada filho será menor ou igual ao seu pai.
+
+Por enquanto, vamos considerar os **heaps máximos**. A altura de um **heap** com $n$ nós é dada por $\left\lfloor {\log_{2}(n)} \right\rfloor$. Podemos representar um heap utilizando um **array**, de forma que ele segue as seguintes regras:
+
+- O índice $1$ é a raíz da árvore
+
+- O pai de qualquer índice $p$ é $\frac{p}{2}$, com exceção do nó raíz
+
+- O filho esquerdo de um nó $p$ é $2p$
+
+- O filho esquerdo de um nó $p$ é $2p + 1$
+
+Essa abordagem de implementação elimina a necessidade de ponteiros para o pai e para os filhos.
+
+<a id="heap-example"></a>
+
+![Exemplo de HEAP](../assets/heap-example.png)
+
+*Figura 26. Exemplo de HEAP*
+
+![Forma da [\[heap-example\]](#heap-example) como vetor](../assets/heap-array-example.png)
+
+*Figura 27. Forma da [\[heap-example\]](#heap-example) como vetor*
+
+Podemos ordenar uma árvore em um heap caso as propriedades do vetor não sejam satisfeitas. Para isso, utilizamos o algoritmo **max-heapify**
+
+- Assume-se que as sub-árvores do nó são heaps-máximos(ou mínimos no outro caso).
+
+- Caso $v\lbrack p\rbrack$ seja menor que $v\lbrack 2p\rbrack$ ou $v\lbrack 2p + 1\rbrack$ escolhe o maior e executa a troca.
+
+- Em seguida executa max-heapify recursivamente no nó filho alterado.
+
+![Visualização do algoritmo max-heapify](../assets/heapify-visualization.png)
+
+*Figura 28. Visualização do algoritmo max-heapify*
+
+**IMPLEMENTAÇÃO**
+
+``` cpp
+void heapify(int v[], int n, int i) {
+  int inx = i;
+  int leftInx = 2 * i + 1;    
+  int rightInx = 2 * i + 2;
+  if ((leftInx < n) && (v[leftInx] > v[inx])) {
+    inx = leftInx;
+  }
+  if ((rightInx < n) && (v[rightInx] > v[inx])) {
+    inx = rightInx;
+  }
+  if (inx != i) {
+    swap(v, i, inx);
+    heapify(v, n, inx);
+  }
+}
+```
+
+Os índices da esquerda e da direita são criados como $2 \ast i + 1$ e $2 \ast i + 2$, em vez de $2 \ast i$ e $2 \ast i + 1$ por causa da indexação inicial de vetores nas linguagens. o inteiro `i` é o índice do nó que queremos corrigir.
+
+Na primeira verificação vemos se o índice a esquerda que calculamos existe(sendo menor que $n$) e se o filho a esquerda do elemento `i` é maior. Fazemos a mesma coisa só que com o filho a direita de `v[i]`(note que a verificação do da direita compara não só com o pai, mas também com o filho a esquerda).
+
+Se o índice mudou, ou seja, se algum filho é maior que o pai, então trocamos o pai pelo maior filho e fazemos heapify novamente.
+
+A complexidade desse algoritmo é $T(n) = O\left( \log n \right)$, pela propriedade do heap que é criado como uma árvore quase completa, com a altura crescendo proporcionalmente com o número de elementos.
+
+Agora, vamos aprender a construir esse heap:
+
+**IMPLEMENTAÇÃO**
+
+``` cpp
+void buildHeap(int v[], int n) {
+  for (int i=(n/2-1); i >= 0; i--) {
+    heapify(v, n, i);
+  }
+}
+```
+
+Bom, não é nada muito difícil. Todos os nós depois de $\frac{n}{2}$ são folhas, logo, como o heapify garante a propriedade de heap para o nó i e sua subárvore, “afundando” o valor de `v[i]` se necessário, fazemos um for que ordenará desde a raiz até o último pai, garantindo a propriedade do heap por construção.
+
+Vamos ver a complexidade do buildHeap:
+
+![Aproximação de um algoritmo heapsort](../assets/heap-construction.png)
+
+*Figura 29. Aproximação de um algoritmo heapsort*
+
+Cada nível $i$, de baixo para cima, tem aproximadamente $n/2^{i}$ nós, ou seja, o custo total vai ser: $$T(n) = \sum_{i = 1}^{\log(n)}i \cdot \frac{n}{2^{i}} = O(n)$$
+
+pois o somatório converge. Agora, dado o devido contexto sobre os **heaps**, vamos voltar para o algoritmo de **heapsort**. Esse algoritmo tem dois passos principais:
+
+1.  Organizar o vetor de entradas em um **heap**
+
+2.  Ordenar os elementos executando os seguintes passos para $v\lbrack n,\ldots,1\rbrack$:
+
+    - Trocar o elemento atual $v\lbrack i\rbrack$ pela raíz $v\lbrack 1\rbrack$ ($v\lbrack 1\rbrack$ é o maior elemento do heap)
+
+    - Corrigir o **heap** usando o **heapify** para a raíz
+
+Dessa forma ignoramos a parte já ordenada que colocamos de `v[i]` para frente e fazemos heapify com o restante da lista.
+
+**IMPLEMENTAÇÃO**
+
+``` cpp
+void heapSort(int v[], int n) {
+  buildHeap(v, n);
+  for (int i=n-1; i > 0; i--) {
+    swap(v, 0, i);
+    heapify(v, i, 0);
+  }
+}
+```
+
+Para analisar o desempenho, podemos fazer o seguinte:
+
+- **Construção do heap**: Executa um **heapify** em um vetor de $\approx n/2$ posições, logo $O\left( n\log(n) \right)$
+
+- **Ordenação**: Executa o **heapify** para cada elemento em um vetor de $n - 1$ posições, logo, temos um $O\left( n\log(n) \right)$
+
+No final, somando tudo, temos que $T(n) = \Theta(n\log(n))$.
+
+<a id="counting-sort"></a>
+<a id="secao-27"></a>
+
+## Counting Sort
+
+O algoritmo de ordenação por contagem consiste em computar para cada elemento quantos elementos menores existem na lista, pois, sabendo que o elemento $v_{i}$ possui $j$ elementos menores do que ele, podemos definir sua posição final como $j + 1$
+
+Vamos enunciar novamente nosso problema:
+
+Desejamos ordenar os elementos do vetor $v\lbrack 0,\ldots,n - 1\rbrack$ considerando as seguintes restrições:
+
+- Os elementos são números inteiros.
+
+- Os números estão presentes no intervalo $\lbrack 0,\ldots,k - 1\rbrack$
+
+- O universo possui tamanho $k$.
+
+- $k$ é pequeno
+
+![Array de Exemplo](../assets/example-array.png)
+
+*Figura 30. Array de Exemplo*
+
+Nesse exemplo, temos um total de $11$ elementos e $6$ opções entre eles (os elementos vão de $0$ à $5$)
+
+![Array de frequência de cada número $f$](../assets/auxiliar-sequence.png)
+
+*Figura 31. Array de frequência de cada número $f$*
+
+Criamos então um a **sequência auxiliar** de tamanho $k$. Nessa sequência, cada índice representa um elemento específico do array e os elemento representam **quantas vezes esses elementos aparecem na lista original**. Com essa sequência $f$, vamos gerar **outra** sequência auxiliar $sf$, de tal forma que: $$sf_{i} = \sum_{j = 0}^{i - 1}f\lbrack j\rbrack = f\lbrack i - 1\rbrack - sf\lbrack i - 1\rbrack\text{\quad\quad}(i > 0)$$ Ou seja, o elemento $i$ de $sf$ é a **quantidade de elementos menores que $i$**
+
+![Segunda lista auxiliar $sf$](../assets/second-auxiliar-sequence.png)
+
+*Figura 32. Segunda lista auxiliar $sf$*
+
+Então, utilizando $sf$, podemos criar uma nova lista ordenada, de forma que o elemento $i \in \lbrack 0,k\rbrack$ estará localizado no índice $sf_{i}$
+
+![Lista ordenada](../assets/ordered-list.png)
+
+*Figura 33. Lista ordenada*
+
+**IMPLEMENTAÇÃO**
+
+``` cpp
+void countingSort(int v[], int n, int k) {
+  int fs[k + 2];                 //+1 indexação de arrays +1  de fs[0] = 0
+  int temp[n];
+  for (int j = 0; j < k + 2; j++) {
+    fs[j] = 0;
+  }
+  for (int i = 0; i < n; i++) {
+    fs[v[i] + 1] += 1;            //note que fs[0] = 0
+  }
+  for (int j = 1; j <= k; j++) {
+    fs[j] += fs[j - 1];
+  }
+  for (int i = 0; i < n; i++) {
+    int j = v[i];
+    temp[fs[j]] = v[i];
+    fs[j]++;
+  }
+  for (int i = 0; i < n; i++) {
+    v[i] = temp[i];
+  }
+}
+```
+
+Criamos o vetor da soma de frequências com $k + 1$ entradas, e o vetor temp, que servirá para ordenar depois das frequências contadas. O primeiro for simplesmente preenche cada elemento de `fs` como $0$. O segundo for conta quantas vezes cada valor aparece (armazenando em `fs[v[i] + 1]`).
+
+O terceiro loop somará todas as frequências anteriores para definir a posição correta dos elementos de índice $j$, transformando `fs` em um array de prefixos acumulados. No quarto loop pegamos j que é o valor de `v[i]` e vemos qual o começo desse valor na lista de frequências, e adicionamos no lugar certo de temp graças a isso. Após, incrementamos o valor de `fs[j]`, pois, se o mesmo número aparecer, ele deve ir no próximo elemento depois do adicionado na iteração.
+
+Por fim, o último loop apenas passa a lista ordenada em `temp` para `v`.
+
+Podemos avaliar o desempenho do algoritmo Counting Sort através da seguinte função: $$\begin{aligned} f(n,k) & = c_{1}k + c_{2}n + c_{3}k + c_{4}n + c_{5}n \\ & = \left( c_{1} + c_{3} \right)k + \left( c_{2} + c_{4} + c_{5} \right)n \\ & = \Theta(k + n) \end{aligned}$$
+
+Exige $O(n + k)$ de espaço adicional. Portanto, se k for muito pequeno a complexidade será $\Theta(n)$. É considerado um algoritmo eficiente para ordenar sequências com elementos repetidos.
+
 <a id="radix-sort"></a>
 <a id="secao-28"></a>
 
@@ -597,52 +576,73 @@ Note que esse código é literalmente o Counting Sort só que para cada “dígi
 
 Podemos avaliar o desempenho do algoritmo Radix Sort através da seguinte função: $$\begin{aligned} f(n,k,w) & = w\left( c_{1}k + c_{2}n + c_{3}k + c_{4}n + c_{5}n \right) \\ & = w\left( \left( c_{1} + c_{3} \right)k + \left( c_{2} + c_{4} + c_{5} \right)n \right) \\ & = \Theta(w(k + n)) \end{aligned}$$ Exige $O(n + k)$ de espaço adicional. Se $k$ e $w$ forem pequenos a complexidade pode ser avaliada como $\Theta(n)$.
 
-<a id="selection-sort"></a>
-<a id="secao-22"></a>
+<a id="bucket-sort"></a>
+<a id="secao-29"></a>
 
-## Selection Sort
+## Bucket Sort
 
-No selection sort, fazemos uma busca em **cada posição** pelo $i$-ésimo valor que **deveria** estar naquela posição
+Esse algoritmo vai utilizar de hash tables para fazer ordenação de números potencialmente uniformes. Vamos pegar uma sequência de números **fracionários** $v$ com $n$ elementos e dividí-la em $n$ grupos (baldes).
 
-![Exemplificação do algoritmo Selection Sort](../assets/selection-sort-exemplification.png)
+![Lista de valores em $\lbrack 0,1)$ para exemplificação do algoritmo Bucketsort](../assets/fractions-list.png)
 
-*Figura 16. Exemplificação do algoritmo Selection Sort*
+*Figura 35. Lista de valores em $\lbrack 0,1)$ para exemplificação do algoritmo Bucketsort*
 
-Dada uma posição $i$, e assumindo que todas as posições anteriores já estão ordenadas, o algoritmo irá procurar dentre as próximas $n - i$ posições um valor menor que o da posição $i$. Se isso acontece, significa que esse valor deveria estar na posição que $i$, e então trocamos de posição.
+Vamos pressupor que os valores estão **todos** normalizados entre $\lbrack 0,1\rbrack$
 
-**Exemplo**
+- Criar um vetor $b$ com tamanho $n$
 
-Considere o caso:
+  - Cada elemento de $b$ é uma lista encadeada
 
-![Lista para exemplo do algoritmo Selection Sort](../assets/selection-sort-example-case.png)
+- Para cada elemento $v\lbrack i\rbrack$
 
-*Figura 17. Lista para exemplo do algoritmo Selection Sort*
+  - Inserir em $b$ na posição $\left\lfloor {n \cdot v\lbrack i\rbrack} \right\rfloor$
 
-E assim, o fluxo durante a execução do programa será:
+- Para cada lista $b\lbrack i\rbrack$
 
-![Fluxo do código do algoritmo Selection Sort](../assets/selection-sort-example-code-flow.png)
+  - Ordenar os seus elementos utilizando algum algoritmo conhecido
 
-*Figura 18. Fluxo do código do algoritmo Selection Sort*
+    - Ex: Insertion Sort
 
-**IMPLEMENTAÇÃO**
+- Para cada lista $b\lbrack i\rbrack$
+
+  - Para cada elemento $j$ de $b\lbrack i\rbrack$
+
+    - Inserir na lista original $v$
 
 ``` cpp
-void selectionSort(int v[], int n) {
-  for (int i = 0; i < n - 1; i++) {
-    int minInx = i;
-    for (int j = i + 1; j < n; j++) {
-      if (v[j] < v[minInx]) {
-        minInx = j;
-      }
+void bucketSort(float v[], int n) {
+  vector<float> b[n];
+  for (int i = 0; i < n; i++) {
+    int inx = n * v[i];
+    b[inx].push_back(v[i]);
+  }
+  for (int i = 0; i < n; i++) {
+    insertionSort(b[i]);
+  }
+  int index = 0;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < b[i].size(); j++) {
+      v[index++] = b[i][j];
     }
-    swap(v, i, minInx);
   }
 }
 ```
 
-No primeiro for, pegamos o índice `i`, e no segundo loop passamos em todos os índices a frente de `i`, e se for menor que o `v[i]`(ou algum que foi substituído), realiza a troca depois de todas as verificações. Dessa forma, sempre pegamos o menor valor de da lista do índice `i` para frente.
+O algoritmo inicia criando um vetor `b`(um array de n buckets, e cada bucket é um std::vector) de tamanho `n`, e após declara um **inteiro**(vai servir como a função piso) e multiplica o elemento no índice `i` por `n`, Exemplo: `v[i] = 0.23` e `n = 10`, então `inx = 2`.
 
-Para avaliar o desempenho, podemos montar seu custo total percebendo que, a cada iteração, o algoritmo avalia um elemento a menos, de forma que podemos expressar a **função de complexidade** como: $$\begin{aligned} T(n) & = (n - 1) + (n - 2) + \ldots + 1 + 0 \\ & = \sum_{i = 0}^{n - 1}i = \frac{n(n - 1)}{2} \end{aligned}$$ Ou seja, obtemos que $T(n) = \Theta(n^{2})$, que também é a complexidade no melhor caso, já que, novamente, os fors dependem totalmente de $n$.
+Após adicionar cada elemento à seu respectivo bucket, ordena cada bucket com o algoritmo insertionSort e, por fim, faz dois fors, percorrendo cada bucket no de fora e cada elemento do bucket no de dentro, e como estão ordenados, apenas os adiciona na lista original.
+
+Podemos avaliar o desempenho do algoritmo através da seguinte função: $$T(n) = \Theta(n) + \sum_{i = 0}^{n - 1}n_{i}^{2}$$ Portanto, temos que:
+
+- O melhor caso é $\Theta(n)$ - cada balde recebe exatamente um elemento.
+
+- O pior caso é $\Theta(n^{2})$ - um único balde recebe n elementos.
+
+- O caso médio é $\Theta(n)$ - considerando a distribuição uniforme esperada, poucos elementos caem no mesmo balde.
+
+- Exige $O(n)$ de espaço adicional.
+
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
@@ -651,5 +651,5 @@ Para avaliar o desempenho, podemos montar seu custo total percebendo que, a cada
 
 [Trilha: A1](../../../trilhas/projeto-e-analise-de-algoritmos/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/a1.md#apresentacao-original)
 
-- Anterior: [Soluções para colisão](../tabela-hash/index.md#solucoes-para-colisao)
-- Próximo: [Insertion Sort](#insertion-sort)
+- Anterior: [Tabela Hash](../tabela-hash/index.md)
+- Próximo: [Algoritmos de Seleção](../algoritmos-de-selecao/index.md)

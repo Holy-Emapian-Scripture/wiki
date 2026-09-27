@@ -23,6 +23,21 @@ ordem_na_trilha: 2
 # Recorrência
 
 
+<a id="metodo-da-substituicao"></a>
+<a id="secao-3"></a>
+
+## Método da substituição
+
+A ideia é provar por **indução** que $T(n)$ é $O$ de uma função **pressuposta**. Por isso, é claro, só é passível de uso quando se tem uma hipótese da solução, e provamos exatamente a hipótese na indução. Pode ser usado para limites superiores e inferiores.
+
+**Exemplo**
+
+$$T(n) = \begin{cases} \theta(1)\text{ se }n = 1 \\ 2T\left( \frac{n}{2} \right) + n\text{ se }n > 1 \end{cases}$$ Vamos pressupor que $T(n) = O\left( n^{2} \right)$. Queremos então provar $T(n) \leq cn^{2}$.
+
+**Caso base**: $n = 1 \Rightarrow T(1) = 1 \leq cn^{2}$
+
+**Passo Indutivo**: Vamos supor que vale para $\frac{n}{2}$, e ver se vale para $n$. Então temos: $$T\left( \frac{n}{2} \right) \leq c\frac{n^{2}}{4}$$ Vamos testar para $T(n)$ então $$\begin{array}{r} T(n) = 2T\left( \frac{n}{2} \right) + n \Rightarrow T(n) \leq 2c\frac{n^{2}}{4} + n \\ \Leftrightarrow T(n) \leq \frac{cn^{2}}{2} + n \\ \Leftrightarrow \frac{cn^{2}}{2} + n \leq cn^{2} \\ \Leftrightarrow 2n \leq 2cn^{2} - cn^{2} \\ \Leftrightarrow \frac{n}{2} \leq c \end{array}$$ Ou seja, conseguimos escolher um $c$ e um $n_{0}$ de forma que $\forall n \geq n_{0}$, $T(n) \leq cn^{2}$, logo, $T(n) = O\left( n^{2} \right)$
+
 <a id="metodo-da-arvore-de-recursao"></a>
 <a id="secao-4"></a>
 
@@ -64,21 +79,6 @@ T(n) = \begin{cases} \theta(1)\text{ se }n = 1 \\ 2T(n - 1) + n\text{ se }n > 1 
 $$
 
 Expandindo, temos: $$\begin{array}{r} T(n) = 2T(n - 1) + n \\ T(n) = 2\left( 2T(n - 2) + n \right) + n \\ \vdots \\ T(n) = 2^{k}T(n - k) + \left( 2^{k} - 1 \right)n - \sum_{j = 1}^{k - 1}2^{j}j \end{array}$$ Para chegar na última iteração, temos que $k = n - 1$ $$T(n) = 2^{n - 1} + \left( 2^{n - 1} - 1 \right)n - \sum_{j = 1}^{n - 2}2^{j}j$$ Temos que: $\sum_{j = 1}^{n - 2}2^{j}j = \frac{1}{2}\left( 2^{n}n - 3 \cdot 2^{n} + 4 \right)$, então podemos fazer: $$\begin{array}{r} T(n) = 2^{n - 1} + 2^{n - 1}n - n - 2^{n - 1}n + 3 \cdot 2^{n - 1} - 2 \\ \Leftrightarrow T(n) = 2^{n - 1} - n + 3 \cdot 2^{n - 1} - 2 \\ \Leftrightarrow T(n) = 4 \cdot 2^{n - 1} - n - 2 = 2^{n + 1} - n - 2 \\ \Leftrightarrow T(n) = \Theta(2^{n}) \end{array}$$
-
-<a id="metodo-da-substituicao"></a>
-<a id="secao-3"></a>
-
-## Método da substituição
-
-A ideia é provar por **indução** que $T(n)$ é $O$ de uma função **pressuposta**. Por isso, é claro, só é passível de uso quando se tem uma hipótese da solução, e provamos exatamente a hipótese na indução. Pode ser usado para limites superiores e inferiores.
-
-**Exemplo**
-
-$$T(n) = \begin{cases} \theta(1)\text{ se }n = 1 \\ 2T\left( \frac{n}{2} \right) + n\text{ se }n > 1 \end{cases}$$ Vamos pressupor que $T(n) = O\left( n^{2} \right)$. Queremos então provar $T(n) \leq cn^{2}$.
-
-**Caso base**: $n = 1 \Rightarrow T(1) = 1 \leq cn^{2}$
-
-**Passo Indutivo**: Vamos supor que vale para $\frac{n}{2}$, e ver se vale para $n$. Então temos: $$T\left( \frac{n}{2} \right) \leq c\frac{n^{2}}{4}$$ Vamos testar para $T(n)$ então $$\begin{array}{r} T(n) = 2T\left( \frac{n}{2} \right) + n \Rightarrow T(n) \leq 2c\frac{n^{2}}{4} + n \\ \Leftrightarrow T(n) \leq \frac{cn^{2}}{2} + n \\ \Leftrightarrow \frac{cn^{2}}{2} + n \leq cn^{2} \\ \Leftrightarrow 2n \leq 2cn^{2} - cn^{2} \\ \Leftrightarrow \frac{n}{2} \leq c \end{array}$$ Ou seja, conseguimos escolher um $c$ e um $n_{0}$ de forma que $\forall n \geq n_{0}$, $T(n) \leq cn^{2}$, logo, $T(n) = O\left( n^{2} \right)$
 
 <a id="metodo-mestre"></a>
 <a id="secao-6"></a>

@@ -22,55 +22,6 @@ ordem_na_trilha: 5
 # Grafos
 
 
-<a id="estruturas-de-dados-para-representar-grafos"></a>
-<a id="secao-15"></a>
-
-## Estruturas de dados para representar grafos
-
-Dependendo do problema, a escolha da estrutura pode variar, e, em geral, usamos duas formas de implementar essa representação:
-
-<a id="secao-16"></a>
-
-### Matriz de adjacência
-
-Consiste em um matriz quadrada $A$ de ordem $\vert V\vert$ cujas linhas e colunas são indexadas pelos vértices de $V$. Exemplo para grafos orienteados:
-
-![Exemplo de matriz de adjacência para o grafo à direita.](../assets/graph-structure1.png)
-
-*Figura 21. Exemplo de matriz de adjacência para o grafo à direita.*
-
-Analogamente, para não orientados:
-
-![Exemplo de matriz de adjacência para o grafo à direita. Nota: a matriz é simétrica!](../assets/graph-structure2.png)
-
-*Figura 22. Exemplo de matriz de adjacência para o grafo à direita. Nota: a matriz é simétrica!*
-
-A complexidade de acessar(ou verificar) uma aresta é $\Theta(1)$, e claramente conta com uma complexidade de espaço de $\Theta(\vert V\vert ^{2})$. Além disso, o fato da matriz ser simétrica para grafos não-orientados faz com que o tamanho se reduza para a metade, podendo se armazenar apenas a diagonal superior ou inferior da matriz.
-
-<a id="secao-17"></a>
-
-### Lista de adjacência
-
-Consiste em uma sequência de vértices contendo na estrutura de cada ponteiro para uma lista encadeada com elemento representando as arestas adjacentes ao vértices. Exemplo para grafo dirigido:
-
-![Exemplo da lista de adjacência para o grafo à direita.](../assets/graph-structure3.png)
-
-*Figura 23. Exemplo da lista de adjacência para o grafo à direita.*
-
-Exemplo para grafo não-dirigido:
-
-![Exemplo da lista de adjacência para o grafo à direita.](../assets/graph-structure4.png)
-
-*Figura 24. Exemplo da lista de adjacência para o grafo à direita.*
-
-A complexidade de acessar o conjunto de arestas de um vértice é $\Theta(1)$ (mas encontrar uma aresta específica é $\Theta(\vert V\vert )$ no pior caso). Ainda, uma lista de adjacência exige um espaço $\Theta(\vert V\vert  + \vert E\vert )$
-
-As estruturas de dados do vértice e da aresta podem ser estendidas para armazenar informações específicas do problema.
-
-**Nota:** Os exercícios passados no slide não serão feitos aqui (pois isso é um “resumo” teórico), e sim na pasta Exercises.
-
-------------------------------------------------------------------------
-
 <a id="relembrando-conceitos"></a>
 <a id="secao-14"></a>
 
@@ -164,6 +115,55 @@ As estruturas de dados do vértice e da aresta podem ser estendidas para armazen
 
 - Um grafo (orientado ou não) é **ponderado** se cada aresta estiver associado a um peso;
 
+<a id="estruturas-de-dados-para-representar-grafos"></a>
+<a id="secao-15"></a>
+
+## Estruturas de dados para representar grafos
+
+Dependendo do problema, a escolha da estrutura pode variar, e, em geral, usamos duas formas de implementar essa representação:
+
+<a id="secao-16"></a>
+
+### Matriz de adjacência
+
+Consiste em um matriz quadrada $A$ de ordem $\vert V\vert$ cujas linhas e colunas são indexadas pelos vértices de $V$. Exemplo para grafos orienteados:
+
+![Exemplo de matriz de adjacência para o grafo à direita.](../assets/graph-structure1.png)
+
+*Figura 21. Exemplo de matriz de adjacência para o grafo à direita.*
+
+Analogamente, para não orientados:
+
+![Exemplo de matriz de adjacência para o grafo à direita. Nota: a matriz é simétrica!](../assets/graph-structure2.png)
+
+*Figura 22. Exemplo de matriz de adjacência para o grafo à direita. Nota: a matriz é simétrica!*
+
+A complexidade de acessar(ou verificar) uma aresta é $\Theta(1)$, e claramente conta com uma complexidade de espaço de $\Theta(\vert V\vert ^{2})$. Além disso, o fato da matriz ser simétrica para grafos não-orientados faz com que o tamanho se reduza para a metade, podendo se armazenar apenas a diagonal superior ou inferior da matriz.
+
+<a id="secao-17"></a>
+
+### Lista de adjacência
+
+Consiste em uma sequência de vértices contendo na estrutura de cada ponteiro para uma lista encadeada com elemento representando as arestas adjacentes ao vértices. Exemplo para grafo dirigido:
+
+![Exemplo da lista de adjacência para o grafo à direita.](../assets/graph-structure3.png)
+
+*Figura 23. Exemplo da lista de adjacência para o grafo à direita.*
+
+Exemplo para grafo não-dirigido:
+
+![Exemplo da lista de adjacência para o grafo à direita.](../assets/graph-structure4.png)
+
+*Figura 24. Exemplo da lista de adjacência para o grafo à direita.*
+
+A complexidade de acessar o conjunto de arestas de um vértice é $\Theta(1)$ (mas encontrar uma aresta específica é $\Theta(\vert V\vert )$ no pior caso). Ainda, uma lista de adjacência exige um espaço $\Theta(\vert V\vert  + \vert E\vert )$
+
+As estruturas de dados do vértice e da aresta podem ser estendidas para armazenar informações específicas do problema.
+
+**Nota:** Os exercícios passados no slide não serão feitos aqui (pois isso é um “resumo” teórico), e sim na pasta Exercises.
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -176,5 +176,5 @@ As estruturas de dados do vértice e da aresta podem ser estendidas para armazen
 
 [Trilha: A2](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md#apresentacao-original)
 
-- Anterior: [Programação Dinâmica](../tecnicas-de-projeto-a2/index.md#programacao-dinamica)
-- Próximo: [Estruturas de dados para representar grafos](#estruturas-de-dados-para-representar-grafos)
+- Anterior: [Técnicas de Projeto](../tecnicas-de-projeto-a2/index.md)
+- Próximo: [Busca em Grafos](../busca-em-grafos-a2/index.md)

@@ -70,5 +70,5 @@ Se $X \sim \text{ Cauchy}\left( x_{0},\gamma \right)$, então temos: $$f_{X}(x) 
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Independência da Média e Variância Amostrais](../distribuicao-conjunta-da-media-e-variancia-amostral/index.md#independencia-da-media-e-variancia-amostrais)
+- Anterior: [Distribuição Conjunta da Média e Variância Amostral](../distribuicao-conjunta-da-media-e-variancia-amostral/index.md)
 - Próximo: [Intervalos de Confiança](../intervalos-de-confianca/index.md)

@@ -22,25 +22,6 @@ ordem_na_trilha: 1
 # Transformada de Laplace
 
 
-<a id="convolucao"></a>
-<a id="section_convolucao"></a>
-
-## Convolução
-
-Dadas $F(s) = L\left\{ f(t) \right\}$ e $G(s) = L\left\{ g(t) \right\}$, a transformada do produto pode ser calculada como:
-
-$$
-H(s) = F(s)G(t) = L\left\{ h(t) \right\}
-$$
-
-Onde:
-
-$$
-h(t) = \int_{0}^{t}f(t - \tau)g(\tau)d\tau = \int_{0}^{t}f(\tau)g(t - \tau)d\tau
-$$
-
-A função $h$ é chamada de convolução de $f$ e $g$, denotada por $f \ast g$.
-
 <a id="definicao"></a>
 <a id="section_definicao_transformada_de_laplace"></a>
 
@@ -53,28 +34,6 @@ Dada $f:{\mathbb{R}} \rightarrow {\mathbb{R}}$ contínua por partes e $f \in O\l
 
 $$
 L\left\{ f(t) \right\} = \int_{0}^{\infty}e^{- st}f(t)dt
-$$
-
-<a id="funcao-degrau"></a>
-<a id="section_funcao_degrau"></a>
-
-## Função degrau
-
-A função degrau $u_{c}$ é definida como:
-
-$$
-u_{c(t)} = \begin{cases} 0\text{ se }t < c \\ 1\text{ se }t \geq c \end{cases}
-$$
-
-<a id="funcao-impulso"></a>
-<a id="section_funcao_impulso"></a>
-
-## Função Impulso
-
-A função impulso $\delta$ satifaz:
-
-$$
-\begin{array}{r} \delta(t) = 0,t \neq 0 \\ \int_{- \infty}^{\infty}\delta(t)dt = 1 \end{array}
 $$
 
 <a id="propriedades-com-derivada"></a>
@@ -99,6 +58,17 @@ $$
 E assim por diante.
 
 Resolver EDO’s com a transformada de Laplace se restringe a algebricamente buscar a inversa de $L\left\{ f(t) \right\}$, justamente a função procurada.
+
+<a id="funcao-degrau"></a>
+<a id="section_funcao_degrau"></a>
+
+## Função degrau
+
+A função degrau $u_{c}$ é definida como:
+
+$$
+u_{c(t)} = \begin{cases} 0\text{ se }t < c \\ 1\text{ se }t \geq c \end{cases}
+$$
 
 <a id="propriedades-com-funcao-degrau"></a>
 <a id="section_propriedades_com_funcao_degrau"></a>
@@ -127,6 +97,17 @@ $$
 e^{ct}f(t) = L^{- 1}\left\{ F(s - c) \right\}
 $$
 
+<a id="funcao-impulso"></a>
+<a id="section_funcao_impulso"></a>
+
+## Função Impulso
+
+A função impulso $\delta$ satifaz:
+
+$$
+\begin{array}{r} \delta(t) = 0,t \neq 0 \\ \int_{- \infty}^{\infty}\delta(t)dt = 1 \end{array}
+$$
+
 <a id="propriedades-com-funcao-impulso"></a>
 <a id="section_propriedades_com_funcao_impulso"></a>
 
@@ -144,6 +125,25 @@ $$
 L\left\{ \delta(t - c)f(t) \right\} = f(c)e^{- sc}
 $$
 
+<a id="convolucao"></a>
+<a id="section_convolucao"></a>
+
+## Convolução
+
+Dadas $F(s) = L\left\{ f(t) \right\}$ e $G(s) = L\left\{ g(t) \right\}$, a transformada do produto pode ser calculada como:
+
+$$
+H(s) = F(s)G(t) = L\left\{ h(t) \right\}
+$$
+
+Onde:
+
+$$
+h(t) = \int_{0}^{t}f(t - \tau)g(\tau)d\tau = \int_{0}^{t}f(\tau)g(t - \tau)d\tau
+$$
+
+A função $h$ é chamada de convolução de $f$ e $g$, denotada por $f \ast g$.
+
 <!-- wiki:original:fim -->
 
 
@@ -151,4 +151,4 @@ $$
 
 [Trilha: A2](../../../trilhas/equacoes-diferenciais-ordinarias/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/equacoes-diferenciais-ordinarias/a2.md#apresentacao-original)
 
-- Próximo: [Convolução](#convolucao)
+- Próximo: [Sistemas de EDO’s de Primeira Ordem](../sistemas-de-edos-de-primeira-ordem/index.md)

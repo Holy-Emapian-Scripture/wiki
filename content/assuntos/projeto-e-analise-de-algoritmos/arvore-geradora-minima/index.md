@@ -22,186 +22,46 @@ ordem_na_trilha: 21
 # Árvore Geradora Minima
 
 
-<a id="algoritmo-de-kruskal"></a>
-<a id="secao-38"></a>
+<a id="arvore-geradora-minima"></a>
+<a id="secao-33"></a>
 
-## Algoritmo de Kruskal
+## Árvore Geradora Mínima
 
-A estratégia desse algoritmo consiste em crescer uma floresta $F = (V',E')$ até que ela se torne uma árvore geradora $F = (V,E')$, diferente de crescer arbitrariamente como o Prim.
+Uma árvore geradora de um grafo $G = (V,E)$ é um subgrafo $T$ que não possua ciclos e que contenha todos os vértices de $G$. Se um grafo $G$ possui uma árvore geradora, então ele é conexo (claro, uma árvore é conexa) e possui sempre $V - 1$ arestas. Considere abaixo grafos conexos e não-dirigidos.
 
-<a id="secao-39"></a>
+Um **corte** é um conjunto de arestas que conecta duas partes de um grafo.Dado um conjunto $A$ de vértices, as arestas que possuem uma ponta em $A$ e a outra ponta no complemento de $Ã$ representam um corte.
 
-### Kruskal Slow
+![Exemplo de corte em grafo](../assets/minimal-tree-1.png)
 
-Uma aresta $e_{k}$ é externa a floresta $F$ se $e_{k} \notin F$ e o grafo $F + e_{k}$ é uma floresta. Ideia geral do algoritmo:
+*Figura 41. Exemplo de corte em grafo*
 
-1.  **Inicialize a floresta com todos os vértices e nenhuma aresta**
+Dada uma árvore geradora, temos duas operações básicas:
 
-2.  **Escolha a aresta $e_{k} = \left( v_{i},v_{j} \right)$ de $G$ que possua o menor custo**
+- A adição de uma aresta em uma árvore geradora cria um ciclo.
 
-3.  **Insira $e_{k}$ em $F$.**
+- A remoção de uma aresta em uma árvore geradora cria um corte.
 
-Vamos ver como seria a implementação disso:
+Dada uma árvore geradora $T$ e um grafo $G = (V,E)$, a propriedade dos ciclos consiste em :
 
-``` cpp
-void mstKruskalSlow(Edge * edges) {
-    vertex group[m_numVertices];
-    for (vertex v=0; v < m_numVertices; v++) { group[v] = v; }
-    int k = 0;
-    while (true) {
-        int minCost = INT_MAX;
-        vertex minV1, minV2 = -1;
-        for (vertex v1=0; v1 < m_numVertices; v1++) {
-            EdgeNode * edge = m_edges[v1];
-            while (edge) {
-                vertex v2 = edge->otherVertex();
-                int cost = edge->cost();
-                if (v1 < v2 && group[v1] != group[v2] && cost < minCost) {
-                    minCost = cost;
-                    minV1 = v1;
-                    minV2 = v2;
-                }
-                edge = edge->next();
-            }
-        }
-        if (minCost == INT_MAX) return;
-        edges[k++] = Edge(minV1, minV2, minCost);
-        vertex leaderV1 = group[minV1];
-        vertex leaderV2 = group[minV2];
-        for (vertex v=0; v < m_numVertices; v++) {
-            if (group[v] == leaderV2) {
-                group[v] = leaderV1;
-            }
-        }
-    }
-}
-```
+- Se $e_{i} \notin T$, o grafo $T + e_{i}$ possui um único ciclo $C$.
 
-No algoritmo, recebemos uma lista vazia denominada `edges`, onde iremos colocar as arestas da forma `(vértice1, vértice2, custo)`. Criamos um vetor para entendermos de que parte da floresta cada vértice pertence, o `group`. E o `k` vai servir como contador de arestas. Após preenchermos cada vértice a cada grupo próprio, iniciamos o while com o `mincost` e o `minV1` e `minV2`, pra marcar a aresta.
+- Se $e_{j} \in C$, o grafo $T + e_{i} - e_{j}$ é uma árvore geradora.
 
-Então, para cada vértice eu pego suas arestas, e faço 3 verificações para atualizar parâmetros:
+Claro que, se existir um $e_{k} \in T$, $T - e_{k}$ produz uma florest com duas componentes conexas em $G$.
 
-- `v1 < v2` - Para evitar duplicatas em caso de grafo não dirigido, por exemplo a aresta $(0,1)$ é a mesma que $(1,0)$.
+Dada as mesmas coisas, a propriedade dos cortes consiste em:
 
-- `group[v2] != group[v1]` - as arestas devem ser de grupos diferentes, caso contrário certamente já pegamos a menor para a árvore.
+- Dado $e_{i} \in T$ e $e_{j} \in \text{ corte}\left( T - e_{i} \right)$.
 
-- e o custo tem que ser menor que o último.
+- $T - e_{i} + e_{j}$ é uma árvore geradora.
 
-Se passou nessas verificações, então ele deve ser atualizado, e atualizamos a aresta de menor custo, em `minV1` e `minV2`. Após a verificação de contorno e a declaração de da aresta no edges. Por fim, salvamos os líderes de cada grupo e atualizamos o grupo de um dos grupos.
+![Exemplo da propriedade dos cortes: Se retirarmos a aresta $(2,5)$, o corte que conectaria as duas árvores geradoras seria qualquer aresta $\left\lbrack (3,5),(3,6),(4,5),(4,6) \right\rbrack$.](../assets/minimal-tree-2.png)
 
-Que ideia do caramba!
+*Figura 42. Exemplo da propriedade dos cortes: Se retirarmos a aresta $(2,5)$, o corte que conectaria as duas árvores geradoras seria qualquer aresta $\left\lbrack (3,5),(3,6),(4,5),(4,6) \right\rbrack$.*
 
-**Implementação em Python**
+Se $G = (V,E)$ for um grafo não-dirigido com custos nas arestas (com valores positivos e negativos), sabemos que o custo de um subgrafo $H$ de $G$ é calculado pelo somatório de custos das arestas em $H$. Com isso, podemos definir que uma **Árvore Geradora Mínima** (Mininum Spamming Tree - MST) de um grafo $G$ é qualquer árvore geradora cujo custo seja mínimo.
 
-``` py
-def mst_kruskal_slow(list_adj):
-    num_vertices = len(list_adj)
-    group = [v for v in range(num_vertices)]
-    edges = []
-    while True:
-        mincost = float('inf')
-        minv1, minv2 = -1, -1
-        for v in range(num_vertices):
-            for vizinho, custo in list_adj[v]:
-                if v < vizinho and group[v] != group[vizinho] and custo < mincost:
-                    mincost = custo
-                    minv1 = v
-                    minv2 = vizinho
-
-        if mincost == float('inf'):
-            break
-        edges.append((minv1, minv2, mincost))
-        leader1 = group[minv1]
-        leader2 = group[minv2]
-        for v in range(num_vertices):
-            if group[v] == leader2:
-                group[v] = leader1
-
-    return edges
-```
-
-A explicação é análoga à anterior, e, olhando para a complexidade, o while True passa em cada vértice $V$ vezes, e os dois primeiros fors passam por todas as arestas (a cada iteração!). Por fim, o for final percorre todos os vértices novamente, trazendo uma complexidade de $O\left( V(V + E) \right)$.
-
-A corretude do algoritmo pode ser avaliada através do critério de minimalidade baseado em ciclos. Uma árvore geradora $T$ é uma MST de $G$ se e somente se cada aresta $e_{k} \notin T$ apresentar o maior custo no ciclo fundamental de $e_{k}$ relativo à $T$ (não entendi, e espero que vocês acreditem).
-
-Essa versão é um pouco lenta pois:
-
-- A cada iteração todas as arestas são verificadas em busca da com menor custo.
-
-- A cada iteração todos os vértices são verificados para avaliar se é necessário atualizar seu grupo.
-
-Como melhorar isso?
-
-<a id="secao-40"></a>
-
-### Kruskal Fast
-
-Podemos ordenar as arestas por seu custo e utilizar uma estrutura de dados mais eficiente para fazer a busca e união dos vértices.
-
-Na estrutura **union-find**, todo elemento é associado à um conjunto:
-
-- `group[v] = v`, se for o líder do grupo;
-
-- `group[v] = v'`, se não for o líder.
-
-Essa representação força uma estrutura de árvore entre os elementos de mesmo conjunto (também armazenamos o tamanho).
-
-Seguindo essa abordagem podemos comparar se dois elementos pertencem ao mesmo grupo verificando se o líder de cada grupo é o mesmo.
-
-![Exemplo bobo do tal do union-find.](../assets/kruskal-1.png)
-
-*Figura 44. Exemplo bobo do tal do union-find.*
-
-Como precisamos chegar na raiz, isso consome até $O\left( \log(n) \right)$ no pior caso. A união de grupos passa a ser realizada definindo como pai do menor conjunto o pai do maior conjunto.
-
-Voltando ao Kruskal, podemos otimizá-lo usando o que acabamos de aprender. Veja a ideia:
-
-1.  **Inicialize a floresta com todos os vértices e sem nenhuma aresta**
-
-2.  **Crie a lista de arestas ordenando-a pelo custo**
-
-3.  **Para cada aresta $e_{k} = \left( v_{i},v_{j} \right)$**
-
-    1.  **Obtenha os líderes dos vértices**
-
-    2.  **Se forem diferentes, una-os**
-
-    3.  **insira $e_{k}$ em $F$**
-
-    4.  **Pare ao encontrar $V - 1$ arestas**
-
-``` cpp
-void mstKruskalFast(Edge * mstEdges) {
-    vector<Edge> edges(m_numEdges);
-    int currentEdge = 0;
-    for (vertex v1=0; v1 < m_numVertices; v1++) {
-        EdgeNode * edge = m_edges[v1];
-        while (edge) {
-            vertex v2 = edge->otherVertex();
-            if (v1 < v2) {
-                edges[currentEdge++] = Edge(v1, v2, edge->cost());
-            }
-            edge = edge->next();
-        }
-    }
-    sort(edges.begin(), edges.end(), compareEdges);
-    UnionFind uf(m_numVertices);
-    currentEdge = 0;
-    for (int e=0; currentEdge < m_numVertices - 1; e++) {
-        Edge & edge = edges[e];
-        vertex leaderV1 = uf.findE(edge.v1());
-        vertex leaderV2 = uf.findE(edge.v2());
-        if (leaderV1 != leaderV2) {
-            uf.unionE(leaderV1, leaderV2);
-            mstEdges[currentEdge++] = edge;
-        }
-    }
-}
-```
-
-Após montar a estrutura edges bonitinha e ordenada pelo custo, fazemos literalmente o que foi dito no pseudocódigo - passamos por cada vértice, identificamos os líderes e, se os líderes forem diferentes, adicionamos na lista de retorno a aresta escolhida.
-
-Não vou implementar isso em Python por falta de tempo
+**Problema:** dado $G = (V,E)$ não-dirigido com custos nas arestas encontre uma árvore geradora mínima.
 
 <a id="algoritmo-de-prim"></a>
 <a id="secao-34"></a>
@@ -481,46 +341,186 @@ def mst_prim_fastv2(v0, list_adj):
 
 Para a complexidade, muito parecido com o djikstra, o que vemos aqui é que temos um heap pop quando passamos por todos os vértices e temos um heap push quando temos que adicionar(ao passarmos pelas arestas). Ou seja, juntando com a explicação de complexidades anteriores, isso dá simplesmente $O\left( (V + E)\log(V) \right)$.
 
-<a id="arvore-geradora-minima"></a>
-<a id="secao-33"></a>
+<a id="algoritmo-de-kruskal"></a>
+<a id="secao-38"></a>
 
-## Árvore Geradora Mínima
+## Algoritmo de Kruskal
 
-Uma árvore geradora de um grafo $G = (V,E)$ é um subgrafo $T$ que não possua ciclos e que contenha todos os vértices de $G$. Se um grafo $G$ possui uma árvore geradora, então ele é conexo (claro, uma árvore é conexa) e possui sempre $V - 1$ arestas. Considere abaixo grafos conexos e não-dirigidos.
+A estratégia desse algoritmo consiste em crescer uma floresta $F = (V',E')$ até que ela se torne uma árvore geradora $F = (V,E')$, diferente de crescer arbitrariamente como o Prim.
 
-Um **corte** é um conjunto de arestas que conecta duas partes de um grafo.Dado um conjunto $A$ de vértices, as arestas que possuem uma ponta em $A$ e a outra ponta no complemento de $Ã$ representam um corte.
+<a id="secao-39"></a>
 
-![Exemplo de corte em grafo](../assets/minimal-tree-1.png)
+### Kruskal Slow
 
-*Figura 41. Exemplo de corte em grafo*
+Uma aresta $e_{k}$ é externa a floresta $F$ se $e_{k} \notin F$ e o grafo $F + e_{k}$ é uma floresta. Ideia geral do algoritmo:
 
-Dada uma árvore geradora, temos duas operações básicas:
+1.  **Inicialize a floresta com todos os vértices e nenhuma aresta**
 
-- A adição de uma aresta em uma árvore geradora cria um ciclo.
+2.  **Escolha a aresta $e_{k} = \left( v_{i},v_{j} \right)$ de $G$ que possua o menor custo**
 
-- A remoção de uma aresta em uma árvore geradora cria um corte.
+3.  **Insira $e_{k}$ em $F$.**
 
-Dada uma árvore geradora $T$ e um grafo $G = (V,E)$, a propriedade dos ciclos consiste em :
+Vamos ver como seria a implementação disso:
 
-- Se $e_{i} \notin T$, o grafo $T + e_{i}$ possui um único ciclo $C$.
+``` cpp
+void mstKruskalSlow(Edge * edges) {
+    vertex group[m_numVertices];
+    for (vertex v=0; v < m_numVertices; v++) { group[v] = v; }
+    int k = 0;
+    while (true) {
+        int minCost = INT_MAX;
+        vertex minV1, minV2 = -1;
+        for (vertex v1=0; v1 < m_numVertices; v1++) {
+            EdgeNode * edge = m_edges[v1];
+            while (edge) {
+                vertex v2 = edge->otherVertex();
+                int cost = edge->cost();
+                if (v1 < v2 && group[v1] != group[v2] && cost < minCost) {
+                    minCost = cost;
+                    minV1 = v1;
+                    minV2 = v2;
+                }
+                edge = edge->next();
+            }
+        }
+        if (minCost == INT_MAX) return;
+        edges[k++] = Edge(minV1, minV2, minCost);
+        vertex leaderV1 = group[minV1];
+        vertex leaderV2 = group[minV2];
+        for (vertex v=0; v < m_numVertices; v++) {
+            if (group[v] == leaderV2) {
+                group[v] = leaderV1;
+            }
+        }
+    }
+}
+```
 
-- Se $e_{j} \in C$, o grafo $T + e_{i} - e_{j}$ é uma árvore geradora.
+No algoritmo, recebemos uma lista vazia denominada `edges`, onde iremos colocar as arestas da forma `(vértice1, vértice2, custo)`. Criamos um vetor para entendermos de que parte da floresta cada vértice pertence, o `group`. E o `k` vai servir como contador de arestas. Após preenchermos cada vértice a cada grupo próprio, iniciamos o while com o `mincost` e o `minV1` e `minV2`, pra marcar a aresta.
 
-Claro que, se existir um $e_{k} \in T$, $T - e_{k}$ produz uma florest com duas componentes conexas em $G$.
+Então, para cada vértice eu pego suas arestas, e faço 3 verificações para atualizar parâmetros:
 
-Dada as mesmas coisas, a propriedade dos cortes consiste em:
+- `v1 < v2` - Para evitar duplicatas em caso de grafo não dirigido, por exemplo a aresta $(0,1)$ é a mesma que $(1,0)$.
 
-- Dado $e_{i} \in T$ e $e_{j} \in \text{ corte}\left( T - e_{i} \right)$.
+- `group[v2] != group[v1]` - as arestas devem ser de grupos diferentes, caso contrário certamente já pegamos a menor para a árvore.
 
-- $T - e_{i} + e_{j}$ é uma árvore geradora.
+- e o custo tem que ser menor que o último.
 
-![Exemplo da propriedade dos cortes: Se retirarmos a aresta $(2,5)$, o corte que conectaria as duas árvores geradoras seria qualquer aresta $\left\lbrack (3,5),(3,6),(4,5),(4,6) \right\rbrack$.](../assets/minimal-tree-2.png)
+Se passou nessas verificações, então ele deve ser atualizado, e atualizamos a aresta de menor custo, em `minV1` e `minV2`. Após a verificação de contorno e a declaração de da aresta no edges. Por fim, salvamos os líderes de cada grupo e atualizamos o grupo de um dos grupos.
 
-*Figura 42. Exemplo da propriedade dos cortes: Se retirarmos a aresta $(2,5)$, o corte que conectaria as duas árvores geradoras seria qualquer aresta $\left\lbrack (3,5),(3,6),(4,5),(4,6) \right\rbrack$.*
+Que ideia do caramba!
 
-Se $G = (V,E)$ for um grafo não-dirigido com custos nas arestas (com valores positivos e negativos), sabemos que o custo de um subgrafo $H$ de $G$ é calculado pelo somatório de custos das arestas em $H$. Com isso, podemos definir que uma **Árvore Geradora Mínima** (Mininum Spamming Tree - MST) de um grafo $G$ é qualquer árvore geradora cujo custo seja mínimo.
+**Implementação em Python**
 
-**Problema:** dado $G = (V,E)$ não-dirigido com custos nas arestas encontre uma árvore geradora mínima.
+``` py
+def mst_kruskal_slow(list_adj):
+    num_vertices = len(list_adj)
+    group = [v for v in range(num_vertices)]
+    edges = []
+    while True:
+        mincost = float('inf')
+        minv1, minv2 = -1, -1
+        for v in range(num_vertices):
+            for vizinho, custo in list_adj[v]:
+                if v < vizinho and group[v] != group[vizinho] and custo < mincost:
+                    mincost = custo
+                    minv1 = v
+                    minv2 = vizinho
+
+        if mincost == float('inf'):
+            break
+        edges.append((minv1, minv2, mincost))
+        leader1 = group[minv1]
+        leader2 = group[minv2]
+        for v in range(num_vertices):
+            if group[v] == leader2:
+                group[v] = leader1
+
+    return edges
+```
+
+A explicação é análoga à anterior, e, olhando para a complexidade, o while True passa em cada vértice $V$ vezes, e os dois primeiros fors passam por todas as arestas (a cada iteração!). Por fim, o for final percorre todos os vértices novamente, trazendo uma complexidade de $O\left( V(V + E) \right)$.
+
+A corretude do algoritmo pode ser avaliada através do critério de minimalidade baseado em ciclos. Uma árvore geradora $T$ é uma MST de $G$ se e somente se cada aresta $e_{k} \notin T$ apresentar o maior custo no ciclo fundamental de $e_{k}$ relativo à $T$ (não entendi, e espero que vocês acreditem).
+
+Essa versão é um pouco lenta pois:
+
+- A cada iteração todas as arestas são verificadas em busca da com menor custo.
+
+- A cada iteração todos os vértices são verificados para avaliar se é necessário atualizar seu grupo.
+
+Como melhorar isso?
+
+<a id="secao-40"></a>
+
+### Kruskal Fast
+
+Podemos ordenar as arestas por seu custo e utilizar uma estrutura de dados mais eficiente para fazer a busca e união dos vértices.
+
+Na estrutura **union-find**, todo elemento é associado à um conjunto:
+
+- `group[v] = v`, se for o líder do grupo;
+
+- `group[v] = v'`, se não for o líder.
+
+Essa representação força uma estrutura de árvore entre os elementos de mesmo conjunto (também armazenamos o tamanho).
+
+Seguindo essa abordagem podemos comparar se dois elementos pertencem ao mesmo grupo verificando se o líder de cada grupo é o mesmo.
+
+![Exemplo bobo do tal do union-find.](../assets/kruskal-1.png)
+
+*Figura 44. Exemplo bobo do tal do union-find.*
+
+Como precisamos chegar na raiz, isso consome até $O\left( \log(n) \right)$ no pior caso. A união de grupos passa a ser realizada definindo como pai do menor conjunto o pai do maior conjunto.
+
+Voltando ao Kruskal, podemos otimizá-lo usando o que acabamos de aprender. Veja a ideia:
+
+1.  **Inicialize a floresta com todos os vértices e sem nenhuma aresta**
+
+2.  **Crie a lista de arestas ordenando-a pelo custo**
+
+3.  **Para cada aresta $e_{k} = \left( v_{i},v_{j} \right)$**
+
+    1.  **Obtenha os líderes dos vértices**
+
+    2.  **Se forem diferentes, una-os**
+
+    3.  **insira $e_{k}$ em $F$**
+
+    4.  **Pare ao encontrar $V - 1$ arestas**
+
+``` cpp
+void mstKruskalFast(Edge * mstEdges) {
+    vector<Edge> edges(m_numEdges);
+    int currentEdge = 0;
+    for (vertex v1=0; v1 < m_numVertices; v1++) {
+        EdgeNode * edge = m_edges[v1];
+        while (edge) {
+            vertex v2 = edge->otherVertex();
+            if (v1 < v2) {
+                edges[currentEdge++] = Edge(v1, v2, edge->cost());
+            }
+            edge = edge->next();
+        }
+    }
+    sort(edges.begin(), edges.end(), compareEdges);
+    UnionFind uf(m_numVertices);
+    currentEdge = 0;
+    for (int e=0; currentEdge < m_numVertices - 1; e++) {
+        Edge & edge = edges[e];
+        vertex leaderV1 = uf.findE(edge.v1());
+        vertex leaderV2 = uf.findE(edge.v2());
+        if (leaderV1 != leaderV2) {
+            uf.unionE(leaderV1, leaderV2);
+            mstEdges[currentEdge++] = edge;
+        }
+    }
+}
+```
+
+Após montar a estrutura edges bonitinha e ordenada pelo custo, fazemos literalmente o que foi dito no pseudocódigo - passamos por cada vértice, identificamos os líderes e, se os líderes forem diferentes, adicionamos na lista de retorno a aresta escolhida.
+
+Não vou implementar isso em Python por falta de tempo
 
 <!-- wiki:original:fim -->
 
@@ -529,5 +529,4 @@ Se $G = (V,E)$ for um grafo não-dirigido com custos nas arestas (com valores po
 
 [Trilha: A2](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md#apresentacao-original)
 
-- Anterior: [Bellman-Ford](../menor-caminho-em-grafos-a2/caminho-mais-barato-em-grafos/index.md#bellman-ford)
-- Próximo: [Algoritmo de Prim](#algoritmo-de-prim)
+- Anterior: [Menor caminho em Grafos](../menor-caminho-em-grafos-a2/index.md)

@@ -42,25 +42,6 @@ Given $B_{i}$ a partition of $\Omega$.
 
 Notice that the function $P_{C}:\Omega \rightarrow \lbrack 0,1\rbrack$, $P_{C}(A) = P\left( A\vert C \right)$, given $C \subset \Omega$ is also a probability in the same space $E$, so both Baye’s theorem and LOTP assume conditional versions written in terms of $P_{C}$.
 
-<a id="covariance-correlation"></a>
-<a id="secao-5"></a>
-
-## Covariance, Correlation
-
-We will go straight to the definition:
-
-The **Covariance** of $X,Y:\Omega \rightarrow {\mathbb{R}}$ is:
-
-$$
-\text{Cov}(X,Y) = E\left( \left\lbrack X - E(X)\left( Y - E(Y) \right) \right\rbrack \right)
-$$
-
-This is the same as $\text{Cov}(X) = E(XY) - E(X)E(Y)$, so the idea behind this concept is to measure how both random variables change, when analyzed together. Notice that $\text{Cov}(X,Y) = 0$ if $X$ and $Y$ are independent, this is intuitive
-
-Another useful concept is the **correlation coefficient:**
-
-$$\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sigma(X)\sigma(Y)}$$ You can verify that $\rho(aX,bY) = \rho(X,Y),\forall a,b \in {\mathbb{R}}$, so the units used to measure $X,Y$ are irrelevant to their correlation coefficient.
-
 <a id="discrete-random-variables-indicator-random-variables"></a>
 <a id="secao-3"></a>
 
@@ -139,6 +120,25 @@ $$
 V(X + Y) = V(X) + V(Y)
 $$
 
+<a id="covariance-correlation"></a>
+<a id="secao-5"></a>
+
+## Covariance, Correlation
+
+We will go straight to the definition:
+
+The **Covariance** of $X,Y:\Omega \rightarrow {\mathbb{R}}$ is:
+
+$$
+\text{Cov}(X,Y) = E\left( \left\lbrack X - E(X)\left( Y - E(Y) \right) \right\rbrack \right)
+$$
+
+This is the same as $\text{Cov}(X) = E(XY) - E(X)E(Y)$, so the idea behind this concept is to measure how both random variables change, when analyzed together. Notice that $\text{Cov}(X,Y) = 0$ if $X$ and $Y$ are independent, this is intuitive
+
+Another useful concept is the **correlation coefficient:**
+
+$$\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sigma(X)\sigma(Y)}$$ You can verify that $\rho(aX,bY) = \rho(X,Y),\forall a,b \in {\mathbb{R}}$, so the units used to measure $X,Y$ are irrelevant to their correlation coefficient.
+
 <!-- wiki:original:fim -->
 
 
@@ -146,4 +146,4 @@ $$
 
 [Trilha: A1](../../../trilhas/probabilidade/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/probabilidade/a1.md#apresentacao-original)
 
-- Próximo: [Covariance, Correlation](#covariance-correlation)
+- Próximo: [Discrete Distributions](../discrete-distributions/index.md)

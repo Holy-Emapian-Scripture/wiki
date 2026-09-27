@@ -22,6 +22,23 @@ ordem_na_trilha: 48
 # Treinamento e Problemas de Gradiente na RNN
 
 
+<a id="backpropagation-through-time-bptt"></a>
+<a id="secao-57"></a>
+
+## Backpropagation Through Time (BPTT)
+
+Como cada célula da RNN é uma camada da rede neural, o processo de unrolling da RNN ao longo do tempo cria uma rede profunda, onde cada passo temporal é tratado como uma camada separada com o diferencial que os mesmos parâmetros são usados em todos os passos.
+
+Em uma tarefa com saída de múltiplos passos temporais (many-to-many), o erro global $E$ é acumulado e calculado a cada instante temporal $t$ $$E = \sum_{t = 1}^{T}E_{t}$$
+
+Para atualizar a matriz de pesos compartilhada $W_{hh}$ precisamos calcular a derivada parcial de $E$ em relação a $W_{hh}$. Pela regra da cadeia, o erro $E_{t}$ em um determinado instante $t$ depende não apenas da célula no instante $t$, mas de toda a história de estados ocultos anteriores $h_{k}\ (k \leq t)$ $$\frac{\partial E}{\partial W_{hh}} = \sum_{k = 1}^{T}\frac{\partial E_{t}}{\partial h_{t}}\frac{\partial h_{t}}{\partial h_{k}}\frac{\partial h_{k}}{\partial W_{hh}}$$
+
+As derivadas da esquerda ($\frac{\partial E_{t}}{\partial h_{t}}$) e direita ($\frac{\partial h_{k}}{\partial W_{hh}}$) são fáceis de visualizar pela relação direta que a função derivada tem com o termo da derivação, no entanto, o termo do meio é um pouco mais complexo, mas ele representa **o fluxo do gradiente retropropagado do passo $t$ até o passo $k$** $$\frac{\partial h_{t}}{\partial h_{k}} = \prod_{j = k + 1}^{t}\frac{\partial h_{j}}{\partial h_{j - 1}}$$
+
+![Fluxo do gradiente retropropagado do passo \$t\$ até o passo \$k\$](../../assets/A1/rnn-backpropagation.png)
+
+*Figura 47. Fluxo do gradiente retropropagado do passo \$t\$ até o passo \$k\$*
+
 <a id="a-matematica-dos-gradientes-explosivos-ou-desvanecentes"></a>
 <a id="secao-58"></a>
 
@@ -42,23 +59,6 @@ Pela propriedade submultiplicativa das normas matriciais $\| AB\|_{2} \leq \| A\
 No entanto, temos que $\| D_{j}\|_{2} = \sigma_{\text{max }}\left( D_{j} \right) = \max\limits_{i}\vert 1 - \tanh^{2}\left( z_{ji} \right)\vert  \leq 1$ e $\| W_{hh}^{T}\|_{2} = \sigma_{\text{max }}\left( W_{hh}^{T} \right)$, então $$\begin{aligned} & \left. \frac{\|\left( \partial h_{t} \right)}{\partial h_{k}} \right\|_{2} \leq \prod_{j = k + 1}^{t}1 \cdot \sigma_{\text{max }}\left( W_{hh}^{T} \right) \\ \Rightarrow & \left. \frac{\|\left( \partial h_{t} \right)}{\partial h_{k}} \right\|_{2} \leq \left( \sigma_{\text{max }}\left( W_{hh}^{T} \right) \right)^{t - k} \end{aligned}$$
 
 A conclusão que temos dessa análise é que, se o maior valor singular é menor que 1, então o gradiente vai decair exponencialmente com o aumento da diferença $t - k$, levando ao problema de **vanishing gradient**. Por outro lado, se o maior valor singular é maior que 1, então o gradiente vai crescer exponencialmente com o aumento da diferença $t - k$, levando ao problema de **exploding gradient**.
-
-<a id="backpropagation-through-time-bptt"></a>
-<a id="secao-57"></a>
-
-## Backpropagation Through Time (BPTT)
-
-Como cada célula da RNN é uma camada da rede neural, o processo de unrolling da RNN ao longo do tempo cria uma rede profunda, onde cada passo temporal é tratado como uma camada separada com o diferencial que os mesmos parâmetros são usados em todos os passos.
-
-Em uma tarefa com saída de múltiplos passos temporais (many-to-many), o erro global $E$ é acumulado e calculado a cada instante temporal $t$ $$E = \sum_{t = 1}^{T}E_{t}$$
-
-Para atualizar a matriz de pesos compartilhada $W_{hh}$ precisamos calcular a derivada parcial de $E$ em relação a $W_{hh}$. Pela regra da cadeia, o erro $E_{t}$ em um determinado instante $t$ depende não apenas da célula no instante $t$, mas de toda a história de estados ocultos anteriores $h_{k}\ (k \leq t)$ $$\frac{\partial E}{\partial W_{hh}} = \sum_{k = 1}^{T}\frac{\partial E_{t}}{\partial h_{t}}\frac{\partial h_{t}}{\partial h_{k}}\frac{\partial h_{k}}{\partial W_{hh}}$$
-
-As derivadas da esquerda ($\frac{\partial E_{t}}{\partial h_{t}}$) e direita ($\frac{\partial h_{k}}{\partial W_{hh}}$) são fáceis de visualizar pela relação direta que a função derivada tem com o termo da derivação, no entanto, o termo do meio é um pouco mais complexo, mas ele representa **o fluxo do gradiente retropropagado do passo $t$ até o passo $k$** $$\frac{\partial h_{t}}{\partial h_{k}} = \prod_{j = k + 1}^{t}\frac{\partial h_{j}}{\partial h_{j - 1}}$$
-
-![Fluxo do gradiente retropropagado do passo \$t\$ até o passo \$k\$](../../assets/A1/rnn-backpropagation.png)
-
-*Figura 47. Fluxo do gradiente retropropagado do passo \$t\$ até o passo \$k\$*
 
 <a id="metodos-de-mitigacao"></a>
 <a id="secao-59"></a>

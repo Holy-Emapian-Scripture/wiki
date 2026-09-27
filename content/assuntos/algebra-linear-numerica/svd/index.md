@@ -22,6 +22,38 @@ ordem_na_trilha: 7
 # SVD
 
 
+<a id="forma-reduzida"></a>
+<a id="secao-8"></a>
+
+## Forma reduzida
+
+Podemos reescrever esta equação como um produto matricial!
+
+$AV = \widehat{U}\widehat{\Sigma}$
+
+Onde
+
+$V = \begin{pmatrix} \vert  & & \vert  \\ v_{1} & \ldots & v_{n} \\ \vert  & & ~\vert ~ \end{pmatrix},\Sigma = \begin{pmatrix} \sigma_{1} & & & \\ & \sigma_{2} & & \\ & & \ddots & \\ & & & \sigma_{n} \end{pmatrix},U = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{n} \\ \vert  & & ~\vert ~ \end{pmatrix}$
+
+Isso é conhecido como a fatoração SVD **reduzida**. Podemos ver que $V$ é uma matriz ortogonal quadrada (para $Av_{j}$ ser uma multiplicação válida, $v_{j} \in {\mathbb{C}}^{n}$), então podemos reescrever $A$ como:
+
+$A = \widehat{U}\widehat{\Sigma}V^{\ast}$
+
+<a id="svd-completa"></a>
+<a id="secao-9"></a>
+
+## SVD completa
+
+Ok, se $v_{j} \in {\mathbb{C}}^{n}$ e $Av_{j} = \sigma_{j}u_{j}$, então $u_{j} \in {\mathbb{C}}^{m}$! Isso significa que, além dos vetores $u$ que adicionamos em $\widehat{U}$, temos mais $m - n$ vetores ortonormais para as colunas de $\widehat{U}$, ao encontrar esses vetores, podemos construir outra matriz $U$ cujas colunas são uma base ortonormal de ${\mathbb{C}}^{m}$, o que significa que a nova matriz $U$ é ortogonal!
+
+$V = \begin{pmatrix} \vert  & & \vert  \\ v_{1} & \ldots & v_{n} \\ \vert  & & ~\vert ~ \end{pmatrix},U = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{m} \\ \vert  & & ~\vert ~ \end{pmatrix}$
+
+Legal! Mas e a matriz $\widehat{\Sigma}$? Como ela muda? Bem, queremos manter $V$ e $U$ como queríamos, certo? Bem, o que fizemos foi adicionar colunas a $\widehat{U}$, então, na multiplicação, só precisamos que essas colunas desapareçam, como fazemos isso? Multiplicando por 0! Então, antes, $\widehat{\Sigma}$ era uma matriz quadrada com os valores singulares na diagonal, especificamente, $n$ valores singulares. Se adicionamos $m - n$ vetores em $U$, podemos adicionar $m - n$ zeros em $\widehat{\Sigma}$, então nossa nova multiplicação matricial é
+
+$A = U\Sigma V^{\ast}$
+
+$\begin{pmatrix} \vert  & & \vert  \\ a_{1} & \ldots & a_{n} \\ \vert  & & ~\vert ~ \end{pmatrix} = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{m} \\ \vert  & & ~\vert ~ \end{pmatrix}\begin{pmatrix} \sigma_{1} & & \\ & \ddots & \\ & & \sigma_{n} \\ - & 0 & - \\ & \vdots & \end{pmatrix}\begin{pmatrix} - v_{1} - \\ \ldots \\ - v_{n} - \end{pmatrix}$
+
 <a id="definicao-formal"></a>
 <a id="secao-10"></a>
 
@@ -75,23 +107,6 @@ $A = U_{1}\begin{pmatrix} 1 & 0 \\ 0 & U_{2} \end{pmatrix}\begin{pmatrix} \sigma
 
 Isso é uma S.V.D de $A$, usando o caso base de $m = 1$ e $n = 1$, terminamos a prova da existência
 
-<a id="forma-reduzida"></a>
-<a id="secao-8"></a>
-
-## Forma reduzida
-
-Podemos reescrever esta equação como um produto matricial!
-
-$AV = \widehat{U}\widehat{\Sigma}$
-
-Onde
-
-$V = \begin{pmatrix} \vert  & & \vert  \\ v_{1} & \ldots & v_{n} \\ \vert  & & ~\vert ~ \end{pmatrix},\Sigma = \begin{pmatrix} \sigma_{1} & & & \\ & \sigma_{2} & & \\ & & \ddots & \\ & & & \sigma_{n} \end{pmatrix},U = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{n} \\ \vert  & & ~\vert ~ \end{pmatrix}$
-
-Isso é conhecido como a fatoração SVD **reduzida**. Podemos ver que $V$ é uma matriz ortogonal quadrada (para $Av_{j}$ ser uma multiplicação válida, $v_{j} \in {\mathbb{C}}^{n}$), então podemos reescrever $A$ como:
-
-$A = \widehat{U}\widehat{\Sigma}V^{\ast}$
-
 <a id="mudanca-de-base"></a>
 <a id="secao-11"></a>
 
@@ -128,6 +143,23 @@ $b = Ax \Leftrightarrow U^{\ast}b = U^{\ast}Ax = U^{\ast}U\Sigma V^{\ast}x \Left
 $\Leftrightarrow \lbrack b\rbrack_{u} = \Sigma\lbrack x\rbrack_{v}$
 
 Então podemos reduzir $A$ à matriz $\Sigma$ e $b$ e $x$ às suas coordenadas nas bases $u$ e $v$
+
+<a id="s-v-d-vs-decomposicao-por-autovalores"></a>
+<a id="secao-12"></a>
+
+## S.V.D vs Decomposição por Autovalores
+
+Podemos fazer algo semelhante com a decomposição por autovalores. Dada $A \in {\mathbb{C}}^{m \times m}$ com autovetores linearmente independentes, ou seja, podemos expressar $A = S\Lambda S^{- 1}$ com as colunas de $S$ sendo os autovetores de $A$ e $\Lambda$ sendo uma matriz diagonal com os autovalores de $A$ como entradas.
+
+Definindo $b,x \in {\mathbb{C}}^{m}$ satisfazendo $b = Ax$, podemos escrever:
+
+$\lbrack b\rbrack_{s^{- 1}} = S^{- 1}b$ e $\lbrack x\rbrack_{s^{- 1}} = S^{- 1}x$
+
+Onde estou denotando $s^{- 1}$ como a base expressa pelas colunas de $S^{- 1}$, então a nova expressão expandida é:
+
+$b = Ax \Leftrightarrow S^{- 1}b = S^{- 1}Ax = S^{- 1}S\Lambda S^{- 1}x \Leftrightarrow S^{- 1}b = \Lambda S^{- 1}x$
+
+$\lbrack b\rbrack_{s^{- 1}} = \Lambda\lbrack x\rbrack_{s^{- 1}}$
 
 <a id="propriedades-de-matrizes-com-svd"></a>
 <a id="secao-13"></a>
@@ -208,38 +240,6 @@ $\vert \det(A)\vert  = \vert \det(U\Sigma V^{\ast})\vert  = \vert \det(U)\det(\S
 
 ------------------------------------------------------------------------
 
-<a id="s-v-d-vs-decomposicao-por-autovalores"></a>
-<a id="secao-12"></a>
-
-## S.V.D vs Decomposição por Autovalores
-
-Podemos fazer algo semelhante com a decomposição por autovalores. Dada $A \in {\mathbb{C}}^{m \times m}$ com autovetores linearmente independentes, ou seja, podemos expressar $A = S\Lambda S^{- 1}$ com as colunas de $S$ sendo os autovetores de $A$ e $\Lambda$ sendo uma matriz diagonal com os autovalores de $A$ como entradas.
-
-Definindo $b,x \in {\mathbb{C}}^{m}$ satisfazendo $b = Ax$, podemos escrever:
-
-$\lbrack b\rbrack_{s^{- 1}} = S^{- 1}b$ e $\lbrack x\rbrack_{s^{- 1}} = S^{- 1}x$
-
-Onde estou denotando $s^{- 1}$ como a base expressa pelas colunas de $S^{- 1}$, então a nova expressão expandida é:
-
-$b = Ax \Leftrightarrow S^{- 1}b = S^{- 1}Ax = S^{- 1}S\Lambda S^{- 1}x \Leftrightarrow S^{- 1}b = \Lambda S^{- 1}x$
-
-$\lbrack b\rbrack_{s^{- 1}} = \Lambda\lbrack x\rbrack_{s^{- 1}}$
-
-<a id="svd-completa"></a>
-<a id="secao-9"></a>
-
-## SVD completa
-
-Ok, se $v_{j} \in {\mathbb{C}}^{n}$ e $Av_{j} = \sigma_{j}u_{j}$, então $u_{j} \in {\mathbb{C}}^{m}$! Isso significa que, além dos vetores $u$ que adicionamos em $\widehat{U}$, temos mais $m - n$ vetores ortonormais para as colunas de $\widehat{U}$, ao encontrar esses vetores, podemos construir outra matriz $U$ cujas colunas são uma base ortonormal de ${\mathbb{C}}^{m}$, o que significa que a nova matriz $U$ é ortogonal!
-
-$V = \begin{pmatrix} \vert  & & \vert  \\ v_{1} & \ldots & v_{n} \\ \vert  & & ~\vert ~ \end{pmatrix},U = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{m} \\ \vert  & & ~\vert ~ \end{pmatrix}$
-
-Legal! Mas e a matriz $\widehat{\Sigma}$? Como ela muda? Bem, queremos manter $V$ e $U$ como queríamos, certo? Bem, o que fizemos foi adicionar colunas a $\widehat{U}$, então, na multiplicação, só precisamos que essas colunas desapareçam, como fazemos isso? Multiplicando por 0! Então, antes, $\widehat{\Sigma}$ era uma matriz quadrada com os valores singulares na diagonal, especificamente, $n$ valores singulares. Se adicionamos $m - n$ vetores em $U$, podemos adicionar $m - n$ zeros em $\widehat{\Sigma}$, então nossa nova multiplicação matricial é
-
-$A = U\Sigma V^{\ast}$
-
-$\begin{pmatrix} \vert  & & \vert  \\ a_{1} & \ldots & a_{n} \\ \vert  & & ~\vert ~ \end{pmatrix} = \begin{pmatrix} \vert  & & \vert  \\ u_{1} & \ldots & u_{m} \\ \vert  & & ~\vert ~ \end{pmatrix}\begin{pmatrix} \sigma_{1} & & \\ & \ddots & \\ & & \sigma_{n} \\ - & 0 & - \\ & \vdots & \end{pmatrix}\begin{pmatrix} - v_{1} - \\ \ldots \\ - v_{n} - \end{pmatrix}$
-
 <!-- wiki:original:fim -->
 
 
@@ -252,5 +252,5 @@ $\begin{pmatrix} \vert  & & \vert  \\ a_{1} & \ldots & a_{n} \\ \vert  & & ~\ver
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Generalização das normas de matrizes](../normas/index.md#generalizacao-das-normas-de-matrizes)
-- Próximo: [Definição formal](#definicao-formal)
+- Anterior: [Normas](../normas/index.md)
+- Próximo: [Projetores](../projetores/index.md)

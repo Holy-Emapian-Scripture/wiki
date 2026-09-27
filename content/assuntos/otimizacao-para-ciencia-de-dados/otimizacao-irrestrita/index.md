@@ -22,20 +22,12 @@ ordem_na_trilha: 1
 # Otimização Irrestrita
 
 
-<a id="condicoes-para-solucoes-globais"></a>
-<a id="secao-7"></a>
+<a id="introducao"></a>
+<a id="secao-2"></a>
 
-## Condições para soluções globais
+## Introdução
 
-<a id="sufficient-condition-global-minimum"></a>
-
-**Teorema**
-
-Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ duas vezes continuamente diferenciável. Suponha que: $$\nabla^{2}f(x) \succeq 0,\ \forall x \in {\mathbb{R}}^{n}$$ Então, em todo ponto estacionário de $f$, esse ponto é um mínimo global
-
-**Demonstração**
-
-Pelo [\[linear-approximation\]](../definicoes-e-revisoes-de-calculo/index.md#linear-approximation), seja $x^{\ast} \in {\mathbb{R}}^{n}$ um ponto estacionário em $f$ e $\forall x \in {\mathbb{R}}^{n}$: $$f(x) - f\left( x^{\ast} \right) = \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Porém, vale que $\forall x,\ \nabla^{2}f(\xi) \succeq 0$. Temos então que: $$\forall x \in {\mathbb{R}}^{n},\ f(x) \geq f\left( x^{\ast} \right)$$ Logo, $x^{\ast}$ é ponto de mínimo global em $f$
+Otimização é um ramo da matemática preocupada em resolver problemas em que você possui várias opções de escolha, de forma que cada uma tem o custo associado, e queremos escolher a escolha com menor custo possível, ou seja, queremos resolver: $$\min\limits_{x \in C}f(x)$$ Com $f:C \subseteq {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ sendo a **função objeto** e C sendo o **conjunto viável**.
 
 <a id="definicoes-e-revisoes-de-calculo"></a>
 <a id="secao-3"></a>
@@ -109,121 +101,6 @@ Seja $f:U \rightarrow {\mathbb{R}}$ uma função duas vezes continuamente difere
 **Teorema: Aproximação de Segunda Ordem**
 
 Seja $f:U \rightarrow {\mathbb{R}}$ uma função duas vezes continuamente diferenciável e $U \subseteq {\mathbb{R}}^{n}$, e seja $x \in U$ e $r > 0$ tais que $B(x,r) \subset U$ então: $$\begin{array}{r} \forall y \in B(x,r)\text{ vale } \\ f(y) = f(x) + \nabla{f(x)}^{T}(y - x) + \frac{1}{2}(y - x)^{T}\nabla^{2}f(x)(y - x) + o\left( \| y - x\|^{2} \right) \end{array}$$
-
-<a id="existencia-de-pontos-otimos"></a>
-<a id="secao-6"></a>
-
-## Existência de pontos ótimos
-
-Até agora estávamos assumindo que pontos ótimos existiam, mas e se eles não existem?
-
-**Definição: Conjunto fechado**
-
-Um conjunto $C$ é fechado se seu complementar $C^{c}$ é aberto
-
-**Definição: Conjunto limitado**
-
-Um conjunto $C$ é limitado se $\exists r > 0$ tal que $C \subset B(0,r)$
-
-**Definição: Conjunto compacto**
-
-Um conjunto $C$ é compacto se é fechado e limitado
-
-**Teorema: Weierstrass**
-
-Seja $C \subset {\mathbb{R}}^{n}$ um conjunto compacto e $f:C \rightarrow {\mathbb{R}}$, então $f$ possui um ponto de mínimo global e de máximo global em $C$
-
-Quando o conjunto não é compacto, o teorema de Weierstrass não garante a existência, então podemos usar essa outra definição:
-
-**Definição: Coercividade**
-
-Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$. A função é dita coerciva se: $$\lim\limits_{\| x\| \rightarrow \infty}f(x) = \infty$$
-
-Ou seja, todo e qualquer vetor que eu pegar e aumentar seu tamanho, a função aumenta junto, formando o que parece uma grande bacia, onde você coloca água e ela nunca vaza
-
-![Exemplo de função coerciva $f(x,y) = 0.1x^{2} + 0.1y^{2}$](../assets/coercive-function.png.png)
-
-*Figura 5. Exemplo de função coerciva $f(x,y) = 0.1x^{2} + 0.1y^{2}$*
-
-**Teorema: Existência de soluções: Coercividade**
-
-Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ uma função contínua e coerciva e $C \subset {\mathbb{R}}^{n}$ um conjunto fechado não-vazio. Então f tem um mínimo global em C
-
-**Demonstração**
-
-Seja $x_{0} \in C$ um ponto arbitrário. Como f é coerciva, segue que existe $M > 0$ tal que $$f(x) > f\left( x_{0} \right)\text{ para todo }x\text{ tal que }\| x\| > M$$ Temos que $x^{\ast}$ é um ponto de mínimo global de $f$ sobre $C$. Portanto $f\left( x^{\ast} \right) \geq f\left( x_{0} \right)$. Segue da afirmação em diplay que o conjunto de mínimos globais de $f$ sobre $C$ é exatamente o conjunto de mínimos globais de $f$ sobre $C \cap B(0,M)$. O conjunto $C \cap B(0,M)$ é fechado e limitado, portanto compacto. Segue do Teorema de Weierstrass que $f$ possui ponto de mínimo global sobre $C \cap B(0,M)$, e portanto, sobre $C$ também
-
-<a id="funcoes-quadraticas"></a>
-<a id="secao-8"></a>
-
-## Funções quadráticas
-
-Um conjunto interessante de funções com algumas propriedades convenientes são as funções quadráticas
-
-<a id="quadratic-function"></a>
-
-**Definição: Função quadrática**
-
-Uma função é quadrática quando $\exists A \in {\mathbb{R}}^{n \times n}\text{ simétrica},b \in {\mathbb{R}}^{n},c \in {\mathbb{R}}$ tal que a função $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ pode ser expressa como: $$f(x) = x^{T}Ax + 2b^{T}x + c$$
-
-**Teorema: Derivadas de uma quadrática**
-
-Seja $f$ uma função quadrática como na [\[quadratic-function\]](#quadratic-function), temos que: $$\begin{array}{r} \nabla f(x) = 2(Ax + b) \\ \nabla^{2}f(x) = 2A \end{array}$$
-
-**Demonstração**
-
-Sabemos que $f(x) = x^{T}Ax + 2b^{T}x + c$. Vamos definir que $x_{i}$ é a $i$-ésima entrada de $x$. Vamos primeiro calcular uma derivada parcial genérica de $f$. Como a derivada é uma operação linear, eu vou ver cada componente separadamente. $$x^{T}Ax = \begin{pmatrix} x_{1} & \ldots & x_{n} \end{pmatrix}\begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \ldots & a_{nn} \end{pmatrix}\begin{pmatrix} x_{1} \\ \vdots \\ x_{n} \end{pmatrix} = \begin{pmatrix} x_{1} & \ldots & x_{n} \end{pmatrix}\begin{pmatrix} \sum_{k = 1}^{n}a_{1k}x_{k} \\ \vdots \\ \sum_{k = 1}^{n}a_{nk}x_{k} \end{pmatrix}$$
-
-Para facilitar nossa vida, vamos definir $$\alpha_{j} = \sum_{k = 1}^{n}a_{jk}x_{k}$$. Então: $$f(x) = \alpha_{1}x_{1} + \ldots + \alpha_{n}x_{n} + 2\left( b_{1}x_{1} + \ldots + b_{n}x_{n} \right) + c$$ Agora podemos tirar a derivada de $f(x)$ em $x_{j}$, mas antes, perceba que: $$\frac{\partial\alpha_{i}}{\partial x_{j}} = a_{ij}$$ Agora sim: $$\frac{\partial f}{\partial x_{j}} = x_{1}\frac{\partial\alpha_{1}}{\partial x_{j}} + \ldots + \frac{\partial}{\partial x_{j}}\left( \alpha_{j}x_{j} \right) + \ldots + x_{n}\frac{\partial\alpha_{n}}{\partial x_{j}} + 2b_{j}\frac{\begin{array}{r} \\ (\partial f) \end{array}}{\partial x_{j}} = x_{1}a_{1j} + \ldots + \frac{\partial\alpha_{j}}{\partial x_{j}}x_{j} + \alpha_{j} + \ldots + x_{n}a_{nj} + 2b_{j}\frac{\begin{array}{r} \\ (\partial f) \end{array}}{\partial x_{j}} = \sum_{k = 1}^{n}a_{jk}x_{k} + \sum_{k = 1}^{n}a_{kj}x_{k} + 2b_{j}$$
-
-Como $A$ é simétrica, podemos reescrever isso como: $$\frac{\partial f}{\partial x_{j}} = 2\left( \sum_{k = 1}^{n}a_{kj}x_{k} + b_{j} \right)$$
-
-Ou seja, o gradiente da função é: $$\nabla f(x) = 2(Ax + b)$$
-
-E para a hessiana é bem mais fácil, dado o item anterior, basta que tiremos a derivada novamente para $x_{i}$: $$\frac{\partial^{2}f}{\partial x_{j}\partial x_{i}} = 2a_{ij}$$ Ou seja: $$\nabla^{2}f(x) = 2A$$
-
-**Teorema: Pontos estacionários e ótimos de função quadrática**
-
-Seja uma função $f$ definida na [\[quadratic-function\]](#quadratic-function), então:
-
-1.  $x$ é ponto estacionário $\Leftrightarrow Ax = - b$.
-
-2.  Suponha que $A \succeq 0$. Então $x$ é ponto de mínimo global $\Leftrightarrow Ax = - b$.
-
-3.  Suponha que $A \succ 0$. Então $x = - A^{- 1}b$ é ponto de mínimo global estrito.
-
-**Demonstração**
-
-1.  Segue imediatamente da fórmula do gradiente.
-
-2.  Suponha que $A \succeq 0$. Da f́ormula da Hessiana, segue que $\nabla^{2}f(x) \succeq 0\ \forall x \in {\mathbb{R}}^{n}$. O resultado segue então do [\[sufficient-condition-global-minimum\]](../condicoes-para-solucoes-globais/index.md#sufficient-condition-global-minimum) e item 1.
-
-3.  Suponha que $A \succ 0$. Então $x = - A^{- 1}b$ é a única solução de $Ax = - b$. Segue do item (ii) que $x = - A^{- 1}b$ é o único ponto de mínimo global de $f$ e, portanto, mínimo global estrito.
-
-**Teorema: Coercividade de funções quadráticas**
-
-Seja função $f$ definida como na [\[quadratic-function\]](#quadratic-function). Então $f$ é coerciva $\Leftrightarrow A \succ 0$.
-
-**Demonstração**
-
-Precisamos do seguinte lema: Seja $A \in {\mathbb{R}}^{n \times n}$ simétrica, então $\forall x \neq 0 \in {\mathbb{R}}^{n \times n}$ $$\lambda_{\text{min }}(A) \leq \frac{x^{T}Ax}{\| x\|^{2}} \leq \lambda_{\text{max }}(A)$$ (Pode-se demonstrar pelo teorema espectral)
-
-Agora podemos começar a prova:
-
-$( \Longleftarrow )$ Suponha que $A \succ 0$. Denote $\alpha ≔ \lambda_{\text{min }}(A)$. Pelo lema àcima e Cauchy-Schwarz, segue que, para todo $x \in {\mathbb{R}}^{n}$, $$f(x) = x^{T}Ax + 2b^{T}x + c \geq \alpha\| x\|^{2} - 2\| b\|\| x\| + c$$ Segue que $f(x) \rightarrow \infty$ quando $\| x\| \rightarrow \infty$; isto é, $f$ é coerciva.
-
-$( \Longrightarrow )$ Suponha que $f$ é coerciva. Suponha que $A$ tenha auto-valores negativos. Portanto, existem $v \neq 0$ e $\lambda < 0$ tais que $Av = \lambda v$. Portanto, para todo $\alpha \in {\mathbb{R}}$, $$f(\alpha v) = \lambda\| v\|^{2}\alpha^{2} + 2\left( b^{T}v \right)\alpha + c \rightarrow \infty\text{ quando }\alpha \rightarrow \infty$$
-
-Isto contradiz a hipótese de coercividade. Portanto, A possui todos auto-valores não-negativos. Provaremos agora que $0$ não é auto-valor de $A$, provando que $A \succ 0$. Assuma que exista $v\not{} = 0$ tal que $Av = 0$. Então, para todo $\alpha \in {\mathbb{R}}$, $$f(\alpha v) = 2\left( b^{T}v \right)\alpha + c.$$ Temos que: $$f(\alpha v) \rightarrow \begin{cases} c\text{ quando }\alpha \rightarrow \infty\text{ se }b^{T}v = 0 \\ - \infty\text{ quando }\alpha \rightarrow - \infty\text{ se }b^{T}v > 0 \\ \infty\text{ quando }\alpha \rightarrow \infty\text{ se }b^{T}v < 0 \end{cases}$$ Em qualquer caso a coerção é violada, portanto, $0$ não pode ser autovalor de $A$
-
-------------------------------------------------------------------------
-
-<a id="introducao"></a>
-<a id="secao-2"></a>
-
-## Introdução
-
-Otimização é um ramo da matemática preocupada em resolver problemas em que você possui várias opções de escolha, de forma que cada uma tem o custo associado, e queremos escolher a escolha com menor custo possível, ou seja, queremos resolver: $$\min\limits_{x \in C}f(x)$$ Com $f:C \subseteq {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ sendo a **função objeto** e C sendo o **conjunto viável**.
 
 <a id="solucoes-locais-condicoes-de-primeira-ordem"></a>
 <a id="secao-4"></a>
@@ -335,6 +212,129 @@ Essa prova parece complicada, então vou dar uma noção mais intuitiva. Vimos e
 
 *Figura 4. Função $f(x,y) = ax^{2} + by^{2}$. Ponto laranja é ponto de sela (Ponto (0,0,0))*
 
+<a id="existencia-de-pontos-otimos"></a>
+<a id="secao-6"></a>
+
+## Existência de pontos ótimos
+
+Até agora estávamos assumindo que pontos ótimos existiam, mas e se eles não existem?
+
+**Definição: Conjunto fechado**
+
+Um conjunto $C$ é fechado se seu complementar $C^{c}$ é aberto
+
+**Definição: Conjunto limitado**
+
+Um conjunto $C$ é limitado se $\exists r > 0$ tal que $C \subset B(0,r)$
+
+**Definição: Conjunto compacto**
+
+Um conjunto $C$ é compacto se é fechado e limitado
+
+**Teorema: Weierstrass**
+
+Seja $C \subset {\mathbb{R}}^{n}$ um conjunto compacto e $f:C \rightarrow {\mathbb{R}}$, então $f$ possui um ponto de mínimo global e de máximo global em $C$
+
+Quando o conjunto não é compacto, o teorema de Weierstrass não garante a existência, então podemos usar essa outra definição:
+
+**Definição: Coercividade**
+
+Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$. A função é dita coerciva se: $$\lim\limits_{\| x\| \rightarrow \infty}f(x) = \infty$$
+
+Ou seja, todo e qualquer vetor que eu pegar e aumentar seu tamanho, a função aumenta junto, formando o que parece uma grande bacia, onde você coloca água e ela nunca vaza
+
+![Exemplo de função coerciva $f(x,y) = 0.1x^{2} + 0.1y^{2}$](../assets/coercive-function.png.png)
+
+*Figura 5. Exemplo de função coerciva $f(x,y) = 0.1x^{2} + 0.1y^{2}$*
+
+**Teorema: Existência de soluções: Coercividade**
+
+Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ uma função contínua e coerciva e $C \subset {\mathbb{R}}^{n}$ um conjunto fechado não-vazio. Então f tem um mínimo global em C
+
+**Demonstração**
+
+Seja $x_{0} \in C$ um ponto arbitrário. Como f é coerciva, segue que existe $M > 0$ tal que $$f(x) > f\left( x_{0} \right)\text{ para todo }x\text{ tal que }\| x\| > M$$ Temos que $x^{\ast}$ é um ponto de mínimo global de $f$ sobre $C$. Portanto $f\left( x^{\ast} \right) \geq f\left( x_{0} \right)$. Segue da afirmação em diplay que o conjunto de mínimos globais de $f$ sobre $C$ é exatamente o conjunto de mínimos globais de $f$ sobre $C \cap B(0,M)$. O conjunto $C \cap B(0,M)$ é fechado e limitado, portanto compacto. Segue do Teorema de Weierstrass que $f$ possui ponto de mínimo global sobre $C \cap B(0,M)$, e portanto, sobre $C$ também
+
+<a id="condicoes-para-solucoes-globais"></a>
+<a id="secao-7"></a>
+
+## Condições para soluções globais
+
+<a id="sufficient-condition-global-minimum"></a>
+
+**Teorema**
+
+Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ duas vezes continuamente diferenciável. Suponha que: $$\nabla^{2}f(x) \succeq 0,\ \forall x \in {\mathbb{R}}^{n}$$ Então, em todo ponto estacionário de $f$, esse ponto é um mínimo global
+
+**Demonstração**
+
+Pelo [\[linear-approximation\]](../definicoes-e-revisoes-de-calculo/index.md#linear-approximation), seja $x^{\ast} \in {\mathbb{R}}^{n}$ um ponto estacionário em $f$ e $\forall x \in {\mathbb{R}}^{n}$: $$f(x) - f\left( x^{\ast} \right) = \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Porém, vale que $\forall x,\ \nabla^{2}f(\xi) \succeq 0$. Temos então que: $$\forall x \in {\mathbb{R}}^{n},\ f(x) \geq f\left( x^{\ast} \right)$$ Logo, $x^{\ast}$ é ponto de mínimo global em $f$
+
+<a id="funcoes-quadraticas"></a>
+<a id="secao-8"></a>
+
+## Funções quadráticas
+
+Um conjunto interessante de funções com algumas propriedades convenientes são as funções quadráticas
+
+<a id="quadratic-function"></a>
+
+**Definição: Função quadrática**
+
+Uma função é quadrática quando $\exists A \in {\mathbb{R}}^{n \times n}\text{ simétrica},b \in {\mathbb{R}}^{n},c \in {\mathbb{R}}$ tal que a função $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ pode ser expressa como: $$f(x) = x^{T}Ax + 2b^{T}x + c$$
+
+**Teorema: Derivadas de uma quadrática**
+
+Seja $f$ uma função quadrática como na [\[quadratic-function\]](#quadratic-function), temos que: $$\begin{array}{r} \nabla f(x) = 2(Ax + b) \\ \nabla^{2}f(x) = 2A \end{array}$$
+
+**Demonstração**
+
+Sabemos que $f(x) = x^{T}Ax + 2b^{T}x + c$. Vamos definir que $x_{i}$ é a $i$-ésima entrada de $x$. Vamos primeiro calcular uma derivada parcial genérica de $f$. Como a derivada é uma operação linear, eu vou ver cada componente separadamente. $$x^{T}Ax = \begin{pmatrix} x_{1} & \ldots & x_{n} \end{pmatrix}\begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \ldots & a_{nn} \end{pmatrix}\begin{pmatrix} x_{1} \\ \vdots \\ x_{n} \end{pmatrix} = \begin{pmatrix} x_{1} & \ldots & x_{n} \end{pmatrix}\begin{pmatrix} \sum_{k = 1}^{n}a_{1k}x_{k} \\ \vdots \\ \sum_{k = 1}^{n}a_{nk}x_{k} \end{pmatrix}$$
+
+Para facilitar nossa vida, vamos definir $$\alpha_{j} = \sum_{k = 1}^{n}a_{jk}x_{k}$$. Então: $$f(x) = \alpha_{1}x_{1} + \ldots + \alpha_{n}x_{n} + 2\left( b_{1}x_{1} + \ldots + b_{n}x_{n} \right) + c$$ Agora podemos tirar a derivada de $f(x)$ em $x_{j}$, mas antes, perceba que: $$\frac{\partial\alpha_{i}}{\partial x_{j}} = a_{ij}$$ Agora sim: $$\frac{\partial f}{\partial x_{j}} = x_{1}\frac{\partial\alpha_{1}}{\partial x_{j}} + \ldots + \frac{\partial}{\partial x_{j}}\left( \alpha_{j}x_{j} \right) + \ldots + x_{n}\frac{\partial\alpha_{n}}{\partial x_{j}} + 2b_{j}\frac{\begin{array}{r} \\ (\partial f) \end{array}}{\partial x_{j}} = x_{1}a_{1j} + \ldots + \frac{\partial\alpha_{j}}{\partial x_{j}}x_{j} + \alpha_{j} + \ldots + x_{n}a_{nj} + 2b_{j}\frac{\begin{array}{r} \\ (\partial f) \end{array}}{\partial x_{j}} = \sum_{k = 1}^{n}a_{jk}x_{k} + \sum_{k = 1}^{n}a_{kj}x_{k} + 2b_{j}$$
+
+Como $A$ é simétrica, podemos reescrever isso como: $$\frac{\partial f}{\partial x_{j}} = 2\left( \sum_{k = 1}^{n}a_{kj}x_{k} + b_{j} \right)$$
+
+Ou seja, o gradiente da função é: $$\nabla f(x) = 2(Ax + b)$$
+
+E para a hessiana é bem mais fácil, dado o item anterior, basta que tiremos a derivada novamente para $x_{i}$: $$\frac{\partial^{2}f}{\partial x_{j}\partial x_{i}} = 2a_{ij}$$ Ou seja: $$\nabla^{2}f(x) = 2A$$
+
+**Teorema: Pontos estacionários e ótimos de função quadrática**
+
+Seja uma função $f$ definida na [\[quadratic-function\]](#quadratic-function), então:
+
+1.  $x$ é ponto estacionário $\Leftrightarrow Ax = - b$.
+
+2.  Suponha que $A \succeq 0$. Então $x$ é ponto de mínimo global $\Leftrightarrow Ax = - b$.
+
+3.  Suponha que $A \succ 0$. Então $x = - A^{- 1}b$ é ponto de mínimo global estrito.
+
+**Demonstração**
+
+1.  Segue imediatamente da fórmula do gradiente.
+
+2.  Suponha que $A \succeq 0$. Da f́ormula da Hessiana, segue que $\nabla^{2}f(x) \succeq 0\ \forall x \in {\mathbb{R}}^{n}$. O resultado segue então do [\[sufficient-condition-global-minimum\]](../condicoes-para-solucoes-globais/index.md#sufficient-condition-global-minimum) e item 1.
+
+3.  Suponha que $A \succ 0$. Então $x = - A^{- 1}b$ é a única solução de $Ax = - b$. Segue do item (ii) que $x = - A^{- 1}b$ é o único ponto de mínimo global de $f$ e, portanto, mínimo global estrito.
+
+**Teorema: Coercividade de funções quadráticas**
+
+Seja função $f$ definida como na [\[quadratic-function\]](#quadratic-function). Então $f$ é coerciva $\Leftrightarrow A \succ 0$.
+
+**Demonstração**
+
+Precisamos do seguinte lema: Seja $A \in {\mathbb{R}}^{n \times n}$ simétrica, então $\forall x \neq 0 \in {\mathbb{R}}^{n \times n}$ $$\lambda_{\text{min }}(A) \leq \frac{x^{T}Ax}{\| x\|^{2}} \leq \lambda_{\text{max }}(A)$$ (Pode-se demonstrar pelo teorema espectral)
+
+Agora podemos começar a prova:
+
+$( \Longleftarrow )$ Suponha que $A \succ 0$. Denote $\alpha ≔ \lambda_{\text{min }}(A)$. Pelo lema àcima e Cauchy-Schwarz, segue que, para todo $x \in {\mathbb{R}}^{n}$, $$f(x) = x^{T}Ax + 2b^{T}x + c \geq \alpha\| x\|^{2} - 2\| b\|\| x\| + c$$ Segue que $f(x) \rightarrow \infty$ quando $\| x\| \rightarrow \infty$; isto é, $f$ é coerciva.
+
+$( \Longrightarrow )$ Suponha que $f$ é coerciva. Suponha que $A$ tenha auto-valores negativos. Portanto, existem $v \neq 0$ e $\lambda < 0$ tais que $Av = \lambda v$. Portanto, para todo $\alpha \in {\mathbb{R}}$, $$f(\alpha v) = \lambda\| v\|^{2}\alpha^{2} + 2\left( b^{T}v \right)\alpha + c \rightarrow \infty\text{ quando }\alpha \rightarrow \infty$$
+
+Isto contradiz a hipótese de coercividade. Portanto, A possui todos auto-valores não-negativos. Provaremos agora que $0$ não é auto-valor de $A$, provando que $A \succ 0$. Assuma que exista $v\not{} = 0$ tal que $Av = 0$. Então, para todo $\alpha \in {\mathbb{R}}$, $$f(\alpha v) = 2\left( b^{T}v \right)\alpha + c.$$ Temos que: $$f(\alpha v) \rightarrow \begin{cases} c\text{ quando }\alpha \rightarrow \infty\text{ se }b^{T}v = 0 \\ - \infty\text{ quando }\alpha \rightarrow - \infty\text{ se }b^{T}v > 0 \\ \infty\text{ quando }\alpha \rightarrow \infty\text{ se }b^{T}v < 0 \end{cases}$$ Em qualquer caso a coerção é violada, portanto, $0$ não pode ser autovalor de $A$
+
+------------------------------------------------------------------------
+
 <!-- wiki:original:fim -->
 
 
@@ -342,4 +342,4 @@ Essa prova parece complicada, então vou dar uma noção mais intuitiva. Vimos e
 
 [Trilha: A1](../../../trilhas/otimizacao-para-ciencia-de-dados/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/otimizacao-para-ciencia-de-dados/a1.md#apresentacao-original)
 
-- Próximo: [Existência de pontos ótimos](#existencia-de-pontos-otimos)
+- Próximo: [Otimização Convexa](../otimizacao-convexa/index.md)

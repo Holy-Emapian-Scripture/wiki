@@ -39,6 +39,7 @@ export type ThemeKey = keyof Colors
 
 const DEFAULT_SANS_SERIF =
   'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+const DEFAULT_SERIF = 'Georgia, Cambria, "Times New Roman", Times, serif'
 const DEFAULT_MONO = "ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace"
 
 export function getFontSpecificationName(spec: FontSpecification): string {
@@ -47,6 +48,26 @@ export function getFontSpecificationName(spec: FontSpecification): string {
   }
 
   return spec.name
+}
+
+export function getFontFallback(spec: FontSpecification): string {
+  const name = getFontSpecificationName(spec).toLowerCase()
+  const serifKeywords = [
+    "serif",
+    "garamond",
+    "georgia",
+    "merriweather",
+    "lora",
+    "baskerville",
+    "cambria",
+    "times",
+    "cmu",
+    "minion",
+  ]
+  if (serifKeywords.some((k) => name.includes(k))) {
+    return DEFAULT_SERIF
+  }
+  return DEFAULT_SANS_SERIF
 }
 
 function formatFontSpecification(
@@ -78,11 +99,12 @@ function formatFontSpecification(
     features.push(`wght@${weightSpec}`)
   }
 
+  const fontName = spec.name.replaceAll(" ", "+")
   if (features.length > 0) {
-    return `${spec.name}:${features.join(",")}`
+    return `${fontName}:${features.join(",")}`
   }
 
-  return spec.name
+  return fontName
 }
 
 export function googleFontHref(theme: Theme) {
@@ -188,9 +210,9 @@ ${stylesheet.join("\n\n")}
   --highlight: ${theme.colors.lightMode.highlight};
   --textHighlight: ${theme.colors.lightMode.textHighlight};
 
-  --titleFont: "${getFontSpecificationName(theme.typography.title || theme.typography.header)}", ${DEFAULT_SANS_SERIF};
-  --headerFont: "${getFontSpecificationName(theme.typography.header)}", ${DEFAULT_SANS_SERIF};
-  --bodyFont: "${getFontSpecificationName(theme.typography.body)}", ${DEFAULT_SANS_SERIF};
+  --titleFont: "${getFontSpecificationName(theme.typography.title || theme.typography.header)}", ${getFontFallback(theme.typography.title || theme.typography.header)};
+  --headerFont: "${getFontSpecificationName(theme.typography.header)}", ${getFontFallback(theme.typography.header)};
+  --bodyFont: "${getFontSpecificationName(theme.typography.body)}", ${getFontFallback(theme.typography.body)};
   --codeFont: "${getFontSpecificationName(theme.typography.code)}", ${DEFAULT_MONO};
 }
 

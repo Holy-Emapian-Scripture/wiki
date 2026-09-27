@@ -45,5 +45,5 @@ $$
 
 [Trilha: A1](../../../trilhas/calculo-vetorial/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/calculo-vetorial/a1.md#apresentacao-original)
 
-- Anterior: [Spherical coordinates](../spherical-and-cylindrical-coordinates/index.md#spherical-coordinates)
+- Anterior: [Spherical and Cylindrical coordinates](../spherical-and-cylindrical-coordinates/index.md)
 - Próximo: [Physics](../physics/index.md)

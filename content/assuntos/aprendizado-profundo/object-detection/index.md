@@ -35,5 +35,5 @@ ordem_na_trilha: 28
 
 [Trilha: A1](../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [CNN Patch-wise Clássica vs. FCN Modela](../segmentacao-semantica/pontos-praticos/index.md#cnn-patch-wise-classica-vs-fcn-modela)
-- Próximo: [Introdução](introducao/index.md)
+- Anterior: [Segmentação Semântica](../segmentacao-semantica/index.md)
+- Próximo: [Recurrent Neural Networks (RNNs)](../recurrent-neural-networks-rnns/index.md)

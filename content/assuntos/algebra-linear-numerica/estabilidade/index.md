@@ -56,29 +56,6 @@ Na prática, quando falamos de erros de arredondamento, a estabilidade de algori
 
 Suponha que eu tenha um algoritmo para resolver um sistema não singular $m \times m$ $Ax = b$ para $x$ e garantimos que a solução $\widetilde{x}$ dada pelo algoritmo satisfaz $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \kappa(A)\varepsilon_{\text{machine}} \right)$$ Isso significa que existe uma constante $C$ que satisfaz $$\|\widetilde{x} - x\| \leq C\kappa(A)\varepsilon_{\text{machine }}\| x\|$$ Isso mostra que, mesmo $C$ não dependendo nem de $A$ nem de $b$, acaba dependendo das dimensões de $A$ porque, se mudarmos $m$ ou $n$, os dados passados para o problema mudam, o que significa que teremos um **novo** problema porque estamos mudando seu domínio e $\kappa(A)$ também mudará se alterarmos suas dimensões!
 
-<a id="estabilidade-da-aritmetica-de-ponto-flutuante"></a>
-<a id="secao-58"></a>
-
-## Estabilidade da Aritmética de Ponto Flutuante
-
-**Teorema**
-
-As operações $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
-
-**Demonstração**
-
-Defina $\circledast$ como qualquer uma das 4 operações mostradas antes. Dado um problema $f:X \rightarrow Y$ que está calculando $x_{1} \ast x_{2}$, o algoritmo $\widetilde{f}$ para resolver esse problema é $\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$ onde $x = \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}$.
-
-Temos que: $$\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$$ $$= \left( \text{fl}\left( x_{1} \right) \ast \text{ fl}\left( x_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= \left( x_{1}\left( 1 + \varepsilon_{1} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{1} \right)\left( 1 + \varepsilon_{3} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{4} \right) \ast x_{2}\left( 1 + \varepsilon_{5} \right)$$
-
-Onde $\varepsilon_{4} = O\left( \varepsilon_{\text{machine}} \right)$ e $\varepsilon_{5} = O\left( \varepsilon_{\text{machine}} \right)$. Calculamos $\widetilde{f}(x)$, agora vamos ver $f\left( \widetilde{x} \right)$. Primeiro, vamos definir: $$\widetilde{x} = \begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix}$$
-
-Se definirmos $\widetilde{x}$ assim, podemos ver claramente que $$f\left( \widetilde{x} \right) = x_{1}\left( 1 + \varepsilon_{4} \right) + x_{2}\left( 1 + \varepsilon_{5} \right) = \widetilde{f}(x)$$
-
-Mas a condição $\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$ é satisfeita? $$\frac{\|\widetilde{x} - x\|}{\| x\|} = \frac{\|\begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix} - \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|} = \frac{\|\begin{pmatrix} x_{1}\varepsilon_{4} \\ x_{2}\varepsilon_{5} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}$$ Usando a norma 1 $$\frac{x_{1}\varepsilon_{4} + x_{2}\varepsilon_{5}}{x_{1} + x_{2}} = \frac{x_{1}O\left( \varepsilon_{\text{machine}} \right) + x_{2}O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = \frac{\left( x_{1} + x_{2} \right)O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = O\left( \varepsilon_{\text{machine}} \right)$$
-
-Isso mostra que $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
-
 <a id="independencia-da-norma"></a>
 <a id="secao-57"></a>
 
@@ -108,6 +85,29 @@ Primeiro, vamos reduzir o problema a uma esfera unitária das normas, vamos defi
 
 $m > 0$ porque $0 \notin S$. Agora, vamos tentar generalizar em ${\mathbb{C}}^{n}$. Se queremos generalizar para todo $x \neq 0 \in {\mathbb{C}}^{n}$, vamos escrever: $$x = \| x\|\left( \frac{x}{\| x\|} \right)$$ Você pode ver claramente que $\frac{x}{\| x\|} \in S$ porque $\|\frac{x}{\| x\|}\| = 1$. Então, vamos ver o que acontece se tomarmos $\| x\|'$: $$\| x\|' = \|\| x\|\left( \frac{x}{\| x\|} \right)\|' = \| x\|\|\frac{x}{\| x\|}\|'$$ Se você olhar de perto, $\frac{x}{\| x\|}$ é um vetor em $S$, isso significa que $\|\frac{x}{\| x\|}\|' \in \lbrack m,M\rbrack$ e, por causa de $\| x\|$ (número escalar positivo), podemos ver que $$\| x\|\|\frac{x}{\| x\|}\|' \in \left\lbrack \| x\| m,\| x\| M \right\rbrack$$ Podemos reescrever isso como $$m\| x\| \leq \| x\|' \leq M\| x\|$$ Isso significa que essas duas constantes existem e provam o teorema estabelecido antes
 
+<a id="estabilidade-da-aritmetica-de-ponto-flutuante"></a>
+<a id="secao-58"></a>
+
+## Estabilidade da Aritmética de Ponto Flutuante
+
+**Teorema**
+
+As operações $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
+
+**Demonstração**
+
+Defina $\circledast$ como qualquer uma das 4 operações mostradas antes. Dado um problema $f:X \rightarrow Y$ que está calculando $x_{1} \ast x_{2}$, o algoritmo $\widetilde{f}$ para resolver esse problema é $\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$ onde $x = \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}$.
+
+Temos que: $$\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$$ $$= \left( \text{fl}\left( x_{1} \right) \ast \text{ fl}\left( x_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= \left( x_{1}\left( 1 + \varepsilon_{1} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{1} \right)\left( 1 + \varepsilon_{3} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{4} \right) \ast x_{2}\left( 1 + \varepsilon_{5} \right)$$
+
+Onde $\varepsilon_{4} = O\left( \varepsilon_{\text{machine}} \right)$ e $\varepsilon_{5} = O\left( \varepsilon_{\text{machine}} \right)$. Calculamos $\widetilde{f}(x)$, agora vamos ver $f\left( \widetilde{x} \right)$. Primeiro, vamos definir: $$\widetilde{x} = \begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix}$$
+
+Se definirmos $\widetilde{x}$ assim, podemos ver claramente que $$f\left( \widetilde{x} \right) = x_{1}\left( 1 + \varepsilon_{4} \right) + x_{2}\left( 1 + \varepsilon_{5} \right) = \widetilde{f}(x)$$
+
+Mas a condição $\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$ é satisfeita? $$\frac{\|\widetilde{x} - x\|}{\| x\|} = \frac{\|\begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix} - \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|} = \frac{\|\begin{pmatrix} x_{1}\varepsilon_{4} \\ x_{2}\varepsilon_{5} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}$$ Usando a norma 1 $$\frac{x_{1}\varepsilon_{4} + x_{2}\varepsilon_{5}}{x_{1} + x_{2}} = \frac{x_{1}O\left( \varepsilon_{\text{machine}} \right) + x_{2}O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = \frac{\left( x_{1} + x_{2} \right)O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = O\left( \varepsilon_{\text{machine}} \right)$$
+
+Isso mostra que $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
+
 <a id="precisao-de-um-algoritmo-estavel-retroativamente"></a>
 <a id="secao-59"></a>
 
@@ -134,5 +134,4 @@ Onde $o(1) \rightarrow 0$ quando $\varepsilon_{\text{machine }} \rightarrow 0$
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Mais sobre Épsilon Máquina](../aritmetica-de-ponto-flutuante/index.md#mais-sobre-epsilon-maquina)
-- Próximo: [Estabilidade da Aritmética de Ponto Flutuante](#estabilidade-da-aritmetica-de-ponto-flutuante)
+- Anterior: [Aritmética de Ponto Flutuante](../aritmetica-de-ponto-flutuante/index.md)

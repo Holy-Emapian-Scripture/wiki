@@ -247,5 +247,5 @@ O problema aqui é de outra natureza: `get_instance` deveria receber tudo que o 
 
 [Trilha: Notas de aula](../../../trilhas/engenharia-de-software/notas-de-aula.md) · [Apresentação e contexto da fonte](../../../trilhas/engenharia-de-software/notas-de-aula.md#apresentacao-original)
 
-- Anterior: [Termos da Aula 2](../aula-2-simple-factory-factory-method-e-ocp/index.md#termos-da-aula-2)
+- Anterior: [Aula 2 - Simple Factory, Factory Method e OCP](../aula-2-simple-factory-factory-method-e-ocp/index.md)
 - Próximo: [Aula 4 - Abstract Factory](../aula-4-abstract-factory/index.md)

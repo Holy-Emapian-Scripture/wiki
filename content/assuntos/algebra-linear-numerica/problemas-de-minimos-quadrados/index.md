@@ -99,5 +99,5 @@ Se obtivermos $A = \widehat{U}\widehat{\Sigma}V^{\ast}$ (Fatoração S.V.D reduz
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Aplicando na formação de Q](../triangularizacao-de-householder/index.md#aplicando-na-formacao-de-q)
+- Anterior: [Triangularização de Householder](../triangularizacao-de-householder/index.md)
 - Próximo: [Condicionamento e Números de Condição](../condicionamento-e-numeros-de-condicao/index.md)

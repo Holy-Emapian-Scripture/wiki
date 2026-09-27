@@ -66,5 +66,5 @@ e como $V \sim Χ_{n - 1}^{2}$, basta consultar uma tabela ou um software para d
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Propriedades](../distribuicao-chi-quadrado/index.md#propriedades)
+- Anterior: [Distribuição Chi-Quadrado](../distribuicao-chi-quadrado/index.md)
 - Próximo: [Distribuições $t$](../distribuicoes-t/index.md)

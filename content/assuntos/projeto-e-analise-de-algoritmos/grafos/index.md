@@ -22,58 +22,6 @@ ordem_na_trilha: 5
 # Grafos
 
 
-<a id="lista-de-adjacencias"></a>
-<a id="secao-12"></a>
-
-## Lista de adjacências
-
-**Implemente uma classe para representar um grafo utilizando lista de adjacências.**
-
-<a id="secao-13"></a>
-
-### C++
-
-Em breve
-
-<a id="secao-14"></a>
-
-### Python
-
-Considerando que os vértices são sempre sequências de inteiros de $0$ a $n - 1$, podemos fazer apenas uma lista de listas em vez de usar ponteiros em Python. Caso não fosse, poderíamos usar uma hashtable de listas, ou algo semelhante.
-
-``` py
-class GraphAdjList:
-
-    def __init__(self, num_vertices):
-        self.num_vertices = num_vertices
-        self.listadj = [[] for _ in range(num_vertices)]
-
-    def has_edge(self, v1, v2):
-        for i in range(len(self.listadj[v1])):
-            if v2 in self.listadj[v1]:
-                return True
-        return False
-
-    def add_edge(self, v1, v2):
-        self.listadj[v1].append(v2)
-        self.listadj[v2].append(v1)
-
-    def remove_edge(self, v1, v2):
-        self.listadj[v1].remove(v2)
-        self.listadj[v2].remove(v1)
-
-    def print_listadj(self):
-        for vertex in range(self.num_vertices):
-            print(f'{vertex}: {self.listadj[vertex]}')
-
-    def print_matrix(self):
-        matrix = [[0 for _ in range(self.num_vertices)] for i in range(self.num_vertices)]
-        for vertex in range(self.num_vertices):
-            for edge in self.listadj[vertex]:
-                matrix[vertex][edge] = 1
-            print(matrix[vertex])
-```
-
 <a id="matriz-de-adjacencia"></a>
 <a id="secao-9"></a>
 
@@ -135,6 +83,58 @@ class GraphMatrix:
             print(row)
 ```
 
+<a id="lista-de-adjacencias"></a>
+<a id="secao-12"></a>
+
+## Lista de adjacências
+
+**Implemente uma classe para representar um grafo utilizando lista de adjacências.**
+
+<a id="secao-13"></a>
+
+### C++
+
+Em breve
+
+<a id="secao-14"></a>
+
+### Python
+
+Considerando que os vértices são sempre sequências de inteiros de $0$ a $n - 1$, podemos fazer apenas uma lista de listas em vez de usar ponteiros em Python. Caso não fosse, poderíamos usar uma hashtable de listas, ou algo semelhante.
+
+``` py
+class GraphAdjList:
+
+    def __init__(self, num_vertices):
+        self.num_vertices = num_vertices
+        self.listadj = [[] for _ in range(num_vertices)]
+
+    def has_edge(self, v1, v2):
+        for i in range(len(self.listadj[v1])):
+            if v2 in self.listadj[v1]:
+                return True
+        return False
+
+    def add_edge(self, v1, v2):
+        self.listadj[v1].append(v2)
+        self.listadj[v2].append(v1)
+
+    def remove_edge(self, v1, v2):
+        self.listadj[v1].remove(v2)
+        self.listadj[v2].remove(v1)
+
+    def print_listadj(self):
+        for vertex in range(self.num_vertices):
+            print(f'{vertex}: {self.listadj[vertex]}')
+
+    def print_matrix(self):
+        matrix = [[0 for _ in range(self.num_vertices)] for i in range(self.num_vertices)]
+        for vertex in range(self.num_vertices):
+            for edge in self.listadj[vertex]:
+                matrix[vertex][edge] = 1
+            print(matrix[vertex])
+```
+
 <a id="verificacao-de-subgrafo"></a>
 <a id="secao-15"></a>
 
@@ -190,5 +190,5 @@ def is_subgraph_list(glist,hlist):
 
 [Trilha: Exercícios de slides](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-slides.md#apresentacao-original)
 
-- Anterior: [Menor quantidade de comparações](../tecnicas-de-projeto/index.md#menor-quantidade-de-comparacoes)
+- Anterior: [Técnicas de Projeto](../tecnicas-de-projeto/index.md)
 - Próximo: [Busca em Grafos](../busca-em-grafos/index.md)
