@@ -28,13 +28,19 @@ ordem_na_trilha: 1
 
 It is clear that:
 
-$$T_{1} \in O(n)$$
+$$
+T_{1} \in O(n)
+$$
 
-$$T_{2} \in O(n²)$$
+$$
+T_{2} \in O(n²)
+$$
 
 Given the proper definition of the function class $O(g)$ (“Big O”) of a function $g:{\mathbb{N}} \rightarrow {\mathbb{R}}$ as follows;
 
-$$O(g) ≔ \left\{ f:{\mathbb{N}} \rightarrow {\mathbb{R}}~\vert ~\exists c \in {\mathbb{R}},n_{0} \in {\mathbb{N}},f(n) \leq cg(n),\forall n > n_{0} \right\}$$
+$$
+O(g) ≔ \left\{ f:{\mathbb{N}} \rightarrow {\mathbb{R}}~\vert ~\exists c \in {\mathbb{R}},n_{0} \in {\mathbb{N}},f(n) \leq cg(n),\forall n > n_{0} \right\}
+$$
 
 <a id="secao-4"></a>
 
@@ -42,7 +48,9 @@ $$O(g) ≔ \left\{ f:{\mathbb{N}} \rightarrow {\mathbb{R}}~\vert ~\exists c \in 
 
 We assume $n \neq 0$ , for obviously $T_{1}(0) = T_{2}(0)$, so $T_{2}$ is more efficient if:
 
-$$T_{1}(n) > T_{2}(n) \Leftrightarrow 625n > n² \Leftrightarrow 625 > n$$
+$$
+T_{1}(n) > T_{2}(n) \Leftrightarrow 625n > n² \Leftrightarrow 625 > n
+$$
 
 And the opposite is true for $625 < n$ , for $n = 625$ the algorithms perform equally.
 

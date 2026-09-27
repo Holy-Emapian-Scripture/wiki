@@ -26,7 +26,9 @@ Podemos utilizar métricas já vistas como [\[iou\]](../../segmentacao-semantica
 
 **Definição: Recall**
 
-$$\text{ Recall } = \frac{\text{ TP }}{\text{TP } + \text{ FN}}$$
+$$
+\text{ Recall } = \frac{\text{ TP }}{\text{TP } + \text{ FN}}
+$$
 
 A maioria das competições utiliza a **mean Average Precision (mAP)** como métrica principal, que é a média das precisões de cada classe, considerando diferentes limiares de confiança para as detecções. O mAP é derivado de valores *precision v.s recall*, fazendo uma variação do limiar de confiança para cada classe. O **limiar de confiança** é a probabilidade de que uma **caixa de âncora** contenha um objeto. Dado a [\[avg-precision\]](../../segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md#avg-precision) de Average Precision, podemos definir melhor o mAP
 

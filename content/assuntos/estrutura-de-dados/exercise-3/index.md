@@ -82,7 +82,9 @@ for (int i = 0; i < n; i++) {
 
 For $i = 0$ , $j$ goes from $n$ to 0, and the operation a += n/2 is executed $n$ times, for $i = 1$ , $n$ goes from $n$ to 1 and the operation is executed $n - 1$ times and so on, so we have:
 
-$$\sum_{i = 1}^{n - 1}n - i = \frac{n(n + 1)}{2}$$
+$$
+\sum_{i = 1}^{n - 1}n - i = \frac{n(n + 1)}{2}
+$$
 
 So the algorithm is $\in O(n²)$.
 
@@ -132,7 +134,9 @@ while (i > 0) {
 
 The only difference is that now the operation a += i is being executed when $i = n,\frac{n}{2},\frac{n}{4},\ldots,0$, which is a sum that shows the total complexity of the algorithm:
 
-$$\sum_{i = 0}^{\log(n)}\frac{n}{2^{i}} = 2n - 1 \in O(n).$$
+$$
+\sum_{i = 0}^{\log(n)}\frac{n}{2^{i}} = 2n - 1 \in O(n).
+$$
 
 <a id="secao-15"></a>
 
@@ -150,7 +154,9 @@ while (i > 0) {
 
 A cada iteração do while, o valor de i é dividido por 2. Na primeira iteração, o for executa n vezes, depois n/2, n/4, …, até i = 1. A soma total de operações é:
 
-$$T(n) = n + \frac{n}{2} + \frac{n}{4} + \ldots + 1 = 2n - 1 \in O(n)$$
+$$
+T(n) = n + \frac{n}{2} + \frac{n}{4} + \ldots + 1 = 2n - 1 \in O(n)
+$$
 
 Portanto, a complexidade do algoritmo é $O(n)$.
 

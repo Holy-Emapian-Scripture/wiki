@@ -29,4 +29,4 @@ Bishop, Christopher M. 2006. *Pattern Recognition and Machine Learning*. Springe
 
 [Trilha: A3](../../../trilhas/aprendizado-de-maquina/a3.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a3.md#apresentacao-original)
 
-- Anterior: [Treinamento do GAN](../generative-adversarial-networks/treinamento-do-gan/index.md)
+- Anterior: [Treinamento do GAN](../generative-adversarial-networks/index.md#treinamento-do-gan)

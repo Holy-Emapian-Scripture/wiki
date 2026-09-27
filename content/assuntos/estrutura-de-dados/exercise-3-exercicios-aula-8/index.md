@@ -84,7 +84,9 @@ for (int i = 0; i < n; i++) {
 
 For $i = 0$ , $j$ goes from $n$ to 0, and the operation a += n/2 is executed $n$ times, for $i = 1$ , $n$ goes from $n$ to 1 and the operation is executed $n - 1$ times and so on, so we have:
 
-$$\sum_{i = 1}^{n - 1}n - i = \frac{n(n + 1)}{2}$$
+$$
+\sum_{i = 1}^{n - 1}n - i = \frac{n(n + 1)}{2}
+$$
 
 So the algorithm is $\in O(n²)$.
 
@@ -138,7 +140,9 @@ This loop executes $\log_{2}n$ times, and each step does constant work.
 
 Therefore, the time complexity is:
 
-$$O\left( \log_{2}n \right)$$
+$$
+O\left( \log_{2}n \right)
+$$
 
 <a id="secao-15"></a>
 
@@ -156,7 +160,9 @@ while (i > 0) {
 
 At each iteration of the while, the value of i is divided by 2. In the first iteration, the for executes n times, then n/2, n/4, …, until i = 1. The total sum of operations is:
 
-$$T(n) = n + \frac{n}{2} + \frac{n}{4} + \ldots + 1 = 2n - 1inO(n)$$
+$$
+T(n) = n + \frac{n}{2} + \frac{n}{4} + \ldots + 1 = 2n - 1inO(n)
+$$
 
 Therefore, the time complexity of the algorithm is $O(n)$.
 

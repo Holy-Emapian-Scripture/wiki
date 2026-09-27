@@ -22,7 +22,9 @@ ordem_na_trilha: 13
 
 Seja $V$ uma região fechada e limitada de ${\mathbb{R}}^{3}$, de forma que $\partial D$ seja uma superfície com vetores normais exteriores, então:
 
-$$\iint_{\partial V}F \cdot \hat{n}dS = \iiint_{V}{\text{div}(F)}dV$$
+$$
+\iint_{\partial V}F \cdot \hat{n}dS = \iiint_{V}{\text{div}(F)}dV
+$$
 
 <!-- wiki:original:fim -->
 

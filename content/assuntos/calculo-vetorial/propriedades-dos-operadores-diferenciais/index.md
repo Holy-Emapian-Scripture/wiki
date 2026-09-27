@@ -44,5 +44,5 @@ ordem_na_trilha: 10
 
 [Trilha: A2](../../../trilhas/calculo-vetorial/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/calculo-vetorial/a2.md#apresentacao-original)
 
-- Anterior: [Laplaciano](../operadores-diferenciais/laplaciano/index.md)
+- Anterior: [Laplaciano](../operadores-diferenciais/index.md#laplaciano)
 - Próximo: [Teorema de Green](../teorema-de-green/index.md)

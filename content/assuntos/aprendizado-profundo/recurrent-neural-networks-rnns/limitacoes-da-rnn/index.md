@@ -34,5 +34,5 @@ Não só isso, como a RNN também pode ter dificuldade, mesmo em dependências d
 
 [Trilha: A1](../../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [Métodos de mitigação](../treinamento-e-problemas-de-gradiente-na-rnn/metodos-de-mitigacao/index.md)
+- Anterior: [Métodos de mitigação](../treinamento-e-problemas-de-gradiente-na-rnn/index.md#metodos-de-mitigacao)
 - Próximo: [Long-short Term Memory (LSTM)](../long-short-term-memory-lstm/index.md)

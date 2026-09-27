@@ -16,37 +16,59 @@ ordem_na_trilha: 6
 [Inferência Estatística](../index.md)
 
 <!-- wiki:original:inicio -->
+
 <a id="secao-6"></a>
 
 # Distribuições $t$
 
-------------------------------------------------------------------------
 
-$$\frac{\sqrt{n}\left( {\overline{X}}_{n} - \mu \right)}{\sigma} \sim N(0,1)$$ Porém, podemos não saber $\sigma$ e queremos substituir, por exemplo, por seu EMV, então qual seria a distribuição de $$\frac{\sqrt{n}({\overline{X}}_{n} - \mu)}{\hat{\sigma}}$$
+<a id="propriedades"></a>
+<a id="secao-7"></a>
 
-**Definição: Distribuição $t$ com $m$ graus de liberdade**
+## Propriedades
 
-Se $Z \sim N(0,1)$ e $Y \sim Χ_{m}^{2}$, então $$X = \frac{Z}{\sqrt{\frac{Y}{m}}} \sim t_{m}$$ onde dizemos $t$ com $m$ graus de liberdade
+**Teorema**
 
-**Teorema: PDF**
-
-A pdf de $X \sim t_{m}$ é: $$f_{X}(x) = \frac{\Gamma(\frac{m + 1}{2})}{(m\pi)^{\frac{1}{2}}\Gamma(\frac{m}{2})}\left( 1 + \frac{x^{2}}{m} \right)^{- (m + 1)/2}$$
+Se $T \sim t_{m}$, então: $$\begin{aligned} & {\mathbb{E}}\lbrack T\rbrack = 0\text{\quad\quad}(m > 1) \\ & {\mathbb{V}}\lbrack T\rbrack = \frac{m}{m - 2}\text{\quad\quad}(m > 2) \end{aligned}$$
 
 **Demonstração**
 
-Lembrando: $Y \sim Χ_{m}^{2}$ e $Z \sim N(0,1)$. Vamos aplicar as transformações! Sabemos que: $$f_{XW}(x,w) = f_{YZ}(y,z)\frac{~\vert ~\left( \partial(y,z) \right)}{\partial(x,w)}~\vert ~$$ então denotando $W = Y$, temos: $$Z = {X\left( \frac{W}{m} \right)}^{\frac{1}{2}}\text{\quad\quad}Y = W$$ Então vamos ter que: $$\frac{\partial y}{\partial x} = 0\text{\quad\quad}\frac{\partial y}{\partial w} = 1\frac{\begin{array}{r} \\ (\partial z) \end{array}}{\partial x} = \left( \frac{w}{m} \right)^{\frac{1}{2}}$$ então vamos ter que $$\frac{~\vert ~\left( \partial(y,z) \right)}{\partial(x,w)}~\vert ~ = {- \left( \frac{w}{m} \right)}^{\frac{1}{2}}$$ $$\begin{aligned} f_{XW}(x,w) & = f_{WZ}(w,z)\left( \frac{w}{m} \right)^{\frac{1}{2}} \\ & = f_{W}(w)f_{Z}(z)\left( \frac{w}{m} \right)^{\frac{1}{2}}\text{\quad\quad}\left( \text{Independência de Y e Z} \right) \\ & = f_{W}(w)f_{Z}\left( x\left( \frac{w}{m} \right)^{\frac{1}{2}} \right)\left( \frac{w}{m} \right)^{\frac{1}{2}} \\ & = \underset{f_{W}(w)}{\underbracket{\frac{\left( \frac{1}{2} \right)^{\frac{m}{2}}}{\Gamma(\frac{m}{2})}w^{\frac{m}{2} - 1}e^{- \frac{1}{2}w}}}\ \underset{f_{Z}(z)}{\underbracket{\frac{1}{\sqrt{2\pi}}e^{\frac{- x^{2}w}{2m}}}}\left( \frac{w}{m} \right)^{\frac{1}{2}} \end{aligned}$$
+Seja $Z \sim N(0,1)$ e $W \sim Χ_{m}^{2}$, sabemos que $$T = \frac{Z}{\sqrt{\frac{W}{m}}} \sim t_{m}$$ porém, temos que $T\vert W = w \sim N\left( 0,\frac{m}{w} \right)$, logo: $${\mathbb{E}}\left\lbrack T\vert W = w \right\rbrack = 0$$ pela lei de adão: $${\mathbb{E}}\left\lbrack {\mathbb{E}}\left\lbrack T\vert W = w \right\rbrack \right\rbrack = {\mathbb{E}}\lbrack T\rbrack = {\mathbb{E}}\lbrack 0\rbrack = 0$$
 
-reescrevendo para ficar algo mais limpo e unir os termos comuns: $$f_{XW}(x,w) = \frac{\left( \frac{1}{2} \right)^{\frac{m}{2}}}{\Gamma(\frac{m}{2})\sqrt{2\pi m}}w^{\frac{m - 1}{2}}\exp\left\{ - \frac{1}{2}\left( 1 + \frac{x^{2}}{m} \right)w \right\}$$ Agora, para obtermos a marginal de $X$, precisamos integrar isso tudo com relação a $w$. Porém, basta integrarmos aquilo que é em função apenas de $w$, as constantes nós podemos adicionar novamente depois, então: $$f_{X}(x) \propto \int_{0}^{\infty}w^{\frac{m - 1}{2}}\exp\left\{ - \frac{1}{2}\left( 1 + \frac{x^{2}}{m} \right)w \right\} dw$$ Se definirmos $\alpha = \frac{m + 1}{2}$ e $\beta = \frac{1}{2}\left( 1 + \frac{x^{2}}{m} \right)$, então a integral equivale a: $$f_{X}(x) \propto \int_{0}^{\infty}w^{\alpha - 1}e^{- \beta w}dw = \frac{\Gamma(\alpha)}{\beta^{\alpha}} = \frac{\Gamma(\frac{m + 1}{2})}{\left( \frac{1}{2}\left\lbrack 1 + \frac{x^{2}}{m} \right\rbrack \right)^{(m + 1)/2}}$$ $$\Rightarrow f_{X}(x) = \frac{\left( \frac{1}{2} \right)^{\frac{m}{2}}}{\Gamma(\frac{m}{2})\sqrt{2\pi m}}\Gamma(\frac{m + 1}{2})\left( \frac{1}{2}\left\lbrack 1 + \frac{x^{2}}{m} \right\rbrack \right)^{- (m + 1)/2}$$ juntando tudo, temos: $$f_{X}(x) = \frac{\Gamma(\frac{m + 1}{2})}{\sqrt{m\pi}\ \Gamma(\frac{m}{2})}\left( 1 + \frac{x^{2}}{m} \right)^{- (m + 1)/2}$$
+No mesmo raciocínio, lembrando a lei de EVA $$\begin{array}{r} {\mathbb{V}}\lbrack X\rbrack = {\mathbb{E}}\left\lbrack {\mathbb{V}}\left\lbrack X\vert Y \right\rbrack \right\rbrack + {\mathbb{V}}\left\lbrack {\mathbb{E}}\left\lbrack X\vert Y \right\rbrack \right\rbrack \\ \Rightarrow {\mathbb{V}}\lbrack T\rbrack = {\mathbb{E}}\left\lbrack {\mathbb{V}}\left\lbrack T\vert W \right\rbrack \right\rbrack + {\mathbb{V}}\left\lbrack {\mathbb{E}}\left\lbrack T\vert W \right\rbrack \right\rbrack \end{array}$$ sabemos que ${\mathbb{E}}\left\lbrack T\vert W \right\rbrack = 0$, então basta calcularmos ${\mathbb{V}}\left\lbrack T\vert W \right\rbrack$ que, como vimos antes, vai ser $\frac{W}{m}$, então: $${\mathbb{V}}\lbrack T\rbrack = {\mathbb{E}}\left\lbrack \frac{m}{W} \right\rbrack$$ Sabemos que $W$ é uma $\Gamma(\frac{m}{2},\frac{1}{2})$, então $W^{- 1}$ é uma Gamma Inversa, logo, sua média vai ser: $${\mathbb{E}}\left\lbrack W^{- 1} \right\rbrack = \frac{\frac{1}{2}}{\frac{m}{2} - 1} = \frac{\frac{1}{2}}{\frac{m - 2}{2}} = \frac{1}{m - 2}$$ logo: $${\mathbb{V}}\lbrack T\rbrack = \frac{m}{m - 2}$$
+
+<a id="moments-divergence"></a>
+
+**Teorema: Divergência dos Momentos**
+
+Se $T \sim t_{m}$, então ${\mathbb{E}}⟦T\vert ^{p}\rbrack$ diverge se $p \geq m$. Se $m$ é inteiro, então apenas os $m - 1$ primeiros momentos existem
+
+**Teorema**
+
+Sejam $X_{1},\ldots,X_{n} \sim N\left( \mu,\sigma^{2} \right)$ e $\sigma' = \left( \frac{1}{n - 1}{\sum(X_{i} - {\overline{X}}_{n})}^{2} \right)^{\frac{1}{2}}$, então $$\frac{\sqrt{n}\left( {\overline{X}}_{n} - \mu \right)}{\sigma}' \sim t_{n - 1}$$
+
+**Demonstração**
+
+Defina $S_{n}^{2} = {\sum(X_{i} - {\overline{X}}_{n})}^{2}$, $Z - \sqrt{n}({\overline{X}}_{n} - \mu)/\sigma$ e $Y = S_{n}^{2}/\sigma^{2}$. Sabemos que $Y$ e $Z$ são independentes e $Y \sim Χ_{n - 1}^{2}$. Definimos então: $$U = \frac{Z}{\sqrt{\frac{Y}{n - 1}}}$$ que é uma $t_{n - 1}$ por definição. Porém, perceba que: $$U = \frac{\frac{\sqrt{n}\left( {\overline{X}}_{n} - \mu \right)}{\sigma}}{\frac{1}{\sigma}\sqrt{\frac{S_{n}^{2}}{n - 1}}} = \frac{\sqrt{n}\left( {\overline{X}}_{n} - \mu \right)}{\sigma}'$$
+
+Essa propriedade é interessante, pois saímos de variáveis que dependiam diretamente de $\sigma$ para uma variável que tem distribuição que **não depende** de $\sigma$
+
+**Teorema**
+
+Uma distribuição $t_{1}$ é equivalente a uma distribuição de *Cauchy*
+
+**Definição: Distribuição de Cauchy**
+
+Se $X \sim \text{ Cauchy}\left( x_{0},\gamma \right)$, então temos: $$f_{X}(x) = \frac{1}{\pi\gamma\left\lbrack 1 + \left( \frac{x - x_{0}}{\gamma} \right)^{2} \right\rbrack}$$ $$F_{X}(x) = \frac{1}{\pi}\arctan(\frac{x - x_{0}}{\gamma}) + \frac{1}{2}$$ Além do fato que: $${\mathbb{E}}⟦X\vert ^{k}\rbrack = \infty\text{\quad\quad}\forall k$$
+
+------------------------------------------------------------------------
 
 <!-- wiki:original:fim -->
 
-## Tópicos desta página
-
-1. [Propriedades](propriedades/index.md)
 
 ## Percurso de estudo
 
 [Trilha: A2](../../../trilhas/inferencia-estatistica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/inferencia-estatistica/a2.md#apresentacao-original)
 
-- Anterior: [Independência da Média e Variância Amostrais](../distribuicao-conjunta-da-media-e-variancia-amostral/independencia-da-media-e-variancia-amostrais/index.md)
-- Próximo: [Propriedades](propriedades/index.md)
+- Anterior: [Independência da Média e Variância Amostrais](../distribuicao-conjunta-da-media-e-variancia-amostral/index.md#independencia-da-media-e-variancia-amostrais)
+- Próximo: [Intervalos de Confiança](../intervalos-de-confianca/index.md)

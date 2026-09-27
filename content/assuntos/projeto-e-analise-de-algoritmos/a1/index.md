@@ -16,19 +16,27 @@ ordem_na_trilha: 1
 [Projeto e Análise de Algoritmos](../index.md)
 
 <!-- wiki:original:inicio -->
+
 <a id="secao-1"></a>
 
 # A1
 
+
+<a id="lista-1"></a>
+<a id="secao-2"></a>
+
+## Lista 1
+
+<a id="lista-2"></a>
+<a id="secao-3"></a>
+
+## Lista 2
+
 <!-- wiki:original:fim -->
 
-## Tópicos desta página
-
-1. [Lista 1](lista-1/index.md)
-2. [Lista 2](lista-2/index.md)
 
 ## Percurso de estudo
 
 [Trilha: Exercícios de listas](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-listas.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/exercicios-listas.md#apresentacao-original)
 
-- Próximo: [Lista 1](lista-1/index.md)
+- Próximo: [A2](../a2/index.md)

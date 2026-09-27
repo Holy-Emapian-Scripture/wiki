@@ -16,34 +16,40 @@ ordem_na_trilha: 20
 [Ciência de Redes](../index.md)
 
 <!-- wiki:original:inicio -->
+
 <a id="secao-32"></a>
 
 # Modelo Biaconi-Barabási
 
-------------------------------------------------------------------------
 
-Nesse capítulo vamos trabalhar no contexto de redes de negócios. No nosso modelo anterior, o de anexação preferencial (Ou Barabási-Albert), nós tinhamos que o primeiro nó **sempre** seria o nó com maior grau (Ou na maioria das vezes), mas os nós mais antigos sempre teriam mais links que os mais novos. Porém, em redes de negócio isso não é bem verdade. Basta olharmos a Netflix por exemplo, que chegou bem depois da Blockbuster e quem está de pé até hoje? (Mesmo que com pernas bambas). Pois é, então temos que desenvolver um modelo melhor para esse tipo de situações.
+<a id="dinamica"></a>
+<a id="secao-33"></a>
 
-Aqui nós vamos fazer uma definição mais intuitiva e depois introduzí-la no nosso modelo matemático. Vamos chamar a **chance** de uma **empresa** criar um vínculo **permanente** com um cliente a partir de um encontro aleatório desse cliente com a empresa de **fitness** (Ou aptidão). E dependendo do contexto analisado essa fitness pode ser mensurada de formas diferentes
+## Dinâmica
 
-Se o contexto de negócios não parece muito intuitivo, basta pensar também no contexto social, onde cada pessoa vai ser amiga de outra dependendo de um encontro aleatório baseado em seus costumes, suas crenças, seus preconceitos, etc. Agora vamos definir melhor o nosso novo modelo.
+Imagine o vértice $v_{i}$ fixamente, ele está presente desde o começo (No grafo inicial). A cada passo $t$ um novo nó é inserido. Vamos então definir o grau do nosso vértice $v_{i}$ em função do tempo: $$k_{i} = \delta_{t}\left( v_{i} \right) ≔ \text{ Grau do vértice }v_{i}\text{ no momento }t$$
 
-Começamos com uma rede inicial $G(V,E)$, e introduzimos um novo vértice $v_{j}$ onde $v_{j}$ vai se ligar a $m$ outros vértices ($\delta(v_{j}) = m$) e meu vértice $v_{j}$ tem uma aptidão $\eta_{j}$. Essa aptidão pode ser escolhida da forma que bem entender, por enquanto, vamos assumir que ela é escolhida aleatoriamente a partir de uma distribuição $p(\eta)$ (Também assuma que todos os nós em $V$ também tem uma aptidão de antemão)
+Temos que a variação de $k_{i}$ em relação ao tempo é: $$\frac{dk_{i}}{dt} = m\frac{\eta_{i}k_{i}}{\sum_{j}\eta_{j}k_{j}}$$
 
-A probabilidade de que um link do meu novo nó $v_{j}$ se conecte com algum nó $v_{i} \in V$ é proporcional a sua aptidão. Podemos fazer isso definindo: $$p_{i} = {\mathbb{P}}(\left\{ v_{j},v_{i} \right\} \in E) = \frac{\eta_{i}\delta(v_{i})}{\sum_{v_{k} \in V}\eta_{k}\delta(v_{k})}$$
+Isso ocorre pois, a cada unidade de tempo, eu vou adicionar $m$ links no meu grafo. Então minha mudança média no grau do meu nó é $m$ (Número de nós adicionados) ponderado pela probabilidade de cada link se ligar a $v_{i}$ que é como definimos antes
 
-Perceba que a dependência de $p_{i}$ em $\delta(v_{i})$ mostra essencialmente que quanto maior o grau de $v_{i}$ maior a chance de $v_{j}$ se conectar a ele (Pense naquele amigo que conhece várias pessoas, ele costuma ser alguém agradável para que tanta gente goste dele, então você tende a gostar dele também)
+A gente vai assumir que o tempo de evolução de $\delta(v_{i})$ segue uma lei de potência dependente da aptidão (Ou seja, cresce exponencialmente em relação a $\eta_{i}$). Então: $$k\left( t,t_{i},\eta_{i} \right) = m\left( \frac{t}{t_{i}} \right)^{\beta(\eta_{i})}$$
+
+Onde $t$ é o momento atual e $t_{i}$ é o momento de chegada de $v_{i}$ na rede. Fazendo alguns cálculos especificados no livro do Barabási, chegamos que: $$\beta(\eta) = \frac{\eta}{C}$$ de forma que: $$C = \int\rho(\eta)\frac{\eta}{1 - \beta(\eta)}d\eta$$
+
+<a id="distribuicao-dos-graus"></a>
+<a id="secao-34"></a>
+
+## Distribuição dos Graus
+
+Também involve cálculos mais complicados, então vou apenas mostrar a fórmula. Quando houver tempo, colocarei os cálculos nesse resumo: $$p_{k} \approx C\int\frac{\rho(\eta)}{\eta}\left( \frac{m}{k} \right)^{\frac{C}{\eta} + 1}d\eta$$
 
 <!-- wiki:original:fim -->
 
-## Tópicos desta página
-
-1. [Dinâmica](dinamica/index.md)
-2. [Distribuição dos Graus](distribuicao-dos-graus/index.md)
 
 ## Percurso de estudo
 
 [Trilha: A1](../../../trilhas/ciencia-de-redes/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/ciencia-de-redes/a1.md#apresentacao-original)
 
-- Anterior: [O Papél do Expoente do Grau](../redes-livres-de-escala/o-papel-do-expoente-do-grau/index.md)
-- Próximo: [Dinâmica](dinamica/index.md)
+- Anterior: [O Papél do Expoente do Grau](../redes-livres-de-escala/index.md#o-papel-do-expoente-do-grau)
+- Próximo: [Distribuição dos Graus](#distribuicao-dos-graus)

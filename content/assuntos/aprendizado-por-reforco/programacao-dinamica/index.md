@@ -26,15 +26,17 @@ Podemos utilizar de algoritmos de programação dinâmica para resolver MDPs, ma
 
 A base deses algorimtos é pegar as equações de Bellman e usá-las como atualizações iterativas para aproximar as funções de valor. Por exemplo, a equação de Bellman para $v_{\pi}$ pode ser reescrita como:
 
-$$v_{\pi}(s) = \sum_{a}\pi(a\vert s)\sum_{r,s'}p\left( s',r\vert s,a \right)\left\lbrack r + \gamma v_{\pi}(s') \right\rbrack$$
+$$
+v_{\pi}(s) = \sum_{a}\pi(a\vert s)\sum_{r,s'}p\left( s',r\vert s,a \right)\left\lbrack r + \gamma v_{\pi}(s') \right\rbrack
+$$
 <!-- wiki:original:fim -->
 
 ## Conteúdos relacionados
 
-- [Programação Dinâmica — Projeto e Análise de Algoritmos](../../projeto-e-analise-de-algoritmos/tecnicas-de-projeto-a2/programacao-dinamica/index.md)
+- [Programação Dinâmica — Projeto e Análise de Algoritmos](../../projeto-e-analise-de-algoritmos/tecnicas-de-projeto-a2/index.md#programacao-dinamica)
 
 ## Percurso de estudo
 
 [Trilha: Revisão geral](../../../trilhas/aprendizado-por-reforco/revisao-geral.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-por-reforco/revisao-geral.md#apresentacao-original)
 
-- Anterior: [Otimização e aproximação](../processos-de-decisao-de-markov-finitos/otimizacao-e-aproximacao/index.md)
+- Anterior: [Otimização e aproximação](../processos-de-decisao-de-markov-finitos/index.md#otimizacao-e-aproximacao)

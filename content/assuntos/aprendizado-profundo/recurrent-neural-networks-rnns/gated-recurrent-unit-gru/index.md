@@ -46,5 +46,5 @@ E finalmente atualizamos e geramos o novo estado oculto $h_{t}$ utilizando a por
 
 [Trilha: A1](../../../../trilhas/aprendizado-profundo/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/aprendizado-profundo/a1.md#apresentacao-original)
 
-- Anterior: [A inovação no Fluxo do Gradiente](../long-short-term-memory-lstm/a-inovacao-no-fluxo-do-gradiente/index.md)
+- Anterior: [A inovação no Fluxo do Gradiente](../long-short-term-memory-lstm/index.md#a-inovacao-no-fluxo-do-gradiente)
 - Próximo: [Aplicando CNN](../aplicando-cnn/index.md)

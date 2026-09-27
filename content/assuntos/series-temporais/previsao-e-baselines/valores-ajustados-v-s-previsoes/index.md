@@ -40,5 +40,5 @@ A previsão ${\hat{Y}}_{T + h\vert T}$ são as projeções **fora da amostra** d
 
 [Trilha: A1](../../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Método do desvio (drift)](../metodos-simples-de-previsao-baseline/metodo-do-desvio-drift/index.md)
+- Anterior: [Método do desvio (drift)](../metodos-simples-de-previsao-baseline/index.md#metodo-do-desvio-drift)
 - Próximo: [Diagnóstico de Resíduos](../../diagnostico-de-residuos/index.md)

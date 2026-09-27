@@ -33,4 +33,4 @@ Silva, Tiago da, Amauri H. Souza, and Diego Mesquita. 2021. “UMA INTRODUÇÃO 
 
 [Trilha: A2](../../../trilhas/aprendizado-de-maquina/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a2.md#apresentacao-original)
 
-- Anterior: [Pooling](../convolutional-neural-networks-cnn/pooling/index.md)
+- Anterior: [Pooling](../convolutional-neural-networks-cnn/index.md#pooling)

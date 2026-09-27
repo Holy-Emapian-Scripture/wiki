@@ -52,5 +52,5 @@ Portanto, para encontrar o menor caminho entre $v_{i}$ e $v_{j}$ precisamos enco
 
 [Trilha: A2](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/projeto-e-analise-de-algoritmos/a2.md#apresentacao-original)
 
-- Anterior: [BFS](../busca-em-grafos-a2/bfs/index.md)
+- Anterior: [BFS](../busca-em-grafos-a2/index.md#bfs)
 - Próximo: [Caminho mais curto em um DAG](caminho-mais-curto-em-um-dag/index.md)

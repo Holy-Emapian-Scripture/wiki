@@ -25,4 +25,4 @@ ordem_na_trilha: 20
 
 [Trilha: A1](../../../trilhas/estrutura-de-dados/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/estrutura-de-dados/a1.md#apresentacao-original)
 
-- Anterior: [3.5 Comparação entre algoritmos de ordenação](../ordenacao/comparacao-entre-algoritmos-de-ordenacao/index.md)
+- Anterior: [3.5 Comparação entre algoritmos de ordenação](../ordenacao/index.md#comparacao-entre-algoritmos-de-ordenacao)

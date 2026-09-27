@@ -56,5 +56,5 @@ Isso quer dizer que o autovalor $\lambda$ está localizado dentro de um disco co
 
 [Trilha: A2](../../../trilhas/algebra-linear-numerica/a2.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a2.md#apresentacao-original)
 
-- Anterior: [Estabilidade e Precisão](../algoritmo-qr-com-shifts/estabilidade-e-precisao/index.md)
+- Anterior: [Estabilidade e Precisão](../algoritmo-qr-com-shifts/index.md#estabilidade-e-precisao)
 - Próximo: [Outros algoritmos de Autovalores](../outros-algoritmos-de-autovalores/index.md)

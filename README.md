@@ -1,39 +1,67 @@
 # Holy Emapian Wiki
 
-Acervo em Markdown para edição no Obsidian e futura publicação no GitHub Pages.
+Wiki acadêmica colaborativa desenvolvida para reunir conhecimentos, materiais de estudo e experiências dos cursos da FGV EMAp.
 
-Comece pela **[página inicial](index.md)** ou navegue por [assuntos](assuntos/index.md), [trilhas](trilhas/index.md) e [semestres](semestres/index.md).
+Publicada com **[Quartz 5](https://quartz.jzhao.xyz/)** no GitHub Pages:
+👉 **[holy-emapian-scripture.github.io/wiki/](https://holy-emapian-scripture.github.io/wiki/)**
 
-## Estrutura
+---
 
-- `assuntos/`: 19 disciplinas, com 688 páginas de conteúdo organizadas por assunto e seus anexos.
-- `trilhas/`: 35 percursos a partir das revisões A1/A2/A3, exercícios e notas de aula.
-- `semestres/`: hubs do 3º ao 6º semestre, Eletivas e Mestrado.
-- `guias/`: orientações e modelo de página.
-- `manutencao/`: registros de origem, mapa da reorganização e verificador.
+## 📂 Estrutura do Projeto
 
-As explicações, fórmulas, códigos, legendas e referências das 35 anotações recebidas foram preservados. Apenas a estrutura, os metadados e os destinos dos links foram reorganizados. Os 292 arquivos de imagem e as duas bibliografias foram mantidos byte a byte.
+Todo o conteúdo em Markdown reside na pasta `content/`, organizada da seguinte forma:
 
-## Edição
+- **`content/assuntos/`**: 19 disciplinas acadêmicas com tópicos consolidados em páginas completas, organizadas por seções (`##`) com âncoras para leitura contínua e índice automático (Table of Contents).
+- **`content/trilhas/`**: Percursos de estudo organizados pela sequência de revisões (A1, A2, A3), notas de aula e listas de exercícios.
+- **`content/semestres/`**: Hubs de navegação cronológica do 3º ao 6º semestre, além de Eletivas e Mestrado.
+- **`content/guias/`**: Orientações para estudo, modelo de página e instruções de contribuição.
+- **`content/manutencao/`**: Registros históricos da conversão e mapeamento estrutural.
 
-Abra esta pasta como um vault do Obsidian. Use links Markdown relativos; mantenha as imagens na pasta `assets/` da disciplina. Consulte [como contribuir](guias/como-contribuir.md) e a [organização da wiki](guias/organizacao-da-wiki.md).
+Todas as explicações originais, fórmulas matemáticas em LaTeX, blocos de código, legendas e anexos foram integralmente preservados.
 
-Os metadados estão preparados para o Jekyll. O build e a publicação no GitHub Pages, incluindo a conversão dos links `.md` e o suporte matemático, ainda precisam ser configurados.
+---
 
-## Verificação
+## ✍️ Edição no Obsidian
 
-Requer apenas Python 3.9 ou superior:
+Você pode abrir a pasta raiz ou diretamente a pasta `content/` como um cofre (vault) no **Obsidian**:
 
-```sh
-python3 manutencao/verificar_wiki.py
-```
+1. **Wikilinks e Links Relativos:** Suporte total à sintaxe de Wikilinks do Obsidian (`[[...]]`) e a links Markdown tradicionais.
+2. **Referência a Capítulos/Seções:** Para linkar para uma seção ou subtópico específico dentro de uma página:
+   ```markdown
+   [[assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas#Deeplab V3 & V3+|Deeplab V3 & V3+]]
+   ```
+3. **Transclusão / Embed:** Para embutir o conteúdo de um subtópico diretamente em outra nota:
+   ```markdown
+   ![[assuntos/aprendizado-profundo/segmentacao-semantica/arquiteturas#Deeplab V3 & V3+]]
+   ```
+4. **Anexos e Imagens:** Mantenha as imagens na pasta `assets/` correspondente da disciplina.
 
-Para auditar a preservação integral em relação à versão importada:
+---
 
-```sh
-python3 manutencao/verificar_wiki.py --preservacao
-```
+## 🚀 Publicação e Visualização Local (Quartz 5)
 
-A opção `--preservacao` reconstrói cada documento original em memória, desfazendo apenas as mudanças estruturais registradas, e compara os hashes. Ela também confere os hashes dos anexos. Alterações futuras nas explicações farão essa auditoria histórica apontar diferenças; a verificação comum de navegação continua disponível sem essa opção.
+### Pré-requisitos
+- **Node.js**: v22 ou superior
+- **npm**: v10.9 ou superior
 
-Veja o [registro da reorganização](manutencao/reorganizacao.md), o [registro da conversão anterior](manutencao/conversao-original.md) e a [licença](LICENSE).
+### Comandos Principais
+
+* **Visualizar localmente (com live reload):**
+  ```bash
+  npx quartz build --serve
+  ```
+  Acesse no navegador: `http://localhost:8080`.
+
+* **Compilar para produção:**
+  ```bash
+  npx quartz build
+  ```
+
+### Deploy Contínuo
+O deploy para o GitHub Pages ocorre automaticamente a cada `git push origin main` através do workflow do GitHub Actions em `.github/workflows/deploy.yaml`.
+
+---
+
+## 📜 Licença
+
+Veja a [LICENSE](LICENSE) e consulte os [guias de contribuição](content/guias/como-contribuir.md).

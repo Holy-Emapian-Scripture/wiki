@@ -16,71 +16,123 @@ ordem_na_trilha: 45
 [Álgebra Linear Numérica](../index.md)
 
 <!-- wiki:original:inicio -->
+
 <a id="secao-54"></a>
 
 # Estabilidade
 
-------------------------------------------------------------------------
 
-Quando falamos de **estabilidade**, estamos tentando verificar se um algoritmo tem fidelidade no computador! Isso significa, se os arredondamentos que o computador faz nas entradas e saídas não mudarão o resultado para algo muito diferente do original. Mas primeiro, precisamos definir matematicamente o que é um algoritmo!
+<a id="definicao-formal-de-o-left-varepsilon-text-machine-right"></a>
+<a id="secao-55"></a>
+
+## Definição Formal de $O\left( \varepsilon_{\text{machine}} \right)$
+
+Vou escrever a definição aqui e explicar o que significa logo depois
 
 **Definição**
 
-Seja um problema $f:X \rightarrow Y$ e um computador com sistema de ponto flutuante que satisfaz [\[fundamental_axiom_of_floating_point_arithmetic\]](../aritmetica-de-ponto-flutuante/aritmetica-de-ponto-flutuante/index.md#fundamental_axiom_of_floating_point_arithmetic) fixado. O algoritmo de $f$, $\widetilde{f}:X \rightarrow F^{n} \subset Y$, é uma função que representa uma série de passos e suas implementações no computador dado com o objetivo de resolver o problema $f$
+Dadas as funções $\varphi(t)$ e $\psi(t)$, a sentença $$\varphi(t) = O\left( \psi(t) \right)$$ significa que $\exists C > 0$ tal que $\forall t$ suficientemente próximo de um limite conhecido (por exemplo, $t \rightarrow 0$, $t \rightarrow \infty$), é válido que: $$\varphi(t) \leq C\psi(t)$$
 
-**Nota:** $F^{n} \subset Y$ apenas representa que tenho um vetor de números que podem ser representados por $F$ e esse vetor está em $Y$
+O que isso significa? Significa que, se escrevemos $\varphi(t) = O\left( \psi(t) \right)$, e sabemos para onde $t$ está indo, existe $C > 0$ tal que os valores de $\varphi(t)$ nunca serão maiores que $C\psi(t)$. Na maioria das vezes, eu nem me importo com o que é $C$, só me importo com sua existência!
 
-Bem, sabemos que, se passarmos $x \in X$ para esse algoritmo, o resultado $\widetilde{f}(x)$ pode ser afetado por erros de arredondamento! Na maioria dos casos, $\widetilde{f}$ não é uma função contínua, mas o algoritmo precisa aproximar $f(x)$ da melhor forma possível.
+Falando sobre como estamos tratando $\varepsilon_{\text{machine}}$, o limite implícito aqui é $\varepsilon_{\text{machine }} \rightarrow 0$, e escrever que $\varphi(t) = O\left( \varepsilon_{\text{machine}} \right)$ significa que temos uma constante que limita o erro a uma quantidade de $\varepsilon_{\text{machine}}$, ou seja, o erro nunca será maior que, por exemplo, $3$ vezes $\varepsilon_{\text{machine}}$, $2$ e meio vezes $\varepsilon_{\text{machine}}$.
 
-Vamos fazer uma definição para um algoritmo **estável** também! Primeiro, vamos definir a **precisão** de um algoritmo
+Podemos fazer uma definição formal mais forte (mas mais confusa) para a notação $O$
 
-**Definição: Precisão do Algoritmo**
+**Definição**
 
-Um algoritmo $\widetilde{f}$ é preciso se: $$\frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|} = O\left( \varepsilon_{\text{machine}} \right)$$
+Dado $\varphi(s,t)$, temos que: $$\varphi(s,t) = O\left( \psi(t) \right)\text{ uniformemente em }s$$ garante que $\exists!C > 0$ tal que: $$\varphi(s,t) \leq C\psi(t)$$ e isso é válido para qualquer $s$ que eu escolher
 
-O QUÊ? O QUE DIABOS $O\left( \varepsilon_{\text{machine}} \right)$ SIGNIFICA??? Calma, calma, farei uma definição formal mais tarde, por agora, você pode entender que um algoritmo é preciso se o erro entre a saída do algoritmo e a saída original não ultrapassa $\varepsilon_{\text{machine}}$
+É uma definição semelhante, estou apenas adicionando uma variável que posso escolher e que não mudará nada.
 
-Em algoritmos mal-condicionados, a igualdade mostrada na definição é muito ambiciosa, porque erros de arredondamento são inevitáveis, nesse tipo de algoritmos, esse arredondamento pode causar grandes erros, ultrapassando os erros desejados que queríamos
+Em computadores reais, $\varepsilon_{\text{machine}}$ é um número fixo, então quando estamos trabalhando com o limite implícito $\varepsilon_{\text{machine }} \rightarrow 0$, estamos selecionando uma família **ideal** de computadores!
 
-Agora podemos definir um algoritmo **estável**
+<a id="dependencia-de-m-e-n"></a>
+<a id="secao-56"></a>
 
-<a id="stable_algorithm"></a>
+## Dependência de $m$ e $n$
 
-**Definição: Algoritmo Estável**
+Na prática, quando falamos de erros de arredondamento, a estabilidade de algoritmos envolvendo uma matriz $A$ não depende da própria $A$, mas de $m$ e $n$ (suas dimensões). Podemos ver isso analisando o seguinte problema:
 
-Um algoritmo $\widetilde{f}$ para um problema $f$ é estável se $$\forall x\text{ é válido que }\frac{\|\widetilde{f}(x) - f\left( \widetilde{x} \right)\|}{\| f\left( \widetilde{x} \right)\|} = O\left( \varepsilon_{\text{machine}} \right)$$ $$\text{ para um }\widetilde{x}\text{ com }\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$$
+Suponha que eu tenha um algoritmo para resolver um sistema não singular $m \times m$ $Ax = b$ para $x$ e garantimos que a solução $\widetilde{x}$ dada pelo algoritmo satisfaz $$\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \kappa(A)\varepsilon_{\text{machine}} \right)$$ Isso significa que existe uma constante $C$ que satisfaz $$\|\widetilde{x} - x\| \leq C\kappa(A)\varepsilon_{\text{machine }}\| x\|$$ Isso mostra que, mesmo $C$ não dependendo nem de $A$ nem de $b$, acaba dependendo das dimensões de $A$ porque, se mudarmos $m$ ou $n$, os dados passados para o problema mudam, o que significa que teremos um **novo** problema porque estamos mudando seu domínio e $\kappa(A)$ também mudará se alterarmos suas dimensões!
 
-Espere, o quê? O que essa definição significa?
+<a id="estabilidade-da-aritmetica-de-ponto-flutuante"></a>
+<a id="secao-58"></a>
 
-Significa que, todos os dados semelhantes aos meus dados originais passados para o meu algoritmo retornarão saídas muito semelhantes às soluções corretas (isso é mostrado com $\varepsilon_{\text{machine}}$, ou seja, a diferença entre as soluções dadas pelo algoritmo e as soluções reais não ultrapassará $\varepsilon_{\text{machine}}$)
+## Estabilidade da Aritmética de Ponto Flutuante
 
-Existe outro tipo de **estabilidade**, muito poderoso:
+**Teorema**
 
-**Definição: Estabilidade Retroativa**
+As operações $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
 
-Um algoritmo $\widetilde{f}$ para $f$ é **estável retroativamente** se: $$\forall x \in X\text{ é válido que }\exists\widetilde{x}\text{ com }\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)\text{ tal que }\widetilde{f}(x) = f\left( \widetilde{x} \right)$$
+**Demonstração**
 
-Isso significa que, se eu passar os dados para o algoritmo, posso encontrar uma perturbação muito pequena $\widetilde{x}$ tal que a solução do problema se eu passar essa perturbação é a **mesma** que se eu passar os dados originais para o algoritmo!
+Defina $\circledast$ como qualquer uma das 4 operações mostradas antes. Dado um problema $f:X \rightarrow Y$ que está calculando $x_{1} \ast x_{2}$, o algoritmo $\widetilde{f}$ para resolver esse problema é $\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$ onde $x = \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}$.
 
-**Exemplo**
+Temos que: $$\widetilde{f}(x) = \text{ fl}\left( x_{1} \right) \circledast \text{ fl}\left( x_{2} \right)$$ $$= \left( \text{fl}\left( x_{1} \right) \ast \text{ fl}\left( x_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= \left( x_{1}\left( 1 + \varepsilon_{1} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right) \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{1} \right)\left( 1 + \varepsilon_{3} \right) \ast x_{2}\left( 1 + \varepsilon_{2} \right)\left( 1 + \varepsilon_{3} \right)$$ $$= x_{1}\left( 1 + \varepsilon_{4} \right) \ast x_{2}\left( 1 + \varepsilon_{5} \right)$$
 
-Dado o dado $x \in {\mathbb{C}}$, verifique se o algoritmo $x \oplus x$ para calcular o problema de somar dois números iguais (solução é $2x$) é estável retroativamente:
+Onde $\varepsilon_{4} = O\left( \varepsilon_{\text{machine}} \right)$ e $\varepsilon_{5} = O\left( \varepsilon_{\text{machine}} \right)$. Calculamos $\widetilde{f}(x)$, agora vamos ver $f\left( \widetilde{x} \right)$. Primeiro, vamos definir: $$\widetilde{x} = \begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix}$$
 
-Temos que $$f(x) = x + xe\widetilde{f}(x) = x \oplus x$$ Isso significa $$\widetilde{f}(x) = (2x)(1 + \varepsilon)$$ Vamos verificar se esse algoritmo é **estável**. Primeiro, defina $\widetilde{x} = x(1 + \varepsilon)$, sabemos que $\varepsilon = O\left( \varepsilon_{\text{machine}} \right)$, vamos verificar se o erro relativo entre $x$ e $\widetilde{x}$ é $O\left( \varepsilon_{\text{machine}} \right)$: $$\frac{\|\widetilde{x} - x\|}{\| x\|} = \frac{\| x(1 + \varepsilon) - x\|}{\| x\|} = \frac{\| x(1 + \varepsilon - 1)\|}{\| x\|} = \vert \varepsilon\vert  = O\left( \varepsilon_{\text{machine}} \right)$$ Então $x(1 + \varepsilon)$ é uma definição **válida** para $\widetilde{x}$, deixando isso claro, vamos verificar se $\widetilde{f}$ é estável $$\frac{\|\widetilde{f}(x) - f\left( \widetilde{x} \right)\|}{\| f\left( \widetilde{x} \right)\|} = \frac{\| 2x(1 + \varepsilon) - 2x(1 + \varepsilon)\|}{\| f\left( \widetilde{x} \right)\|} = 0 = O\left( \varepsilon_{\text{machine}} \right)$$ Isso significa que $\widetilde{f}$ é estável, mas é **estável retroativamente**? Precisamos de uma definição de $\widetilde{x}$ que ainda satisfaça a condição de $x$ definida em [\[stable_algorithm\]](#stable_algorithm). Vamos verificar se nossa definição satisfaz, já verificamos que a condição é válida, mas ela satisfaz $f\left( \widetilde{x} \right) = \widetilde{f}(x)$? $$\widetilde{f}(x) = 2x(1 + \varepsilon)$$ $$f\left( \widetilde{x} \right) = 2x(1 + \varepsilon)$$ Isso significa que esse algoritmo **É** de fato **estável retroativamente**
+Se definirmos $\widetilde{x}$ assim, podemos ver claramente que $$f\left( \widetilde{x} \right) = x_{1}\left( 1 + \varepsilon_{4} \right) + x_{2}\left( 1 + \varepsilon_{5} \right) = \widetilde{f}(x)$$
+
+Mas a condição $\frac{\|\widetilde{x} - x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$ é satisfeita? $$\frac{\|\widetilde{x} - x\|}{\| x\|} = \frac{\|\begin{pmatrix} x_{1}\left( 1 + \varepsilon_{4} \right) \\ x_{2}\left( 1 + \varepsilon_{5} \right) \end{pmatrix} - \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|} = \frac{\|\begin{pmatrix} x_{1}\varepsilon_{4} \\ x_{2}\varepsilon_{5} \end{pmatrix}\|}{\|\begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}\|}$$ Usando a norma 1 $$\frac{x_{1}\varepsilon_{4} + x_{2}\varepsilon_{5}}{x_{1} + x_{2}} = \frac{x_{1}O\left( \varepsilon_{\text{machine}} \right) + x_{2}O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = \frac{\left( x_{1} + x_{2} \right)O\left( \varepsilon_{\text{machine}} \right)}{x_{1} + x_{2}} = O\left( \varepsilon_{\text{machine}} \right)$$
+
+Isso mostra que $\oplus$, $\ominus$, $\otimes$ e $⨸$ são **estáveis retroativamente**
+
+<a id="independencia-da-norma"></a>
+<a id="secao-57"></a>
+
+## Independência da Norma
+
+Você pode ter notado que, quando estamos definindo coisas em estabilidade com normas, denotamos $\| \cdot \|$ como **qualquer** tipo de norma, mas, se escolhermos uma certa norma, a definição pode não ser válida, certo? Como, pode ser válida para $\| \cdot \|_{2}$, mas não para $\| \cdot \|_{3}$, certo? Na verdade, errado! Podemos mostrar que **precisão**, **estabilidade** e **estabilidade retroativa** mantêm suas propriedades para **qualquer** tipo de norma! Isso significa que, quando escolhemos uma norma, podemos escolher uma que facilite os cálculos!
+
+**Teorema**
+
+Para problemas $f$ e seus algoritmos $\widetilde{f}$ em espaços normados de dimensão finita $X$ e $Y$, as propriedades de **precisão**, **estabilidade** e **estabilidade retroativa** são válidas ou não independentemente de qual norma eu escolher para fazer a análise
+
+**Demonstração**
+
+Se provarmos que, se $\| \cdot \|$ e $\| \cdot \|'$ são duas normas em $X$ e $Y$, então $\exists c_{1},c_{2}$ tais que: $$c_{1}\| x\| \leq \| x\|' \leq c_{2}\| x\|$$ então o teorema mostrado antes é válido, porque isso mostra:
+
+1.  Se uma sequência converge ou é muito pequena em uma norma, ela será em todas as outras normas também
+
+2.  Pequenos erros em uma norma serão pequenos em todas as outras normas também
+
+Mas precisamos provar a afirmação anterior, certo? Vamos fazer isso! (O livro apenas diz que é fácil, lol)
+
+Primeiro, vamos reduzir o problema a uma esfera unitária das normas, vamos definir: $$S = \left\{ x \in {\mathbb{C}}^{n}/\| x\| = 1 \right\}$$ esse conjunto é **fechado** porque a norma é **contínua** e é **limitado** (uma esfera, lol). Agora vamos definir a função $f(x) = \| x\|'$, porque $f(x)$ é contínua em ${\mathbb{C}}^{n}$ e $S$ é fechado e limitado, podemos encontrar o **máximo** e o **mínimo** valor de $f$ em $S$, vamos definir:
+
+1.  $m = \min\limits_{x \in S}\| x\|'$
+
+2.  $M = \max\limits_{x \in S}\| x\|'$
+
+$m > 0$ porque $0 \notin S$. Agora, vamos tentar generalizar em ${\mathbb{C}}^{n}$. Se queremos generalizar para todo $x \neq 0 \in {\mathbb{C}}^{n}$, vamos escrever: $$x = \| x\|\left( \frac{x}{\| x\|} \right)$$ Você pode ver claramente que $\frac{x}{\| x\|} \in S$ porque $\|\frac{x}{\| x\|}\| = 1$. Então, vamos ver o que acontece se tomarmos $\| x\|'$: $$\| x\|' = \|\| x\|\left( \frac{x}{\| x\|} \right)\|' = \| x\|\|\frac{x}{\| x\|}\|'$$ Se você olhar de perto, $\frac{x}{\| x\|}$ é um vetor em $S$, isso significa que $\|\frac{x}{\| x\|}\|' \in \lbrack m,M\rbrack$ e, por causa de $\| x\|$ (número escalar positivo), podemos ver que $$\| x\|\|\frac{x}{\| x\|}\|' \in \left\lbrack \| x\| m,\| x\| M \right\rbrack$$ Podemos reescrever isso como $$m\| x\| \leq \| x\|' \leq M\| x\|$$ Isso significa que essas duas constantes existem e provam o teorema estabelecido antes
+
+<a id="precisao-de-um-algoritmo-estavel-retroativamente"></a>
+<a id="secao-59"></a>
+
+## Precisão de um Algoritmo Estável Retroativamente
+
+Falamos de números de condição antes da estabilidade, vamos tentar associar ambos!
+
+**Teorema**
+
+Suponha que um algoritmo estável retroativamente $\widetilde{f}$ é aplicado para um problema $f:X \rightarrow Y$ com número de condição $\kappa$ em um computador que satisfaz [\[floating_point_conversion\]](../../aritmetica-de-ponto-flutuante/epsilon-maquina/index.md#floating_point_conversion) e [\[fundamental_axiom_of_floating_point_arithmetic\]](../../aritmetica-de-ponto-flutuante/aritmetica-de-ponto-flutuante/index.md#fundamental_axiom_of_floating_point_arithmetic), então, o erro relativo satisfaz: $$\frac{\|\widetilde{f}(x) - f\left( \widetilde{x} \right)\|}{\| f\left( \widetilde{x} \right)\|} = O\left( \kappa(x)\varepsilon_{\text{machine}} \right)$$
+
+**Demonstração**
+
+Por definição, temos $\widetilde{f}(x) = f(x + \delta x)$ com $\frac{\|\delta x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$. Usando [\[relative_condition_number\]](../../condicionamento-e-numeros-de-condicao/condicionamento-de-um-problema/index.md#relative_condition_number) (Número de Condição Relativo), temos que: $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\| f(x + \delta x) - f(x)\|}{\| f(x)\|} \right)\left( \frac{\| x\|}{\|\delta x\|} \right)$$ $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|}\frac{\| x\|}{\|\delta x\|} \right)$$
+
+Usando algumas definições formais (nem eu entendo, então se tentar explicar aqui, só perderei tempo, lol), podemos reescrever isso como: $$\frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|} \leq \left( \kappa(x) + o(1) \right)\frac{\|\delta x\|}{\| x\|}$$
+
+Onde $o(1) \rightarrow 0$ quando $\varepsilon_{\text{machine }} \rightarrow 0$
 
 <!-- wiki:original:fim -->
 
-## Tópicos desta página
-
-1. [Definição Formal de $O\left( \varepsilon_{\text{machine}} \right)$](definicao-formal-de-o-left-varepsilon-text-machine-right/index.md)
-2. [Dependência de $m$ e $n$](dependencia-de-m-e-n/index.md)
-3. [Independência da Norma](independencia-da-norma/index.md)
-4. [Estabilidade da Aritmética de Ponto Flutuante](estabilidade-da-aritmetica-de-ponto-flutuante/index.md)
-5. [Precisão de um Algoritmo Estável Retroativamente](precisao-de-um-algoritmo-estavel-retroativamente/index.md)
 
 ## Percurso de estudo
 
 [Trilha: A1](../../../trilhas/algebra-linear-numerica/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/algebra-linear-numerica/a1.md#apresentacao-original)
 
-- Anterior: [Mais sobre Épsilon Máquina](../aritmetica-de-ponto-flutuante/mais-sobre-epsilon-maquina/index.md)
-- Próximo: [Definição Formal de $O\left( \varepsilon_{\text{machine}} \right)$](definicao-formal-de-o-left-varepsilon-text-machine-right/index.md)
+- Anterior: [Mais sobre Épsilon Máquina](../aritmetica-de-ponto-flutuante/index.md#mais-sobre-epsilon-maquina)
+- Próximo: [Estabilidade da Aritmética de Ponto Flutuante](#estabilidade-da-aritmetica-de-ponto-flutuante)

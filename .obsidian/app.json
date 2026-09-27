@@ -1,4 +1,9 @@
 {
   "useMarkdownLinks": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "quartz/",
+    "public/",
+    "node_modules/"
+  ]
 }

@@ -16,64 +16,76 @@ ordem_na_trilha: 11
 [Aprendizado de Máquina](../index.md)
 
 <!-- wiki:original:inicio -->
+
 <a id="secao-17"></a>
 
 # Regressão Logística
 
+
+<a id="problemas-multiclasse-classificador-softmax"></a>
+<a id="secao-20"></a>
+
+## Problemas multiclasse, classificador *softmax*
+
+Nesse capítulo, nos focamos em problemas de classificação binária, em que $\vert \mathcal{Y}\vert  = 2$. No entanto, é fácil generalizar as técnicas que discutimos para problemas multi-classe (i.e., $\vert \mathcal{Y}\vert  > 2$). Para tal, basta substituir o nosso modelo observacional Bernoulli por uma distribuição categórica. Lembre que a Bernoulli é parametrizada por um parâmetro escalar que dita a probabilidade de cada classe. No caso da categórica, precisamos de um vetor de probabilidades, i.e., um vetor $r$ de tamanho $L = \vert \mathcal{Y}\vert$, em que cada entrada $r_{l}$ denota a probabilidade da classe $l$. Naturalmente, todas as entradas de $r$ devem ser não-negativas e $\sum_{l = 1}^{L}r_{l} = 1$. Resta-nos, então, expressar $r$ como uma função de $x$. Para tal, podemos generalizar nosso o procedimento que usamos para regressão logística.
+
+Primeiro, calculamos um vetor de logits $z$, desta vez usando uma transformação linear para cada uma das $L$ classes $$z = \begin{pmatrix} x^{T}\theta^{(1)} \\ x^{T}\theta^{(2)} \\ \vdots \\ x^{T}\theta^{(L)} \end{pmatrix}$$
+
+Finalmente, aplicamos a função Softmax para transformar $z$ em um vetor de probabilidades e obter $r$, que é dado por: $$r_{l} = \text{ Softmax}(z) = \frac{e^{z_{l}}}{\sum_{l' = 1}^{L}e^{z_{l'}}}$$
+
 ------------------------------------------------------------------------
 
-Uma das maneiras mais naturais de criar um modelo de regressão consiste em escolher um modelo observacional para a variável de resposta $y$ cujos parâmetros dependam diretamente do seu respectivo vetor de entradas $x$. Por exemplo, na capítulo anterior, vimos que minimizar o MSE é equivalente a admitir uma verossimilhança da forma $y\vert x \sim N\left( \theta^{T}x,\sigma^{2} \right)$, na qual o parâmetro de média é uma função linear de $x$. Note também que esse escolha implica que $y$ pode tomar valores arbitrários em $\mathbb{R}$, já que esse é o suporte da distribuição normal (i.e., região com densidade maior que zero).
+<a id="regressao-logistica-bayesiana"></a>
+<a id="secao-18"></a>
 
-Se $y$ é uma variável binária (0/1), a escolha mais comum é utilizar uma distribuição Bernoulli com parâmetro $r = g(x)$. Em outras palavras, falamos que $y$ assume valor 1 com probabilidade $r$ e $0$ com probabilidade $1 - r$. Adotando esse modelo observacional para $y\vert x$, resta-nos definir a função $g$ para completar nosso modelo de regressão. Para tal, iremos calcular uma função linear de $x$, como anteriormente, mas aplicaremos uma função que mapeie o valor resultante (comumente conhecido como logit) para $\lbrack 0,1\rbrack$, gerando valores válidos para a probabilidade $r$. Mais especificamente, usamos a função sigmoide $\sigma(t) = \left( 1 + e^{- t} \right)^{- 1}$ para definir a probabilidade de $y\vert x$ como $$p\left( y\vert x \right) = \text{ Bern}\left( y\vert \sigma(\theta^{T}x) \right) = {\sigma(\theta^{T}x)}^{y}\left( 1 - \sigma(\theta^{T}x) \right)^{1 - y}$$
+## Regressão Logística Bayesiana
 
-**Propriedades da função sigmoide** $$\rightarrow t < t' \Rightarrow \sigma(t) < \sigma(t')$$ $$\lim\limits_{t \rightarrow \infty}\sigma(t) = 1\text{\quad\quad}\lim\limits_{t \rightarrow - \infty}\sigma(t) = 0$$ $$\sigma( - t) = 1 - \sigma(t)$$ $$\frac{d}{dt}\sigma(t) = \sigma(t)\left( 1 - \sigma(t) \right) = \sigma(t)\sigma( - t)$$ $$\sigma(t) = \frac{1}{2} + \frac{1}{2}\tanh(\frac{t}{2})$$ $$\int\sigma(t)dt = \log(\sigma( - t)) + C$$
+Na seção anterior, discutimos como obter uma estimativa pontual $\hat{\theta}$ para $\theta$ via máxima verossimilhança (MLE). Um problema com estimativas pontuais, no entanto, é que elas não refletem nossa incerteza sobre o valor estimado. Intuitivamente, por exemplo, esperamos que estimativas feitas com grandes quantidades de dados sejam mais confiáveis que as feitas com poucos dados. Para observar que MLE não captura esse aspecto, basta notar que repetir o conjunto de dados qualquer número arbitrário de vezes não causa impacto algum em $\hat{\theta}$.
 
-Dado um conjunto de treinamento $D$ com $N$ exemplos de treinamento $\left( x_{n},y_{n} \right)$, podemos então definir a função de verossimilhança $\mathcal{L}$ como $$\mathcal{L}(\theta) = \prod_{i = 1}^{N}p\left( y_{i}\vert x_{i} \right) = \prod_{i = 1}^{N}{\sigma(\theta^{T}x_{i})}^{y_{i}}\left( 1 - \sigma(\theta^{T}x_{i}) \right)^{1 - y_{i}}$$ e agora podemos encontrar o estimador de máxima verossimilhança $\hat{\theta}$ para $\theta$: $$\begin{aligned} \hat{\theta} & = \text{ argmax}_{\theta \in {\mathbb{R}}^{D + 1}}\mathcal{L}(\theta) = \text{ argmin}_{\theta \in {\mathbb{R}}^{D + 1}} - \log\mathcal{L}(\theta) \\ & = \text{ argmin}_{\theta \in {\mathbb{R}}^{D + 1}} - \sum_{i = 1}^{N}\left\lbrack y_{i}\log\sigma(\theta^{T}x_{i}) + \left( 1 - y_{i} \right)\log\left( 1 - \sigma(\theta^{T}x_{i}) \right) \right\rbrack \\ & = \text{ argmin}_{\theta \in {\mathbb{R}}^{D + 1}} - \left\{ \underset{⏝}{\sum_{i = 1}^{N}}\log\sigma(\theta^{T}x_{i}) - \underset{⏝}{\sum_{i = 1}^{N}}\log\sigma( - \theta^{T}x_{i}) \right\} \end{aligned}$$
+A estatística Bayesiana propõe uma saída intuitiva para esse empasse. A ideia é modelar os parâmetros $\theta$ do modelo como uma variável aleatória, usando uma distribuição a priori $p(\theta)$ e aplicar a regra de Bayes para computar a distribuição de $\theta$ condicionada nas observações $D$, que chamamos de posteriori: $$p\left( \theta\vert D \right) = \frac{p\left( D\vert \theta \right)p(\theta)}{p(D)} = \frac{\mathcal{L}(\theta)p(\theta)}{\int\mathcal{L}(\theta')p(\theta')d\theta'}$$ Informalmente, a posteriori representa a incerteza que temos sobre o valor da variável $\theta$. Além disso, vale ressaltar que a priori nos permite encapsular conhecimento prévio, potencialmente subjetivo, sobre $\theta$ (i.e., antes de ver os dados) e sua escolha é uma questão de modelagem estatística. Quando não possuímos informação significante sobre os dados, é comum escolher uma distribuição de alta entropia como priori. No caso em que $\theta$ assume valores reais, e.g., poderíamos usar uma priori Gaussiana com alta variância.
 
-Similar ao MSE, que minimizamos no capítulo passado, a função objetivo $- \log(\mathcal{L})$ é uma convexa. No entanto, não possuímos uma solução analítica para $\hat{\theta}$ e, portanto, precisamos utilizar algum método de otimização númerica, como o SGD que já conhecemos. Para fins de implementação, podemos definir a variável $y'_{i} = 2y_{i} - 1$. Com isso, conseguimos escrever o gradiente $\nabla\theta\mathcal{l}_{i}(\theta)$ da log verossimilhança para o $i$-ésimo exemplo de treinamento $\mathcal{l}_{i}$ como: $$\begin{aligned} \nabla_{\theta}\mathcal{l}_{i}(\theta) & = \nabla_{\theta}\log\sigma(y'_{i}\theta^{T}x_{i}) \\ & = \frac{\partial\log\sigma(y'_{i}\theta^{T}x_{i})}{\partial\sigma(y'_{i}\theta^{T}x_{i})} \cdot \frac{\partial\sigma(y'_{i}\theta^{T}x_{i})}{\partial\left( y'_{i}\theta^{T}x_{i} \right)} \cdot \frac{\partial y'_{i}\theta^{T}x_{i}}{\partial\theta} \\ & = \sigma( - y'_{i}\theta^{T}x_{i})y'_{i}x_{i} \end{aligned}$$
+No caso da regressão logística, é comum adotar uma priori Gaussiana sobre $\theta$ e a verossimilhança que usamos na seção anterior, resultando no modelo $$\begin{array}{r} \theta \sim N(\mu,\Sigma) \\ y_{n}\vert x_{n},\theta \sim \text{ Bern}\left( \sigma(\theta^{T}x_{n}) \right)\ \forall n = 1,\ldots,N \end{array}$$
 
-Aplicando o algoritmo gradiente descendente à função custo da regressão logística, obtemos o seguinte algoritmo:
+cuja posteriori é dada por $$p\left( \theta\vert D \right) = \frac{\prod_{n = 1}^{N}\text{ Bern}\left( y_{n}\vert \sigma(\theta^{T}x_{n}) \right)N\left( \theta\vert \mu,\Sigma \right)}{\int_{x \in {\mathbb{R}}^{D + 1}}\prod_{n = 1}^{N}\text{ Bern}\left( y_{n}\vert \sigma(\theta'^{T}x_{n}) \right)N\left( \theta'\vert \mu,\Sigma \right)}$$
 
-**Regressão Logística**
+Notavelmente, computar a posteriori acima depende da resolução de uma integral que não possui forma fechada. Consequentemente, também não há uma forma analítica para $p\left( \theta\vert D \right)$. Essa dificuldade técnica não é uma raridade em modelos Bayesianos. Apesar de algumas escolhas pareadas de verossimilhança e priori resultarem em posteriores com forma analítica, esse não é o caso geral. Para driblar esse problema, usaremos métodos numéricos para aproximar a posteriori com distribuição mais simples, de forma conhecida
 
-1.  $\theta_{0} \leftarrow 0$
+**Prevendo a label $y^{\ast}$ para um novo input $x^{\ast}$**: Suponha que conseguimos computar a posteriori $p\left( \theta\vert D \right)$, como podemos obter uma distribuição para $p\left( y^{\ast}\vert x^{\ast} \right)$? Quando estavamos usando uma estimativa pontual $\hat{\theta}$ (MLE), obtivemos uma distribuição sobre $y^{\ast}$ simplesmente encaixando $\hat{\theta}$ na nossa verossimilhança, i.e., tomamos $p\left( y^{\ast}\vert x^{\ast} \right) \approx \text{ Ber}\left( \sigma({\hat{\theta}}^{T}x^{\ast}) \right)$. No paradigma Bayesiano, levamos em consideração a incerteza sobre $\theta$ (codificada em nossa posteriori), ponderando cada valoração de $\theta$ pela sua densidade posteriori. O resultado, é o que chamamos de posteriori preditiva $$p\left( y^{\ast}\vert x^{\ast} \right) = \int p\left( y^{\ast}\vert x^{\ast},\theta \right)p\left( \theta\vert D \right)d\theta$$
 
-2.  $y' \leftarrow 2y - \mathbf{1}$
+**Máxima verossimilhança e máximo *a posteriori***: Uma das maiores virtudes do paradigma Bayesiano é oferecer uma maneira de quantificar incerteza. No entanto, há situações nas quais computar a posteriori, mesmo que de maneira aproximada, pode se tornar computacionalmente indesejável. Nesses casos, é comum procurar o ponto que máximiza a posteriori e tomá-lo como estimativa pontual. Chama-se esse precedimento de máximo a posteriori (MAP). Mais concretamente, a estimativa ${\hat{\theta}}_{\text{MAP}}$ pode ser obtida como: $$\begin{aligned} {\hat{\theta}}_{\text{MAP }} & = \text{ argmax}_{\theta}\log p\left( \theta\vert D \right) \\ & = \text{ argmax}_{\theta}\left\{ \log p\left( D\vert \theta \right) + \log p(\theta) - \log\int_{\theta}p\left( D\vert \theta \right)p(\theta) \right\} \\ & = \text{ argmax}_{\theta}\left\{ \log\mathcal{L}(\theta) + \log p(\theta) \right\} \end{aligned}$$
 
-3.  **for** $t = 0,1,2,\ldots$ **do**
+e, portanto, pode ser interpretada como uma versão regularizada do MLE, na qual $\log p(\theta)$ penaliza regiões pouco prováveis a priori
 
-    1.  $g \leftarrow \sum_{i = 1}^{N}\sigma( - y'_{i}\theta_{t}^{T}x_{i})y'_{i}x_{i}$
+**Exemplo: Priori conjugada**
 
-    2.  $\theta^{(t + 1)} \leftarrow \theta^{(t)} - \eta g$
+Para escolhas específicas de priori e verossimilhança, a distribuição posteriori possui forma analítica. Uma instância dessas ocorre quando $p(\theta)$ é uma distribuição Beta e a verossimilhança $p\left( D\vert \theta \right)$ é Bernoulli. Mais concretamente, suponha que escolhemos uma priori $\text{Beta}(\alpha,\beta)$ para $\theta$, dada por: $$Β(\theta\vert \alpha,\beta) = \left( \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} \right)\theta^{\alpha - 1}(1 - \theta)^{\beta - 1}$$ Podemos inferir, então, o seguinte sobre a posteriori do nosso modelo: $$\begin{aligned} p\left( \theta\vert D \right) & \propto \prod_{n = 1}^{N}\text{ Bern}\left( y_{n}\vert \theta \right)\text{ Beta}\left( \theta\vert \alpha,\beta \right) \\ & \propto \prod_{n = 1}^{N}\theta^{y_{n}}(1 - \theta)^{1 - y_{n}}\theta^{\alpha - 1}(1 - \theta)^{\beta - 1} \\ & \propto \theta^{\alpha + \sum_{n = 1}^{N}y_{n} - 1}(1 - \theta)^{\beta + N - \sum_{n = 1}^{N}y_{n} - 1} \\ & \propto \theta^{\alpha' - 1}(1 - \theta)^{\beta' - 1} = \text{ Beta}\left( \theta\vert \alpha',\beta' \right) \end{aligned}$$
 
-    3.  Verifica condição de parada
+onde $\alpha' = \alpha + \sum_{n = 1}^{N}y_{n}$ e $\beta' = \beta + N - \sum_{n = 1}^{N}y_{n}$.
 
-4.  **end for**
+Portanto, concluimos que nossa posteriori é uma $\text{Beta}(\alpha',\beta')$. Para ilustrar o uso da regra de Bayes, a figura abaixo mostra atualizações da posteriori derivada acima para diferentes números de amostras $N$. Para tal, assumimos que a distribuição geradora dos dados é $\text{Bern}(0.25)$ e usamos uma priori $\text{Beta}(10,10)$. Veja que, à medida que vemos mais amostras, a posteriori se afunila ao redor de $0.25$.
 
-5.  **return** $\theta$
+![](../assets/beta-posterior.png)
 
-*Figura 7. Regressão Logística*
+<a id="secao-19"></a>
 
-**Interpretação geométrica**: Uma vez que obtivemos $\hat{\theta}$, podemos estimar a probabilide de uma nova amostra $x^{\ast}$ pertencer à classe 1 como $\sigma({\hat{\theta}}^{T}x^{\ast})$ e a de pertencer à classe 0 como $1 - \sigma({\hat{\theta}}^{T}x^{\ast})$. Com isso em mente, se precisamos prever a classe de $x^{\ast}$, é razoável escolher aquela que achamos mais provável. Lembre que $\sigma(0) = 0.5$. Portanto, o plano ${\hat{\theta}}^{T}x = 0$ caracteriza os pontos $x \in \mathcal{X}$ que cremos ter probabilidade idêntica de pertencer a ambas as classes. Isso implica que todos os vetores de entrada cujo ângulo $\gamma$ com o vetor normal $\hat{\theta}$ é menor que noventa graus são classificados como positivos (classe 1) — lembre que $\theta^{T}x = \|\hat{\theta}\|_{2}\| x\|_{2}\cos(\gamma)$. Os demais pontos são classificados como negativos (classe 0).
+### Aproximação de Laplace
 
-**Convexidade do problema de aprendizado**: Como a soma de funções convexas é também convexa, basta verificar que as $\mathcal{l}_{1},\ldots,\mathcal{l}_{N}$ são convexas para provarmos que $- \log\mathcal{L}$ também o é. Para esse fim, podemos usar o fato de que a função composta $h = g \circ f$ é convexa se $f$ é côncava e $g$ é convexa não-crescente. Note que $y'_{i}\theta^{T}x_{i}$ é tanto côncava como convexa, como é o caso de funções lineares. Em contrapartida, $- \log\sigma(t)$ é convexa não-crescente já que ela descresce com $t$ e sua derivada $- \sigma( - t)$ é estritamente crescente
+A aproximação de Laplace é, possivelmente, a mais simples técnica de inferência Bayesiana aproximada. A ideia é construir uma aproximação simples $q(\theta)$ para a posteriori $p\left( \theta\vert D \right)$ usando uma expansão de Taylor de segunda ordem em $\log p\left( \theta\vert D \right)$ ao redor da moda $m$ da posteriori (i.e., o ponto de máxima densidade) $$\log p\left( \theta\vert D \right) \approx \log p\left( m\vert D \right) + (\theta - m)^{T}\nabla_{\theta}\log p\left( m\vert D \right) + \frac{1}{2}(\theta - m)^{T}\nabla_{\theta}^{2}\log p\left( m\vert D \right)(\theta - m)$$
 
-**Entropia Cruzada Binária**: Na comunidade de ML, é comum se referir ao logaritmo negativo da verossimilhança Bernoulli como entropia cruzada binária (binary cross entropy, BCE). De forma geral, a entropia cruzada entre duas funções de massa/densidade $p$ e $q$ sobre a mesma variável aleatória $z$ e com suportes idênticos é definida como: $$H(p,q) ≔ - {\mathbb{E}}_{z \sim p}\log q(z)$$ e dá-se o nome BCE para o caso especial em que p e q são distribuições Bernoulli.
+Note que $\log p\left( m\vert D \right)$ é uma constante com respeito a $\theta$ e lembre que o gradiente de uma função em sua moda, caso ela exista, é zero. Então, concluímos que: $$\log p\left( \theta\vert D \right) \approx \frac{1}{2}(\theta - m)^{T}\mathbf{H}(\theta - m) + C$$
 
-Em teoria da informação, é comum interpretar $\log\frac{1}{q(z)}$ como uma medida de surpresa, i.e., do quanto observar um valor específico $z$ contrasta com seu conhecimento prévio, representado por $q$. Nesse contexto, $H(p,q)$ é o valor dessa medida se os valores de $z$ são amostrados de $p$ (ao invés de q). Vale ressaltar que, para um $p$ fixo, $q = p$ minimiza $H(p,q)$. Nesse caso, a quantia $H(p) ≔ H(p,p)$ é chamada de entropia. Por sua vez, a entropia também pode ser vista como uma medida de concentração de $p$, atingindo seu valor máximo quando $p$ é uma distribuição uniforme.
+onde $\mathbf{H} = \nabla_{\theta}^{2} - \log p\left( m\vert D \right)$. Por design, construímos $q$ tal que $\log q$ difira da expansão acima apenas por uma constante aditiva, então: $$\log q(\theta) = \frac{1}{2}(\theta - m)^{T}\mathbf{H}(\theta - m) + C' \Rightarrow q(\theta) \propto \exp(\frac{1}{2}(\theta - m)^{T}\mathbf{H}(\theta - m))$$ e como $q(\theta)$ é proporcional á uma densidade normal multivariada com média $m$ e matriz de covariância igual á inversa de $H$, temos: $$q(\theta) = N\left( \theta\vert \mu = m,\Sigma = H^{- 1} \right),\text{ onde }m = \text{ argmax}_{\theta}p\left( \theta\vert D \right)\text{ e }H = \nabla_{\theta}^{2} - \log p\left( m\vert D \right)$$
 
-Para concluir que a BCE generaliza $- \log\text{Ber}\left( y\vert r \right)$, basta definir $p(z) = \text{ Ber}\left( z\vert y \right)$ e tomar $q(z) = \text{ Ber}\left( z\vert r \right)$. Com essas escolhas, obtemos: $$\begin{aligned} H(p,q) & = - y\log q(1) - (1 - y)\log q(0) \\ & = - \left( y\log r + (1 - y)\log(1 - r) \right) \end{aligned}$$ o que implica que: $$e^{- H(p,q)} = r^{y}(1 - r)^{1 - y}(1 - y) = \text{ Ber}\left( y\vert r \right)$$
+Note que o procedimento acima envolve inverter $H$. Como $m$ é um mínimo local para a função $- \log p\left( \cdot \vert D \right)$, segue diretamente das condições de optimalidade de segunda ordem que $H$ é PSD. Caso $H$ não seja PD ou haja instabilidade numérica na inversão de $H$, uma prática comum é adicionar um pequeno valor $c > 0$ à sua diagonal.
+
+Para aplicar o método de Laplace ao nosso modelo de regressão logística Bayesiano, podemos usar alguma variação de gradiente descendente para achar $m$ e, assumindo $\mu = 0$ e $\Sigma = cI$ para $c > 0$, as entradas $H_{ij}$ da Hessiana $H$ são dadas por $$H_{ij} = \begin{cases} \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}x_{nj}\text{ se }i \neq j \\ \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}^{2} + c^{- 1}\text{ se }i = j \end{cases}$$
 
 <!-- wiki:original:fim -->
 
-## Tópicos desta página
-
-1. [Regressão Logística Bayesiana](regressao-logistica-bayesiana/index.md)
-2. [Problemas multiclasse, classificador *softmax*](problemas-multiclasse-classificador-softmax/index.md)
 
 ## Percurso de estudo
 
 [Trilha: A1](../../../trilhas/aprendizado-de-maquina/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/aprendizado-de-maquina/a1.md#apresentacao-original)
 
-- Anterior: [Modelo com expansão de base](../regressao-linear/modelo-com-expansao-de-base/index.md)
-- Próximo: [Regressão Logística Bayesiana](regressao-logistica-bayesiana/index.md)
+- Anterior: [Modelo com expansão de base](../regressao-linear/index.md#modelo-com-expansao-de-base)
+- Próximo: [Problemas multiclasse, classificador *softmax*](#problemas-multiclasse-classificador-softmax)

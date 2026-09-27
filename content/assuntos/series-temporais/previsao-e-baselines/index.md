@@ -36,5 +36,5 @@ No capítulo passado, nós definimos ACF, e como podemos utilizar ela para **dia
 
 [Trilha: A1](../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Estimação Amostral](../estacionariedade-e-acf/estimacao-amostral/index.md)
+- Anterior: [Estimação Amostral](../estacionariedade-e-acf/index.md#estimacao-amostral)
 - Próximo: [Previsão via Autocorrelação $\rho(h)$ e Esperança Condicional](previsao-via-autocorrelacao-rho-h-e-esperanca-condicional/index.md)

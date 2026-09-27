@@ -26,17 +26,29 @@ ordem_na_trilha: 2
 
 Algorithms $T_{1},\ldots,T_{5},T_{7},\ldots,T_{9}$ are trivial. for $T_{6}$, if $n > 1$ then $T_{6} \in O\left( n\log ²(n) \right)$. For $T_{10}$, notice that:
 
-$$T(2) = 2T(1) + 2 \in O(1),$$
+$$
+T(2) = 2T(1) + 2 \in O(1),
+$$
 
-$$T(3) = 2T(2) + 2 = 2\left\lbrack 2T(1) + 2 \right\rbrack + 2$$
+$$
+T(3) = 2T(2) + 2 = 2\left\lbrack 2T(1) + 2 \right\rbrack + 2
+$$
 
-$$.$$
+$$
+.
+$$
 
-$$.$$
+$$
+.
+$$
 
-$$.$$
+$$
+.
+$$
 
-$$T(n) = 2^{n}\left\lbrack T(1) + 1 \right\rbrack + 2 \in O\left( 2^{n} \right).$$
+$$
+T(n) = 2^{n}\left\lbrack T(1) + 1 \right\rbrack + 2 \in O\left( 2^{n} \right).
+$$
 
 <!-- wiki:original:fim -->
 

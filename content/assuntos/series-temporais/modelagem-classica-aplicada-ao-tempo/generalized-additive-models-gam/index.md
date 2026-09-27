@@ -30,5 +30,5 @@ Aqui, $f_{j}( \cdot )$ são funções não-lineares suaves que modelam a relaç�
 
 [Trilha: A1](../../../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Ridge Regression](../regularizacao-lasso-e-ridge/ridge-regression/index.md)
+- Anterior: [Ridge Regression](../regularizacao-lasso-e-ridge/index.md#ridge-regression)
 - Próximo: [Deep Learning (DL)](../deep-learning-dl/index.md)

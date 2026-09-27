@@ -29,7 +29,7 @@ ordem_na_trilha: 35
 ## Conteúdos relacionados
 
 - [Métricas de Avaliação — Aprendizado Profundo](../../aprendizado-profundo/object-detection/metricas-de-avaliacao/index.md)
-- [Métricas de Avaliação — Aprendizado Profundo](../../aprendizado-profundo/segmentacao-semantica/introducao-e-metricas/metricas-de-avaliacao/index.md)
+- [Métricas de Avaliação — Aprendizado Profundo](../../aprendizado-profundo/segmentacao-semantica/introducao-e-metricas/index.md#metricas-de-avaliacao)
 
 ## Percurso de estudo
 

@@ -6,3 +6,18 @@
 body[data-slug$="/index"] .page-listing {
   display: none;
 }
+
+// Centralização de equações em bloco (KaTeX)
+.katex-display {
+  display: block !important;
+  text-align: center !important;
+  margin: 1.5rem auto !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  > .katex {
+    display: inline-block !important;
+    text-align: center !important;
+  }
+}
+

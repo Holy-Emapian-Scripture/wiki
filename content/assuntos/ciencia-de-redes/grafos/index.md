@@ -56,11 +56,15 @@ Dado um grafo $G(V,E)$ e sua matriz de incidência $A$, temos que: $$\text{ nº 
 
 **Demonstração**
 
-$$\begin{array}{r} \text{ posto(A) } + \dim(N(A)) = \vert E\vert  \\ \Leftrightarrow \vert E\vert  - \text{ posto(A) } = \dim(N(A)) \end{array}$$
+$$
+\begin{array}{r} \text{ posto(A) } + \dim(N(A)) = \vert E\vert  \\ \Leftrightarrow \vert E\vert  - \text{ posto(A) } = \dim(N(A)) \end{array}
+$$
 
 Porém, a dimensão do núcleo de $A$ é a quantidade de ciclos no grafo, então eu tenho que:
 
-$$\text{ nº de ciclos } = \vert E\vert  - \text{ posto}(A)$$
+$$
+\text{ nº de ciclos } = \vert E\vert  - \text{ posto}(A)
+$$
 
 **Definição: Coeficiente de Clustering**
 
