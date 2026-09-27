@@ -10,24 +10,24 @@ render_with_liquid: false
 
 Escolha uma disciplina para navegar pelos assuntos e suas páginas.
 
-- [Aprendizado Profundo](aprendizado-profundo/index.md)
-- [Aprendizado de Máquina](aprendizado-de-maquina/index.md)
-- [Aprendizado por Reforço](aprendizado-por-reforco/index.md)
-- [Causalidade](causalidade/index.md)
-- [Ciência de Redes](ciencia-de-redes/index.md)
-- [Computação na Nuvem](computacao-na-nuvem/index.md)
-- [Cálculo Vetorial](calculo-vetorial/index.md)
-- [Engenharia de Software](engenharia-de-software/index.md)
-- [Equações Diferenciais Ordinárias](equacoes-diferenciais-ordinarias/index.md)
-- [Estrutura de Dados](estrutura-de-dados/index.md)
-- [Inferência Estatística](inferencia-estatistica/index.md)
-- [Modelagem Estatística](modelagem-estatistica/index.md)
-- [Modelagem Informacional](modelagem-informacional/index.md)
-- [Otimização para Ciência de Dados](otimizacao-para-ciencia-de-dados/index.md)
-- [Probabilidade](probabilidade/index.md)
-- [Processamento de Linguagem Natural](processamento-de-linguagem-natural/index.md)
-- [Projeto e Análise de Algoritmos](projeto-e-analise-de-algoritmos/index.md)
-- [Séries Temporais](series-temporais/index.md)
-- [Álgebra Linear Numérica](algebra-linear-numerica/index.md)
+- [[aprendizado-profundo/index|Aprendizado Profundo]]
+- [[aprendizado-de-maquina/index|Aprendizado de Máquina]]
+- [[aprendizado-por-reforco/index|Aprendizado por Reforço]]
+- [[causalidade/index|Causalidade]]
+- [[ciencia-de-redes/index|Ciência de Redes]]
+- [[computacao-na-nuvem/index|Computação na Nuvem]]
+- [[calculo-vetorial/index|Cálculo Vetorial]]
+- [[engenharia-de-software/index|Engenharia de Software]]
+- [[equacoes-diferenciais-ordinarias/index|Equações Diferenciais Ordinárias]]
+- [[estrutura-de-dados/index|Estrutura de Dados]]
+- [[inferencia-estatistica/index|Inferência Estatística]]
+- [[modelagem-estatistica/index|Modelagem Estatística]]
+- [[modelagem-informacional/index|Modelagem Informacional]]
+- [[otimizacao-para-ciencia-de-dados/index|Otimização para Ciência de Dados]]
+- [[probabilidade/index|Probabilidade]]
+- [[processamento-de-linguagem-natural/index|Processamento de Linguagem Natural]]
+- [[projeto-e-analise-de-algoritmos/index|Projeto e Análise de Algoritmos]]
+- [[series-temporais/index|Séries Temporais]]
+- [[algebra-linear-numerica/index|Álgebra Linear Numérica]]
 
-[Início](../index.md)
+[[../index|Início]]

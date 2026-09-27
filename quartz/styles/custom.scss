@@ -1,3 +1,8 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// Oculta a listagem automatica de itens gerada pelo FolderPage nas paginas de pastas
+body[data-slug$="/index"] .page-listing {
+  display: none;
+}

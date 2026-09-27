@@ -13,12 +13,12 @@ A proposta é construir uma referência que cresça com as contribuições de qu
 
 ## Por onde começar
 
-- **[Assuntos](assuntos/index.md)** — navegue pelas disciplinas e pelas páginas de cada conteúdo.
-- **[Trilhas](trilhas/index.md)** — siga as revisões A1, A2 e A3, os exercícios e as notas de aula na ordem original.
-- **[Semestres](semestres/index.md)** — encontre os materiais do 3º ao 6º semestre, além de Eletivas e Mestrado.
-- **[Catálogo de conteúdos](assuntos/catalogo.md)** — consulte o índice completo de páginas por disciplina.
-- **[Guias](guias/index.md)** — consulte orientações para estudar e participar da wiki.
-- **[Como contribuir](guias/como-contribuir.md)** — aprenda a criar uma página e conectar seu conteúdo ao restante da wiki.
+- **[[assuntos/index|Assuntos]]** — navegue pelas disciplinas e pelas páginas de cada conteúdo.
+- **[[trilhas/index|Trilhas]]** — siga as revisões A1, A2 e A3, os exercícios e as notas de aula na ordem original.
+- **[[semestres/index|Semestres]]** — encontre os materiais do 3º ao 6º semestre, além de Eletivas e Mestrado.
+- **[[assuntos/catalogo|Catálogo de conteúdos]]** — consulte o índice completo de páginas por disciplina.
+- **[[guias/index|Guias]]** — consulte orientações para estudar e participar da wiki.
+- **[[guias/como-contribuir|Como contribuir]]** — aprenda a criar uma página e conectar seu conteúdo ao restante da wiki.
 
 ## O acervo
 

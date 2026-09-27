@@ -7,7 +7,7 @@ nav_exclude: true
 
 # Disciplinas
 
-O catálogo de disciplinas está em **[Assuntos](../assuntos/index.md)**. Cada disciplina reúne páginas de conteúdo e links para suas trilhas.
+O catálogo de disciplinas está em **[[../assuntos/index|Assuntos]]**. Cada disciplina reúne páginas de conteúdo e links para suas trilhas.
 
 ## Como organizar uma disciplina
 
@@ -22,8 +22,8 @@ Quando o conteúdo crescer, podemos dividi-lo em páginas por assunto e manter u
 
 ## Adicione a primeira página
 
-Copie o [modelo de página](../guias/modelo-de-pagina.md), salve o novo arquivo na pasta da disciplina dentro de `assuntos/` e acrescente um link no índice correspondente. Consulte [como contribuir](../guias/como-contribuir.md) para os detalhes.
+Copie o [[../guias/modelo-de-pagina|modelo de página]], salve o novo arquivo na pasta da disciplina dentro de `assuntos/` e acrescente um link no índice correspondente. Consulte [[../guias/como-contribuir|como contribuir]] para os detalhes.
 
-[Voltar ao início](../index.md)
+[[../index|Voltar ao início]]
 
    
