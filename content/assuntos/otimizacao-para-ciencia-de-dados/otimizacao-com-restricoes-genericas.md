@@ -47,7 +47,7 @@ Dado o Lagrangeano de uma função $f$, temos que o gradiente do lagrangeano **s
 
 ## As generalizações do KKT
 
-Agora queremos generalizar totalmente o KKT, então vamos aos poucos. Lembre que, até que falemos o contrário, estamos considerando o problema [\[optimization-with-generic-restrictions\]](#optimization-with-generic-restrictions)
+Agora queremos generalizar totalmente o KKT, então vamos aos poucos. Lembre que, até que falemos o contrário, estamos considerando o [problema com restrições genéricas](#optimization-with-generic-restrictions)
 
 Antes de entrarmos diretamente no teorema KKT generalizado, vamos agora fazer uma definição que tem uma razão matemática, mas acaba por nos ajudar em alguns casos. Essa definição evita condições redundantes no nosso problema, ja que elas podem acabar nos atrapalhando. Faremos um exemplo para mostrar essa ajuda
 
@@ -63,7 +63,7 @@ Definição feita, vamos enunciar o novo teorema KKT
 
 **Teorema: KKT**
 
-Se $x^{\ast}$ é um ponto de mínimo local de $f(x)$ no problema [\[optimization-with-generic-restrictions\]](#optimization-with-generic-restrictions) e a [\[licq\]](#licq) é satisfeita em $x^{\ast}$, isso implica que: $$\begin{array}{r} \exists\lambda_{1},\ldots,\lambda_{m} \geq 0,\ \exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}} \\ \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) = 0 \\ \lambda_{i}g_{i}\left( x^{\ast} \right) = 0\text{\quad\quad}i \in \lbrack m\rbrack \\ g_{i}\left( x^{\ast} \right) \leq 0\text{\quad\quad}i \in \lbrack m\rbrack \\ h_{j}\left( x^{\ast} \right) = 0\text{\quad\quad}j \in \lbrack p\rbrack \end{array}$$
+Se $x^{\ast}$ é um ponto de mínimo local de $f(x)$ no [problema com restrições genéricas](#optimization-with-generic-restrictions) e a [condição LICQ](#licq) é satisfeita em $x^{\ast}$, isso implica que: $$\begin{array}{r} \exists\lambda_{1},\ldots,\lambda_{m} \geq 0,\ \exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}} \\ \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) = 0 \\ \lambda_{i}g_{i}\left( x^{\ast} \right) = 0\text{\quad\quad}i \in \lbrack m\rbrack \\ g_{i}\left( x^{\ast} \right) \leq 0\text{\quad\quad}i \in \lbrack m\rbrack \\ h_{j}\left( x^{\ast} \right) = 0\text{\quad\quad}j \in \lbrack p\rbrack \end{array}$$
 
 **Exemplo: Utilidade da LICQ**
 
@@ -73,9 +73,9 @@ Agora que vimos esses teoremas e condições, vamos fazer uma definição para f
 
 **Definição: Ponto KKT**
 
-Considere o problema [\[optimization-with-generic-restrictions\]](#optimization-with-generic-restrictions), onde $f$, $g_{1}$, …, $g_{m}$, $h_{1}$, …, $h_{p}$ são continuamente diferenciáveis no ${\mathbb{R}}^{n}$. Um ponto $x^{\ast}$ viável, ou seja, que satisfaz as condições do cojunto viável, é chamado de **ponto KKT** quando $\exists\lambda_{1},\ldots,\lambda_{m} \geq 0$ e $\exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}}$ tais que: $$\begin{aligned} \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) & = 0 \\ \lambda_{i}g_{i\left( x^{\ast} \right)} & = 0\text{\quad\quad}i \in \lbrack m\rbrack \end{aligned}$$
+Considere o [problema com restrições genéricas](#optimization-with-generic-restrictions), onde $f$, $g_{1}$, …, $g_{m}$, $h_{1}$, …, $h_{p}$ são continuamente diferenciáveis no ${\mathbb{R}}^{n}$. Um ponto $x^{\ast}$ viável, ou seja, que satisfaz as condições do cojunto viável, é chamado de **ponto KKT** quando $\exists\lambda_{1},\ldots,\lambda_{m} \geq 0$ e $\exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}}$ tais que: $$\begin{aligned} \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) & = 0 \\ \lambda_{i}g_{i\left( x^{\ast} \right)} & = 0\text{\quad\quad}i \in \lbrack m\rbrack \end{aligned}$$
 
-Isso facilita um pouco a terminologia pois podemos resumir o [\[generic-kkt\]](#generic-kkt) em dizer que um ponto de LICQ não pode ser um ponto de mínimo se ele não for KKT
+Isso facilita um pouco a terminologia pois podemos resumir o [teorema KKT](#generic-kkt) em dizer que um ponto de LICQ não pode ser um ponto de mínimo se ele não for KKT
 
 <a id="caso-convexo"></a>
 <a id="secao-24"></a>
@@ -88,9 +88,9 @@ Vale ressaltar também que $h_{j}$ são **afins**
 
 **Teorema: KKT Convexo**
 
-Se $x^{\ast}$ é um ponto de mínimo local de $f$ dado o problema [\[optimization-with-generic-convex-restrictions\]](#optimization-with-generic-convex-restrictions) e a [\[licq\]](#licq) é satisfeita em $x^{\ast}$, então $x^{\ast}$ é uma solução do problema se, e somente se: $$\begin{array}{r} \exists\lambda_{1},\ldots,\lambda_{m} \geq 0,\ \exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}} \\ \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) = 0 \\ \lambda_{i}g_{i}\left( x^{\ast} \right) = 0\text{\quad\quad}i \in \lbrack m\rbrack \\ g_{i}\left( x^{\ast} \right) \leq 0\text{\quad\quad}i \in \lbrack m\rbrack \\ h_{j}\left( x^{\ast} \right) = 0\text{\quad\quad}j \in \lbrack p\rbrack \end{array}$$
+Se $x^{\ast}$ é um ponto de mínimo local de $f$ dado o [problema convexo com restrições genéricas](#optimization-with-generic-convex-restrictions) e a [condição LICQ](#licq) é satisfeita em $x^{\ast}$, então $x^{\ast}$ é uma solução do problema se, e somente se: $$\begin{array}{r} \exists\lambda_{1},\ldots,\lambda_{m} \geq 0,\ \exists\mu_{1},\ldots,\mu_{p} \in {\mathbb{R}} \\ \nabla f\left( x^{\ast} \right) + \sum_{i = 1}^{m}\lambda_{i}\nabla g_{i}\left( x^{\ast} \right) + \sum_{j = 1}^{p}\mu_{j}\nabla h_{j}\left( x^{\ast} \right) = 0 \\ \lambda_{i}g_{i}\left( x^{\ast} \right) = 0\text{\quad\quad}i \in \lbrack m\rbrack \\ g_{i}\left( x^{\ast} \right) \leq 0\text{\quad\quad}i \in \lbrack m\rbrack \\ h_{j}\left( x^{\ast} \right) = 0\text{\quad\quad}j \in \lbrack p\rbrack \end{array}$$
 
-Show! Inclusive, por conta que o nosso problema é convexo, podemos trocar a necessidade do LICQ ([\[licq\]](#licq)) por uma condição um pouco mais fácil
+Show! Inclusive, por conta que o nosso problema é convexo, podemos trocar a necessidade do LICQ ([condição LICQ](#licq)) por uma condição um pouco mais fácil
 
 <a id="slater-condition"></a>
 
@@ -104,7 +104,7 @@ Ou seja, essa condição é satisfeita quando $x^{\ast}$ é um ponto viável (De
 
 **Teorema: KKT e Slater**
 
-Se $x^{\ast}$ é mínimo local de $f(x)$ (Nas restrições $g_{i}(x) \leq 0$ e $h_{j}(x) = 0$ sendo funções continuamente diferenciáveis e convexas) e $x^{\ast}$ satisfaz [\[slater-condition\]](#slater-condition), então $x^{\ast}$ é ponto KKT (A volta não vale)
+Se $x^{\ast}$ é mínimo local de $f(x)$ (Nas restrições $g_{i}(x) \leq 0$ e $h_{j}(x) = 0$ sendo funções continuamente diferenciáveis e convexas) e $x^{\ast}$ satisfaz [condição de Slater](#slater-condition), então $x^{\ast}$ é ponto KKT (A volta não vale)
 
 Porém, como falei anteriormente, não faz sentido falarmos de funções convexas de igualdade ($h_{j}(x) = 0$) que **não são afins**, isso nos permite reescrever o problema de uma forma interessante: $$\begin{array}{r} \min\limits_{x}f(x) \\ g_{i}(x) \leq 0\text{\quad\quad}i \in \lbrack m\rbrack \\ h_{j}(x) = 0\text{\quad\quad}j \in \lbrack p\rbrack \\ s_{k}(x) = 0\text{\quad\quad}k \in \lbrack q\rbrack \\ \text{Onde }f,\ g_{i}\text{ são convexas e }h_{j},\ s_{k}\text{ são afins } \end{array}$$<a id="optimization-with-linear-and-generic-conditions"></a>
 
@@ -114,15 +114,15 @@ Então podemos adaptar a condição de slater:
 
 Dizemos que a condição de Slater é satisfeita para as funções $g_{1},\ldots,g_{m}$ (convexas) e $h_{1},\ldots,h_{p}$ e $s_{1},\ldots,s_{q}$ (afins) quando: $$\begin{array}{r} \exists\hat{x} \in {\mathbb{R}}^{n}\text{ tal que } \\ g_{i}\left( \hat{x} \right) < 0,\ \forall i \in \lbrack m\rbrack \\ h_{j}\left( \hat{x} \right) \leq 0,\ \forall j \in \lbrack p\rbrack \\ s_{k}\left( \hat{x} \right) = 0,\ \forall k \in \lbrack q\rbrack \end{array}$$
 
-De forma que o [\[kkt-and-slater\]](#kkt-and-slater) continua valendo. Vimos 3 tipos de condições diferentes! Que tal a gente refazer o nosso teorema de uma forma geral?
+De forma que o [teorema de KKT e Slater](#kkt-and-slater) continua valendo. Vimos 3 tipos de condições diferentes! Que tal a gente refazer o nosso teorema de uma forma geral?
 
 **Teorema: Final KKT**
 
-Dado o problema [\[optimization-with-generic-restrictions\]](#optimization-with-generic-restrictions), e seja $x^{\ast} \in C$ (Conjunto viável), temos 3 caracterizações:
+Dado o [problema com restrições genéricas](#optimization-with-generic-restrictions), e seja $x^{\ast} \in C$ (Conjunto viável), temos 3 caracterizações:
 
 1.  As restrições em $x^{\ast}$ são LICQ
 
-2.  Problema convexo [\[optimization-with-generic-convex-restrictions\]](#optimization-with-generic-convex-restrictions) + Condição de slater ([\[slater-condition\]](#slater-condition))
+2.  Problema convexo [problema convexo com restrições genéricas](#optimization-with-generic-convex-restrictions) + Condição de slater ([condição de Slater](#slater-condition))
 
 Se $x^{\ast}$ ou o problema satisfaz qualquer uma dessas condições, então eu posso dividir meu problema em algumas condições:
 

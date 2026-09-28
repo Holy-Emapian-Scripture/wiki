@@ -125,7 +125,7 @@ Que é justamente a matriz que tinhamos antes, então a fatoração está corret
 
 **Teorema: Equação Secular**
 
-Queremos achar os autovalores de $D + ww^{T}$ onde $D$ é uma matriz diagonal com entradas distintas ([\[tridiagonal-distinct-eigenvalues\]](#tridiagonal-distinct-eigenvalues)), então esses autovalores são as raízes da função $$f(\lambda) = 1 + \sum_{j = 1}^{m}\frac{w_{j}^{2}}{d_{j} - \lambda}$$ Onde $d_{j}$ são as entradas de $D$ e $w_{j}$ as entradas de $w$
+Queremos achar os autovalores de $D + ww^{T}$ onde $D$ é uma matriz diagonal com entradas distintas ([teorema dos autovalores distintos de matrizes tridiagonais](#tridiagonal-distinct-eigenvalues)), então esses autovalores são as raízes da função $$f(\lambda) = 1 + \sum_{j = 1}^{m}\frac{w_{j}^{2}}{d_{j} - \lambda}$$ Onde $d_{j}$ são as entradas de $D$ e $w_{j}$ as entradas de $w$
 
 **Demonstração**
 

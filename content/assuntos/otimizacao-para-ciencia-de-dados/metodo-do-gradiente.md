@@ -87,7 +87,7 @@ Suponha que $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é $L$-suave. Tome qua
 
 **Demonstração**
 
-Sabemos que, dado $n$ pontos $x_{i}$, a média $\frac{1}{n}\sum_{i = 1}^{n}x_{i} \in \left\lbrack \min(x_{i}),\max(x_{i}) \right\rbrack$, então a desigualdade inicial já está provada. Vamos provar a segunda. Usando a equação [\[iterated-aproximation\]](#iterated-aproximation), temos que: $$\alpha\left( 1 - \frac{\alpha L}{2} \right)\|\nabla f\left( x^{(t)} \right)\|^{2} \leq f\left( x^{(t)} \right) - f\left( x^{(t + 1)} \right)$$ isso para todo $t \in \lbrack T\rbrack$, então vamos somar todos os termos para obter: $$\begin{aligned} \alpha\left( 1 - \frac{\alpha L}{2} \right)\sum_{t = 1}^{T}\|\nabla f\left( x^{(t)} \right)\|_{2}^{2} & \leq \sum_{t = 1}^{T}\left( f\left( x^{(t)} \right) - f\left( x^{(t + 1)} \right) \right) \\ & \leq f\left( x^{(1)} \right) - f\left( x^{(T + 1)} \right) \\ & = f\left( x^{(1)} \right) - f^{\ast} + f^{\ast} + f\left( x^{(T + 1)} \right) \\ & \leq f\left( x^{(1)} \right) - f^{\ast} \end{aligned}$$ A primeria desigualdade eu fiz uma soma telescópica, depois eu somei $0$ ($f^{\ast} - f^{\ast}$) e, como $f^{\ast}$ é o valor mínimo da função, com certeza subtrair a parte que eu somei $f^{\ast}$ vai dar um valor maior, então eu obtenho o resultado do enunciado do teorema dividindo tudo por $\alpha(1\frac{- (\alpha L)}{2})T$
+Sabemos que, dado $n$ pontos $x_{i}$, a média $\frac{1}{n}\sum_{i = 1}^{n}x_{i} \in \left\lbrack \min(x_{i}),\max(x_{i}) \right\rbrack$, então a desigualdade inicial já está provada. Vamos provar a segunda. Usando a equação [aproximação iterativa](#iterated-aproximation), temos que: $$\alpha\left( 1 - \frac{\alpha L}{2} \right)\|\nabla f\left( x^{(t)} \right)\|^{2} \leq f\left( x^{(t)} \right) - f\left( x^{(t + 1)} \right)$$ isso para todo $t \in \lbrack T\rbrack$, então vamos somar todos os termos para obter: $$\begin{aligned} \alpha\left( 1 - \frac{\alpha L}{2} \right)\sum_{t = 1}^{T}\|\nabla f\left( x^{(t)} \right)\|_{2}^{2} & \leq \sum_{t = 1}^{T}\left( f\left( x^{(t)} \right) - f\left( x^{(t + 1)} \right) \right) \\ & \leq f\left( x^{(1)} \right) - f\left( x^{(T + 1)} \right) \\ & = f\left( x^{(1)} \right) - f^{\ast} + f^{\ast} + f\left( x^{(T + 1)} \right) \\ & \leq f\left( x^{(1)} \right) - f^{\ast} \end{aligned}$$ A primeria desigualdade eu fiz uma soma telescópica, depois eu somei $0$ ($f^{\ast} - f^{\ast}$) e, como $f^{\ast}$ é o valor mínimo da função, com certeza subtrair a parte que eu somei $f^{\ast}$ vai dar um valor maior, então eu obtenho o resultado do enunciado do teorema dividindo tudo por $\alpha(1\frac{- (\alpha L)}{2})T$
 
 Por que esse teorema mostra que, independentemente do lugar, o algoritmo converge para um ponto estacionário? Ele ta me dizendo isso daqui: $$\min\limits_{t \in \lbrack T\rbrack}\|\nabla f\left( x^{(t)} \right)\|_{2}^{2} = O\left( \frac{1}{T} \right)$$ Ou seja, o mínimo **converge para $0$** conforme $T \rightarrow \infty$ **independentemente do ponto inicial $x^{(0)}$**
 
@@ -121,7 +121,7 @@ então podemos considerar um novo algoritmo
 
 *Figura 3. Gradient Descent com Direção de Descida Arbitrária*
 
-Podemos provar, analogamente ao [\[gradient-descent-convergence\]](#gradient-descent-convergence), que o algoritmo converge para um ponto estacionário
+Podemos provar, analogamente ao [teorema de convergência do gradiente descendente](#gradient-descent-convergence), que o algoritmo converge para um ponto estacionário
 
 <a id="caso-convexo"></a>
 <a id="secao-4"></a>
@@ -132,7 +132,7 @@ Antes, não assumimos nada além da suavidade da função, agora vamos mostrar q
 
 Pelas propriedades da [convexidade](otimizacao-convexa.md#secao-10): $$\left( x^{\ast} - x^{(t)} \right)^{T}\nabla f\left( x^{(t)} \right) \leq f\left( x^{\ast} \right) - f\left( x^{(t)} \right)$$
 
-e pelo que vimos na equação [\[iterated-aproximation\]](#iterated-aproximation), se $\alpha \in \left( 0,\frac{2}{L} \right)$, podemos chegar que: $$\| x^{(t + 1)} - x^{\ast}\|_{2}^{2} \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} - \alpha\left( 2 - \frac{1}{1\frac{- (\alpha L)}{2}} \right)\left( f\left( x^{(t)} \right) - f^{\ast} \right)$$
+e pelo que vimos na equação [aproximação iterativa](#iterated-aproximation), se $\alpha \in \left( 0,\frac{2}{L} \right)$, podemos chegar que: $$\| x^{(t + 1)} - x^{\ast}\|_{2}^{2} \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} - \alpha\left( 2 - \frac{1}{1\frac{- (\alpha L)}{2}} \right)\left( f\left( x^{(t)} \right) - f^{\ast} \right)$$
 
 ou seja, a distância do próximo iterado pro ponto ótimo é menor a distância atual, menos um termo proporcional a distância dos resultados de $x^{(t)}$ e do ponto ótimo. Vamos usar isso para provar a convergência global do resultado
 

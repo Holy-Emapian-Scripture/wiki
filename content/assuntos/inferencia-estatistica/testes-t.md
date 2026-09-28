@@ -42,7 +42,7 @@ O espaço paramétrico $\Omega$ suprime todo vetor bidimensiona $\left( \mu,\sig
 
 **Exemplo**
 
-No [\[hospital-example-t-test\]](#hospital-example-t-test), se a gente quisesse um teste de tamanho $\alpha_{0}$, a gente poderia usar o teste $t$ que rejeita $H_{0}$ se a estatística $U$ for menor ou igual a um $c$ (escolhemos $c$ de forma a fazer o teste ter tamanho $\alpha_{0}$)
+No [exemplo dos hospitais](#hospital-example-t-test), se a gente quisesse um teste de tamanho $\alpha_{0}$, a gente poderia usar o teste $t$ que rejeita $H_{0}$ se a estatística $U$ for menor ou igual a um $c$ (escolhemos $c$ de forma a fazer o teste ter tamanho $\alpha_{0}$)
 
 <a id="propriedades-dos-testes-t"></a>
 <a id="secao-30"></a>
@@ -51,7 +51,7 @@ No [\[hospital-example-t-test\]](#hospital-example-t-test), se a gente quisesse 
 
 **Teorema: Nível e Viés dos testes $t$**
 
-Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra aleatória de uma distribuição normal $X \sim N\left( \mu,\sigma^{2} \right)$ e $U$ ser a estatística definida anteriormente. Seja também $c$ o $1 - \alpha_{0}$ quantil da distribuição $t$ com $n - 1$ graus de liberdade. Seja $\delta$ o procedimento que rejeita $H_{0}$ na equação [\[t-test-mu-hypothesis-1\]](#t-test-mu-hypothesis-1) se $U \geq c$. A função de poder $\pi(\mu,\sigma^{2}\vert \delta)$ tem as seguintes propriedades:
+Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra aleatória de uma distribuição normal $X \sim N\left( \mu,\sigma^{2} \right)$ e $U$ ser a estatística definida anteriormente. Seja também $c$ o $1 - \alpha_{0}$ quantil da distribuição $t$ com $n - 1$ graus de liberdade. Seja $\delta$ o procedimento que rejeita $H_{0}$ na [formulação unilateral à direita do teste $t$](#t-test-mu-hypothesis-1) se $U \geq c$. A função de poder $\pi(\mu,\sigma^{2}\vert \delta)$ tem as seguintes propriedades:
 
 1.  $\pi(\mu,\sigma^{2}\vert \delta) = \alpha_{0}$ quando $\mu = \mu_{0}$
 
@@ -73,7 +73,7 @@ Para provar (ii) e (iii), defina: $$U^{\ast} = \sqrt{n} \cdot \frac{{\overline{X
 
 **Corolário**
 
-Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra aleatória de uma distribuição normal $X \sim N\left( \mu,\sigma^{2} \right)$ e $U$ ser a estatística definida anteriormente. Seja também $c$ o $1 - \alpha_{0}$ quantil da distribuição $t$ com $n - 1$ graus de liberdade. Seja $\delta$ o procedimento que rejeita $H_{0}$ na equação [\[t-test-mu-hypothesis-2\]](#t-test-mu-hypothesis-2) se $U \leq c$. A função de poder $\pi(\mu,\sigma^{2}\vert \delta)$ tem as seguintes propriedades:
+Seja $\underline{X} = \left( X_{1},\ldots,X_{n} \right)$ uma amostra aleatória de uma distribuição normal $X \sim N\left( \mu,\sigma^{2} \right)$ e $U$ ser a estatística definida anteriormente. Seja também $c$ o $1 - \alpha_{0}$ quantil da distribuição $t$ com $n - 1$ graus de liberdade. Seja $\delta$ o procedimento que rejeita $H_{0}$ na [formulação unilateral à esquerda do teste $t$](#t-test-mu-hypothesis-2) se $U \leq c$. A função de poder $\pi(\mu,\sigma^{2}\vert \delta)$ tem as seguintes propriedades:
 
 1.  $\pi(\mu,\sigma^{2}\vert \delta) = \alpha_{0}$ quando $\mu = \mu_{0}$
 
@@ -89,17 +89,17 @@ Além disso, o teste $\delta$ tem tamanho $\alpha_{0}$ e é não-viezado
 
 **Exemplo**
 
-Para o [\[hospital-example-t-test\]](#hospital-example-t-test), se quiséssemos um teste de nível de significância $\alpha_{0} = 0.1$, então pelas propriedades, rejeitariamos $H_{0}$ se $U \leq c$ onde $c = T_{n - 1}^{- 1}(0.1)$.
+Para o [exemplo dos hospitais](#hospital-example-t-test), se quiséssemos um teste de nível de significância $\alpha_{0} = 0.1$, então pelas propriedades, rejeitariamos $H_{0}$ se $U \leq c$ onde $c = T_{n - 1}^{- 1}(0.1)$.
 
 Calcular $p$-valores para os testes $t$ é bem direto ao ponto!
 
 **Teorema: $p$-valores para testes $t$**
 
-Suponha que estamos testando ou as hipóteses da equação [\[t-test-mu-hypothesis-1\]](#t-test-mu-hypothesis-1) ou da [\[t-test-mu-hypothesis-2\]](#t-test-mu-hypothesis-2). Seja $u$ o valor observado da estatística $U$ e $T_{n - 1}( \cdot )$ a cdf da distribuição $t_{n - 1}$. Então o $p$-valor para as hipóteses da equação [\[t-test-mu-hypothesis-1\]](#t-test-mu-hypothesis-1) é $1 - T_{n - 1}(u)$ e para as hipóteses da equação [\[t-test-mu-hypothesis-2\]](#t-test-mu-hypothesis-2) é $T_{n - 1}(u)$
+Suponha que estamos testando ou as hipóteses da [formulação unilateral à direita do teste $t$](#t-test-mu-hypothesis-1) ou da [formulação unilateral à esquerda do teste $t$](#t-test-mu-hypothesis-2). Seja $u$ o valor observado da estatística $U$ e $T_{n - 1}( \cdot )$ a cdf da distribuição $t_{n - 1}$. Então o $p$-valor para as hipóteses da [formulação unilateral à direita do teste $t$](#t-test-mu-hypothesis-1) é $1 - T_{n - 1}(u)$ e para as hipóteses da [formulação unilateral à esquerda do teste $t$](#t-test-mu-hypothesis-2) é $T_{n - 1}(u)$
 
 **Demonstração**
 
-Seja $T_{n - 1}^{- 1}( \cdot )$ a função quantil da $t_{n - 1}$. Nós rejeitaríamos a hipótese na equação [\[t-test-mu-hypothesis-1\]](#t-test-mu-hypothesis-1) em um nível $\alpha_{0}$ se, e somente se $u \geq T_{n - 1}^{- 1}\left( 1 - \alpha_{0} \right)$, que é equivalente a $\alpha_{0} \geq 1 - T_{n - 1}(u)$. Similarmente, rejeitamos as hipóteses da equação [\[t-test-mu-hypothesis-2\]](#t-test-mu-hypothesis-2) se, e somente se $u \leq T_{n - 1}^{- 1}\left( \alpha_{0} \right)$, que é equivalente a $\alpha_{0} \geq T_{n - 1}(u)$
+Seja $T_{n - 1}^{- 1}( \cdot )$ a função quantil da $t_{n - 1}$. Nós rejeitaríamos a hipótese na [formulação unilateral à direita do teste $t$](#t-test-mu-hypothesis-1) em um nível $\alpha_{0}$ se, e somente se $u \geq T_{n - 1}^{- 1}\left( 1 - \alpha_{0} \right)$, que é equivalente a $\alpha_{0} \geq 1 - T_{n - 1}(u)$. Similarmente, rejeitamos as hipóteses da [formulação unilateral à esquerda do teste $t$](#t-test-mu-hypothesis-2) se, e somente se $u \leq T_{n - 1}^{- 1}\left( \alpha_{0} \right)$, que é equivalente a $\alpha_{0} \geq T_{n - 1}(u)$
 
 <a id="length-fibers-example"></a>
 
@@ -149,7 +149,7 @@ Suponha também que estamos interessados na função poder sob $H_{1}$ do teste 
 
 **Exemplo**
 
-Vamos retomar o [\[length-fibers-example\]](#length-fibers-example), mas agora vamos alterar as hipóteses para: $$H_{0}:\mu = 5.2,\text{\quad\quad}H_{1}:\mu \neq 5.2$$
+Vamos retomar o [exemplo do comprimento das fibras](#length-fibers-example), mas agora vamos alterar as hipóteses para: $$H_{0}:\mu = 5.2,\text{\quad\quad}H_{1}:\mu \neq 5.2$$
 
 Assumiremos novamente que os comprimentos de 15 fibras são medidos, e que o valor de $U$, calculado a partir dos valores observados, é 1,833. Testaremos as hipóteses ao nível de significância $\alpha_{0} = 0.05$.
 
@@ -157,7 +157,7 @@ Como $\alpha_{0} = 0.05$, nosso valor crítico será o quantil $1 - \frac{0.05}{
 
 Assim, o teste **t** especifica a rejeição de $H_{0}$ se $U \leq - 2.145$ ou se $U \geq 2.145$. Como $U = 1.833$, a hipótese $H_{0}$ **não** seria rejeitada.
 
-Os valores numéricos nos exemplos enfatizam a importância de decidir se a hipótese alternativa apropriada em um dado problema é unilateral (**one-sided**) ou bilateral (**two-sided**). Quando as hipóteses do [\[length-fibers-example\]](#length-fibers-example) foram testadas ao nível de significância $0.05$, a hipótese nula $H_{0}$, de que $\mu \leq 5.2$, foi rejeitada. Quando as hipóteses desse exemplo foram testadas ao mesmo nível de significância, utilizando os mesmos dados, a hipótese nula $H_{0}$, de que $\mu = 5.2$, não foi rejeitada.
+Os valores numéricos nos exemplos enfatizam a importância de decidir se a hipótese alternativa apropriada em um dado problema é unilateral (**one-sided**) ou bilateral (**two-sided**). Quando as hipóteses do [exemplo do comprimento das fibras](#length-fibers-example) foram testadas ao nível de significância $0.05$, a hipótese nula $H_{0}$, de que $\mu \leq 5.2$, foi rejeitada. Quando as hipóteses desse exemplo foram testadas ao mesmo nível de significância, utilizando os mesmos dados, a hipótese nula $H_{0}$, de que $\mu = 5.2$, não foi rejeitada.
 
 **Teorema: Função de poder de testes $t$ bilaterais**
 
@@ -194,7 +194,7 @@ Tirando a razão em ambos os casos mencionados anteriormente, temos que: $$\Lamb
 
 Agora, usamos seguinte relação: $$\sum_{i = 1}^{n}\left( x_{i} - \mu_{0} \right)^{2} = \sum_{i = 1}^{n}\left( x_{i} - {\overline{x}}_{n} \right)^{2} + {n\left( {\overline{x}}_{n} - \mu_{0} \right)}^{2}$$ para reescrever a parte de cima da estatística $\Lambda(\underline{x})$ como: $$\left\lbrack 1 + \frac{{n\left( {\overline{x}}_{n} - \mu_{0} \right)}^{2}}{\sum_{i = 1}^{n}\left( x_{i} - {\overline{x}}_{n} \right)^{2}} \right\rbrack^{- n/2}$$
 
-Se $u$ é o valor observado da estatística $U$ (Equação [\[u-statistic\]](#u-statistic)), então podemos checar que: $$\frac{{n\left( {\overline{x}}_{n} - \mu_{0} \right)}^{2}}{\sum_{i = 1}^{n}\left( x_{i} - {\overline{x}}_{n} \right)^{2}} = \frac{u^{2}}{n - 1}$$
+Se $u$ é o valor observado da estatística $U$ ([equação da estatística $U$](#u-statistic)), então podemos checar que: $$\frac{{n\left( {\overline{x}}_{n} - \mu_{0} \right)}^{2}}{\sum_{i = 1}^{n}\left( x_{i} - {\overline{x}}_{n} \right)^{2}} = \frac{u^{2}}{n - 1}$$
 
 Ou seja, segue que $\Lambda(\underline{x})$ é uma função **não-crescente** de $u$. Por isso, para $k < 1$, $\Lambda(\underline{x}) \leq k \Leftrightarrow u \geq c$ onde: $$c = \sqrt{(n - 1) \cdot \left( \left( \frac{1}{k} \right)^{2/n} - 1 \right)}$$ Segue então que o teste de razão de verossimilhança é um teste $t$
 

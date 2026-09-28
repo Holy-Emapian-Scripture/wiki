@@ -124,7 +124,7 @@ Um método muito usado é escolher $\alpha_{0} \in (0,1\rbrack$ tal que: $$\pi(\
 
 **Definição: Tamanho de um Teste**
 
-Um teste que satisfaz a equação [\[level\]](#level) é chamado de **teste de nível $\alpha_{0}$** e que o teste tem nível de significância $\alpha_{0}$. O tamanho $\alpha(\delta)$ de um teste $\delta$ é definido por: $$\alpha(\delta) = \sup\limits_{\theta \in \Omega_{0}}\pi(\theta\vert \delta)$$
+Um teste que satisfaz a equação [nível do teste](#level) é chamado de **teste de nível $\alpha_{0}$** e que o teste tem nível de significância $\alpha_{0}$. O tamanho $\alpha(\delta)$ de um teste $\delta$ é definido por: $$\alpha(\delta) = \sup\limits_{\theta \in \Omega_{0}}\pi(\theta\vert \delta)$$
 
 Ou seja, o tamanho de um teste é a maior probabilidade de cometermos um erro de **Tipo I** possível (já que fazemos o supremo dentre todos os valores de $\Omega_{0}$) e um teste ter nível de significância $\alpha_{0}$ significa que, independente de qual parâmetro de $H_{0}$ seja o verdadeiro da distribuição, a chance de cometermos um erro de **Tipo I** sempre será menor que $\alpha_{0}$
 

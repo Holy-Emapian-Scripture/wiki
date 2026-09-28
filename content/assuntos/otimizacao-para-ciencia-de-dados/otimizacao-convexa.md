@@ -107,7 +107,7 @@ Seja $f:C \subset {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ com $C$ convexa e $
 
 **Demonstração**
 
-Anáogo ao [\[gradient-inequality\]](#gradient-inequality)
+Anáogo à [desigualdade do gradiente](#gradient-inequality)
 
 ![Função $f(x,y) = 1.3x^{2} + 1.27y^{2}$ e um plano tangente à curva](assets/tangent-plane.png)
 
@@ -121,7 +121,7 @@ Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ uma função quadrática: $$f
 
 **Demonstração**
 
-A prova para o caso Pelo [\[gradient-inequality\]](#gradient-inequality) e sabendo que $\nabla f(x) = 2(Ax + b)$, temos que $f$ é convexa $\Leftrightarrow$ $$\forall x,y \in {\mathbb{R}}^{n},y^{T}Ay + 2b^{T}y + c \geq x^{T}Ax + 2b^{T}x + c + 2(Ax + b)^{T}(y - x)$$ Rearranjando, obtemos: $$\forall x,y \in {\mathbb{R}}^{n}(y - x)^{T}A(y - x) \geq 0 \Rightarrow A \succeq 0$$
+A prova para o caso Pela [desigualdade do gradiente](#gradient-inequality) e sabendo que $\nabla f(x) = 2(Ax + b)$, temos que $f$ é convexa $\Leftrightarrow$ $$\forall x,y \in {\mathbb{R}}^{n},y^{T}Ay + 2b^{T}y + c \geq x^{T}Ax + 2b^{T}x + c + 2(Ax + b)^{T}(y - x)$$ Rearranjando, obtemos: $$\forall x,y \in {\mathbb{R}}^{n}(y - x)^{T}A(y - x) \geq 0 \Rightarrow A \succeq 0$$
 
 **Teorema: Monotonicidade do gradiente**
 
@@ -129,9 +129,9 @@ Seja $f:C \subset {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ continuamente difer
 
 **Demonstração**
 
-$( \Longrightarrow )$ Assuma que $f$ é convexa sobre $C$. Por [\[gradient-inequality\]](#gradient-inequality): $$\begin{array}{r} f(x) \geq f(y) + \nabla{f(y)}^{T}(x - y) \\ f(y) \geq f(x) + \nabla{f(x)}^{T}(y - x) \end{array}$$ Somando ambas as igualdades, obtemos [\[gradient-monotonicity-equation\]](#gradient-monotonicity-equation)
+$( \Longrightarrow )$ Assuma que $f$ é convexa sobre $C$. Pela [desigualdade do gradiente](#gradient-inequality): $$\begin{array}{r} f(x) \geq f(y) + \nabla{f(y)}^{T}(x - y) \\ f(y) \geq f(x) + \nabla{f(x)}^{T}(y - x) \end{array}$$ Somando ambas as igualdades, obtemos [equação de monotonicidade do gradiente](#gradient-monotonicity-equation)
 
-$( \Longleftarrow )$ Suponha que [\[gradient-monotonicity-equation\]](#gradient-monotonicity-equation) seja válida e sejam $x,y \in C$, vamos definir a função: $$g(t) ≔ f\left( x + t(y - x) \right),\text{\quad\quad}t \in \lbrack 0,1\rbrack$$ Pelo Teorema Fundamental do Cálculo: $$\begin{array}{r} f(y) = g(1) = g(0) + \int_{0}^{1}g'(t)dt \\ = f(x) + \int_{0}^{1}(y - x)^{T}\nabla f\left( x - t(y - x) \right)d \\ = f(x) + (y - x)^{T}\nabla f(x) + \int_{0}^{1}(y - x)^{T}\left( \nabla f\left( x - t(y - x) \right) - \nabla f(x) \right)d \\ = f(x) + (y - x)^{T}\nabla f(x) + \frac{1}{t}\int_{0}^{1}t(y - x)^{T}\left( \nabla f\left( x - t(y - x) \right) - \nabla f(x) \right)d \\ \geq f(x) + (y - x)^{T}\nabla f(x) \end{array}$$ Onde utilizamos [\[gradient-monotonicity-equation\]](#gradient-monotonicity-equation) na última desigualdade
+$( \Longleftarrow )$ Suponha que [equação de monotonicidade do gradiente](#gradient-monotonicity-equation) seja válida e sejam $x,y \in C$, vamos definir a função: $$g(t) ≔ f\left( x + t(y - x) \right),\text{\quad\quad}t \in \lbrack 0,1\rbrack$$ Pelo Teorema Fundamental do Cálculo: $$\begin{array}{r} f(y) = g(1) = g(0) + \int_{0}^{1}g'(t)dt \\ = f(x) + \int_{0}^{1}(y - x)^{T}\nabla f\left( x - t(y - x) \right)d \\ = f(x) + (y - x)^{T}\nabla f(x) + \int_{0}^{1}(y - x)^{T}\left( \nabla f\left( x - t(y - x) \right) - \nabla f(x) \right)d \\ = f(x) + (y - x)^{T}\nabla f(x) + \frac{1}{t}\int_{0}^{1}t(y - x)^{T}\left( \nabla f\left( x - t(y - x) \right) - \nabla f(x) \right)d \\ \geq f(x) + (y - x)^{T}\nabla f(x) \end{array}$$ Onde utilizamos [equação de monotonicidade do gradiente](#gradient-monotonicity-equation) na última desigualdade
 
 <a id="secao-12"></a>
 
@@ -147,9 +147,9 @@ $( \Longleftarrow )$ Suponha que $\nabla^{2}f(x) \succeq 0$ para todo $x \in C$.
 
 Como $\nabla^{2}f(\xi) \succeq 0$, segue que $$f(y) = f(x) + \nabla f(x)^{T}(y - x)$$
 
-Como o argumento vale para todo $x,y \in C$, provamos que $f$ e convexa em $C$ pelo [\[gradient-inequality\]](#gradient-inequality).
+Como o argumento vale para todo $x,y \in C$, provamos que $f$ e convexa em $C$ pela [desigualdade do gradiente](#gradient-inequality).
 
-$( \Longrightarrow )$ Suponha que $f$ é convexa em $C$. Sejam $x \in C$ e $d \in {\mathbb{R}}^{n}$ com $\| d\| = 1$. Sendo C aberto, existe $\varepsilon > 0$ tal que $x + \lambda d \in C$ para todo $0 < \lambda < \varepsilon$. Para tal $\lambda$, segue do [\[gradient-inequality\]](#gradient-inequality) $$f(x + \lambda d) \geq f(x) + \lambda\nabla f(x)^{T}d$$
+$( \Longrightarrow )$ Suponha que $f$ é convexa em $C$. Sejam $x \in C$ e $d \in {\mathbb{R}}^{n}$ com $\| d\| = 1$. Sendo C aberto, existe $\varepsilon > 0$ tal que $x + \lambda d \in C$ para todo $0 < \lambda < \varepsilon$. Para tal $\lambda$, segue da [desigualdade do gradiente](#gradient-inequality) $$f(x + \lambda d) \geq f(x) + \lambda\nabla f(x)^{T}d$$
 
 Além disso, pelo teorema de aproximação quadrática: $$f(x + \lambda d) = f(x) + \lambda\nabla{f(x)}^{T}d + \frac{\lambda^{2}}{2}d^{T}\nabla^{2}f(x)d + o\left( \lambda^{2}\| d\|^{2} \right)$$
 
@@ -250,7 +250,7 @@ Seja $f:C \subset {\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ continuamente difer
 
 **Demonstração**
 
-Precisamos provar apenas $( \Longleftarrow )$ do [\[first-order-condition-convex-set\]](#first-order-condition-convex-set). Seja $x^{\ast} \in C$ um ponto estacionário de $f$ em $C$. Obtemos que, para todo $x \in C$, $$f(x) \geq f\left( x^{\ast} \right) + \nabla f\left( x^{\ast} \right)^{T}\left( x - x^{\ast} \right) \geq f\left( x^{\ast} \right)$$ onde a primeira desigualdade segue da desigualdade do gradiente ([\[gradient-inequality\]](#gradient-inequality)) e a segunda desigualdade segue de que $x^{\ast}$ é ponto estacionário. Sendo que $$\forall x \in C,\ f(x) \geq f\left( x^{\ast} \right)$$ segue que $x^{\ast} \in C$ é ponto de mínimo global de $f$ em $C$.
+Precisamos provar apenas $( \Longleftarrow )$ da [condição de primeira ordem em conjuntos convexos](#first-order-condition-convex-set). Seja $x^{\ast} \in C$ um ponto estacionário de $f$ em $C$. Obtemos que, para todo $x \in C$, $$f(x) \geq f\left( x^{\ast} \right) + \nabla f\left( x^{\ast} \right)^{T}\left( x - x^{\ast} \right) \geq f\left( x^{\ast} \right)$$ onde a primeira desigualdade segue da desigualdade do gradiente ([desigualdade do gradiente](#gradient-inequality)) e a segunda desigualdade segue de que $x^{\ast}$ é ponto estacionário. Sendo que $$\forall x \in C,\ f(x) \geq f\left( x^{\ast} \right)$$ segue que $x^{\ast} \in C$ é ponto de mínimo global de $f$ em $C$.
 
 ------------------------------------------------------------------------
 

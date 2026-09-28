@@ -364,9 +364,9 @@ Essa abordagem de implementação elimina a necessidade de ponteiros para o pai 
 
 *Figura 26. Exemplo de HEAP*
 
-![Forma da [\[heap-example\]](#heap-example) como vetor](assets/heap-array-example.png)
+![Representação de um heap como vetor](assets/heap-array-example.png)
 
-*Figura 27. Forma da [\[heap-example\]](#heap-example) como vetor*
+*Figura 27. Representação do [exemplo de heap](#heap-example) como vetor*
 
 Podemos ordenar uma árvore em um heap caso as propriedades do vetor não sejam satisfeitas. Para isso, utilizamos o algoritmo **max-heapify**
 

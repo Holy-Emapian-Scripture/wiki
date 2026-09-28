@@ -67,7 +67,14 @@ Combina as duas soluções, ponderando cada pixel de acordo com sua classe e apl
 
 ## Loss Function for Regression
 
-A saída por pixel pode não necessariamente ser um label de classe, mas um valor numérico. Por exemplo, se a rede estiver tentando estimar a profundidade aplicada àquela foto, então utilizamos as losses $L_{1}$ e $L_{2}$ $$\begin{aligned} L_{1} & = \frac{1}{N}\sum_{i = 1}^{N}\vert y_{i} - t_{i}\vert  \\ L_{2} & = \frac{1}{N}\sum_{i = 1}^{N}\left( y_{i} - t_{i} \right)^{2} \end{aligned}$$
+A saída por pixel pode não necessariamente ser um label de classe, mas um valor numérico. Por exemplo, se a rede estiver tentando estimar a profundidade aplicada àquela foto, então utilizamos as losses $L_{1}$ e $L_{2}$ 
+
+$$\begin{aligned} 
+
+    L_{1} & = \frac{1}{N} \sum_{i = 1}^{N}\vert y_{i} - t_{i}\vert  \\ 
+    L_{2} & = \frac{1}{N}\sum_{i = 1}^{N}\left( y_{i} - t_{i} \right)^{2} 
+    
+\end{aligned}$$
 
 onde $y_{i}$ é o valor predito pelo modelo e $t_{i}$ é o valor verdadeiro.
 

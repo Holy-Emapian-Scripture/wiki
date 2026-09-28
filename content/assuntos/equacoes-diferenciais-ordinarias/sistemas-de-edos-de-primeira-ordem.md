@@ -33,7 +33,7 @@ $$Ax = x',A \in {\mathbb{R}}^{n \times n},x \in {\mathbb{R}}^{n}$$ <a id="system
 
 Têm solução constante em $x' = 0$.
 
-Fazendo uma analogia em $\mathbb{R}$, temos $x' = ax \Rightarrow x = e^{at}x_{0}$. O mesmo vale para exponenciais de matrizes. Buscamos então soluções da [\[system_ode_first_order\]](#system_ode_first_order) da forma:
+Fazendo uma analogia em $\mathbb{R}$, temos $x' = ax \Rightarrow x = e^{at}x_{0}$. O mesmo vale para exponenciais de matrizes. Buscamos então soluções do [sistema de EDOs de primeira ordem](#system_ode_first_order) da forma:
 
 $$
 x(t) = ve^{\lambda t},v \in {\mathbb{R}}^{n},\lambda \in {\mathbb{R}}
@@ -57,13 +57,13 @@ $$
 
 ### Autovalores Reais e Distintos
 
-Então seja $A \in {\mathbb{R}}^{2 \times 2}$, e $v_{i},\lambda_{i}$ o $i$-ésimo autovetor e autovalor de $A$, respectivamente. A solução geral da [\[system_ode_first_order\]](#system_ode_first_order) é:
+Então seja $A \in {\mathbb{R}}^{2 \times 2}$, e $v_{i},\lambda_{i}$ o $i$-ésimo autovetor e autovalor de $A$, respectivamente. A solução geral do [sistema de EDOs de primeira ordem](#system_ode_first_order) é:
 
 $$x(t) = c_{1}v_{1}e^{\lambda_{1}t} + c_{2}v_{2}e^{\lambda_{2}t}$$ <a id="general_solution_system"></a>
 
 Onde $c_{i}$ é determinado pela condição inicial $x(0) = x_{0}$.
 
-A Bebel não gosta da notação proposta na [\[general_solution_system\]](#general_solution_system), então vamos escrever a solução do jeito da patroa:
+A Bebel não gosta da notação proposta na [solução geral do sistema](#general_solution_system), então vamos escrever a solução do jeito da patroa:
 
 $$x(t) = X\Lambda X^{- 1} \cdot x_{0}$$ <a id="equation_bebel"></a>
 
@@ -77,7 +77,7 @@ $$
 
 ### Autovalores Reais Repetidos
 
-Seja $A \in {\mathbb{R}}^{2 \times 2}$ com autovalor $\lambda$ de multiplicidade $2$. Seja $v_{1}$ um autovetor associado. Para montar a solução da forma [\[equation_bebel\]](#equation_bebel), precisamos de *2* autovetores. Vamos usar a matriz:
+Seja $A \in {\mathbb{R}}^{2 \times 2}$ com autovalor $\lambda$ de multiplicidade $2$. Seja $v_{1}$ um autovetor associado. Para montar a solução da forma [equação da solução do sistema](#equation_bebel), precisamos de *2* autovetores. Vamos usar a matriz:
 
 $$
 B = \begin{pmatrix} \lambda & t \\ 0 & \lambda \end{pmatrix}

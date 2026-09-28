@@ -68,9 +68,9 @@ Vale ressaltar que funções subdiferenciáveis podem não ser suaves. E por que
 
 *Figura 4. Método do Subgradiente*
 
-Esse algoritmo parece até que “ingênuo”, tipo, nada garante que o subgradiente vai fazer com que a função desça né?? Vamos mostrar que na verdade esse método converge sim! Porém, vamos assumir algumas coisas também. Para esse caso, vamos assumir que a função é $M$-Lipschitz ([\[m-lipschitz\]](metodo-do-gradiente.md#m-lipschitz))
+Esse algoritmo parece até que “ingênuo”, tipo, nada garante que o subgradiente vai fazer com que a função desça né?? Vamos mostrar que na verdade esse método converge sim! Porém, vamos assumir algumas coisas também. Para esse caso, vamos assumir que a função é $M$-Lipschitz ([condição $M$-Lipschitz](metodo-do-gradiente.md#m-lipschitz))
 
-Usando o que foi mostrado na introdução ([\[linear-approximation\]](introducao.md#linear-approximation)), podemos mostrar o seguinte teorema:
+Usando o que foi mostrado na introdução ([aproximação linear](introducao.md#linear-approximation)), podemos mostrar o seguinte teorema:
 
 **Teorema: Aproximação Linear de funções $M$-Lipschitz**
 
@@ -90,7 +90,7 @@ Suponha que $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é $M$-Lipschitz cont�
 
 **Demonstração**
 
-Primeiramente, temos que: $$\begin{aligned} \| x^{(t + 1)} - x^{\ast}\|_{2}^{2} & = \| x^{(t)} - x^{\ast} - \alpha^{(t)}g^{(t)}\|_{2}^{2} \\ & \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} + 2\alpha^{(t)}\left( x - x^{\ast} \right)^{T}g^{(t)} + \left( \alpha^{(t)} \right)^{2}\| g^{(t)}\|_{2}^{2} \end{aligned}$$ e pela definição de subgradiente ($f$, por ser convexa, é garantida de ter subgradientes pelo [\[gradient-existence-convex\]](#gradient-existence-convex)), temos que: $$\left( x^{\ast} - x^{(t)} \right)^{T}g^{(t)} \leq f\left( x^{\ast} \right) - f\left( x^{(t)} \right)$$ A partir disso, também podemos escrever: $$\| x^{(t + 1)} - x^{\ast}\|_{2}^{2} \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} - \alpha^{(t)}\left( f\left( x^{(t)} \right) - f^{\ast} \right) + \left( M\alpha^{(t)} \right)^{2}$$
+Primeiramente, temos que: $$\begin{aligned} \| x^{(t + 1)} - x^{\ast}\|_{2}^{2} & = \| x^{(t)} - x^{\ast} - \alpha^{(t)}g^{(t)}\|_{2}^{2} \\ & \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} + 2\alpha^{(t)}\left( x - x^{\ast} \right)^{T}g^{(t)} + \left( \alpha^{(t)} \right)^{2}\| g^{(t)}\|_{2}^{2} \end{aligned}$$ e pela definição de subgradiente ($f$, por ser convexa, é garantida de ter subgradientes pelo [teorema da existência de subgradientes](#gradient-existence-convex)), temos que: $$\left( x^{\ast} - x^{(t)} \right)^{T}g^{(t)} \leq f\left( x^{\ast} \right) - f\left( x^{(t)} \right)$$ A partir disso, também podemos escrever: $$\| x^{(t + 1)} - x^{\ast}\|_{2}^{2} \leq \| x^{(t)} - x^{\ast}\|_{2}^{2} - \alpha^{(t)}\left( f\left( x^{(t)} \right) - f^{\ast} \right) + \left( M\alpha^{(t)} \right)^{2}$$
 
 Agora nós vamos fazer novamente a soma por recursão: $$\begin{aligned} \sum_{t = 1}^{T}\alpha^{(t)}\left( f\left( x^{(t)} \right) - f^{\ast} \right) & \leq \sum_{t = 1}^{T}\left( \| x^{(t)} - x^{\ast}\|_{2}^{2} - \| x^{(t + 1)} - x^{\ast}\|_{2}^{2} \right) + M^{2}\sum_{t = 1}^{T}\left( \alpha^{(t)} \right)^{2} \\ & \leq \| x^{(1)} - x^{\ast}\|_{2}^{2} + M^{2}\sum_{t = 1}^{T}\left( \alpha^{(t)} \right)^{2} \end{aligned}$$
 

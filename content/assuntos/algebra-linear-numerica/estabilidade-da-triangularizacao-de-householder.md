@@ -136,7 +136,7 @@ Esse algoritmo é **backwards stable**, e é bem passo-a-passo já que cada pass
 
 **Teorema**
 
-O [\[solve-Axb-hh\]](#solve-Axb-hh) para solucionar $Ax = b$ é **backwards stable**, satisfazendo $$(A + \Delta A)\widetilde{x} = b$$ com $$\frac{\|\Delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\Delta A \in {\mathbb{C}}^{m \times n}$
+O [algoritmo de resolução por Householder](#solve-Axb-hh) para solucionar $Ax = b$ é **backwards stable**, satisfazendo $$(A + \Delta A)\widetilde{x} = b$$ com $$\frac{\|\Delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\Delta A \in {\mathbb{C}}^{m \times n}$
 
 **Demonstração**
 

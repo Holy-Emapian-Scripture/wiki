@@ -63,7 +63,7 @@ Essa ideia continua a ser repetida para colunas subsequentes. Temos um algoritmo
 
 ## Hermitiana
 
-É bem tranquilo de ver que o [\[householder-reduction-to-hessenberg-form\]](#householder-reduction-to-hessenberg-form) gera uma matriz tri-diagonal no caso em que $A$ é hermitiana, já que $QAQ^{\ast}$ é hermitiana. Inclusive, essa propriedade pose gerar uma redução de custo, tendo em vista que podemos realizar as operações apenas da diagonal para cima, ignorando a parte de baixo das operações.
+É bem tranquilo de ver que o [algoritmo de redução de Householder à forma de Hessenberg](#householder-reduction-to-hessenberg-form) gera uma matriz tri-diagonal no caso em que $A$ é hermitiana, já que $QAQ^{\ast}$ é hermitiana. Inclusive, essa propriedade pose gerar uma redução de custo, tendo em vista que podemos realizar as operações apenas da diagonal para cima, ignorando a parte de baixo das operações.
 
 <a id="estabilidade"></a>
 <a id="secao-36"></a>
@@ -76,7 +76,7 @@ Assim como o algoritmo de Householder, para a [fatoração QR](fatoracao-qr.md),
 
 **Teorema**
 
-Deixe a redução de Hessenberg $A = QTQ^{\ast}$ de uma matriz $A$ ser computada pelo [\[householder-reduction-to-hessenberg-form\]](#householder-reduction-to-hessenberg-form) em um computador ideal e sejam as matrizes $\widetilde{Q}$ e $\widetilde{H}$ definidas como falamos anteriormente, então: $$\widetilde{Q}\widetilde{H}{\widetilde{Q}}^{\ast} = A + \delta A,\text{ tal que  }\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times m}$
+Deixe a redução de Hessenberg $A = QTQ^{\ast}$ de uma matriz $A$ ser computada pelo [algoritmo de redução de Householder à forma de Hessenberg](#householder-reduction-to-hessenberg-form) em um computador ideal e sejam as matrizes $\widetilde{Q}$ e $\widetilde{H}$ definidas como falamos anteriormente, então: $$\widetilde{Q}\widetilde{H}{\widetilde{Q}}^{\ast} = A + \delta A,\text{ tal que  }\frac{\|\delta A\|}{\| A\|} = O\left( \varepsilon_{\text{machine}} \right)$$ para algum $\delta A \in {\mathbb{C}}^{m \times m}$
 
 ------------------------------------------------------------------------
 

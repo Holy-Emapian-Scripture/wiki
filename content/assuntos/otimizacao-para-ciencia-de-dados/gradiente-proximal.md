@@ -34,7 +34,7 @@ Podemos fazer uma definição útil para expressar modularmente o algoritmo desc
 
 O operador proximal de uma função **convexa** $g$ é o operador que, para cada $x \in {\mathbb{R}}^{n}$, associa o vetor: $$\text{ prox}_{g}(x) ≔ \text{ argmin}_{y \in {\mathbb{R}}^{n}}\left\{ g(y)\frac{1}{2}\| y - x\|_{2}^{2} \right\}$$
 
-Com essa definição, é fácil ver que a equação [\[recursive-proximal-formula\]](#recursive-proximal-formula) é equivalente a: $$x^{(t + 1)} = \text{ prox}_{g}\left( x^{(t)} - \alpha^{(t)}g^{(t)} \right)$$
+Com essa definição, é fácil ver que a [fórmula recursiva do método proximal](#recursive-proximal-formula) é equivalente a: $$x^{(t + 1)} = \text{ prox}_{g}\left( x^{(t)} - \alpha^{(t)}g^{(t)} \right)$$
 
 <a id="proximal-gradient"></a>
 

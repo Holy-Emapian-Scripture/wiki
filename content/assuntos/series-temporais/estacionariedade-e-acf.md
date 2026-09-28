@@ -224,7 +224,7 @@ Como a substituição de ${\overline{Y}}_{T}$ por $\mu = 0$ introduz apenas term
 
 **Corolário: Construção formal do intervalo de confiança da ACF**
 
-Do [\[acf-amostral-dist\]](#acf-amostral-dist), decorre que quando temos um ruído IID e amostras grandes, podemos construir um intervalo de confiança para a autocorrelação amostral. Para um nível de confiança $1 - \alpha$: $$\begin{array}{r} {\mathbb{P}}( - z_{1 - \alpha/2} \leq \sqrt{T}\hat{\rho}(h) \leq z_{1 - \alpha/2}) \approx 1 - \alpha \\ {\mathbb{P}}( - \frac{z_{1 - \alpha/2}}{\sqrt{T}} \leq \hat{\rho}(h) \leq \frac{z_{1 - \alpha/2}}{\sqrt{T}}) \approx 1 - \alpha \end{array}$$
+Da [distribuição da autocorrelação amostral](#acf-amostral-dist), decorre que quando temos um ruído IID e amostras grandes, podemos construir um intervalo de confiança para a autocorrelação amostral. Para um nível de confiança $1 - \alpha$: $$\begin{array}{r} {\mathbb{P}}( - z_{1 - \alpha/2} \leq \sqrt{T}\hat{\rho}(h) \leq z_{1 - \alpha/2}) \approx 1 - \alpha \\ {\mathbb{P}}( - \frac{z_{1 - \alpha/2}}{\sqrt{T}} \leq \hat{\rho}(h) \leq \frac{z_{1 - \alpha/2}}{\sqrt{T}}) \approx 1 - \alpha \end{array}$$
 
 Com esse corolário, podemos interpretar o seguinte: Em um teste de nível de significância $\alpha = 0.05$ (confiança $95\%$), usamos o quantil $z_{0.975} \approx 1.96$, logo o intervalo de confiança é dado por $$\left\lbrack - \frac{1.96}{\sqrt{T}},\frac{1.96}{\sqrt{T}} \right\rbrack$$
 

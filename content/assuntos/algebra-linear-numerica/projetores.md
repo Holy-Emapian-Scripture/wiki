@@ -92,7 +92,7 @@ Seja $q$ o vetor que gera $P$, sabemos que $Pv = \alpha q$ $$(v - Pv)^{\ast}q = 
 
 ## Projeção com base ortonormal
 
-Vimos na prova de [\[orthogonal-projectors\]](#orthogonal-projectors) que alguns valores singulares de $P$ são $0$, então poderíamos remover essas linhas de $\Sigma$ e reduzi-lo a $I$, também removendo as colunas e linhas de $Q$, obtendo: $$P = \widehat{Q}{\widehat{Q}}^{\ast}$$ Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$ e sejam eles as colunas de $\widehat{Q}$, sabemos que, para qualquer vetor $v \in {\mathbb{C}}^{m}$: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ O quê? Quando vimos isso? Calma, deixe-me recapitular para você:
+Vimos na prova do [teorema dos projetores ortogonais](#orthogonal-projectors) que alguns valores singulares de $P$ são $0$, então poderíamos remover essas linhas de $\Sigma$ e reduzi-lo a $I$, também removendo as colunas e linhas de $Q$, obtendo: $$P = \widehat{Q}{\widehat{Q}}^{\ast}$$ Seja $\left\{ q_{1},\ldots,q_{n} \right\}$ qualquer conjunto de vetores ortonormais em ${\mathbb{C}}^{m}$ e sejam eles as colunas de $\widehat{Q}$, sabemos que, para qualquer vetor $v \in {\mathbb{C}}^{m}$: $$v = r + \sum_{i = 1}^{n}q_{i}q_{i}^{\ast}v$$ O quê? Quando vimos isso? Calma, deixe-me recapitular para você:
 
 **Teorema**
 

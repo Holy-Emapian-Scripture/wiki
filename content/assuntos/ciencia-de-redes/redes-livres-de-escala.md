@@ -66,7 +66,7 @@ Essa equação nos indica algo interessante. $\ln(N)$ é uma função que cresce
 
 Esse cálculo pra distribuição de Poisson é um pouquinho mais evoluído, mas a gente chega que o resultado é muito parecido e que $N$ cresce mais lentamente ainda
 
-Agora, para as redes livre de escala, resolvendo [\[kmin-and-kmax-equation\]](#kmin-and-kmax-equation), a gente obtém: $$k_{\max} = k_{\min} \cdot N^{\frac{1}{\gamma - 1}}$$<a id="biggest-hub-relation"></a>
+Agora, para as redes livre de escala, resolvendo [relação entre $k_{\min}$ e $k_{\max}$](#kmin-and-kmax-equation), a gente obtém: $$k_{\max} = k_{\min} \cdot N^{\frac{1}{\gamma - 1}}$$<a id="biggest-hub-relation"></a>
 
 Ou seja, quanto maior é minha rede, maior vai ser o tamanho do meu centro (Maior é o grau do nó com mais graus). Isso é um resultado bem intuitivo, na verdade! Lembra que nós começamos dando o contexto da rede da internet (WWW)? Se pararmos para pensar, conforme as pessoas criam páginas na internet, elas tendem a colocar links para páginas famosas na internet, ou que tem alguma relevância em **comunidades**, ou seja, quanto mais links referenciando uma página, mais páginas vão referenciar ela, de forma que, quanto mais páginas vão sendo criadas, maior vai ser a quantidade de links referenciando páginas famosas ou reconhecidas!
 
@@ -106,13 +106,13 @@ Vamos falar um pouco sobre cada um desses *regimes*
 
 ### Regime Anômalo ($\gamma = 2$)
 
-De acordo com a equação [\[biggest-hub-relation\]](#biggest-hub-relation), quando $\gamma = 2$, o maior hub (Maior centro) vai crescer linearmente com relação a $N$, ou seja, o tamanho do caminho entre dois nós aleatórios não depende de $N$ já que essa relação linear indica que todos os nós vão estar conectados ao mesmo hub central
+De acordo com a equação [relação para o maior hub](#biggest-hub-relation), quando $\gamma = 2$, o maior hub (Maior centro) vai crescer linearmente com relação a $N$, ou seja, o tamanho do caminho entre dois nós aleatórios não depende de $N$ já que essa relação linear indica que todos os nós vão estar conectados ao mesmo hub central
 
 <a id="secao-25"></a>
 
 ### Super minimundo ($2 < \gamma < 3$)
 
-Nesse regmie, como previsto pela relação [\[average-path-distance-ultra-small-networks\]](#average-path-distance-ultra-small-networks), a dsitância fica em relação a $\ln(\ln(N))$, que é um crescimento absurdamente lento comparado a $\ln(N)$ obtido em redes aleatórias. Essas redes são chamadas de **Ultra Small** por que os hubs reduzem o tamanho dos caminhos **muito**, já que eles se ligam com milhares de nós com baixo grau
+Nesse regmie, como previsto pela relação [distância média em redes ultra small](#average-path-distance-ultra-small-networks), a dsitância fica em relação a $\ln(\ln(N))$, que é um crescimento absurdamente lento comparado a $\ln(N)$ obtido em redes aleatórias. Essas redes são chamadas de **Ultra Small** por que os hubs reduzem o tamanho dos caminhos **muito**, já que eles se ligam com milhares de nós com baixo grau
 
 <a id="secao-26"></a>
 
@@ -159,9 +159,9 @@ Aqui, o primeiro momento converge enquanto o segundo diverge, o que faz a gente 
 
 ### Regime de Rede Aleatória ($\gamma > 3$)
 
-Como indicado relação [\[average-path-distance-ultra-small-networks\]](#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
+Como indicado relação [distância média em redes ultra small](#average-path-distance-ultra-small-networks), e por motivos práticos também, nesse regime, as propriedades das redes livres de escala não são muito diferentes das propriedades das redes aleatórias. Isso pois, como ja comentado, o grau dos nós decaem rapido o suficiente para que os hubs, mesmo os maiores, não sejam tão numerosos ao ponto de que afetem muito a distância média entre os nós
 
-Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [\[biggest-hub-relation\]](#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
+Na prática, costuma-se observar que, para que os hubs venham a influenciar na distância média, $k_{\max}$ tem que ser, pelo menos, umas $10^{2}$, $10^{3}$ vezes maior que $k_{\min}$. Na prática a gente pode reformular a relação [relação para o maior hub](#biggest-hub-relation) como: $$N = \left( \frac{k_{\max}}{k_{\min}} \right)^{\gamma - 1}$$
 
 E isso daria uma relação de quantos nós precisamos para que começássemos a registrar a propriedade da rede livre de escala. Por exemplo, vamos supor que queremos saber quantos nós precisamos para começar a ver essa propriedade em redes de $\gamma = 5$ (E, por exemplo, $k_{\min} = 1$ e $k_{\max} = 10^{2}$), então deveríamos ter $N > 10^{8}$, e são poucas as redes, na prática, com um tamanho absurdo desses!
 

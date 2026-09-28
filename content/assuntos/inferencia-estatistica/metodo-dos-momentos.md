@@ -34,7 +34,7 @@ O método mais usual de se implementar esse método é resolvendo todas as equa�
 
 **Teorema: Consistência**
 
-Suponha que $X_{1},X_{2},\ldots$ são i.i.d com uma distribuição indexada por um parâmetro $k$-dimensional $\theta$. Suponha também que o os primeiros $k$ momentos da distribuição são finitos e existem para todo $\theta$. Suponha também que a função inversa $M$ é definida como na [\[method-of-moments\]](#method-of-moments) e é contínua. Então a sequência de estimadores pelo método dos momentos baseada em $X_{1},\ldots,X_{n}$ é uma sequência consistente de estimadores de $\theta$
+Suponha que $X_{1},X_{2},\ldots$ são i.i.d com uma distribuição indexada por um parâmetro $k$-dimensional $\theta$. Suponha também que o os primeiros $k$ momentos da distribuição são finitos e existem para todo $\theta$. Suponha também que a função inversa $M$ é definida como no [método dos momentos](#method-of-moments) e é contínua. Então a sequência de estimadores pelo método dos momentos baseada em $X_{1},\ldots,X_{n}$ é uma sequência consistente de estimadores de $\theta$
 
 **Demonstração**
 

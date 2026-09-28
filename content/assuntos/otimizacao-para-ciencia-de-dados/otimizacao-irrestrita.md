@@ -160,7 +160,7 @@ Seja $f:U \rightarrow {\mathbb{R}}$ com $U \subset {\mathbb{R}}^{n}$ e suponha q
 
 Vamos apenas provar o item $1$ já que a prova para o $2$ é análoga (Basta aplicar a demonstração na função $- f$).
 
-Sendo $x^{\ast}$ um ponto de mínimo local, $\exists B\left( x^{\ast},r \right) \subset U$ tal que: $$\forall x \in B\left( x^{\ast},r \right)\text{\quad\quad}f(x) \geq f\left( x^{\ast} \right)$$<a id="minimal-on-ball-condition"></a> Seja $0 \neq d \in {\mathbb{R}}^{n}$. Para todo $0 < \alpha < \frac{r}{\| d\|}$, vamos definir: $$x_{\alpha}^{\ast} ≔ x^{\ast} + \alpha d$$ $$x_{\alpha}^{\ast} \in B\left( x^{\ast},r \right) \Rightarrow f\left( x_{\alpha}^{\ast} \right) \geq f\left( x^{\ast} \right)$$ Pelo [\[linear-approximation\]](introducao.md#linear-approximation), $\exists\xi_{\alpha} \in \left\lbrack x^{\ast},x_{\alpha}^{\ast} \right\rbrack$ tal que $$f\left( x_{\alpha}^{\ast} \right) - f\left( x^{\ast} \right) = \nabla{f\left( x^{\ast} \right)}^{T}\left( x_{\alpha}^{\ast} - x^{\ast} \right) + \frac{1}{2}\left( x_{\alpha}^{\ast} - x^{\ast} \right)^{T}\nabla^{2}f\left( \xi_{\alpha} \right)\left( x_{\alpha}^{\ast} - x^{\ast} \right)$$ Como $x^{\ast}$ é estacionário, temos: $$f\left( x_{\alpha}^{\ast} \right) - f\left( x^{\ast} \right) = \frac{\alpha^{2}}{2}d^{T}\nabla^{2}f\left( \xi_{\alpha} \right)d$$<a id="final-condition-to-minimal-point"></a> Combinando as equações [\[minimal-on-ball-condition\]](#minimal-on-ball-condition) e [\[final-condition-to-minimal-point\]](#final-condition-to-minimal-point), temos que, para todo $\alpha \in \left( 0,\frac{r}{\| d\|} \right)$: $$d^{T}\nabla^{2}f\left( \xi_{\alpha} \right)d \geq 0$$ Usando de que $\xi_{\alpha} \rightarrow x^{\ast}$ quando $\alpha \rightarrow 0^{+}$ e por continuidade da Hessiana, segue: $$d^{T}\nabla^{2}f\left( x^{\ast} \right)d \geq 0$$ Isso é válido pois eu assumi um $d$ genérico
+Sendo $x^{\ast}$ um ponto de mínimo local, $\exists B\left( x^{\ast},r \right) \subset U$ tal que: $$\forall x \in B\left( x^{\ast},r \right)\text{\quad\quad}f(x) \geq f\left( x^{\ast} \right)$$<a id="minimal-on-ball-condition"></a> Seja $0 \neq d \in {\mathbb{R}}^{n}$. Para todo $0 < \alpha < \frac{r}{\| d\|}$, vamos definir: $$x_{\alpha}^{\ast} ≔ x^{\ast} + \alpha d$$ $$x_{\alpha}^{\ast} \in B\left( x^{\ast},r \right) \Rightarrow f\left( x_{\alpha}^{\ast} \right) \geq f\left( x^{\ast} \right)$$ Pela [aproximação linear](introducao.md#linear-approximation), $\exists\xi_{\alpha} \in \left\lbrack x^{\ast},x_{\alpha}^{\ast} \right\rbrack$ tal que $$f\left( x_{\alpha}^{\ast} \right) - f\left( x^{\ast} \right) = \nabla{f\left( x^{\ast} \right)}^{T}\left( x_{\alpha}^{\ast} - x^{\ast} \right) + \frac{1}{2}\left( x_{\alpha}^{\ast} - x^{\ast} \right)^{T}\nabla^{2}f\left( \xi_{\alpha} \right)\left( x_{\alpha}^{\ast} - x^{\ast} \right)$$ Como $x^{\ast}$ é estacionário, temos: $$f\left( x_{\alpha}^{\ast} \right) - f\left( x^{\ast} \right) = \frac{\alpha^{2}}{2}d^{T}\nabla^{2}f\left( \xi_{\alpha} \right)d$$<a id="final-condition-to-minimal-point"></a> Combinando as equações [condição de mínimo na bola](#minimal-on-ball-condition) e [condição final para um ponto de mínimo](#final-condition-to-minimal-point), temos que, para todo $\alpha \in \left( 0,\frac{r}{\| d\|} \right)$: $$d^{T}\nabla^{2}f\left( \xi_{\alpha} \right)d \geq 0$$ Usando de que $\xi_{\alpha} \rightarrow x^{\ast}$ quando $\alpha \rightarrow 0^{+}$ e por continuidade da Hessiana, segue: $$d^{T}\nabla^{2}f\left( x^{\ast} \right)d \geq 0$$ Isso é válido pois eu assumi um $d$ genérico
 
 Perceba que essa condição é necessária, mas não é suficiente. Por exemplo, a função $f(x) = x^{3}$ é tal que $f'(0) = 0$, $f''(0) = 0$, porém, não é um ponto de máximo nem de mínimo.
 
@@ -176,7 +176,7 @@ Seja $f:U \rightarrow {\mathbb{R}}$ com $U \subset {\mathbb{R}}^{n}$ e suponha q
 
 Provaremos apenas o primeiro item. O segundo segue do primeiro aplicado em $- f$
 
-Seja $x^{\ast} \in U$ um ponto estacionário de $f$ em $U$ tal que $\nabla^{2}f\left( x^{\ast} \right) \succ 0$. Como a Hessiana é contínua, segue que $\exists B\left( x^{\ast},r \right) \subset U$ tal que $\nabla^{2}f\left( x^{\ast} \right) \succ 0\ \forall x \in B\left( x^{\ast},r \right)$. Pelo [\[linear-approximation\]](introducao.md#linear-approximation), segue que $\forall x \in B\left( x^{\ast},r \right)\ \exists\xi \in \left\lbrack x^{\ast},x \right\rbrack \subset B\left( x^{\ast},r \right)$ tal que: $$f(x) - f\left( x^{\ast} \right) = \nabla{f\left( x^{\ast} \right)}^{T}\left( x - x^{\ast} \right) + \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Como $x^{\ast}$ é estacionário, $\nabla f\left( x^{\ast} \right) = 0$. Segue também que $\nabla^{2}f(\xi) \succ 0\ \forall x \in B\left( x^{\ast},r \right)$. Isso significa que $$\forall x \neq x^{\ast},\text{\quad\quad}f(x) > f\left( x^{\ast} \right)$$ Ou seja, $x^{\ast}$ é mínimo local estrito
+Seja $x^{\ast} \in U$ um ponto estacionário de $f$ em $U$ tal que $\nabla^{2}f\left( x^{\ast} \right) \succ 0$. Como a Hessiana é contínua, segue que $\exists B\left( x^{\ast},r \right) \subset U$ tal que $\nabla^{2}f\left( x^{\ast} \right) \succ 0\ \forall x \in B\left( x^{\ast},r \right)$. Pela [aproximação linear](introducao.md#linear-approximation), segue que $\forall x \in B\left( x^{\ast},r \right)\ \exists\xi \in \left\lbrack x^{\ast},x \right\rbrack \subset B\left( x^{\ast},r \right)$ tal que: $$f(x) - f\left( x^{\ast} \right) = \nabla{f\left( x^{\ast} \right)}^{T}\left( x - x^{\ast} \right) + \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Como $x^{\ast}$ é estacionário, $\nabla f\left( x^{\ast} \right) = 0$. Segue também que $\nabla^{2}f(\xi) \succ 0\ \forall x \in B\left( x^{\ast},r \right)$. Isso significa que $$\forall x \neq x^{\ast},\text{\quad\quad}f(x) > f\left( x^{\ast} \right)$$ Ou seja, $x^{\ast}$ é mínimo local estrito
 
 Para clarear um pouco sobre a demonstração, os passos mais confusos pode ser a conclusão final. Principalmente essa conclusão $\nabla^{2}f(\xi) \succ 0$. Vamos tentar abstrair isso isso com $f:{\mathbb{R}}^{2} \rightarrow {\mathbb{R}}$. Pega um ponto de mínimo estrito local, e faz uma bola em volta dele, todo ponto dentro daquele lugar vai ter hessiana positiva por conta da continuidade da Hessiana. Como assim? Imagina que a Hessiana é uma função ${\mathbb{R}} \rightarrow {\mathbb{R}}$, como ela é uma função contínua, não faz sentido eu mudar a entrada da função e ela bruscamente trocar de positivo pra negativo, certo? Claro que em um certo ponto, ela passa pelo 0 e o sinal troca, mas eu consigo aumentar minha bola até um pouquinho antes disso acontecer
 
@@ -190,7 +190,7 @@ A partir dessa linha amarela, os pontos vão ter hessiana negativa e, em cima de
 
 *Figura 3. Desenho de domínio qualquer de uma função $f$ com uma bola $B$*
 
-Ou seja, eu sei que todos os pontos dentro dessa bola tem Hessiana positiva. Depois disso, eu apenas utilizo do [\[linear-approximation\]](introducao.md#linear-approximation) para chegar na desigualdade $f(x) > f\left( x^{\ast} \right)$
+Ou seja, eu sei que todos os pontos dentro dessa bola tem Hessiana positiva. Depois disso, eu apenas utilizo da [aproximação linear](introducao.md#linear-approximation) para chegar na desigualdade $f(x) > f\left( x^{\ast} \right)$
 
 Um teorema parecido pode ser usado para pontos que tem gradiente $0$, mas que não são nem máximo nem mínimo (Como vimos em $f(x) = x^{3}$)
 
@@ -204,7 +204,7 @@ Seja $f:U \rightarrow {\mathbb{R}}$ com $U \subset {\mathbb{R}}^{n}$ e suponha q
 
 **Demonstração**
 
-Seja $\nabla^{2}f\left( x^{\ast} \right)$ é indefinida. Portanto, $\nabla^{2}f\left( x^{\ast} \right)$ possui auto-valor positivo $\lambda_{1}$ associado ao auto-vetor $v_{1}$ com norma $\| v_{1}\| = 1$. Sendo $U$ aberto, existe $r > 0$ tal que $x^{\ast} + \alpha v_{1} \in U$ para todo $\alpha \in (0,r)$. Pelo [\[second-order-approximation\]](introducao.md#second-order-approximation) e usando que $\nabla f\left( x^{\ast} \right) = 0$, sabemos que existe uma função $o:{\mathbb{R}}_{+} \rightarrow {\mathbb{R}}$ satisfazendo: $$\lim\limits_{t \rightarrow 0^{+}}\frac{o(t)}{t} = 0$$<a id="o-function-property"></a> tal que para todo $\alpha \in (0,r)$: $$\begin{array}{r} f\left( x^{\ast} + \alpha r \right) = f\left( x^{\ast} \right) + \frac{\alpha^{2}}{2}v_{1}^{T}\nabla^{2}f\left( x^{\ast} \right)v_{1} + o\left( \alpha^{2}\| v_{1}\|^{2} \right) \\ = f\left( x^{\ast} \right) + \frac{\lambda_{1}\alpha^{2}}{2}\| v_{1}\|^{2} + o\left( \alpha^{2}\| v_{1}\|^{2} \right) \\ = f\left( x^{\ast} \right) + \frac{\lambda_{1}\alpha^{2}}{2} + o\left( \alpha^{2} \right) \end{array}$$ Segue da equação [\[o-function-property\]](#o-function-property) que $\exists\varepsilon_{1} \in (0,r)$ tal que: $$\forall\alpha \in \left( 0,\varepsilon_{1} \right),\text{\quad\quad}g\left( \alpha^{2} \right) > \frac{- \left( \lambda_{1}\alpha^{2} \right)}{2}$$ Portanto, $$\forall\alpha \in \left( 0,\varepsilon_{1} \right),\text{\quad\quad}f\left( x^{\ast} + \alpha v_{1} \right) > f\left( x^{\ast} \right)$$ Ou seja, $x^{\ast}$ não pode ser máximo local sobre $U$. Um argumento análogo dizendo que $\exists\lambda_{2} < 0$ sendo $\lambda_{2}$ um autovalor da hessiana pode ser usado para mostrar que $x^{\ast}$ também não pode ser mínimo local
+Seja $\nabla^{2}f\left( x^{\ast} \right)$ é indefinida. Portanto, $\nabla^{2}f\left( x^{\ast} \right)$ possui auto-valor positivo $\lambda_{1}$ associado ao auto-vetor $v_{1}$ com norma $\| v_{1}\| = 1$. Sendo $U$ aberto, existe $r > 0$ tal que $x^{\ast} + \alpha v_{1} \in U$ para todo $\alpha \in (0,r)$. Pela [aproximação de segunda ordem](introducao.md#second-order-approximation) e usando que $\nabla f\left( x^{\ast} \right) = 0$, sabemos que existe uma função $o:{\mathbb{R}}_{+} \rightarrow {\mathbb{R}}$ satisfazendo: $$\lim\limits_{t \rightarrow 0^{+}}\frac{o(t)}{t} = 0$$<a id="o-function-property"></a> tal que para todo $\alpha \in (0,r)$: $$\begin{array}{r} f\left( x^{\ast} + \alpha r \right) = f\left( x^{\ast} \right) + \frac{\alpha^{2}}{2}v_{1}^{T}\nabla^{2}f\left( x^{\ast} \right)v_{1} + o\left( \alpha^{2}\| v_{1}\|^{2} \right) \\ = f\left( x^{\ast} \right) + \frac{\lambda_{1}\alpha^{2}}{2}\| v_{1}\|^{2} + o\left( \alpha^{2}\| v_{1}\|^{2} \right) \\ = f\left( x^{\ast} \right) + \frac{\lambda_{1}\alpha^{2}}{2} + o\left( \alpha^{2} \right) \end{array}$$ Segue da equação [propriedade do termo $o(\alpha)$](#o-function-property) que $\exists\varepsilon_{1} \in (0,r)$ tal que: $$\forall\alpha \in \left( 0,\varepsilon_{1} \right),\text{\quad\quad}g\left( \alpha^{2} \right) > \frac{- \left( \lambda_{1}\alpha^{2} \right)}{2}$$ Portanto, $$\forall\alpha \in \left( 0,\varepsilon_{1} \right),\text{\quad\quad}f\left( x^{\ast} + \alpha v_{1} \right) > f\left( x^{\ast} \right)$$ Ou seja, $x^{\ast}$ não pode ser máximo local sobre $U$. Um argumento análogo dizendo que $\exists\lambda_{2} < 0$ sendo $\lambda_{2}$ um autovalor da hessiana pode ser usado para mostrar que $x^{\ast}$ também não pode ser mínimo local
 
 Essa prova parece complicada, então vou dar uma noção mais intuitiva. Vimos em álgebra linear que uma matriz é positiva definida se, e somente se, todos os seus autovalores são maiores que $0$ (O mesmo para matrizes negativas definidas), e que se elas possuem um autovalor positivo e outro negativo, então ela é indefinida. Mas o que isso me diz intuitivamente? Lembra que, se uma matriz tem multiplicidade algébrica igual a multiplicidade geométrica em todos os autovalores, então a gente pode dividir ela como: $$\nabla^{2}f(x) = Q^{T}\Lambda Q$$ $Q$ é ortogonal pois $\nabla^{2}f(x)$ é simétrica (Teorema Espectral). Mas o que isso significa? De uma maneira intuitiva, isso significa que os autovetores indicam direções ortogonais e o autovalor indica se a hessiana está crescendo ou diminuindo **naquela direção**, então se ela é indefinida em um ponto de sela, quer dizer que eu tenho direções que a hessiana tanto cresce como diminui, como ela cresce e diminui em direções diferentes partindo do mesmo ponto, ele não é nem máximo, nem mínimo
 
@@ -268,7 +268,7 @@ Seja $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ duas vezes continuamente dife
 
 **Demonstração**
 
-Pelo [\[linear-approximation\]](introducao.md#linear-approximation), seja $x^{\ast} \in {\mathbb{R}}^{n}$ um ponto estacionário em $f$ e $\forall x \in {\mathbb{R}}^{n}$: $$f(x) - f\left( x^{\ast} \right) = \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Porém, vale que $\forall x,\ \nabla^{2}f(\xi) \succeq 0$. Temos então que: $$\forall x \in {\mathbb{R}}^{n},\ f(x) \geq f\left( x^{\ast} \right)$$ Logo, $x^{\ast}$ é ponto de mínimo global em $f$
+Pela [aproximação linear](introducao.md#linear-approximation), seja $x^{\ast} \in {\mathbb{R}}^{n}$ um ponto estacionário em $f$ e $\forall x \in {\mathbb{R}}^{n}$: $$f(x) - f\left( x^{\ast} \right) = \frac{1}{2}\left( x - x^{\ast} \right)^{T}\nabla^{2}f(\xi)\left( x - x^{\ast} \right)$$ Porém, vale que $\forall x,\ \nabla^{2}f(\xi) \succeq 0$. Temos então que: $$\forall x \in {\mathbb{R}}^{n},\ f(x) \geq f\left( x^{\ast} \right)$$ Logo, $x^{\ast}$ é ponto de mínimo global em $f$
 
 <a id="funcoes-quadraticas"></a>
 <a id="secao-8"></a>
@@ -285,7 +285,7 @@ Uma função é quadrática quando $\exists A \in {\mathbb{R}}^{n \times n}\text
 
 **Teorema: Derivadas de uma quadrática**
 
-Seja $f$ uma função quadrática como na [\[quadratic-function\]](#quadratic-function), temos que: $$\begin{array}{r} \nabla f(x) = 2(Ax + b) \\ \nabla^{2}f(x) = 2A \end{array}$$
+Seja $f$ uma função quadrática como na [definição de função quadrática](#quadratic-function), temos que: $$\begin{array}{r} \nabla f(x) = 2(Ax + b) \\ \nabla^{2}f(x) = 2A \end{array}$$
 
 **Demonstração**
 
@@ -301,7 +301,7 @@ E para a hessiana é bem mais fácil, dado o item anterior, basta que tiremos a 
 
 **Teorema: Pontos estacionários e ótimos de função quadrática**
 
-Seja uma função $f$ definida na [\[quadratic-function\]](#quadratic-function), então:
+Seja uma função $f$ definida na [definição de função quadrática](#quadratic-function), então:
 
 1.  $x$ é ponto estacionário $\Leftrightarrow Ax = - b$.
 
@@ -313,13 +313,13 @@ Seja uma função $f$ definida na [\[quadratic-function\]](#quadratic-function),
 
 1.  Segue imediatamente da fórmula do gradiente.
 
-2.  Suponha que $A \succeq 0$. Da f́ormula da Hessiana, segue que $\nabla^{2}f(x) \succeq 0\ \forall x \in {\mathbb{R}}^{n}$. O resultado segue então do [\[sufficient-condition-global-minimum\]](#sufficient-condition-global-minimum) e item 1.
+2.  Suponha que $A \succeq 0$. Da f́ormula da Hessiana, segue que $\nabla^{2}f(x) \succeq 0\ \forall x \in {\mathbb{R}}^{n}$. O resultado segue então da [condição suficiente de mínimo global](#sufficient-condition-global-minimum) e item 1.
 
 3.  Suponha que $A \succ 0$. Então $x = - A^{- 1}b$ é a única solução de $Ax = - b$. Segue do item (ii) que $x = - A^{- 1}b$ é o único ponto de mínimo global de $f$ e, portanto, mínimo global estrito.
 
 **Teorema: Coercividade de funções quadráticas**
 
-Seja função $f$ definida como na [\[quadratic-function\]](#quadratic-function). Então $f$ é coerciva $\Leftrightarrow A \succ 0$.
+Seja função $f$ definida como na [definição de função quadrática](#quadratic-function). Então $f$ é coerciva $\Leftrightarrow A \succ 0$.
 
 **Demonstração**
 

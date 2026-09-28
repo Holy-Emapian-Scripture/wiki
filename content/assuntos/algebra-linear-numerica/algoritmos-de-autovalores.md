@@ -58,7 +58,7 @@ O livro fala também que é possível utilizar de alguns truques para computar o
 
 ## Duas fases da computação de Autovalores
 
-A sendo Hermitiana ou não, a gente separa a sequência [\[upper-triangular-transformation\]](#upper-triangular-transformation) em duas partes.
+A sendo Hermitiana ou não, a gente separa a sequência [transformação em matriz triangular superior](#upper-triangular-transformation) em duas partes.
 
 1.  A primeira fase consiste em produzir diretamente uma matriz **upper-Hessenberg**, isto é, uma matriz com zeros em baixo da primeira subdiagonal
 

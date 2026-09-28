@@ -117,11 +117,11 @@ Falamos de números de condição antes da estabilidade, vamos tentar associar a
 
 **Teorema**
 
-Suponha que um algoritmo estável retroativamente $\widetilde{f}$ é aplicado para um problema $f:X \rightarrow Y$ com número de condição $\kappa$ em um computador que satisfaz [\[floating_point_conversion\]](aritmetica-de-ponto-flutuante.md#floating_point_conversion) e [\[fundamental_axiom_of_floating_point_arithmetic\]](aritmetica-de-ponto-flutuante.md#fundamental_axiom_of_floating_point_arithmetic), então, o erro relativo satisfaz: $$\frac{\|\widetilde{f}(x) - f\left( \widetilde{x} \right)\|}{\| f\left( \widetilde{x} \right)\|} = O\left( \kappa(x)\varepsilon_{\text{machine}} \right)$$
+Suponha que um algoritmo estável retroativamente $\widetilde{f}$ é aplicado para um problema $f:X \rightarrow Y$ com número de condição $\kappa$ em um computador que satisfaz [teorema da conversão para ponto flutuante](aritmetica-de-ponto-flutuante.md#floating_point_conversion) e [axioma fundamental da aritmética de ponto flutuante](aritmetica-de-ponto-flutuante.md#fundamental_axiom_of_floating_point_arithmetic), então, o erro relativo satisfaz: $$\frac{\|\widetilde{f}(x) - f\left( \widetilde{x} \right)\|}{\| f\left( \widetilde{x} \right)\|} = O\left( \kappa(x)\varepsilon_{\text{machine}} \right)$$
 
 **Demonstração**
 
-Por definição, temos $\widetilde{f}(x) = f(x + \delta x)$ com $\frac{\|\delta x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$. Usando [\[relative_condition_number\]](condicionamento-e-numeros-de-condicao.md#relative_condition_number) (Número de Condição Relativo), temos que: $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\| f(x + \delta x) - f(x)\|}{\| f(x)\|} \right)\left( \frac{\| x\|}{\|\delta x\|} \right)$$ $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|}\frac{\| x\|}{\|\delta x\|} \right)$$
+Por definição, temos $\widetilde{f}(x) = f(x + \delta x)$ com $\frac{\|\delta x\|}{\| x\|} = O\left( \varepsilon_{\text{machine}} \right)$. Usando [número de condição relativo](condicionamento-e-numeros-de-condicao.md#relative_condition_number) (Número de Condição Relativo), temos que: $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\| f(x + \delta x) - f(x)\|}{\| f(x)\|} \right)\left( \frac{\| x\|}{\|\delta x\|} \right)$$ $$\kappa(x) = \lim\limits_{\delta x \rightarrow 0}\left( \frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|}\frac{\| x\|}{\|\delta x\|} \right)$$
 
 Usando algumas definições formais (nem eu entendo, então se tentar explicar aqui, só perderei tempo, lol), podemos reescrever isso como: $$\frac{\|\widetilde{f}(x) - f(x)\|}{\| f(x)\|} \leq \left( \kappa(x) + o(1) \right)\frac{\|\delta x\|}{\| x\|}$$
 

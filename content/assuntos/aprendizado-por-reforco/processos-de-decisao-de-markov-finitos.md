@@ -229,7 +229,7 @@ $$\begin{aligned} v_{\pi}(s) & \dot{=}{\mathbb{E}}_{\pi}\left\lbrack G_{t}\vert 
 
 Note que na última equação não juntamos duas somas, de todos os valores de $s'$ e de todos os valores $r$. Note ainda que a expressão final pode ser facilmente lida como um valor esperado. Ela é, na verdade, uma soma sobre todos os valores das três variáveis, $a,s'\text{  e  }r$.
 
-A equação [\[belman\]](#belman) é chamada de Equação de Bellman para $v_{\pi}$. Pense em olhar para frente a partir de um estado até seus possíveis estados sucessores (olhe a imagem).
+A equação [equação de Bellman](#belman) é chamada de Equação de Bellman para $v_{\pi}$. Pense em olhar para frente a partir de um estado até seus possíveis estados sucessores (olhe a imagem).
 
 ![Diagrama intuitivo da Equação de Bellman.](assets/bellmantree.png)
 
