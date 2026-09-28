@@ -21,6 +21,7 @@ ordem_na_trilha: 9
 
 # Nuvem
 
+Para uma visão complementar da infraestrutura, veja [Computação na Nuvem](../computacao-na-nuvem.md).
 
 <a id="os-5-pilares"></a>
 <a id="secao-12"></a>
@@ -169,7 +170,7 @@ Os serviços da AWS são agrupados em categorias principais.
 | Amazon RDS | **Banco de Dados Relacional Gerenciado** | Automatiza backup, patching, escalabilidade e manutenção para SGBDs como MySQL, PostgreSQL, MariaDB, Oracle e SQL Server. |
 | Amazon Aurora | **Banco Relacional de Alta Performance** | Compatível com MySQL e PostgreSQL, com performance superior e replicação distribuída. |
 | Amazon DynamoDB | **Banco NoSQL (Chave-Valor e Documento)** | Banco de baixa latência, totalmente gerenciado e escalável automaticamente. |
-| Amazon Redshift | **Data Warehouse** | Armazena e analisa dados em larga escala com processamento analítico massivamente paralelo (MPP). |
+| Amazon Redshift | **[Data Warehouse](data-warehouses.md)** | Armazena e analisa dados em larga escala com processamento analítico massivamente paralelo (MPP). |
 | Amazon VPC | **Rede Virtual Isolada** | Permite criar redes privadas dentro da AWS, com controle de sub-redes, rotas, segurança e IPs. |
 | Elastic Load Balancing (ELB) | **Balanceamento de Carga** | Distribui tráfego automaticamente entre múltiplas instâncias e zonas de disponibilidade. |
 | AWS Direct Connect | **Conexão Dedicada** | Cria uma conexão privada entre o data center do cliente e a AWS, reduzindo latência e aumentando segurança. |

@@ -155,7 +155,7 @@ Mas como podemos combinar todas essas operações para formar uma rede neural co
 
 ## Os Gradientes
 
-Não basta mostrar arquiteturas e métodos usados em CNN se não sabemos como treiná-las. Para isso, precisamos entender como calcular os gradientes das operações de convolução e pooling. O cálculo dos gradientes é feito através do algoritmo de backpropagation (também muito utilizado o automatic differentiation).
+Não basta mostrar arquiteturas e métodos usados em CNN se não sabemos como treiná-las. Para isso, precisamos entender como calcular os gradientes das operações de convolução e pooling. O cálculo dos gradientes é feito através do algoritmo de [backpropagation](redes-neurais.md#secao-27) (também muito utilizado o automatic differentiation).
 
 <a id="secao-34"></a>
 

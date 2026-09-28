@@ -145,7 +145,7 @@ Existe uma característica importante nesse algoritmo: a cada iteração onde ve
 
 ## Djikstra “Rápido”
 
-**Ideia**: manter os vértices da franja em uma fila de prioridades, implementada como um heap mínimo e que contém todos os vértices que ainda não foram verificados.
+**Ideia**: manter os vértices da franja em uma fila de prioridades, implementada como um [heap](../algoritmos-de-ordenacao.md#heapsort) mínimo e que contém todos os vértices que ainda não foram verificados.
 
 ![Exemplo do estado do algoritmo após processar o vértice 1. A imagem à esquerda mostra o heap nessa iteração.](../assets/djikstra-4.png)
 

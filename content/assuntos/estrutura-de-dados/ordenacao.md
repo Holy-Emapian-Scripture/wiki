@@ -29,7 +29,7 @@ ordem_na_trilha: 14
 
 A utilidade dos [algoritmos de ordenação](../projeto-e-analise-de-algoritmos/algoritmos-de-ordenacao.md) que vamos ver podem ser medidos através de:
 
-- Complexidade de tempo de execução;
+- [Complexidade](../projeto-e-analise-de-algoritmos/notacao-assintotica.md) de tempo de execução;
 
 - Complexidade de espaço utilizado: quantidade de espaço adicional de memória necessária (além do array de entrada);
 

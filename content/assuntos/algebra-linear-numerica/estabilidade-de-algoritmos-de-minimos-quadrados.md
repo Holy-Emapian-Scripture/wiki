@@ -162,7 +162,7 @@ A solução de um problema de mínimos quadrados com uma matriz $A$ de posto-com
 
 ## SVD
 
-O último algoritmo a ser mencionado foi utilizando a SVD de $A$, que nós vimos (no resumo 1) que parecia ser um algoritmo interessante:
+O último algoritmo a ser mencionado foi utilizando a [SVD](svd.md) de $A$, que nós vimos (no resumo 1) que parecia ser um algoritmo interessante:
 
 **CÓDIGO**
 

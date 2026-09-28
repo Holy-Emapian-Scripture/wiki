@@ -98,7 +98,7 @@ O forward pass é o processo de passar os dados pela rede neural e armazenar os 
 
 ### Backpropagation
 
-O backward pass é o processo de calcular os gradientes de cada peso e bias da rede neural com respeito a função de custo, usando o algoritmo de retropropagação. Para isso, basta usar a regra da cadeia para calcular os gradientes de cada camada, começando pela última camada e indo para a primeira camada. Para calcular o gradiente das camadas, antes de tudo precisamos de uma função de perca, e isso vai variar dependendo do problema que estamos tentando resolver. Por exemplo, para um problema de regressão, podemos usar o MSE como função de perca, enquanto para um problema de classificação, podemos usar a entropia cruzada. Depois de escolher a função de perca, basta seguir o algoritmo de retropropagação para calcular os gradientes de cada camada.
+O backward pass é o processo de calcular os gradientes de cada peso e bias da rede neural com respeito a função de custo, usando o algoritmo de retropropagação. Para isso, basta usar a [regra da cadeia](diferenciacao-automatica.md#diferenciacao-automatica-reverse-mode) para calcular os gradientes de cada camada, começando pela última camada e indo para a primeira camada. Para calcular o gradiente das camadas, antes de tudo precisamos de uma função de perca, e isso vai variar dependendo do problema que estamos tentando resolver. Por exemplo, para um problema de regressão, podemos usar o MSE como função de perca, enquanto para um problema de classificação, podemos usar a entropia cruzada. Depois de escolher a função de perca, basta seguir o algoritmo de retropropagação para calcular os gradientes de cada camada.
 
 **Lembrando** que, nesse momento, nós temos armazenado/sabemos os valores de:
 

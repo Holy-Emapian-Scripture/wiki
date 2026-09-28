@@ -144,7 +144,7 @@ Após toda essa caracterização de um Data Lake, é interessante compararmos la
 | **Variedade** | Baixa (Homogênea) | Moderada a Alta (Integrada) | Extremamente Alta (Heterogênea) |
 | **Velocidade** | Alta (Transacional em Tempo Real/Quase Real) | Baixa (Processamento em Lotes/Agendado) | Altíssima (Streaming Contínuo e Lotes Massivos) |
 | **Volume** | Baixo a Moderado | Alto (Histórico Agregado) | Massivo (Petabytes/Exabytes) |
-| **Veracidade** | Mais Alta (Garantida por ACID) | Alta (Garantida por ETL/Limpeza) | Baixa a Moderada (Bruteza, Inconsistência Inerente) |
+| **Veracidade** | Mais Alta (Garantida por ACID) | Alta (Garantida por [ETL](etl-e-olap.md)/Limpeza) | Baixa a Moderada (Bruteza, Inconsistência Inerente) |
 | **Valor** | Baixo (Tático e Imediato) | Alto (Estratégico, Histórico) | Altíssimo (Preditivo, Inovação, MLOps) |
 | **Variabilidade** | Muito Baixa (Estável, Esquema Fixo) | Baixa (Controlada via ETL) | Alta (Inconsistente, Mudança Contínua de Estrutura) |
 | **Visualização** | Simples (Detalhada, Telas de Sistema) | Direta (BI Tools, Dashboards) | Complexa (Exploratória, Requer Processamento Prévio) |
@@ -172,7 +172,7 @@ Eu comentei um pouco antes sobre o MapReduce e sua implementação, o Hadoop, ma
 
 ## Os SGBDs
 
-Além de ferramentas para utilizar dentro de um Data Lake, também podemos inserir os tipos de SGBDs, já que antes, vimos apenas os Transacionais (Otimizados para OLTP) e Analíticos (Otimizados para OLAP)
+Além de ferramentas para utilizar dentro de um Data Lake, também podemos inserir os tipos de SGBDs, já que antes, vimos apenas os Transacionais (Otimizados para OLTP) e Analíticos (Otimizados para [OLAP](etl-e-olap.md))
 
 |  |  |  |  |
 |:--:|:--:|:--:|:--:|

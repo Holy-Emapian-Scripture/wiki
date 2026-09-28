@@ -54,7 +54,7 @@ Dado que na minha imagem eu tenho mapeado $K$ classes, a métrica de Average Pre
 <a id="secao-4"></a>
 ## Evolução das Abordagens
 
-Vamos relembrar como é estruturada uma rede convolucional padrão para classificação de uma imagem.
+Vamos relembrar como é estruturada uma [rede convolucional](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md) padrão para classificação de uma imagem.
 
 ![Estrutura de uma rede convolucional padrão](../assets/A1/conv-network.png)
 

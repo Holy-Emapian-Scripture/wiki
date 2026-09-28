@@ -31,7 +31,7 @@ Como cada célula da RNN é uma camada da rede neural, o processo de unrolling d
 
 Em uma tarefa com saída de múltiplos passos temporais (many-to-many), o erro global $E$ é acumulado e calculado a cada instante temporal $t$ $$E = \sum_{t = 1}^{T}E_{t}$$
 
-Para atualizar a matriz de pesos compartilhada $W_{hh}$ precisamos calcular a derivada parcial de $E$ em relação a $W_{hh}$. Pela regra da cadeia, o erro $E_{t}$ em um determinado instante $t$ depende não apenas da célula no instante $t$, mas de toda a história de estados ocultos anteriores $h_{k}\ (k \leq t)$ $$\frac{\partial E}{\partial W_{hh}} = \sum_{k = 1}^{T}\frac{\partial E_{t}}{\partial h_{t}}\frac{\partial h_{t}}{\partial h_{k}}\frac{\partial h_{k}}{\partial W_{hh}}$$
+Para atualizar a matriz de pesos compartilhada $W_{hh}$ precisamos calcular a derivada parcial de $E$ em relação a $W_{hh}$. Pela [regra da cadeia](../../aprendizado-de-maquina/diferenciacao-automatica.md#diferenciacao-automatica-reverse-mode), o erro $E_{t}$ em um determinado instante $t$ depende não apenas da célula no instante $t$, mas de toda a história de estados ocultos anteriores $h_{k}\ (k \leq t)$ $$\frac{\partial E}{\partial W_{hh}} = \sum_{k = 1}^{T}\frac{\partial E_{t}}{\partial h_{t}}\frac{\partial h_{t}}{\partial h_{k}}\frac{\partial h_{k}}{\partial W_{hh}}$$
 
 As derivadas da esquerda ($\frac{\partial E_{t}}{\partial h_{t}}$) e direita ($\frac{\partial h_{k}}{\partial W_{hh}}$) são fáceis de visualizar pela relação direta que a função derivada tem com o termo da derivação, no entanto, o termo do meio é um pouco mais complexo, mas ele representa **o fluxo do gradiente retropropagado do passo $t$ até o passo $k$** $$\frac{\partial h_{t}}{\partial h_{k}} = \prod_{j = k + 1}^{t}\frac{\partial h_{j}}{\partial h_{j - 1}}$$
 
@@ -48,7 +48,7 @@ No entanto, essa estrutura pode gerar um grande problema quando a diferença $t 
 
 então a propagação do gradiente de $h_{0}$ até $h_{t}$ envolve a multiplicação repetida de $t - k$ termos $W_{hh}^{T}$ e da derivada de $\tanh$
 
-Podemos chegar nesse mesmo resultado de uma forma mais matemática fazendo uma análise por SVD. Considere a decomposição SVD da matriz de transição $W_{hh} = U\Sigma V^{T}$ e seja a parcial derivada do estado oculto $h_{j}$ em relação ao estado oculto anterior $h_{j - 1}$ escrita como $$\frac{\partial h_{j}}{\partial h_{j - 1}} = D_{j}W_{hh}^{T}$$
+Podemos chegar nesse mesmo resultado de uma forma mais matemática fazendo uma análise por [SVD](../../algebra-linear-numerica/svd.md). Considere a decomposição SVD da matriz de transição $W_{hh} = U\Sigma V^{T}$ e seja a parcial derivada do estado oculto $h_{j}$ em relação ao estado oculto anterior $h_{j - 1}$ escrita como $$\frac{\partial h_{j}}{\partial h_{j - 1}} = D_{j}W_{hh}^{T}$$
 
 então sabemos que a derivada de $h_{t}$ com relação a um estado oculto anterior $h_{k}$ é dada por $$\frac{\partial h_{t}}{\partial h_{k}} = \prod_{j = k + 1}^{t}D_{j}W_{hh}^{T}$$
 

@@ -85,7 +85,7 @@ Sistemas de origem podem incluir fontes internas e externas
 
 **Definição: Infraestrutura de ETL**
 
-Facilita a leitura dos dados dos sistemas de origem para o Data Warehouse. O ETL (Extract, Transform, Load) tem as seguintes tarefas:
+Facilita a leitura dos dados dos sistemas de origem para o Data Warehouse. O [ETL](etl-e-olap.md) (Extract, Transform, Load) tem as seguintes tarefas:
 
 - Extrair dados analiticamente úteis das origens operacionais
 

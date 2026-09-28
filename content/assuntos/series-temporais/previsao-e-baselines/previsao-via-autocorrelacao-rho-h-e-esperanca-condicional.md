@@ -38,7 +38,7 @@ como $\left( Z,Y_{n} \right)$ é um vetor normal, temos que o fato de $\text{Cov
 
 Já para a variância condional, temos que $$\begin{aligned} {\mathbb{V}}\left\lbrack Y_{n + h}~\vert ~Y_{n} \right\rbrack & = {\mathbb{V}}\left\lbrack Z + \rho_{Y}(h)\left( Y_{n} - \mu \right)~\vert ~Y_{n} \right\rbrack \end{aligned}$$ como é DADO $Y_{n}$, o termo $\rho_{Y}(h)\left( Y_{n} - \mu \right)$ é uma constante, logo $$\begin{aligned} {\mathbb{V}}\left\lbrack Y_{n + h}~\vert ~Y_{n} \right\rbrack & = {\mathbb{V}}\left\lbrack Z~\vert ~Y_{n} \right\rbrack = {\mathbb{V}}\lbrack Z\rbrack \\ & = {\mathbb{V}}\left\lbrack Y_{n + h} - \mu - \rho_{Y}(h)\left( Y_{n} - \mu \right) \right\rbrack \\ & = {\mathbb{V}}\left\lbrack Y_{n + h} \right\rbrack + \rho_{Y}(h)^{2}{\mathbb{V}}\left\lbrack Y_{n} \right\rbrack - 2\rho_{Y}(h)\text{ Cov}\left( Y_{n + h},Y_{n} \right) \\ & = \sigma^{2} + \rho_{Y}(h)^{2}\sigma^{2} - 2\rho_{Y}(h)\gamma_{Y}(h) \\ & = \sigma^{2} + \rho_{Y}(h)^{2}\sigma^{2} - 2\rho_{Y}(h)^{2}\sigma^{2} \\ & = \sigma^{2}\left( 1 - \rho_{Y}(h)^{2} \right) \end{aligned}$$
 
-Dado esse contexto, podemos agora mostrar que para **qualquer preditor $g\left( Y_{n} \right)$**, **o preditor que minimiza o erro quadrático médio** é a **média condicional ${\mathbb{E}}\left\lbrack Y_{n + h}~\vert ~Y_{n} \right\rbrack$**.
+Dado esse contexto, podemos agora mostrar que para **qualquer preditor $g\left( Y_{n} \right)$**, **o preditor que minimiza o erro quadrático médio** é a **[média condicional](../../probabilidade/variaveis-aleatorias-continuas-bidimensionais.md#esperanca-condicional) ${\mathbb{E}}\left\lbrack Y_{n + h}~\vert ~Y_{n} \right\rbrack$**.
 
 **Teorema: Preditor que minimiza o MSE**
 

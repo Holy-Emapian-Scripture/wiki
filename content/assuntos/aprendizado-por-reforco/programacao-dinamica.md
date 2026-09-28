@@ -22,7 +22,7 @@ ordem_na_trilha: 28
 
 ------------------------------------------------------------------------
 
-Podemos utilizar de algoritmos de programação dinâmica para resolver MDPs, mas eles exigem um modelo completo do ambiente, ou seja, a função de transição $p\left( s',r\vert s,a \right)$ deve ser conhecida. Além do fato que $\mathcal{S},\mathcal{R}$ e $\mathcal{A}$ devem ser finitos, o que não é o caso em muitos problemas práticos, mas vale a pena conhecer os algoritmos de programação dinâmica, pois eles formam a base para muitos outros algoritmos de aprendizado por reforço.
+Podemos utilizar de algoritmos de [programação dinâmica](../projeto-e-analise-de-algoritmos/tecnicas-de-projeto-a2.md#programacao-dinamica) para resolver MDPs, mas eles exigem um modelo completo do ambiente, ou seja, a função de transição $p\left( s',r\vert s,a \right)$ deve ser conhecida. Além do fato que $\mathcal{S},\mathcal{R}$ e $\mathcal{A}$ devem ser finitos, o que não é o caso em muitos problemas práticos, mas vale a pena conhecer os algoritmos de programação dinâmica, pois eles formam a base para muitos outros algoritmos de aprendizado por reforço.
 
 A base deses algorimtos é pegar as equações de Bellman e usá-las como atualizações iterativas para aproximar as funções de valor. Por exemplo, a equação de Bellman para $v_{\pi}$ pode ser reescrita como:
 

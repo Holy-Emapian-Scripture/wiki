@@ -321,7 +321,7 @@ Algumas aplicações:
 
 1.  As mesmas de filas e pilhas(podem ser feitas com listas encadeadas);
 
-2.  Tabelas Hash;
+2.  Tabelas [Hash](../projeto-e-analise-de-algoritmos/tabela-hash.md);
 
 Vamos pra estrutura!
 

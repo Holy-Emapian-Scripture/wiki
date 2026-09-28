@@ -63,7 +63,7 @@ Dizemos que uma função $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}^{m}$ é $M
 
 **Definição: Função $L$-Suave**
 
-Uma função $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é $L$-suave quando seu gradiente é $L$-Lipschitz: $$\|\nabla f(x) - \nabla f(y)\| \leq L\| x - y\|\text{\quad\quad}\forall x,y \in {\mathbb{R}}^{n}$$
+Uma função $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é $L$-suave quando seu [gradiente](../calculo-vetorial/operadores-diferenciais.md#section_gradiente) é $L$-Lipschitz: $$\|\nabla f(x) - \nabla f(y)\| \leq L\| x - y\|\text{\quad\quad}\forall x,y \in {\mathbb{R}}^{n}$$
 
 Essa definição de suavidade tem uma interpretação, imagine que, se eu estou na posição $x$ e vou pra posição $y$, a variação que eu vou ter na função, dentro dessa passada, não ultrapassa o quanto eu andei vezes uma constante $L$. Então funções muito onduladas, e com ondulações
 

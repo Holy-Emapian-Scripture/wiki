@@ -20,7 +20,7 @@ ordem_na_trilha: 56
 
 # Aplicando CNN
 
-Podemos querer utilizar as RNNs para processar sequências de imagens, como em vídeos, onde cada frame é uma imagem. Nesse caso, podemos combinar Convolutional Neural Networks (CNNs) com RNNs para extrair características espaciais das imagens e capturar dependências temporais entre os frames.
+Podemos querer utilizar as RNNs para processar sequências de imagens, como em vídeos, onde cada frame é uma imagem. Nesse caso, podemos combinar [Convolutional Neural Networks (CNNs)](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md) com RNNs para extrair características espaciais das imagens e capturar dependências temporais entre os frames.
 
 ![Arquitetura de uma CNN seguida por uma RNN](../assets/A1/cnn-rnn.png)
 

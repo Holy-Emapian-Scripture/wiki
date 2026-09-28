@@ -27,7 +27,7 @@ ordem_na_trilha: 31
 
 ## Fundamentos do YOLO
 
-Um modelo YOLO (You Only Look Once) divide a imagem em uma grade de células, ele também recebe obrigatoriamente uma imagem quadrada, de lados $n \times n$. Cada célula da grade fica resposável por prever objetos cujo **ponto central** (mid point) caia dentro dos limites dessa célula. Como uma única passada na CNN processa todas as células simultaneamente, o YOLO é extremamente rápido e eficiente, tornando-o adequado para aplicações em tempo real.
+Um modelo YOLO (You Only Look Once) divide a imagem em uma grade de células, ele também recebe obrigatoriamente uma imagem quadrada, de lados $n \times n$. Cada célula da grade fica resposável por prever objetos cujo **ponto central** (mid point) caia dentro dos limites dessa célula. Como uma única passada na [CNN](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md) processa todas as células simultaneamente, o YOLO é extremamente rápido e eficiente, tornando-o adequado para aplicações em tempo real.
 
 <a id="parametrizacao-do-vetor-de-saida"></a>
 <a id="secao-39"></a>
@@ -72,7 +72,7 @@ Na prática, é bem fácil perceber que vai acontecer de várias caixas serem se
 
 2.  **Seleção da melhor caixa**: Entre as caixas restantes, selecionamos a caixa com a maior probabilidade de conter um objeto (maior pontuação de confiança $p_{\text{obj}}$)
 
-3.  **Eliminação de duplicatas**: Elimina as outras caixas da mesma classe que possuem uma sobreposição $\text{IoU} \geq 0.5$ com a caixa selecionada
+3.  **Eliminação de duplicatas**: Elimina as outras caixas da mesma classe que possuem uma sobreposição com [IoU](../segmentacao-semantica/introducao-e-metricas.md#iou) $\geq 0.5$ com a caixa selecionada
 
 4.  Repete o processo iterativamente para as caixas restantes de cada classe
 

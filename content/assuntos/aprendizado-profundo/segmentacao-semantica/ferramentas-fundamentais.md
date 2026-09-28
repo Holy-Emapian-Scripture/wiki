@@ -158,7 +158,7 @@ Normalmente, [redes neurais](../../aprendizado-de-maquina/redes-neurais.md) são
 
 no entanto, pode existir casos em que $y$ é MUITO parecido com $x$ com leves ajustes, e isso, surpreendentemente, pode dificultar muito o aprendizado da rede. Para consertar isso, os chamados **blocos residuais** foram introduzidos, de forma que a rede não aprende a relação direta entre $x$ e $y$, mas sim a **diferença** entre eles (o quão diferente $y$ é de $x$), ou seja, a rede aprende uma função $F$ tal que $$y = F(x) + x$$
 
-O principal motivo dessa abordagem é o **gradiente no backpropagation**. Em redes comuns de deep-learning, o gradiente pode se tornar muito pequeno (ou até mesmo zero) à medida que é propagado para trás, dificultando o aprendizado. Com os blocos residuais, o gradiente pode fluir diretamente através da conexão de atalho, permitindo que a rede aprenda mais facilmente.
+O principal motivo dessa abordagem é o **gradiente no [backpropagation](../../aprendizado-de-maquina/redes-neurais.md#secao-27)**. Em redes comuns de deep-learning, o gradiente pode se tornar muito pequeno (ou até mesmo zero) à medida que é propagado para trás, dificultando o aprendizado. Com os blocos residuais, o gradiente pode fluir diretamente através da conexão de atalho, permitindo que a rede aprenda mais facilmente.
 
 <!-- wiki:original:fim -->
 

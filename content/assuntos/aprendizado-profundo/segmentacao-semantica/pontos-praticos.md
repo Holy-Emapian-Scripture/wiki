@@ -59,7 +59,7 @@ Para mitigar a perda de contexto nas bordas dos blocos, podemos destacar a estra
 
 ## CNN Patch-wise Clássica vs. FCN Modela
 
-- **CNN Clássica Por Patch (Sliding Window)**: Classificava isoladamente o pixel central de um **patch** deslocado. Isso gerava alta redundância de cálculos e resultava em um efeito de **suavização excessiva nas bordas dos objetos (*oversmoothing*)**.
+- **[CNN Clássica](../../aprendizado-de-maquina/convolutional-neural-networks-cnn.md) Por Patch (Sliding Window)**: Classificava isoladamente o pixel central de um **patch** deslocado. Isso gerava alta redundância de cálculos e resultava em um efeito de **suavização excessiva nas bordas dos objetos (*oversmoothing*)**.
 
 - **FCN Moderna**: Classifica todos os pixels do **patch** simultaneamente em uma única passada (**dense prediction**), aprendendo estruturas e geometrias específicas diretamente contidas dentro de cada bloco.
 

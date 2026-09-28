@@ -101,7 +101,7 @@ $$
 \begin{array}{r} \text{ Cov}(X,Y) = E(XY) - E(X)E(Y) \\ \rho(X,Y) = \frac{\text{ Cov}(X,Y)}{\sigma(X)\sigma(Y)} \end{array}
 $$
 
-Também temos as distribuições marginais e condicionais (Pelo teorema de Bayes e a Lei da Probabilidade Total):
+Também temos as distribuições marginais e condicionais (Pelo [teorema de Bayes](../inferencia-estatistica/estatistica-bayesiana.md#distribuicoes-priori-e-posteriori) e a Lei da Probabilidade Total):
 
 $$
 \begin{array}{r} p_{X}(x) = P(X = x) = \sum_{y}p(x,y) \\ p_{Y}(y) = P(Y = y) = \sum_{x}p(x,y) \\ p_{X\vert Y}\left( x\vert y \right) = P\left( X = x~\vert ~Y = y \right) = \frac{p(x,y)}{p_{Y}(y)} \end{array}

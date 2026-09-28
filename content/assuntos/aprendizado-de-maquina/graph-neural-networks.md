@@ -27,7 +27,7 @@ ordem_na_trilha: 13
 
 ## Introdução
 
-Graph neural networks (GNNs) são uma classe de [redes neurais](redes-neurais.md) projetadas para trabalhar com dados estruturados em grafos. Diferentemente das redes neurais tradicionais, que operam em dados tabulares ou sequenciais, as GNNs são capazes de capturar a complexidade das relações entre os nós de um grafo, permitindo a modelagem de interações complexas e dependências entre os elementos do grafo.
+Graph neural networks (GNNs) são uma classe de [redes neurais](redes-neurais.md) projetadas para trabalhar com dados estruturados em [grafos](../ciencia-de-redes/grafos.md). Diferentemente das redes neurais tradicionais, que operam em dados tabulares ou sequenciais, as GNNs são capazes de capturar a complexidade das relações entre os nós de um grafo, permitindo a modelagem de interações complexas e dependências entre os elementos do grafo.
 
 <a id="notacoes"></a>
 <a id="secao-18"></a>

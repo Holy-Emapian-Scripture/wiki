@@ -60,7 +60,7 @@ Modelar essa dependência temporal pode levar a previsões mais precisas, pois a
 
 ### Como identificar dependência temporal nos resíduos?
 
-Podemos utilizar ferramentas que vamos conhecer ao longo do curso, como gráficos de autocorrelação (ACF) e testes estatísticos (como o teste de Ljung-Box) para identificar padrões temporais nos resíduos. Esses métodos nos ajudam a verificar se há correlação significativa entre os resíduos em diferentes lags temporais.
+Podemos utilizar ferramentas que vamos conhecer ao longo do curso, como gráficos de [autocorrelação](estacionariedade-e-acf.md) (ACF) e testes estatísticos (como o teste de Ljung-Box) para identificar padrões temporais nos resíduos. Esses métodos nos ajudam a verificar se há correlação significativa entre os resíduos em diferentes lags temporais.
 
 <a id="secao-6"></a>
 

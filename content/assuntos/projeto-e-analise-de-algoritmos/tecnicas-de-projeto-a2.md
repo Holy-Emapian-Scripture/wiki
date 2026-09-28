@@ -532,7 +532,7 @@ Bom, não seria $O\left( n^{2} \right)$, pois a distância em cada lado é no m�
 
 ## Programação Dinâmica
 
-O paradigma de programação dinâmica consiste em quebrar em sub-problemas menores e resolvê-los de forma independente. Semelhante ao dividir e conquistar, porém com foco em sub-problemas que usam repetição. Nessa técnica, um sub-problema só é resolvido caso não tenha sido resolvido antes (caso contrário é usado o resultado anterior guardado previamente).
+O paradigma de programação dinâmica, também aplicado a [processos de decisão de Markov](../aprendizado-por-reforco/programacao-dinamica.md), consiste em quebrar em sub-problemas menores e resolvê-los de forma independente. Semelhante ao dividir e conquistar, porém com foco em sub-problemas que usam repetição. Nessa técnica, um sub-problema só é resolvido caso não tenha sido resolvido antes (caso contrário é usado o resultado anterior guardado previamente).
 
 <a id="secao-11"></a>
 

@@ -51,7 +51,7 @@ $$
 Av = \lambda v
 $$
 
-É exatamente o problema de autovalores da matriz de coeficientes $A$.
+É exatamente o problema de [autovalores](../algebra-linear-numerica/problemas-de-autovalores.md) da matriz de coeficientes $A$.
 
 <a id="section_autovalores_reais_distintos"></a>
 

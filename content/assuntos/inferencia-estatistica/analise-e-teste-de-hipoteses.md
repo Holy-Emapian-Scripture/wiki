@@ -188,7 +188,7 @@ Se nossos testes são da forma “Rejeite $H_{0}$ quando $T \geq c$” para uma 
 
 ## Equivalência de testes e conjuntos de confiança
 
-Os teoremas a seguir mostram a equivalência de intervalos e conjuntos de confiança (o nome é bem intuitivo). Intuitivamente, um intervalo de confiança é um tipo específico de conjunto de confiança (com um tipo específico de regra)
+Os teoremas a seguir mostram a equivalência de intervalos e conjuntos de confiança (o nome é bem intuitivo). Intuitivamente, um [intervalo de confiança](intervalos-de-confianca.md) é um tipo específico de conjunto de confiança (com um tipo específico de regra)
 
 **Teorema**
 

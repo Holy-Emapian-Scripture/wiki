@@ -27,7 +27,7 @@ ordem_na_trilha: 13
 
 ## Extrair
 
-O ETL vai recuperar os dados analíticos úteis das devidas fontes e, eventualmente, serão carregados no Data Warehouse. O que vai ser extraído é **determinado na etapa de requisitos**
+O ETL vai recuperar os dados analíticos úteis das devidas fontes e, eventualmente, serão carregados no [Data Warehouse](data-warehouses.md). O que vai ser extraído é **determinado na etapa de requisitos**
 
 <a id="transformacao"></a>
 <a id="secao-29"></a>

@@ -257,7 +257,7 @@ def mst_prim_fastv1(list_adj):
 
 ### Prim Fast V2
 
-E se mantessemos os vértices da fronteira em ordem crescente de custo? Dessa forma, não seria necessário procurar o vértice que apresenta o menor custo à cada iteração (basta usar o famoso heap mínimo).
+E se mantessemos os vértices da fronteira em ordem crescente de custo? Dessa forma, não seria necessário procurar o vértice que apresenta o menor custo à cada iteração (basta usar o famoso [heap](algoritmos-de-ordenacao.md#heapsort) mínimo).
 
 ``` cpp
 void mstPrimFastV2(vertex * parent) {

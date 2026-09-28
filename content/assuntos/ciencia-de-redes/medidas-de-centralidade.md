@@ -30,7 +30,7 @@ Imagine que esse é o grafo que estávamos falando (Não importa o que ele repre
 
 **Definição: Farness/'Lonjura'**
 
-Dado um grafo $G(V,E)$, a farness de um vértice $v_{i}$ é dada por $$L\left( v_{i} \right) ≔ \sum_{v_{i} \neq v_{j} \in V}d\left( v_{i},v_{j} \right)$$ onde $d\left( v_{i},v_{j} \right)$ é o tamanho do menor caminho entre $v_{i}$ e $v_{j}$
+Dado um grafo $G(V,E)$, a farness de um vértice $v_{i}$ é dada por $$L\left( v_{i} \right) ≔ \sum_{v_{i} \neq v_{j} \in V}d\left( v_{i},v_{j} \right)$$ onde $d\left( v_{i},v_{j} \right)$ é o tamanho do [menor caminho](../projeto-e-analise-de-algoritmos/menor-caminho-em-grafos.md) entre $v_{i}$ e $v_{j}$
 
 Essa medida mede o quão longe o nó está dos outros, de forma que, quanto maior essa medida é, menos importante o meu nó é (Depende do contexto analisado)
 
@@ -46,7 +46,7 @@ Saindo um pouco dessas definições, vamos tentar pensar em alguma medida mais b
 
 Um outro pensamento que pode surgir a partir desse é: “Poxa, meu vértice tem um grau alto, então ele é importante, mas eu quero valorizar aqueles vértices que se conectam com ele, afinal, se ele é importante, os vértices que estão diretamente ligados nele também são, não é?”, e esse pensamento não está errado! É dessa ideia que surge a centralidade por autovetor. Funciona assim: Vamos inicialmente assumir que todos os nossos vértices $v_{i}$ tem importância $x_{i}^{(0)} = 1$, o que não me é muito útil agora, porém, vamos tentar fazer uma nova estimativa baseada nos vizinhos, que tal a nova centralidade do vértice $v_{i}$ ser a soma da centralidade dos vizinhos? Isso faz com que a importância do $v_{i}$ se baseie no quão importante são seus vizinhos! Eu posso expressar isso com uma fórmula: $$x_{i}^{(1)} = \sum_{j}A_{ij}x_{j}^{(0)}$$ Onde $A$ é minha matriz de adjacência. Se meu nó $v_{i}$ não é vizinho de $v_{j}$, então $A_{ij} = 0$ o que faz com que minha centralidade $x_{j}^{(0)}$ não seja somada. Posso reformular isso de forma matricial: $$x^{(1)} = Ax^{(0)}$$ onde $x^{(k)}$ é o vetor com entradas $x_{i}^{(k)}$. Se fizermos esse processo várias vezes, depois de $k$ passos, vamos ter algo do tipo: $$x^{(k)} = A^{k}x^{(0)}$$ Tomemos a liberdade, então, de escrever $x^{(0)}$ como uma combinação linear dos autovetores $w_{j}$ de $A$ de forma que $$x^{(0)} = \sum_{j = 1}^{n}c_{j}w_{j}$$ Para alguma escolha apropriada de $c_{j}$. Então temos: $$x^{(k)} = A^{k}\sum_{j = 1}^{n}c_{j}w_{j} = \sum_{j = 1}^{n}c_{j}\lambda_{j}w_{j} = \lambda_{1}^{k}\sum_{j = 1}^{n}c_{j}\left( \frac{\lambda_{j}}{\lambda_{1}} \right)^{k}w_{j}$$
 
-De forma que $\lambda_{j}$ são os autovalores de $A$ e $\lambda_{1}$ pode ser, sem perca de generalização, o maior de todos em módulo. Como $\lambda_{i}/\lambda_{1} < 1\ \forall\lambda_{i}\text{ com }i \neq j$, então: $$\lim\limits_{k \rightarrow \infty}\sum_{j = 1}^{n}c_{j}\lambda_{j}^{k}w_{j} = c_{1}\lambda_{1}w_{1}$$
+De forma que $\lambda_{j}$ são os [autovalores](../algebra-linear-numerica/problemas-de-autovalores.md) de $A$ e $\lambda_{1}$ pode ser, sem perca de generalização, o maior de todos em módulo. Como $\lambda_{i}/\lambda_{1} < 1\ \forall\lambda_{i}\text{ com }i \neq j$, então: $$\lim\limits_{k \rightarrow \infty}\sum_{j = 1}^{n}c_{j}\lambda_{j}^{k}w_{j} = c_{1}\lambda_{1}w_{1}$$
 
 Ou seja, o vetor de centralidades que limita as centralidades que eu fiz antes é proporcional ao autovetor associado ao maior autovalor de $A$, que é equivalente a dizer que o vetor de centralidades $x$ satisfaz: $$Ax = \lambda_{1}x$$
 

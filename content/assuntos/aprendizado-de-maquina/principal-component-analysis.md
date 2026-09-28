@@ -36,7 +36,7 @@ Nós que trabalhamos com análise de dados, muitas vezes nos deparamos com datas
 
 O PCA pode ser interpretado como duas definições distintas que dão origem ao mesmo resultado
 
-- Projeção ortogonal dos dados em um espaço de menor dimensão (Subespaço Principal) de forma que a variância dos dados seja maximizada
+- [Projeção ortogonal](../algebra-linear-numerica/projetores.md) dos dados em um espaço de menor dimensão (Subespaço Principal) de forma que a variância dos dados seja maximizada
 
 - Projeção Linear que minimiza o custo médio de projeção
 
@@ -69,11 +69,11 @@ e também definimos a variância deles como $$u_{1}^{T}Su_{1} = \frac{1}{N}\sum_
 
 e $$S = \frac{1}{N}\sum_{n = 1}^{N}\left( x_{n} - \overline{x} \right)\left( x_{n} - \overline{x} \right)^{T}$$
 
-Agora, queremos maximizar $u_{1}^{T}Su_{1}$ com respeito a $u_{1}$ com a restrição de $u_{1}^{T}u_{1} = 1$. Antes de fazermos isso mesmo, a lógica desse processo é que queremos entender qual a direção do espaço que mais contribui com a variância dos dados, ou seja, qual a direção que mais “espalha” os dados. Para isso, vamos utilizar o método de multiplicadores de Lagrange para maximizar $u_{1}^{T}Su_{1}$ com a restrição de $u_{1}^{T}u_{1} = 1$. Definimos a função lagrangiana como: $$\mathcal{L}(u_{1},\lambda) = u_{1}^{T}Su_{1} - \lambda\left( u_{1}^{T}u_{1} - 1 \right)$$
+Agora, queremos maximizar $u_{1}^{T}Su_{1}$ com respeito a $u_{1}$ com a restrição de $u_{1}^{T}u_{1} = 1$. Antes de fazermos isso mesmo, a lógica desse processo é que queremos entender qual a direção do espaço que mais contribui com a variância dos dados, ou seja, qual a direção que mais “espalha” os dados. Para isso, vamos utilizar o método de [multiplicadores de Lagrange](../otimizacao-para-ciencia-de-dados/otimizacao-com-restricoes-lineares.md) para maximizar $u_{1}^{T}Su_{1}$ com a restrição de $u_{1}^{T}u_{1} = 1$. Definimos a função lagrangiana como: $$\mathcal{L}(u_{1},\lambda) = u_{1}^{T}Su_{1} - \lambda\left( u_{1}^{T}u_{1} - 1 \right)$$
 
 Realizando as contas necessárias, chegamos que $$Su_{1} = \lambda u_{1}$$
 
-Ou seja, a direção que mais contribui com a variância dos dados é o autovetor de $S$ correspondente ao maior autovalor. Esse autovetor é chamado de *primeira componente principal*. Sabendo disso, podemos utilizar de **indução forte** para mostrar que a segunda componente principal é o autovetor de $S$ correspondente ao segundo maior autovalor, e assim por diante. Dessa forma, as $M$ primeiras componentes principais são os $M$ autovetores de $S$ correspondentes aos $M$ maiores autovalores.
+Ou seja, a direção que mais contribui com a variância dos dados é o autovetor de $S$ correspondente ao maior autovalor. Esse autovetor é chamado de *primeira componente principal*. Sabendo disso, podemos utilizar de **indução forte** para mostrar que a segunda componente principal é o autovetor de $S$ correspondente ao segundo maior autovalor, e assim por diante. Dessa forma, as $M$ primeiras componentes principais são os $M$ autovetores de $S$ correspondentes aos $M$ maiores [autovalores](../algebra-linear-numerica/problemas-de-autovalores.md).
 
 <a id="minimzando-o-erro-de-projecao"></a>
 <a id="secao-8"></a>

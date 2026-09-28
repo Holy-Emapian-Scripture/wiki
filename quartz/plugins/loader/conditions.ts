@@ -2,8 +2,18 @@ import { QuartzComponentProps } from "../../components/types"
 
 export type ConditionPredicate = (props: QuartzComponentProps) => boolean
 
+function hasH1(node: {
+  type?: string
+  tagName?: string
+  children?: unknown[]
+}): boolean {
+  if (node.type === "element" && node.tagName === "h1") return true
+  return node.children?.some((child) => hasH1(child as typeof node)) ?? false
+}
+
 const builtinConditions: Record<string, ConditionPredicate> = {
   "not-index": (props) => props.fileData.slug !== "index",
+  "no-h1": (props) => !hasH1(props.tree),
   "has-tags": (props) => {
     const tags = props.fileData.frontmatter?.tags
     return Array.isArray(tags) && tags.length > 0
@@ -20,7 +30,10 @@ const builtinConditions: Record<string, ConditionPredicate> = {
 
 const customConditions = new Map<string, ConditionPredicate>()
 
-export function registerCondition(name: string, predicate: ConditionPredicate): void {
+export function registerCondition(
+  name: string,
+  predicate: ConditionPredicate,
+): void {
   customConditions.set(name, predicate)
 }
 
