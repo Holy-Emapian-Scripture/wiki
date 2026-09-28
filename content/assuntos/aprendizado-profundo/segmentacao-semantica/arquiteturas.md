@@ -22,7 +22,6 @@ ordem_na_trilha: 10
 # Arquiteturas
 
 
-<a id="segnet"></a>
 <a id="secao-17"></a>
 
 ## SegNet
@@ -33,7 +32,6 @@ A SegNet é uma arquitetura de rede neural convolucional projetada para segmenta
 
 *Figura 1. Arquitetura da SegNet*
 
-<a id="u-net"></a>
 <a id="secao-18"></a>
 
 ## U-Net
@@ -46,7 +44,6 @@ Já na U-Net, a arquitetura é um pouco diferente, ela utiliza **skip connection
 
 Nas camadas de upsampling, a U-Net utiliza **[transpose convolution](ferramentas-fundamentais.md#secao-8)** para aumentar a dimensionalidade das features unida com um **aumento** nos canais das features. Após o transpose convolution, a U-Net concatena as features da camada correspondente de downsampling, permitindo que a rede utilize informações de diferentes níveis de abstração para melhorar a segmentação, como se ela falasse: “depois de reconstruir a imagem, eu obtive o seguinte mapa de feature, mas lá atrás antes de eu ter feito o downsampling, eu tinha obtido o seguinte mapa de feature, então vou juntar os dois para melhorar a segmentação” (por exemplo, se eu tenho uma imagem 32x32 na escala de cinza, com apenas um canal de cor, na hora do último upsampling, a camada logo após a transpose convolution terá 2 canais “de cor”, que seria o mapa obtido pela rede anteriormente e o mapa obtido na camada de upsampling).
 
-<a id="resunet"></a>
 <a id="secao-19"></a>
 
 ## ResUNet
@@ -74,7 +71,6 @@ A DeepLabV1 é uma arquitetura de rede neural convolucional projetada para segme
 
 Ambas seguem uma arquitetura muito semelhante, diferindo por um único conceito. Na DeepLab V1, passamos a imagem por uma Deep Convolutional Neural Network (DCNN) para extrair features utilizando camadas de Atrous Convolution. Depois, pegamos o score map obtido e aplicamos um processo de **interpolação bilinear** para aumentar a dimensionalidade do score map, e por fim aplicamos o um algoritmo de pós-processamento chamado **Conditional Random Field (CRF)** para refinar a segmentação. Já na DeepLab V2, o processo é o mesmo, mas ao invés de aplicarmos apenas uma Atrous Convolution, aplicamos múltiplas Atrous Convolutions com diferentes **rates** ([ASPP](ferramentas-fundamentais.md#secao-13)).
 
-<a id="parsenet"></a>
 <a id="secao-21"></a>
 
 ## PARSENet
@@ -88,7 +84,6 @@ Primeiro a rede passa por uma rede convolucional padrão, depois o feature map g
 
 *Figura 6. Arquitetura simplificada da PARSENet*
 
-<a id="pspnet"></a>
 <a id="secao-22"></a>
 
 ## PSPNet

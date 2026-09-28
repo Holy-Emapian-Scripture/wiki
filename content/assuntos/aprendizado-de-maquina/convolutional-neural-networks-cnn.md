@@ -41,14 +41,12 @@ O campo de visão computacional tem sido um dos principais impulsionadores do de
 
 - **Síntese**: Gerar novas imagens a partir de descrições textuais ou de outras imagens, como criar imagens realistas de pessoas ou objetos que não existem.
 
-<a id="imagens-como-dados"></a>
 <a id="secao-24"></a>
 
 ## Imagens como dados
 
 Podemos interpretar imagens como dados estruturados em uma grade bidimensional, onde cada pixel representa uma unidade de informação. Cada pixel possui valores que representam a intensidade da cor em diferentes canais (como vermelho, verde e azul para imagens RGB). Essa estrutura de grade permite que as CNNs explorem a relação espacial entre os pixels, capturando padrões locais e hierárquicos. $$I \in {\mathbb{R}}^{H \times W \times C}$$ onde $H$, $W$ e $C$ representam a altura, largura e número de canais da imagem, respectivamente. No caso, se a imagem é colorida, $C = 3$ e se ela é preto e branco, $C = 1$ (O que podemos entender como uma matriz com dimensões $H \times W$)
 
-<a id="filtros"></a>
 <a id="secao-25"></a>
 
 ## Filtros
@@ -94,7 +92,6 @@ Se $I \in {\mathbb{R}}^{H \times W}$ e $K \in {\mathbb{R}}^{h \times w}$, então
 
 *Figura 5. Representação visual da operação de convolução, onde a feature map $C$ é obtida aplicando o filtro $K$ à imagem $I$*
 
-<a id="padding"></a>
 <a id="secao-28"></a>
 
 ## Padding
@@ -139,7 +136,6 @@ Nós vimos anteriormente como obter equivariância à translação, porém, em c
 
 Seguindo o exemplo da [operação de max pooling](#max-pooling), podemos ver que a operação de pooling reduz a dimensionalidade da feature map, mantendo as informações mais importantes. A operação de pooling é importante em CNNs, pois permite que a rede aprenda padrões invariantes à posição do objeto na imagem, além de reduzir o número de parâmetros do modelo e evitar overfitting. Além de max-pooling, também podemos utilizar **average pooling**, que calcula a média dos valores da janela de pooling, e **global pooling**, que calcula a média ou o máximo de toda a feature map. A escolha do tipo de pooling depende da aplicação e do problema em questão.
 
-<a id="arquiteturas"></a>
 <a id="secao-32"></a>
 
 ## Arquiteturas
@@ -150,7 +146,6 @@ Mas como podemos combinar todas essas operações para formar uma rede neural co
 
 *Figura 9. Representação visual da arquitetura da AlexNet, uma das primeiras CNNs a alcançar sucesso em tarefas de visão computacional. A AlexNet é composta por várias camadas de convolução, pooling e funções de ativação, além de camadas totalmente conectadas no final*
 
-<a id="os-gradientes"></a>
 <a id="secao-33"></a>
 
 ## Os Gradientes
@@ -402,7 +397,6 @@ Então o backward será simplesmente a operação: $$\nabla_{X}L = D_{P}^{\ast} 
 
 - Operador de expansão $D_{S}^{\ast}$ (O mesmo definido em [gradiente da entrada com stride](#input-gradient-with-stride))
 
-<a id="pooling"></a>
 <a id="secao-40"></a>
 
 ## Pooling

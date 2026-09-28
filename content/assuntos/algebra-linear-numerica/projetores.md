@@ -22,7 +22,6 @@ ordem_na_trilha: 14
 # Projetores
 
 
-<a id="projetores-complementares"></a>
 <a id="secao-15"></a>
 
 ## Projetores complementares
@@ -49,7 +48,6 @@ $N(A) \cap C(A) = \left\{ 0 \right\} \Rightarrow N(P) \cap C(P) = \left\{ 0 \rig
 
 Isso significa que, se temos um projetor $P$ em ${\mathbb{C}}^{m \times m}$, esse projetor separa ${\mathbb{C}}^{m}$ em dois espaços $S_{1}$ e $S_{2}$, de forma que $S_{1} \cap S_{2} = \left\{ 0 \right\}$ e $S_{1} + S_{2} = {\mathbb{C}}^{m}$.
 
-<a id="projetores-ortogonais"></a>
 <a id="secao-16"></a>
 
 ## Projetores ortogonais

@@ -36,7 +36,6 @@ $$
 L\left\{ f(t) \right\} = \int_{0}^{\infty}e^{- st}f(t)dt
 $$
 
-<a id="propriedades-com-derivada"></a>
 <a id="section_propriedades_com_derivada"></a>
 
 ## Propriedades Com derivada

@@ -150,14 +150,12 @@ A multiplicidade algébrica de um autovalor $\lambda$ é sempre maior ou igual a
 
 Deixe $n$ ser a multiplicidade gemétrica de $\lambda$ para a matriz $A$. Forme uma matriz $\hat{V} \in {\mathbb{C}}^{m \times n}$ de tal forma que as suas $n$ colunas formam uma base ortonormal do autoespaço $\left\{ x:Ax = \lambda x \right\}$. Se extendermos $\widetilde{V}$ para uma matriz ortogonal quadrada, temos: $$B = V^{\ast}AV = \begin{pmatrix} \lambda I & C \\ 0 & D \end{pmatrix}$$ Pela definição e propriedades do determinante (Não cabe mostrá-las aqui), temos que: $$\det(\mu I - B) = \det(\mu I - \lambda I)\det(\mu I - D) = (\mu - \lambda)^{n}\det(\mu I - D)$$ Ou seja, a multiplicidade algébrica de $\lambda$ como um autovalor de $B$ é, no mínimo, $B$. Como transformações similares mantém a multiplicidade, o mesmo vale para $A$
 
-<a id="autovalores-e-matrizes-deficientes"></a>
 <a id="secao-21"></a>
 
 ## Autovalores e Matrizes Deficientes
 
 Um autovalor é deficiente quando sua MA é maior que sua MG. Se uma matriz $A$ tem autovalor deficiente, ela é uma matriz deficiente. Matrizes deficientes não podem ser diagonalizáveis (Próximo tópico)
 
-<a id="diagonalizabilidade"></a>
 <a id="secao-22"></a>
 
 ## Diagonalizabilidade
@@ -210,7 +208,6 @@ Uma matriz $A$ é normal se $A^{\ast}A = AA^{\ast}$
 
 Uma matriz é diagonalizável unitariamente $\Leftrightarrow$ ela é normal
 
-<a id="forma-de-schur"></a>
 <a id="secao-25"></a>
 
 ## Forma de Schur

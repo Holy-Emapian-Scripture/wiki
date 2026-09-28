@@ -22,7 +22,6 @@ ordem_na_trilha: 9
 # Sistemas de EDO’s de Primeira Ordem
 
 
-<a id="sistemas-lineares"></a>
 <a id="section_sistemas_lineares"></a>
 
 ## Sistemas Lineares

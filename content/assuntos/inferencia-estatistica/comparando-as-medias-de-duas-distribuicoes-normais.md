@@ -22,7 +22,6 @@ ordem_na_trilha: 34
 # Comparando as médias de duas Distribuições Normais
 
 
-<a id="o-t-teste-biamostral"></a>
 <a id="secao-35"></a>
 
 ## O $t$-teste biamostral
@@ -67,7 +66,6 @@ Vale ressaltar que, se as hipóteses forem: $$H_{0}:\mu_{X} \geq \mu_{Y}\text{\q
 
 Suponha que estejamos testando as hipóteses da [formulação unilateral à direita do teste de duas amostras](#two-sample-hypothesis-1) ou [formulação unilateral à esquerda do teste de duas amostras](#two-sample-hypothesis-2). Seja $u$ o valor observado da estatística $U$ ([equação da estatística $U$ do teste de duas amostras](#two-sample-u-statistic)) e seja $T_{m + n - 2}( \cdot )$ a cdf da distribuição $t$ com $m + n - 2$ graus de liberdade. Então o $p$-valor das hipóteses em [formulação unilateral à direita do teste de duas amostras](#two-sample-hypothesis-1) é $1 - T_{m + n - 2}(u)$ e o $p$-valor das hipóteses em [formulação unilateral à esquerda do teste de duas amostras](#two-sample-hypothesis-2) é $T_{m + n - 2}(u)$
 
-<a id="poder-do-teste"></a>
 <a id="secao-36"></a>
 
 ## Poder do Teste
@@ -78,7 +76,6 @@ Para cada parâmetro do vetor $\theta = \left( \mu_{X},\mu_{Y},\sigma^{2} \right
 
 Seja a estatística $U$ ser definida como pela [equação da estatística $U$ do teste de duas amostras](#two-sample-u-statistic), então $U$ tem distribuição não-central $t$ com $m + n - 2$ graus de liberdade e parâmetro de não-centralidade $$\psi = \frac{\mu_{X} - \mu_{Y}}{\sigma\left( \frac{1}{m} + \frac{1}{n} \right)^{1/2}}$$
 
-<a id="alternativas-bilaterais"></a>
 <a id="secao-37"></a>
 
 ## Alternativas Bilaterais

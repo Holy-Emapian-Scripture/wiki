@@ -22,7 +22,6 @@ ordem_na_trilha: 7
 # SVD
 
 
-<a id="forma-reduzida"></a>
 <a id="secao-8"></a>
 
 ## Forma reduzida
@@ -39,7 +38,6 @@ Isso é conhecido como a fatoração SVD **reduzida**. Podemos ver que $V$ é um
 
 $A = \widehat{U}\widehat{\Sigma}V^{\ast}$
 
-<a id="svd-completa"></a>
 <a id="secao-9"></a>
 
 ## SVD completa
@@ -161,7 +159,6 @@ $b = Ax \Leftrightarrow S^{- 1}b = S^{- 1}Ax = S^{- 1}S\Lambda S^{- 1}x \Leftrig
 
 $\lbrack b\rbrack_{s^{- 1}} = \Lambda\lbrack x\rbrack_{s^{- 1}}$
 
-<a id="propriedades-de-matrizes-com-svd"></a>
 <a id="secao-13"></a>
 
 ## Propriedades de matrizes com SVD

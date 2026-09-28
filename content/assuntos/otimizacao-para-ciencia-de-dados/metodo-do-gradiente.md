@@ -22,7 +22,6 @@ ordem_na_trilha: 2
 # Método do Gradiente
 
 
-<a id="caso-global"></a>
 <a id="secao-3"></a>
 
 ## Caso Global
@@ -123,7 +122,6 @@ então podemos considerar um novo algoritmo
 
 Podemos provar, analogamente ao [teorema de convergência do gradiente descendente](#gradient-descent-convergence), que o algoritmo converge para um ponto estacionário
 
-<a id="caso-convexo"></a>
 <a id="secao-4"></a>
 
 ## Caso Convexo

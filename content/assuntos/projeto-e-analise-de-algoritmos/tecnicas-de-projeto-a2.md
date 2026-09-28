@@ -299,7 +299,6 @@ def fractional_bag_problem(I, v, w, max_w):
   return itens_choosed                  #retorna a lista de índices com a %
 ```
 
-<a id="dividir-e-conquistar"></a>
 <a id="secao-5"></a>
 
 ## Dividir e Conquistar

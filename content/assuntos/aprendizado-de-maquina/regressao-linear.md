@@ -22,7 +22,6 @@ ordem_na_trilha: 7
 # Regressão Linear
 
 
-<a id="o-problema"></a>
 <a id="secao-12"></a>
 
 ## O Problema

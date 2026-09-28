@@ -21,7 +21,6 @@ ordem_na_trilha: 6
 # Discrete Distributions
 
 
-<a id="bernoulli"></a>
 <a id="secao-7"></a>
 
 ## Bernoulli
@@ -48,7 +47,6 @@ The Expected value and Variance of X are:
 
 $$\begin{array}{r} E(X) = \sum_{\varphi \in {\mathbb{R}}}\varphi P(X = \varphi) = v_{1}p + v_{2}(1 - p) \\ V(X) = E\left( X^{2} \right) - \left\lbrack E(X) \right\rbrack^{2} = \sum_{\varphi \in {\mathbb{R}}}\varphi^{2}P(X = \varphi) - \left\lbrack v_{1}p + v_{2}(1 - p) \right\rbrack^{2} \\ = v_{1}^{2}p + v_{2}^{2}(1 - p) - \left\lbrack v_{1}p + v_{2}(1 - p) \right\rbrack^{2.} \end{array}$$ **P.S**: In the very common situation where $\text{supp}(X) = \left\{ 1,0 \right\}$, we have $E(X) = p$ and $V(X)$ = np.
 
-<a id="binomial"></a>
 <a id="secao-10"></a>
 
 ## Binomial
@@ -81,7 +79,6 @@ $$
 \begin{array}{r} E(X) = \sum_{\varphi \in {\mathbb{R}}}\varphi P(X = \varphi) = \sum_{\varphi \in {\mathbb{R}}}\varphi p^{\varphi}(1 - p)^{n - \varphi}\binom{n}{\varphi} = np \\ V(X) = E\left( X^{2} \right) - \left\lbrack E(X) \right\rbrack^{2} = \sum_{\varphi \in {\mathbb{R}}}\varphi^{2}P(X = \varphi) = \sum_{\varphi \in {\mathbb{R}}}\varphi^{2}p^{\varphi}(1 - p)^{n - \varphi}\binom{n}{\varphi} - (np)^{2} \\ = npq \end{array}
 $$
 
-<a id="geometric"></a>
 <a id="secao-13"></a>
 
 ## Geometric
@@ -104,7 +101,6 @@ $$
 \begin{array}{r} E(X) = \sum_{\varphi \in {\mathbb{R}}}\varphi P(X = \varphi) = \sum_{\varphi \in {\mathbb{R}}}\varphi p(1 - p)^{\varphi - 1} = \frac{1}{p} \\ V(X) = E\left( X^{2} \right) - \left\lbrack E(X) \right\rbrack^{2} = \frac{1 - p}{p^{2}} \end{array}
 $$
 
-<a id="hypergeometric"></a>
 <a id="secao-16"></a>
 
 ## Hypergeometric
@@ -129,10 +125,9 @@ $$
 \begin{array}{r} P(X = k) = \frac{\binom{w}{k}\binom{b}{n - k}}{\binom{w + b}{n}} \\ E(X) = np \\ V(X) = npq \end{array}
 $$
 
-<a id="poisson"></a>
 <a id="secao-19"></a>
 
-## Poisson 
+## Poisson
 
 <a id="secao-20"></a>
 

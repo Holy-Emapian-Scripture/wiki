@@ -21,7 +21,6 @@ ordem_na_trilha: 1
 # Fundamentals
 
 
-<a id="bayes-theorem-and-lotp"></a>
 <a id="secao-2"></a>
 
 ## Baye’s Theorem and LOTP
@@ -42,7 +41,6 @@ Given $B_{i}$ a partition of $\Omega$.
 
 Notice that the function $P_{C}:\Omega \rightarrow \lbrack 0,1\rbrack$, $P_{C}(A) = P\left( A\vert C \right)$, given $C \subset \Omega$ is also a probability in the same space $E$, so both Baye’s theorem and LOTP assume conditional versions written in terms of $P_{C}$.
 
-<a id="discrete-random-variables-indicator-random-variables"></a>
 <a id="secao-3"></a>
 
 ## Discrete Random Variables, Indicator Random Variables
@@ -69,7 +67,6 @@ $$
 
 This will be of particular use after we define Expected Values:
 
-<a id="expected-value-and-variance"></a>
 <a id="secao-4"></a>
 
 ## Expected Value and Variance
@@ -120,7 +117,6 @@ $$
 V(X + Y) = V(X) + V(Y)
 $$
 
-<a id="covariance-correlation"></a>
 <a id="secao-5"></a>
 
 ## Covariance, Correlation

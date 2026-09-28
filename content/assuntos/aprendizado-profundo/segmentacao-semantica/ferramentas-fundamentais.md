@@ -61,7 +61,6 @@ temos então que a transpose convolution é definida como $$X_{\text{col }} = K_
 
 de tal forma que os $X_{\text{col}}$ são reconstruídos a partir dos $Y$ e do filtro $K_{\text{col}}$ (não de forma perfeita pois há perca de informação na compressão do $X$ para o $Y$, mas o objetivo é que a rede aprenda a reconstruir o $X$ da melhor forma possível)
 
-<a id="mecanismos-de-contexto-e-campo-receptivo"></a>
 <a id="secao-9"></a>
 
 ## Mecanismos de Contexto e Campo Receptivo
@@ -149,7 +148,6 @@ Agora vamos ter que a quantidade de filtros é o filtro inicial mais os $256$ ou
 
 Esse conceito pode ser expandido para as convoluções Atrous, de forma que as mudanças necessárias são mínimas, mantendo tracking do rate $r$ conseguimos aplicar o mesmo conceito de **depthwise** e **pointwise** para as convoluções Atrous, resultando em uma redução significativa no número de parâmetros e operações, mantendo a capacidade da rede de capturar informações de diferentes escalas.
 
-<a id="blocos-residuais"></a>
 <a id="secao-15"></a>
 
 ## Blocos Residuais

@@ -22,7 +22,6 @@ ordem_na_trilha: 8
 # Estimadores de Bayes
 
 
-<a id="estimador-e-estimativa"></a>
 <a id="secao-9"></a>
 
 ## Estimador e Estimativa
@@ -48,7 +47,6 @@ A função de perca é uma função real de duas variáveis $L(\theta,a)$, onde 
 
 Queremos estimar $\theta$ apenas com nossos valores observados, porém, vamos supor que não vimos nenhum ainda, então se escolhermos $a$ como uma estimativa, vamos ter: $${\mathbb{E}}\left\lbrack L(\theta,a) \right\rbrack = \int_{\Omega}L(\theta,a)\xi(\theta)d\theta\text{\quad\quad}\text{ (LOTUS) }$$
 
-<a id="estimador-de-bayes"></a>
 <a id="secao-11"></a>
 
 ## Estimador de Bayes

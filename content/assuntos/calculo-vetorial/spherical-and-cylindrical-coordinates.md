@@ -21,7 +21,6 @@ ordem_na_trilha: 1
 # Spherical and Cylindrical coordinates
 
 
-<a id="cylindrical-coordinates"></a>
 <a id="secao-2"></a>
 
 ## Cylindrical coordinates
@@ -34,7 +33,6 @@ $$
 \iiint_{C(A)}f\left( r\cos\theta,r\sin\theta,z \right)rdzdrd\theta
 $$
 
-<a id="spherical-coordinates"></a>
 <a id="secao-3"></a>
 
 ## Spherical coordinates

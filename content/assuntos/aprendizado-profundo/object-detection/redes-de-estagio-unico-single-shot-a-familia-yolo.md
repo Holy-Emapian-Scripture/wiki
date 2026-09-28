@@ -22,7 +22,6 @@ ordem_na_trilha: 31
 # Redes de Estágio Único (Single-Shot): A Família YOLO
 
 
-<a id="fundamentos-do-yolo"></a>
 <a id="secao-38"></a>
 
 ## Fundamentos do YOLO
@@ -46,7 +45,6 @@ Para cada célula da grade, o YOLO prevê um vetor de saída que contém informa
 
 - **$\left( c_{1},c_{2},\ldots,c_{C} \right)$**: Probabilidades de cada classe
 
-<a id="caixas-de-ancoragem-anchor-boxes"></a>
 <a id="secao-40"></a>
 
 ## Caixas de Ancoragem (Anchor Boxes)
@@ -103,7 +101,6 @@ Aumento da profundidade da rede, de $53$ camadas para $106$ camadas. Adição de
 
 *Figura 31. Arquitetura da YOLOv3*
 
-<a id="loss-function"></a>
 <a id="secao-45"></a>
 
 ## Loss Function

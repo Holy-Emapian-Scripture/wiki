@@ -22,7 +22,6 @@ ordem_na_trilha: 48
 # Treinamento e Problemas de Gradiente na RNN
 
 
-<a id="backpropagation-through-time-bptt"></a>
 <a id="secao-57"></a>
 
 ## Backpropagation Through Time (BPTT)

@@ -33,7 +33,6 @@ Agora a gente pode tirar vantagem do fato que a sequência $$\frac{x}{\| x\|},\f
 
 Ao invés dessas ideias, é mais comum, para propósitos gerais, os algoritmos seguirem um princípio diferente: A computação de uma fatoração explícita de autovalores de $A$, onde um dos fatores da fatoração tem os autovalores de $A$ como entradas. A gente viu 3 desses métodos na última lecture (Diagonalização, [Diagonalização Unitária](problemas-de-autovalores.md#secao-24) e Fatoração de Schur). Na prática, os algoritmos vão aplicando transformações em $A$ de forma que eles inserem 0 nas colunas e entradas corretas (Tipo o que a gente viu no método de [Householder](triangularizacao-de-householder.md))
 
-<a id="uma-dificuldade-fundamental"></a>
 <a id="secao-29"></a>
 
 ## Uma dificuldade fundamental

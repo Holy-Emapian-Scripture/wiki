@@ -22,14 +22,12 @@ ordem_na_trilha: 32
 # Redução à forma de Hessenberg
 
 
-<a id="uma-ideia-de-girico"></a>
 <a id="secao-33"></a>
 
 ## Uma ideia de Girico
 
 A gente pode começar pensando “Macho, essa fatoração é mamão com açúcar, só eu multiplicar pelo refletor de [Householder](triangularizacao-de-householder.md) que eu vou ter 0 abaixo da diagonal que eu quiser”. Só que isso tem um problema, a gente precisa que o refletor multiplique de ambos os lados, ou seja: $$Q_{1}^{\ast}AQ_{1}$$ Isso faz com que os zeros que a gente colocou antes se percam, e a gente obtem uma matriz que a gente não queria :(.
 
-<a id="uma-boa-ideia"></a>
 <a id="secao-34"></a>
 
 ## Uma boa ideia
@@ -58,14 +56,12 @@ Essa ideia continua a ser repetida para colunas subsequentes. Temos um algoritmo
 
 *Figura 6. Redução de Householder para forma de Hessenberg*
 
-<a id="hermitiana"></a>
 <a id="secao-35"></a>
 
 ## Hermitiana
 
 É bem tranquilo de ver que o [algoritmo de redução de Householder à forma de Hessenberg](#householder-reduction-to-hessenberg-form) gera uma matriz tri-diagonal no caso em que $A$ é hermitiana, já que $QAQ^{\ast}$ é hermitiana. Inclusive, essa propriedade pose gerar uma redução de custo, tendo em vista que podemos realizar as operações apenas da diagonal para cima, ignorando a parte de baixo das operações.
 
-<a id="estabilidade"></a>
 <a id="secao-36"></a>
 
 ## Estabilidade

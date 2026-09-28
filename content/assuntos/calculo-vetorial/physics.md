@@ -21,7 +21,6 @@ ordem_na_trilha: 5
 # Physics
 
 
-<a id="mass-center-and-centroid"></a>
 <a id="secao-6"></a>
 
 ## Mass Center and Centroid
@@ -44,7 +43,6 @@ $$
 \iint_{S}\mu(x,y)dxdy
 $$
 
-<a id="moment-of-inertia"></a>
 <a id="secao-7"></a>
 
 ## Moment of Inertia

@@ -22,7 +22,6 @@ ordem_na_trilha: 56
 # Outros algoritmos de Autovalores
 
 
-<a id="algoritmo-de-jacobi"></a>
 <a id="secao-57"></a>
 
 ## Algoritmo de Jacobi
@@ -35,7 +34,6 @@ Ok, então o que podemos fazer pra ir fazendo isso? Vamos aplicando pequenas rot
 
 onde $c = \cos(\theta)$ e $s = \sin(\theta)$ para algum $\theta$. Vale dizer também que essa rotação é para o caso de $A \in {\mathbb{R}}^{2 \times 2}$. Se $A$ é uma matriz de dimensão maior, então a matriz de rotação é a identidade com um bloco do tipo que apresentei antes em algum lugar (Qualquer lugar da matriz). No final a gente teria uma matriz $J$ tal que: $$J^{T}AJ = \text{ Diagonal }$$
 
-<a id="bisection"></a>
 <a id="secao-58"></a>
 
 ## Bisection
@@ -100,7 +98,6 @@ Se trocarmos $\det(A^{(k)})$ por $\det(A^{(k)} - xI) = p^{(k)}(x)$ $$p^{(k)}(x) 
 
 E se definirmos $p^{( - 1)}(x) = 0$ e $p^{(0)}(x) = 1$, conseguimos, uma fórmula de recorrência para $k = 1,2,\ldots,m$
 
-<a id="dividir-para-conquistar"></a>
 <a id="secao-59"></a>
 
 ## Dividir para Conquistar

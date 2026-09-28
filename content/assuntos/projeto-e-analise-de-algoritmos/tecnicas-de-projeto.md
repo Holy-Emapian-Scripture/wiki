@@ -69,7 +69,6 @@ def string_problem(string1, string2):
     return M[len_str2][len_str1]
 ```
 
-<a id="menor-quantidade-de-moedas"></a>
 <a id="secao-4"></a>
 
 ## Menor quantidade de moedas

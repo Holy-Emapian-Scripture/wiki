@@ -76,7 +76,6 @@ Suponha que temos um conjunto de dados $X = \left\{ x_{1},x_{2},\ldots,x_{N} \ri
 
 Acaba que maximizar essa verossimilhança diretamente é difícil, pois a presença da soma dentro do log torna a derivada complicada. Uma alternativa válida é maximizar a verossimilhança por métodos de otimização de gradiente, porém, nós vamos utilizar o algoritmo Expectation-Maximization (EM), que é um método iterativo para encontrar estimativas de [máxima verossimilhança](../inferencia-estatistica/estatistica-frequentista.md#secao-14) em modelos com variáveis latentes.
 
-<a id="expectation-maximization-em-para-gmms"></a>
 <a id="secao-12"></a>
 
 ## Expectation-Maximization (EM) para GMMs
@@ -141,7 +140,6 @@ Vale ressaltar que a [média ótima da componente $k$](#optimal-mean-k), [covari
 
 2.  }
 
-<a id="algoritmo-em-variacional"></a>
 <a id="secao-13"></a>
 
 ## Algoritmo EM Variacional
@@ -190,7 +188,6 @@ Então vamos ter que a esperança da log-verossimilhança do dataset completo so
 
 Dado essa equação, podemos fixar valores iniciais para $\mu$, $\Sigma$ e $\pi$ para calcular $\gamma(z_{nk})$, depois maximizamos os valores dos parâmetros do modelo com base na [equação da log-verossimilhança média dos dados completos](#mean-log-likelihood-complete-data) com as fórmulas já vistas anteriormente na [média ótima da componente $k$](#optimal-mean-k), [covariância ótima da componente $k$](#optimal-covariance-k) e [coeficiente de mistura ótimo da componente $k$](#optimal-mixing-coefficient-k) e repetimos esse processo até que a convergência seja alcançada. Esse é o algoritmo EM aplicado aos GMMs.
 
-<a id="bernoulli-mixture-models"></a>
 <a id="secao-14"></a>
 
 ## Bernoulli Mixture Models
@@ -255,7 +252,6 @@ Fixando os parâmetros do modelo e variando apenas $\pi$, o valor ótimo de $\pi
 
 Sabendo que $\sum_{k}\pi_{k} = 1$, usamos de multiplicadores de lagrange para encontrar o valor ótimo de $\pi_{k}$. Definimos a função lagrangiana como: $$L(\pi,\lambda) = \ln p\left( X,Z~\vert ~\mu,\pi \right) + \lambda\left( \sum_{k = 1}^{K}\pi_{k} - 1 \right)$$ Derivando em relação a $\pi_{k}$ e igualando a zero, obtemos: $$\frac{\partial L}{\partial\pi_{k}} = \frac{\gamma(z_{nk})}{\pi_{k}} + \lambda = 0$$ Isolando $\pi_{k}$, obtemos: $$\pi_{k} = - \frac{\lambda}{\gamma(z_{nk})}$$ Usando a condição de normalização $\sum_{k}\pi_{k} = 1$, podemos encontrar o valor de $\lambda$: $$\sum_{k = 1}^{K} - \frac{\lambda}{\gamma(z_{nk})} = 1$$ Resolvendo para $\lambda$, obtemos: $$\lambda = - \frac{1}{\sum_{k = 1}^{K}\frac{1}{\gamma(z_{nk})}}$$ Substituindo esse valor de $\lambda$ na expressão para $\pi_{k}$, obtemos: $$\pi_{k} = \frac{\gamma(z_{nk})}{\sum_{j = 1}^{K}\gamma(z_{nj})} = \frac{N_{k}}{N}$$
 
-<a id="singularidades-e-identificabilidade"></a>
 <a id="secao-15"></a>
 
 ## Singularidades e Identificabilidade

@@ -20,10 +20,10 @@ render_with_liquid: false
 - [Estacionariedade e ACF](estacionariedade-e-acf.md) — [A1](../../trilhas/series-temporais/a1.md)
 - [Introdução às Séries Temporais](introducao-as-series-temporais.md) — [A1](../../trilhas/series-temporais/a1.md)
 - [Métricas de Avaliação](metricas-de-avaliacao.md) — [A1](../../trilhas/series-temporais/a1.md)
-- [Modelagem Clássica aplicada ao Tempo](modelagem-classica-aplicada-ao-tempo/index.md) — [A1](../../trilhas/series-temporais/a1.md)
+- [Modelagem Clássica aplicada ao Tempo](modelagem-classica-aplicada-ao-tempo.md) — [A1](../../trilhas/series-temporais/a1.md)
 - [Modelo AR e PACF](modelo-ar-e-pacf.md) — [A1](../../trilhas/series-temporais/a1.md)
 - [Modelos MA e Invertibilidade](modelos-ma-e-invertibilidade.md) — [A1](../../trilhas/series-temporais/a1.md)
-- [Previsão e Baselines](previsao-e-baselines/index.md) — [A1](../../trilhas/series-temporais/a1.md)
+- [Previsão e Baselines](previsao-e-baselines.md) — [A1](../../trilhas/series-temporais/a1.md)
 - [Transformações](transformacoes.md) — [A1](../../trilhas/series-temporais/a1.md)
 
 ## Hubs de origem

@@ -23,7 +23,6 @@ ordem_na_trilha: 9
 
 Para uma visão complementar da infraestrutura, veja [Computação na Nuvem](../computacao-na-nuvem.md).
 
-<a id="os-5-pilares"></a>
 <a id="secao-12"></a>
 
 ## Os 5 pilares

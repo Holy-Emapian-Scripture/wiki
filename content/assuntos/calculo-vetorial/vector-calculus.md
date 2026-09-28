@@ -21,7 +21,6 @@ ordem_na_trilha: 8
 # Vector Calculus
 
 
-<a id="curves"></a>
 <a id="secao-9"></a>
 
 ## Curves
@@ -30,7 +29,6 @@ A Curve is a continuous function $\gamma:\lbrack a,b\rbrack \rightarrow {\mathbb
 
 A curve is said to be $C^{1}$ *by parts* if there is a partition of $\lbrack a,b\rbrack$ in a finite number of subintervals such that the curve is $C^{1}$ in each of tese subintervals.
 
-<a id="scalar-line-integrals"></a>
 <a id="secao-10"></a>
 
 ## Scalar Line Integrals
@@ -43,7 +41,6 @@ $$
 
 If $\gamma$ is $C^{1}$ *by parts*, we integrate on the $C^{1}$ partition-subintervals and sum each odf the smaller integrals.
 
-<a id="centroid-and-mass-center-of-a-curve"></a>
 <a id="secao-11"></a>
 
 ## Centroid and Mass Center of a Curve
@@ -82,7 +79,6 @@ $$
 L = \int_{\gamma}ds = \int_{a}^{b}\|\gamma'(t)\| dt
 $$
 
-<a id="vectorial-line-integrals"></a>
 <a id="secao-14"></a>
 
 ## Vectorial Line Integrals
@@ -97,7 +93,6 @@ $$
 
 This line integral is linear: $\int_{\gamma}(aF + bG) = a\int_{\gamma}F + b\int_{\gamma}G$
 
-<a id="conservative-vector-fields-and-angle-variation"></a>
 <a id="secao-15"></a>
 
 ## Conservative Vector Fields and Angle Variation

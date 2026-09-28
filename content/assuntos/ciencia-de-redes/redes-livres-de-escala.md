@@ -22,7 +22,6 @@ ordem_na_trilha: 14
 # Redes Livres de Escala
 
 
-<a id="formalismo-discreto"></a>
 <a id="secao-19"></a>
 
 ## Formalismo Discreto
@@ -33,7 +32,6 @@ Normalizando, temos: $$\begin{array}{r} \int_{k_{\min}}^{\infty}{\mathbb{P}}(K =
 
 Então temos que a distribuição segue a P.M.F: $${\mathbb{P}}(K = k) = (\gamma - 1)k_{\min}^{\gamma - 1}k^{- \gamma}$$
 
-<a id="centros"></a>
 <a id="secao-20"></a>
 
 ## Centros
@@ -70,7 +68,6 @@ Agora, para as redes livre de escala, resolvendo [relação entre $k_{\min}$ e $
 
 Ou seja, quanto maior é minha rede, maior vai ser o tamanho do meu centro (Maior é o grau do nó com mais graus). Isso é um resultado bem intuitivo, na verdade! Lembra que nós começamos dando o contexto da rede da internet (WWW)? Se pararmos para pensar, conforme as pessoas criam páginas na internet, elas tendem a colocar links para páginas famosas na internet, ou que tem alguma relevância em **comunidades**, ou seja, quanto mais links referenciando uma página, mais páginas vão referenciar ela, de forma que, quanto mais páginas vão sendo criadas, maior vai ser a quantidade de links referenciando páginas famosas ou reconhecidas!
 
-<a id="significado-de-livre-de-escala"></a>
 <a id="secao-22"></a>
 
 ## Significado de Livre de Escala
@@ -93,7 +90,6 @@ Porém, em redes livres de escala em que o segundo momento diverge? Isso signifi
 
 É claro que a divergência de ${\mathbb{E}}\left\lbrack K^{2} \right\rbrack$ só acontece no limite $N \rightarrow \infty$, mas isso ainda tem uma relevância para redes finitas. Vamos pegar o caso da rede de internet novamente, sabemos que a quantidade de documentos (Nós) está na casa dos bilhões ou trilhões, o que indica que temos uma variância MUITO GRANDE, ou seja, mesmo tendo uma variância finita e, no concreto, tenhamos uma escala, ela é quase irrelevante, já que, ao pegarmos um documento aleatório, ele pode estar sendo citado por apenas dois outros documentos, ou ser citado por bilhões de documentos (Como google, facebook, etc.)
 
-<a id="propriedade-ultra-small"></a>
 <a id="secao-23"></a>
 
 ## Propriedade *Ultra Small*

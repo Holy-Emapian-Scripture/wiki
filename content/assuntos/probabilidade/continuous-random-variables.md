@@ -21,7 +21,6 @@ ordem_na_trilha: 12
 # Continuous Random variables
 
 
-<a id="fundamentals"></a>
 <a id="secao-23"></a>
 
 ## Fundamentals

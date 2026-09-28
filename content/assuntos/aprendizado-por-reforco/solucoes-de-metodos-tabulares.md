@@ -31,7 +31,6 @@ A característica mais importante do Aprendizado por Reforço que a difere de ou
 
 Nesse capítulo vamos ver o aspecto do feedback avaliativo simplificado, que não envolve aprender a agir em mais de uma situação, ou seja, teremos sempre apenas um estado, e depois generalizaremos.
 
-<a id="o-problema-do-bandido-k-armado"></a>
 <a id="secao-10"></a>
 
 ## O problema do bandido k-armado
@@ -192,7 +191,6 @@ A ideia do UCB(Upper Confidence Bound), resumidamente, é que o termo da direita
 
 O UCB pode performar bem no testes do bandido 10-armado, mas o autor afirma que em problemas reais com grande espaços de estado ou com problemas não estacionários o método pode não performar bem, porque seria inviável guardar e gerenciar os valoroes de $N_{t}(a)$ e porque simplesmente não faz sentido usar o UCB como confiança da recompensa se as recompensas mudam, respectivamente.
 
-<a id="algoritmos-do-bandido-baseado-em-gradiente"></a>
 <a id="secao-18"></a>
 
 ## Algoritmos do Bandido Baseado em gradiente
@@ -217,7 +215,6 @@ A Figura 7 mostra o resultados do algoritmo do gradiente ascendente em uma varia
 
 ### olhar no livro a explicação e explicar dps
 
-<a id="pesquisa-associativa"></a>
 <a id="secao-20"></a>
 
 ## Pesquisa associativa

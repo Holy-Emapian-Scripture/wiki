@@ -63,7 +63,6 @@ Se $G = (V,E)$ for um grafo não-dirigido com custos nas arestas (com valores po
 
 **Problema:** dado $G = (V,E)$ não-dirigido com custos nas arestas encontre uma árvore geradora mínima.
 
-<a id="algoritmo-de-prim"></a>
 <a id="secao-34"></a>
 
 ## Algoritmo de Prim
@@ -341,7 +340,6 @@ def mst_prim_fastv2(v0, list_adj):
 
 Para a complexidade, muito parecido com o djikstra, o que vemos aqui é que temos um heap pop quando passamos por todos os vértices e temos um heap push quando temos que adicionar(ao passarmos pelas arestas). Ou seja, juntando com a explicação de complexidades anteriores, isso dá simplesmente $O\left( (V + E)\log(V) \right)$.
 
-<a id="algoritmo-de-kruskal"></a>
 <a id="secao-38"></a>
 
 ## Algoritmo de Kruskal

@@ -25,7 +25,6 @@ Vimos minimizações para condições lineares e convexas, mas nem sempre isso a
 
 
 
-<a id="lagrangeano"></a>
 <a id="secao-22"></a>
 
 ## Lagrangeano
@@ -77,7 +76,6 @@ Considere o [problema com restrições genéricas](#optimization-with-generic-re
 
 Isso facilita um pouco a terminologia pois podemos resumir o [teorema KKT](#generic-kkt) em dizer que um ponto de LICQ não pode ser um ponto de mínimo se ele não for KKT
 
-<a id="caso-convexo"></a>
 <a id="secao-24"></a>
 
 ## Caso Convexo

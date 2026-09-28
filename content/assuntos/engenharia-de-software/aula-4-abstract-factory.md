@@ -22,7 +22,6 @@ ordem_na_trilha: 14
 # Aula 4 - Abstract Factory
 
 
-<a id="abstract-factory"></a>
 <a id="secao-17"></a>
 
 ## Abstract Factory
@@ -313,7 +312,6 @@ print(loja.processar(cliente, valor, peso_kg, "Manaus"))
 
 E reaparece o OCP: “se a gente quiser colocar Belém no frete aéreo, pra fazer isso, teríamos que estender de `Frete`, sem precisar modificar, só estendendo — copia o `FreteFluvial` e bota `Aereo`” — a mesma `FreteAereo` que já ficou pronta, esperando, lá na Aula 2.
 
-<a id="termos-da-aula-4"></a>
 <a id="secao-21"></a>
 
 ## Termos da Aula 4

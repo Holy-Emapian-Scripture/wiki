@@ -22,7 +22,6 @@ ordem_na_trilha: 43
 # Algoritmo QR sem Shift
 
 
-<a id="o-algoritmo-qr"></a>
 <a id="secao-44"></a>
 
 ## O Algoritmo QR

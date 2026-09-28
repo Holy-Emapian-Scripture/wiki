@@ -22,7 +22,6 @@ ordem_na_trilha: 25
 # Ortonormalização de Gram-Schmidt
 
 
-<a id="algoritmo-de-gram-schmidt-modificado"></a>
 <a id="secao-26"></a>
 
 ## Algoritmo de Gram-Schmidt Modificado

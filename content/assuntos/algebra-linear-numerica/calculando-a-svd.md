@@ -127,7 +127,6 @@ Perceba que a proporção só aumenta pois eu estou sempre aplicando em matrizes
 
 *Figura 23. Aplicação da QR em pontos-chave da iteração*
 
-<a id="fase-2"></a>
 <a id="secao-66"></a>
 
 ## Fase 2

@@ -22,7 +22,6 @@ ordem_na_trilha: 2
 # Distribuição Chi-Quadrado
 
 
-<a id="propriedades"></a>
 <a id="secao-3"></a>
 
 ## Propriedades

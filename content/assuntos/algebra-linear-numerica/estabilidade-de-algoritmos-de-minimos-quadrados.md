@@ -22,7 +22,6 @@ ordem_na_trilha: 9
 # Estabilidade de Algoritmos de Mínimos Quadrados
 
 
-<a id="primeira-etapa"></a>
 <a id="secao-10"></a>
 
 ## Primeira Etapa
@@ -44,7 +43,6 @@ b = np.exp(np.sin(4*t))/2.00678728e+03
 
 Oxe, por que que tem essa divisão esquisita no final? Quando a gente não faz essa divisão, ao fazer a previsão dos coeficientes que aproximam a função, temos que o último coeficiente previsto ($x_{15}$) é igual a `2.00678728e+03`, então, nós dividimos $b$ por esse valor para que o último coeficiente seja igual a $1$ no caso matematicamente correto (Sem erros numéricos), assim poderemos fazer comparações apenas visualizando o último número dos coeficientes calculados.
 
-<a id="householder"></a>
 <a id="secao-11"></a>
 
 ## Householder
@@ -157,7 +155,6 @@ Suponha que $A$ é mal-condicionada. Dependendo dos valores dos híperparâmetro
 
 A solução de um problema de mínimos quadrados com uma matriz $A$ de posto-completo utilizando de equações normais é **instável**. Porém a estabilidade pode ser alcançada ao restringir para uma classe de problemas onde $\kappa(A)$ é pequeno ou $\frac{\tan(\theta)}{\eta}$ é pequeno.
 
-<a id="svd"></a>
 <a id="secao-14"></a>
 
 ## SVD

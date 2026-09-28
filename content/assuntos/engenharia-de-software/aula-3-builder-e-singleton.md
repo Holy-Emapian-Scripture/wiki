@@ -22,7 +22,6 @@ ordem_na_trilha: 10
 # Aula 3 - Builder e Singleton
 
 
-<a id="builder"></a>
 <a id="secao-11"></a>
 
 ## Builder
@@ -153,7 +152,6 @@ sql, parametros = (
 
 Um kwarg fixo não dá conta disso de forma limpa — teria que ser algo como `consultar(cliente=None, tipo_entrega=None, total_minimo=None)` com um `if` pra cada parâmetro checando se é `None` antes de colar no SQL, o que é exatamente a bagunça que o Builder organiza aqui. E de quebra, essa versão já resolve o problema de SQL injection apontado lá na Cacto: em vez de concatenar `pedido.cliente` direto na string, os valores viram parâmetros separados (`%s` + lista `parametros`), passados pro driver do banco em vez de virarem texto da query.
 
-<a id="singleton"></a>
 <a id="secao-12"></a>
 
 ## Singleton
@@ -227,7 +225,6 @@ print(SingletonNaive().__name__, SingletonNaive().__doc__)
 
 O problema aqui é de outra natureza: `get_instance` deveria receber tudo que o construtor da classe original receberia, mas como o decorador funciona pra qualquer classe, ele não tem como saber de antemão o que cada uma espera. E tem um efeito colateral mais sério — depois do decorador, `SingletonNaive` deixa de ser uma classe e passa a ser uma função (`get_instance`, guardada como closure, com `cls` capturado como freevar no frame da função original). Isso significa que um `isinstance` contra `SingletonNaive` já não funciona mais do jeito esperado, porque você estaria comparando contra uma função, não contra um tipo. O singleton em si funciona perfeitamente, mas a classe não funciona mais perfeitamente como classe.
 
-<a id="termos-da-aula-3"></a>
 <a id="secao-15"></a>
 
 ## Termos da Aula 3

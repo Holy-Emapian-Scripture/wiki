@@ -22,7 +22,6 @@ ordem_na_trilha: 1
 # Revisão da A1
 
 
-<a id="integrais-de-linha"></a>
 <a id="section_integral_linha"></a>
 
 ## Integrais de Linha

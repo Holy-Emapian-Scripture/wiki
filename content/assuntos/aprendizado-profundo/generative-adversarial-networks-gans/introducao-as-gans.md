@@ -22,7 +22,6 @@ ordem_na_trilha: 60
 # Introdução às GANs
 
 
-<a id="two-player-game"></a>
 <a id="secao-69"></a>
 
 ## Two-player Game

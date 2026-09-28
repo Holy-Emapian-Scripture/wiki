@@ -22,7 +22,6 @@ ordem_na_trilha: 36
 # Condicionamento e Números de Condição
 
 
-<a id="condicionamento-de-um-problema"></a>
 <a id="secao-40"></a>
 
 ## Condicionamento de um Problema
@@ -103,7 +102,6 @@ $$
 \kappa = \lim\limits_{\Delta \rightarrow 0}\sup\limits_{\|\Delta x\| \leq \Delta}\frac{\frac{\|\Delta f(x)\|}{\| f(x)\|}}{\frac{\|\Delta x\|}{\| x\|}} = \lim\limits_{\Delta \rightarrow 0}\sup\limits_{\|\Delta x\| \leq \Delta}\frac{\|\Delta f(x)\|}{\| f(x)\|}\frac{\| x\|}{\|\Delta x\|} = \lim\limits_{\Delta \rightarrow 0}\sup\limits_{\|\Delta x\| \leq \Delta}\frac{\|\Delta f(x)\|}{\|\Delta x\|}\frac{\| x\|}{\| f(x)\|} = \| J(x)\frac{\|\left( \| x\| \right)}{\| f(x)\|}
 $$
 
-<a id="condicionamento-de-matrizes-e-vetores"></a>
 <a id="secao-41"></a>
 
 ## Condicionamento de Matrizes e Vetores

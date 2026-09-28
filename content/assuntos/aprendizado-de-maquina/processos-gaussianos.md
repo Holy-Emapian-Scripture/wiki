@@ -22,7 +22,6 @@ ordem_na_trilha: 9
 # Processos Gaussianos
 
 
-<a id="revisitando-a-priori-gaussiana"></a>
 <a id="secao-10"></a>
 
 ## Revisitando a priori Gaussiana

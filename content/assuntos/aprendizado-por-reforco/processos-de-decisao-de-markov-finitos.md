@@ -22,7 +22,6 @@ ordem_na_trilha: 20
 # Processos de Decisão de Markov Finitos
 
 
-<a id="a-interface-do-agente-ambiente"></a>
 <a id="secao-23"></a>
 
 ## A interface do agente-ambiente
@@ -111,7 +110,6 @@ As ações, nesse caso, podem ser as tensões elétricas aplicadas a cada motor 
 
 A recompensa pode ser +1 para cada objeto que o robô pegar e colocar com sucesso. Para encorajar movimentos suaves, a cada passo de tempo pode ser dada uma pequena recompensa negativa, em função da “tremedeira” (ou irregularidade) do movimento no momento.
 
-<a id="metas-e-recompensas"></a>
 <a id="secao-24"></a>
 
 ## Metas e recompensas

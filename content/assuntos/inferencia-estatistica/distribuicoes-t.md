@@ -22,7 +22,6 @@ ordem_na_trilha: 6
 # Distribuições $t$
 
 
-<a id="propriedades"></a>
 <a id="secao-7"></a>
 
 ## Propriedades

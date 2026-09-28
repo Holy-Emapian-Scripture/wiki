@@ -53,7 +53,6 @@ O livro também aborda outros casos em que um mesmo caso pode ter **vários** es
 
 Mas eu falei antes que esses estimadores formalizavam a ideia de “O parâmetro $\theta$ parece ser esse daqui”, mas não é bem assim que funciona. A gente viu que ele é o parâmetro que **maximiza** a probabilidade daquela observação ocorrer. E qual é a diferença disso pro que falei antes? Simples, quando vemos os valores de observações, o fato de eles aparecerem daquela forma, não significa que o valor que $\theta$ mais aparenta ser seja o real. Ué, como assim? Muitos fatores podem estar envolvidos, fatores que, logo de cara, não conseguimos observar apenas nos dados. Para que isso ocorresse, os dados deveriam conter muito mais informação do que tinhamos à priori (Antes das observações)
 
-<a id="propriedades"></a>
 <a id="secao-15"></a>
 
 ## Propriedades

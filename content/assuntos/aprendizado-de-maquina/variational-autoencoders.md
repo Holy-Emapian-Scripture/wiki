@@ -98,7 +98,6 @@ Vimos que para o autoencoder aprender representações úteis, é necessário im
 
 Um método de impor ruído nas entradas é selecionar uma fração $\tau \in (0,1)$ das amostras e colocar parte de suas entradas como $0$. Por exemplo, se $\tau = 0.2$, então 20% das entradas de cada amostra selecionada serão corrompidas, ou seja, substituídas por zero. Outro método é adicionar ruído gaussiano às entradas, ou seja, para cada entrada $x_{n}$, adicionamos um ruído $\varepsilon$ proveniente de uma [distribuição normal](../probabilidade/distribuicoes-continuas.md#secao_dist_normal) com média zero e desvio padrão $\sigma$, resultando em uma entrada corrompida ${\widetilde{x}}_{n} = x_{n} + \varepsilon$.
 
-<a id="autoencoders-variacionais"></a>
 <a id="secao-22"></a>
 
 ## Autoencoders Variacionais

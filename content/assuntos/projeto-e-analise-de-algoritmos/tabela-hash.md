@@ -23,7 +23,6 @@ ordem_na_trilha: 11
 # Tabela Hash
 
 
-<a id="desafio"></a>
 <a id="secao-12"></a>
 
 ## Desafio

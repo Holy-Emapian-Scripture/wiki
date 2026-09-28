@@ -22,7 +22,6 @@ ordem_na_trilha: 1
 # Normas
 
 
-<a id="normas-de-vetores"></a>
 <a id="secao-2"></a>
 
 ## Normas de vetores
@@ -63,7 +62,6 @@ $\| x\|_{W} = \| Wx\| = \left( \sum_{i = 1}^{n}\vert w_{ii}x_{i}\vert ^{p} \righ
 
 Onde $W$ é uma **matriz diagonal** e $p$ é um número arbitrário
 
-<a id="normas-de-matrizes"></a>
 <a id="secao-3"></a>
 
 ## Normas de matrizes

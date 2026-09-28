@@ -57,7 +57,6 @@ onde $N_{i}$ é a quantidade de nós com grau $i$ e eu multiplico por $i$ pois e
 
 Se os eventos $A$ e $B$ **não são independentes**, seria necessário saber a distribuição entre eles dois para calcular ${\mathbb{P}}(A = i\vert B = j)$. Porém, se $A$ e $B$ são independentes, então ${\mathbb{P}}(A = i\vert B = j) = {\mathbb{P}}(A = i) \cdot {\mathbb{P}}(B = j)$, então, no caso de $A$ e $B$ independentes, obtemos: $${\mathbb{P}}(A = i\vert B = j) = {\mathbb{P}}(A = i) \cdot {\mathbb{P}}(B = j) = \frac{ip(i)jp(j)}{\left( {\mathbb{E}}\lbrack K\rbrack \right)^{2}}$$
 
-<a id="average-next-neighbour-degree"></a>
 <a id="secao-3"></a>
 
 ## Average Next Neighbour Degree
@@ -90,7 +89,6 @@ de forma que:
 
 - $\mu < 0 \Rightarrow$ Rede desassortativa
 
-<a id="cutoffs"></a>
 <a id="secao-4"></a>
 
 ## Cutoffs

@@ -22,7 +22,6 @@ ordem_na_trilha: 1
 # Estabilidade da Triangularização de Householder
 
 
-<a id="o-experimento"></a>
 <a id="section_householder_stability_experiment"></a>
 
 ## O Experimento
@@ -94,7 +93,6 @@ print(np.linalg.norm(A - Q_3 @ R_3))
 
 Perceba o quão grande é esse erro, é **enorme**, então: $Q_{2}$ não é melhor que $Q_{3}$, $R_{2}$ não é melhor que $R_{3}$, mas $Q_{2}R_{2}$ é muito mais preciso do que $Q_{3}R_{3}$
 
-<a id="teorema"></a>
 <a id="section_householder_stability_theorem"></a>
 
 ## Teorema

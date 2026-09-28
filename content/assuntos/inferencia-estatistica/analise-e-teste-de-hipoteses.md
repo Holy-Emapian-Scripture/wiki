@@ -145,7 +145,6 @@ Seja $T$ uma estatística e suponha que vamos rejeitar $H_{0}$ se $T \geq c$. Va
 
 perceba que o lado direito é não-crescente em $c$, então a desigualdade é satisfeita para altos valores de $c$, então devemos fazer $c$ o menor possível sem que a desigualdade seja desfeita, e também queremos que $\pi(\theta\vert \delta)$ seja o maior possível para $\theta \in \Omega_{1}$. Quando $T$ tem distribuição contínua, costuma ser fácil achar um $c$ apropriado
 
-<a id="p-valor"></a>
 <a id="secao-24"></a>
 
 ## p-valor
@@ -176,7 +175,6 @@ Mas por que essa definição é útil? Usamos isso pois, se eu faço um teste em
 
 Um experimentador que rejeita a hipótese nula $\Leftrightarrow$ o p-valor é no máximo $\alpha_{0}$, está usando um teste de significância $\alpha_{0}$
 
-<a id="calculando-p-valores"></a>
 <a id="secao-25"></a>
 
 ## Calculando p-valores

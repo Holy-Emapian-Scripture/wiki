@@ -22,7 +22,6 @@ ordem_na_trilha: 18
 # Percas
 
 
-<a id="cross-entropy-loss"></a>
 <a id="secao-25"></a>
 
 ## Cross Entropy Loss
@@ -33,7 +32,6 @@ se o modelo prevê alta probabilidade para a classe correta do pixel, o $\log(p_
 
 No entanto, essa loss carrega um problema. Quando existe um desbalanceamento de classes dentro do meu dataset, pode acontecer de a rede aprender a prever apenas a classe majoritária, ignorando as classes minoritárias.
 
-<a id="balanced-cross-entropy-loss"></a>
 <a id="secao-26"></a>
 
 ## Balanced Cross Entropy Loss
@@ -42,7 +40,6 @@ Para resolver o problema citado, podemos utilizar a **balanced cross entropy los
 
 o peso $\omega_{t_{i}}$ é pré-calculado de forma inversamente proporcional à frequência da classe $t_{i}$ no dataset, de forma que classes minoritárias tenham pesos maiores e classes majoritárias tenham pesos menores. Isso força a rede a prestar mais atenção às classes minoritárias durante o treinamento. Podemos ter uma formulação binária também $$\text{ BCE } = - \frac{1}{N}\left( \sum_{i \in \text{ positivos}}\omega_{\text{pos }}\log(p_{i}) + \sum_{i \in \text{ negativos}}\omega_{\text{neg }}\log(p_{i}) \right)$$
 
-<a id="focal-loss"></a>
 <a id="secao-27"></a>
 
 ## Focal Loss
@@ -55,14 +52,12 @@ Essa loss serve para resolver um problema sutíl. A loss anterior resolve o prob
 
 $\gamma$ é o parâmetro focal, quanto maior ele é, mais severa é a penalidade aplicada aos pixels fáceis, e quanto menor ele é, mais leve é a penalidade aplicada aos pixels fáceis. O valor padrão de $\gamma$ é $2$, mas ele pode ser ajustado dependendo do problema e do dataset.
 
-<a id="balanced-focal-loss"></a>
 <a id="secao-28"></a>
 
 ## Balanced Focal Loss
 
 Combina as duas soluções, ponderando cada pixel de acordo com sua classe e aplicando penalidade em pixels fáceis, de forma que a rede foque nos pixels mais difíceis e nas classes minoritárias. $$\text{ FL}_{\text{bal }} = - \frac{1}{N}\sum_{i = 1}^{N}\omega_{t_{i}}\left( 1 - p_{i} \right)^{\gamma}\log(p_{i})$$
 
-<a id="loss-function-for-regression"></a>
 <a id="secao-29"></a>
 
 ## Loss Function for Regression

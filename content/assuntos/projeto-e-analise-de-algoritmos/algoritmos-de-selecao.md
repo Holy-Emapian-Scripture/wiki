@@ -23,7 +23,6 @@ ordem_na_trilha: 25
 # Algoritmos de Seleção
 
 
-<a id="quickselect"></a>
 <a id="secao-31"></a>
 
 ## Quickselect
@@ -116,7 +115,6 @@ $$
 
 Portanto, o pior caso $O\left( n^{2} \right)$ e o melhor caso $O(n)$.
 
-<a id="mediana-das-medianas"></a>
 <a id="secao-32"></a>
 
 ## Mediana das Medianas

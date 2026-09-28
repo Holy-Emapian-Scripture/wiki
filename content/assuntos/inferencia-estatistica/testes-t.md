@@ -44,7 +44,6 @@ O espaço paramétrico $\Omega$ suprime todo vetor bidimensiona $\left( \mu,\sig
 
 No [exemplo dos hospitais](#hospital-example-t-test), se a gente quisesse um teste de tamanho $\alpha_{0}$, a gente poderia usar o teste $t$ que rejeita $H_{0}$ se a estatística $U$ for menor ou igual a um $c$ (escolhemos $c$ de forma a fazer o teste ter tamanho $\alpha_{0}$)
 
-<a id="propriedades-dos-testes-t"></a>
 <a id="secao-30"></a>
 
 ## Propriedades dos testes $t$
@@ -123,7 +122,6 @@ Seja $Y$ e $W$ variáveis aleatórias independentes onde $W \sim N(\psi,1)$ e $Y
 
 Seja $X_{1},\ldots,X_{n}$ uma amostra aleatória de uma distribuição normal com média $\mu$ e variância $\sigma^{2}$. A distribuição da estatística $U$ é dada por uma distribuição $t$ não-central com $n - 1$ graus de liberdade e parâmetro de não-centralidade $\psi = \sqrt{n}(\mu - \mu_{0})/\sigma$. Seja $\delta$ o teste que rejeita $H_{0}:\mu \leq \mu_{0}$ quando $U \geq c$. Então a função de poder de $\delta$ é $\pi(\mu,\sigma^{2}\vert \delta) = 1 - T_{n - 1}\left( c\vert \psi \right)$. Seja $\delta'$ o teste que rejeita $H_{0}:\mu \geq \mu_{0}$ quando $U \leq c$, então a função de poder de $\delta'$ é $\pi(\mu,\sigma^{2}\vert \delta') = T_{n - 1}\left( c\vert \psi \right)$
 
-<a id="teste-t-pareado"></a>
 <a id="secao-31"></a>
 
 ## Teste $t$ pareado
@@ -142,7 +140,6 @@ A média das diferenças é ${\overline{x}}_{n} = 0.2199$. O valor de $\sigma'$ 
 
 Suponha também que estamos interessados na função poder sob $H_{1}$ do teste de nível $0.01$. Suponha que a diferença média entre os logaritmos das lesões na cabeça do lado do motorista e do lado do passageiro seja $\frac{\sigma}{4}$. Então, o parâmetro de não centralidade é $\frac{(164)^{\frac{1}{2}}}{4} = 3.20$
 
-<a id="testando-uma-alternativa-bilateral"></a>
 <a id="secao-32"></a>
 
 ## Testando uma alternativa bilateral

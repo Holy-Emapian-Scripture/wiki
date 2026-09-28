@@ -21,13 +21,16 @@ ordem_na_trilha: 12
 
 # Diagnóstico Visual
 
-
 <a id="introducao"></a>
 <a id="secao-18"></a>
 
 ## Introdução
 
-Antes de testes formais, ARIMA, ACF, PACF, etc., podemos fazer um diagnóstico visual da série temporal. O objetivo é identificar padrões, tendências, sazonalidades e possíveis anomalias nos dados. Essa análise inicial nos ajuda a formular hipóteses sobre o comportamento da série e a escolher modelos apropriados para previsão. Podemos primeiro pensar na série como $$y_{t} = T_{t} + S_{t} + R_{t}$$
+Antes de testes formais, ARIMA, ACF, PACF, etc., podemos fazer um diagnóstico visual da série temporal. O objetivo é identificar padrões, tendências, sazonalidades e possíveis anomalias nos dados. Essa análise inicial nos ajuda a formular hipóteses sobre o comportamento da série e a escolher modelos apropriados para previsão. Podemos primeiro pensar na série como
+
+$$
+y_{t} = T_{t} + S_{t} + R_{t}
+$$
 
 onde $T_{t}$ representa a tendência (nível que a série se move no médio/longo prazo), $S_{t}$ a sazonalidade (padrões que se repetem em intervalos fixos) e $R_{t}$ os resíduos (por definição, o que sobra após fixar $T_{t}$ e $S_{t}$)
 
@@ -46,7 +49,11 @@ Visualmente conseguimos identificar cada um dos componentes da série temporal.
 
 ## Covariáveis
 
-Dentro dessa estrutura, podem existir também **covariáveis explicativas** que influenciam a série temporal. Por exemplo, em uma série de vendas de um produto, fatores como campanhas de marketing, feriados ou eventos especiais podem afetar os valores observados. Incorporar essas covariáveis nos modelos pode melhorar a precisão das previsões e fornecer insights sobre os fatores que impactam a série. Ainda dentro do nosso framework visual, podemos introduzir essas covariáveis como $$y_{t} = \underset{\text{ Estrutura Temporal}}{\underbrace{T_{t} + S_{t}}} + \underset{\text{ Covariáveis}}{\underbrace{x_{t}^{T}\beta}} + R_{t}$$
+Dentro dessa estrutura, podem existir também **covariáveis explicativas** que influenciam a série temporal. Por exemplo, em uma série de vendas de um produto, fatores como campanhas de marketing, feriados ou eventos especiais podem afetar os valores observados. Incorporar essas covariáveis nos modelos pode melhorar a precisão das previsões e fornecer insights sobre os fatores que impactam a série. Ainda dentro do nosso framework visual, podemos introduzir essas covariáveis como
+
+$$
+y_{t} = \underset{\text{ Estrutura Temporal}}{\underbrace{T_{t} + S_{t}}} + \underset{\text{ Covariáveis}}{\underbrace{x_{t}^{T}\beta}} + R_{t}
+$$
 
 Na prática, $T_{t}$ e $S_{t}$ são incorporados dentro de $x_{t}$ e não são derivados explicitamente, mas é importante entender que eles existem e como eles caracterizam a série temporal. A análise visual pode nos ajudar a identificar quais covariáveis podem ser relevantes para o modelo e como elas se relacionam com os padrões observados na série.
 
@@ -61,7 +68,6 @@ Tendência é o movimento lento do nível da série: crescimento, queda ou plat�
 
 *Figura 2. Exemplo de tendência em uma série temporal*
 
-<a id="sazonalidade"></a>
 <a id="secao-21"></a>
 
 ## Sazonalidade
@@ -107,7 +113,6 @@ Aqui, estratificamos $T$ que é a média móvel, no entanto, o gráfico ainda co
 
 Essa extração visual é temporária, serve no momento para termos um entendimento do que são resíduos e como eles se comportam. Posteriormente, vamos aprender a extrair $T$ e $S$ de forma formal, utilizando modelos estatísticos
 
-<a id="split-temporal"></a>
 <a id="secao-23"></a>
 
 ## Split Temporal
@@ -122,10 +127,9 @@ Comentamos anteriormente sobre, para fazer modelos preditivos das séries tempor
 
 <!-- wiki:original:fim -->
 
-
 ## Percurso de estudo
 
 [Trilha: A1](../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Modelagem Clássica aplicada ao Tempo](modelagem-classica-aplicada-ao-tempo/index.md)
+- Anterior: [Modelagem Clássica aplicada ao Tempo](modelagem-classica-aplicada-ao-tempo.md)
 - Próximo: [Estacionariedade e ACF](estacionariedade-e-acf.md)

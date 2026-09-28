@@ -212,7 +212,6 @@ Administração e manutenção do data warehouse - realizar atividades que dão 
 
 - Implementar os procedimentos de backup e recuperação
 
-<a id="modelo-dimensional"></a>
 <a id="secao-13"></a>
 
 ## Modelo Dimensional
@@ -243,7 +242,6 @@ Contém descrições de negócios, organização, ou empresas no qual o sujeito 
 
 Contém medidas relacionadas ao sujeito da análise e chaves-estrangeiras que ligam os fatos às tabelas de dimensões. As medidas na tabela de fatos costumam ser numéricas com intenção de análises computacionais e matemáticas
 
-<a id="star-schema"></a>
 <a id="secao-14"></a>
 
 ## Star Schema
@@ -260,7 +258,6 @@ Queremos criar o fato **venda**, ele engloba as dimensões de **produto**, **cli
 
 Vale ressaltar que, dado a dimensão $i$, a sua chave-primária **não é a mesma chave-primária do modelo relacional**, pois a repetição dos registros pode ocorrer sem problema nenhum. Como aplicar chaves-primária nas dimensões e nos fatos será visto posteriormente
 
-<a id="como-um-fato-se-organiza"></a>
 <a id="secao-15"></a>
 
 ## Como um fato se organiza?
@@ -298,7 +295,6 @@ Podemos ter algumas abordagens **arbitrárias** para identificar os fatos. Por e
 
 *Figura 11. Galáxia ZAGI*
 
-<a id="detalhamento-de-fatos"></a>
 <a id="secao-17"></a>
 
 ## Detalhamento de Fatos
@@ -356,7 +352,6 @@ Agora adicionamos uma nova coluna de “anterior” e de “atual” para cada c
 
 *Figura 14. Exemplo registrando apenas duas mudanças. Dependendo da situação, você também pode **não fazer** colunas de **identificação temporal***
 
-<a id="modelo-floco-de-neve-snowflake"></a>
 <a id="secao-22"></a>
 
 ## Modelo Floco de Neve (Snowflake)
@@ -367,7 +362,6 @@ Como dito anteriormente, a grande diferença dele pro anterior (Modelo estrela) 
 
 *Figura 15. Exemplo do Modelo Floco de Neve*
 
-<a id="abordagens-de-datawarehouses"></a>
 <a id="secao-23"></a>
 
 ## Abordagens de Datawarehouses

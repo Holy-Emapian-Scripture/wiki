@@ -30,5 +30,5 @@ ordem_na_trilha: 34
 
 [Trilha: A1](../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../trilhas/series-temporais/a1.md#apresentacao-original)
 
-- Anterior: [Previsão e Baselines](previsao-e-baselines/index.md)
+- Anterior: [Previsão e Baselines](previsao-e-baselines.md)
 - Próximo: [Métricas de Avaliação](metricas-de-avaliacao.md)

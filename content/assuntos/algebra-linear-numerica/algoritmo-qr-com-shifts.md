@@ -89,7 +89,6 @@ Tem um negócio bem massa que a gente pode ver com isso. Que o valor $A_{mm}^{(k
 
 Ou seja, escolher $\mu^{(k)}$ como sendo o coeficiente de rayleigh de $q_{m}^{(k)}$ é a mesma coisa que escolher ele como sendo a última entrada de $A^{(k)}$. A gente chama isso de **Shift do Quociente de Rayleigh**.
 
-<a id="wilkinson-shift"></a>
 <a id="secao-53"></a>
 
 ## Wilkinson Shift

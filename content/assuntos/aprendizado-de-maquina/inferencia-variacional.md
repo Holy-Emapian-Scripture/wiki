@@ -66,7 +66,6 @@ $$
 
 ![](assets/kl_approximations.png)
 
-<a id="cota-inferior-elbo"></a>
 <a id="secao-35"></a>
 
 ## Cota Inferior (ELBO)

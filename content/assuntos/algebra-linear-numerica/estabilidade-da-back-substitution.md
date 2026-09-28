@@ -47,7 +47,6 @@ E é aquele esquema, a gente vai resolvendo de baixo para cima, o que resulta ne
 
 
 
-<a id="teorema-da-estabilidade-retroativa-backward-stability"></a>
 <a id="secao-6"></a>
 
 ## Teorema da Estabilidade Retroativa (Backward Stability)

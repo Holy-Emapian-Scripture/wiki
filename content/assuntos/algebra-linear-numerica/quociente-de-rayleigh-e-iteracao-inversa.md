@@ -35,7 +35,6 @@ Aqui nós iremos fazer essa restrição por questões que, ao compararmos os cas
 
 Isso vai continuar pelas próximas lectures até que se especifique que não vai mais continuar. Também vale ressaltar que a maioria das ideias descritas nas próximas lectures se referem a parte 2 das duas fases mencionadas na lecture 25. Ou seja, quando vamos aplicar as ideias que veremos aqui, $A$ já terá sido transformada em uma tri-diagonal. Vale citar que também utilizaremos $\| \cdot \| = \| \cdot \|_{2}$
 
-<a id="quociente-de-rayleigh"></a>
 <a id="secao-39"></a>
 
 ## Quociente de Rayleigh

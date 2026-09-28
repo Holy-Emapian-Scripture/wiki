@@ -22,7 +22,6 @@ ordem_na_trilha: 5
 # Grafos
 
 
-<a id="relembrando-conceitos"></a>
 <a id="secao-14"></a>
 
 ## Relembrando conceitos
@@ -115,7 +114,6 @@ ordem_na_trilha: 5
 
 - Um grafo (orientado ou não) é **ponderado** se cada aresta estiver associado a um peso;
 
-<a id="estruturas-de-dados-para-representar-grafos"></a>
 <a id="secao-15"></a>
 
 ## Estruturas de dados para representar grafos

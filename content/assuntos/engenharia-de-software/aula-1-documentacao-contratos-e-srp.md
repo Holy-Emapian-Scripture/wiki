@@ -22,7 +22,6 @@ ordem_na_trilha: 1
 # Aula 1 - Documentação, Contratos e SRP
 
 
-<a id="cacto"></a>
 <a id="secao-2"></a>
 
 ## Cacto
@@ -327,7 +326,6 @@ print(loja2.processar(cliente, valor, peso_kg, 'Sao Paulo'))
 print(loja2.processar(cliente, valor, peso_kg, 'Manaus'))
 ```
 
-<a id="termos-da-aula-1"></a>
 <a id="secao-5"></a>
 
 ## Termos da Aula 1

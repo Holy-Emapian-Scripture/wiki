@@ -23,7 +23,6 @@ ordem_na_trilha: 15
 # Algoritmos de Ordenação
 
 
-<a id="bubble-sort"></a>
 <a id="secao-21"></a>
 
 ## Bubble Sort
@@ -85,7 +84,6 @@ void bubbleSortOptimized(int v[], int n) {
 
 Essa otimização checa se dentro do loop maior houve alguma troca, se não houve nenhuma, então o algoritmo é encerrado, pois significa que está ordenado. Ao fazer isso, a complexidade do melhor caso desce para $\Theta(n)$.
 
-<a id="selection-sort"></a>
 <a id="secao-22"></a>
 
 ## Selection Sort
@@ -132,7 +130,6 @@ No primeiro for, pegamos o índice `i`, e no segundo loop passamos em todos os �
 
 Para avaliar o desempenho, podemos montar seu custo total percebendo que, a cada iteração, o algoritmo avalia um elemento a menos, de forma que podemos expressar a **função de complexidade** como: $$\begin{aligned} T(n) & = (n - 1) + (n - 2) + \ldots + 1 + 0 \\ & = \sum_{i = 0}^{n - 1}i = \frac{n(n - 1)}{2} \end{aligned}$$ Ou seja, obtemos que $T(n) = \Theta(n^{2})$, que também é a complexidade no melhor caso, já que, novamente, os fors dependem totalmente de $n$.
 
-<a id="insertion-sort"></a>
 <a id="secao-23"></a>
 
 ## Insertion Sort
@@ -166,7 +163,6 @@ void insertionSort(int v[], int n) {
 
 O loop externo começa no segundo elemento porque o primeiro já forma uma sublista ordenada. A cada iteração, o valor `v[i]` é guardado em `currentValue`. O loop interno percorre da direita para a esquerda os elementos da sublista ordenada, deslocando todos os valores maiores que `currentValue` uma posição à direita. O algoritmo para quando encontramos um elemento menor ou igual a `currentValue` ou quando chegamos ao início do vetor. Assim, a posição `j+1` é o local correto para inserir o `currentValue`, garantindo que, ao final da iteração, os elementos de `v[0..i]` estejam ordenados. A complexidade desse algoritmo também é expressa na forma: $$T(n) = \sum_{j = 1}^{n - 1}j = \frac{n(n - 1)}{2} = \Theta(n^{2})$$ já que o loop de dentro apresenta um range parecido com o do algoritmo Selection Sort. Perceba que, no melhor caso, $T(n) = \Theta(n)$, pois o loop de dentro sempre será quebrado em $O(1)$.
 
-<a id="mergesort"></a>
 <a id="secao-24"></a>
 
 ## Mergesort
@@ -237,7 +233,6 @@ Podemos então avaliar a função de complexidade: $$T(n) = 2T\left( \frac{n}{2}
 
 E já vimos em capítulos anteriores que isso é $T(n) = \Theta(n\log(n))$. Perceba que ele não compara todos os pares mesmo no pior caso, porém, ele exige um espaço de memória $O(n)$ **adicional** para a ordenação.
 
-<a id="quicksort"></a>
 <a id="secao-25"></a>
 
 ## Quicksort
@@ -327,7 +322,6 @@ Já o caso médio ocorre quando o algoritmo divide em partições de tamanho dif
 
 Podemos avaliar como $\Theta(n\log(n))$, ou seja, é o mesmo caso do melhor caso possível, mas tem uma constante maior. Então, conseguimos perceber que o desempenho do algoritmo depende da **escolha do pivô**. O pior caso é $\Theta(n^{2})$, porém só ocorre em casos muito extremos.
 
-<a id="heapsort"></a>
 <a id="secao-26"></a>
 
 ## Heapsort
@@ -462,7 +456,6 @@ Para analisar o desempenho, podemos fazer o seguinte:
 
 No final, somando tudo, temos que $T(n) = \Theta(n\log(n))$.
 
-<a id="counting-sort"></a>
 <a id="secao-27"></a>
 
 ## Counting Sort
@@ -539,7 +532,6 @@ Podemos avaliar o desempenho do algoritmo Counting Sort através da seguinte fun
 
 Exige $O(n + k)$ de espaço adicional. Portanto, se k for muito pequeno a complexidade será $\Theta(n)$. É considerado um algoritmo eficiente para ordenar sequências com elementos repetidos.
 
-<a id="radix-sort"></a>
 <a id="secao-28"></a>
 
 ## Radix Sort
@@ -576,7 +568,6 @@ Note que esse código é literalmente o Counting Sort só que para cada “dígi
 
 Podemos avaliar o desempenho do algoritmo Radix Sort através da seguinte função: $$\begin{aligned} f(n,k,w) & = w\left( c_{1}k + c_{2}n + c_{3}k + c_{4}n + c_{5}n \right) \\ & = w\left( \left( c_{1} + c_{3} \right)k + \left( c_{2} + c_{4} + c_{5} \right)n \right) \\ & = \Theta(w(k + n)) \end{aligned}$$ Exige $O(n + k)$ de espaço adicional. Se $k$ e $w$ forem pequenos a complexidade pode ser avaliada como $\Theta(n)$.
 
-<a id="bucket-sort"></a>
 <a id="secao-29"></a>
 
 ## Bucket Sort

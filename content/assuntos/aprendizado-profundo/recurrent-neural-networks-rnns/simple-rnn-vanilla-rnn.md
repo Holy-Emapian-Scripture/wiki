@@ -22,7 +22,6 @@ ordem_na_trilha: 44
 # Simple RNN (Vanilla RNN)
 
 
-<a id="arquitetura"></a>
 <a id="secao-53"></a>
 
 ## Arquitetura
@@ -39,7 +38,6 @@ e vale ressaltar que o **mesmo conjunto de parâmetros $\theta$** é utilizado e
 
 Tomemos a simples RNN $h_{t} = \tanh(W_{hh}h_{t - 1} + W_{xh}x_{t})$ e vamos ver como a recursividade se comporta com $T = 3$ $$\begin{aligned} h_{3} & = \tanh(W_{hh}h_{2} + W_{xh}x_{3}) \\ h_{3} & = \tanh(W_{hh}\left( \tanh(W_{hh}h_{1} + W_{xh}x_{2}) \right) + W_{xh}x_{2}) \\ h_{3} & = \tanh(W_{hh}\left( \tanh(W_{hh}\left( \tanh(W_{hh}h_{0} + W_{xh}x_{1}) \right) + W_{xh}x_{2}) \right) + W_{xh}x_{3}) \end{aligned}$$
 
-<a id="rnn-unroling"></a>
 <a id="secao-54"></a>
 
 ## RNN Unroling
@@ -52,7 +50,6 @@ Baseado nisso, conseguimos desenvelopar o parâmetro de tempo da RNN, mostrando 
 
 *Figura 42. Desenrolando uma RNN*
 
-<a id="tipos-de-mapeamento-sequencial"></a>
 <a id="secao-55"></a>
 
 ## Tipos de mapeamento sequencial

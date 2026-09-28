@@ -44,7 +44,6 @@ Para facilitar a compreensão, vamos definir algumas notações comuns usadas em
 
 - Normalmente, é utilizada a matriz de adjacência normalizada com self loops, dada por $A' = (D + I)^{- \frac{1}{2}}(A + I)(D + I)^{- \frac{1}{2}}$, onde $D$ é a matriz diagonal de grau dos nós e $I$ é a matriz identidade onde $D_{ii} = \sum_{j}A_{ij} = \delta(v_{i}) = \text{ Grau de }v_{i}$
 
-<a id="usos-de-gnns"></a>
 <a id="secao-19"></a>
 
 ## Usos de GNNs
@@ -59,7 +58,6 @@ Para facilitar a compreensão, vamos definir algumas notações comuns usadas em
 
 *Figura 3. Representação visual de cada um dos três usos de GNNs discutidos*
 
-<a id="passagem-de-mensagem"></a>
 <a id="secao-20"></a>
 
 ## Passagem de Mensagem
@@ -70,7 +68,6 @@ As funções $\text{AGGREGATE}$ e $\text{UPDATE}$ são funções que variam depe
 
 Podemos reformular de forma mais compacta a passagem de mensagem definindo: $$\begin{array}{r} H^{(t)} = \begin{pmatrix} - & h_{1}^{(t)} & - \\ & \vdots & \\ - & h_{\vert V\vert }^{(t)} & - \end{pmatrix} \\ M^{(t)} = \begin{pmatrix} - & m_{1}^{(t)} & - \\ & \vdots & \\ - & m_{\vert V\vert }^{(t)} & - \end{pmatrix} \end{array}$$ então reescrevemos os passos anteriores como $$\begin{array}{r} M^{(t)} = \text{ AGGREGATE}^{(t)}\left( A,H^{(t - 1)} \right) \\ H^{(t)} = \text{ UPDATE}^{(t)}\left( H^{(t - 1)},M^{(t)} \right) \end{array}$$
 
-<a id="graph-convolutional-network-gcn"></a>
 <a id="secao-21"></a>
 
 ## Graph Convolutional Network (GCN)

@@ -22,7 +22,6 @@ ordem_na_trilha: 9
 # Otimização Convexa
 
 
-<a id="convexidade"></a>
 <a id="secao-10"></a>
 
 ## Convexidade

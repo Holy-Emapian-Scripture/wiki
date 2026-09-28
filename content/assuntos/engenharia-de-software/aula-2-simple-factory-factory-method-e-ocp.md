@@ -22,7 +22,6 @@ ordem_na_trilha: 6
 # Aula 2 - Simple Factory, Factory Method e OCP
 
 
-<a id="simple-factory"></a>
 <a id="secao-7"></a>
 
 ## Simple Factory
@@ -79,7 +78,6 @@ Nesse ponto a aula sai do código e coloca o Simple Factory dentro de um vocabul
 
 O GoF organiza os 23 padrões do livro de 1994 em três famílias: **padrões criacionais** (como criar objetos — Factory Method, [Abstract Factory](aula-4-abstract-factory.md#secao-17), Builder, Prototype, Singleton), **padrões estruturais** (como compor classes e objetos — Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy) e **padrões comportamentais** (como objetos interagem e distribuem responsabilidade — Observer, Strategy, State, Template Method, entre outros). O Simple Factory é um idioma didático, usado como degrau pra chegar no Factory Method — esse sim um dos criacionais reconhecidos pelo GoF.
 
-<a id="factory-method"></a>
 <a id="secao-8"></a>
 
 ## Factory Method
@@ -143,7 +141,6 @@ O mesmo raciocínio vale pra produtos: pra cada produto novo que precise de fáb
 
 Comparado ao Simple Factory, adicionar um centro de distribuição novo passa a significar **criar** uma subclasse, e não editar nenhuma existente: nada do código antigo precisou mudar pra isso, nem o `CentroDeDistribuicao` já existente precisou ser tocado pra nascer um tipo novo. Esse é, literalmente, o enunciado do Open/Closed Principle, o O do SOLID: uma classe deve estar fechada para modificação e aberta para extensão.
 
-<a id="termos-da-aula-2"></a>
 <a id="secao-9"></a>
 
 ## Termos da Aula 2

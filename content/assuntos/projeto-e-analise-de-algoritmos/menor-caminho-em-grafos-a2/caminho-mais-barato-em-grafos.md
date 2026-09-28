@@ -22,7 +22,6 @@ ordem_na_trilha: 17
 # Caminho mais barato em grafos
 
 
-<a id="djikstra"></a>
 <a id="secao-28"></a>
 
 ## Djikstra
@@ -235,7 +234,6 @@ A explicação é análoga. Para analisar a complexidade, note que o heappop é 
 
 Por fim, como seria a implementação de um algoritmo que funcionasse em grafos com ciclos negativos?
 
-<a id="bellman-ford"></a>
 <a id="secao-31"></a>
 
 ## Bellman-Ford

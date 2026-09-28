@@ -22,7 +22,6 @@ ordem_na_trilha: 8
 # Busca em Grafos
 
 
-<a id="dfs"></a>
 <a id="secao-19"></a>
 
 ## DFS
@@ -135,7 +134,6 @@ A floresta gerada pela execução do algoritmo de busca em profundidade também 
 
 *Figura 29. Exemplo de floresta radicada (a raiz no 2 foi proposital)*
 
-<a id="dfs-modificado"></a>
 <a id="secao-21"></a>
 
 ## DFS modificado
@@ -428,7 +426,6 @@ def has_cycle(adj_list, preorder, postorder):
     return False
 ```
 
-<a id="bfs"></a>
 <a id="secao-23"></a>
 
 ## BFS

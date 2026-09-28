@@ -323,7 +323,6 @@ $$
 V(X) = E\left( X^{2} \right) - {E(X)}^{2} = \mu^{2} + \sigma^{2} - \mu^{2} = \sigma^{2}
 $$
 
-<a id="taxa-de-falhas"></a>
 <a id="secao_taxa_falhas"></a>
 
 ## Taxa de Falhas

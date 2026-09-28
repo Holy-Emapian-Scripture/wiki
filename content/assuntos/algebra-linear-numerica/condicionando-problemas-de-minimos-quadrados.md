@@ -31,7 +31,6 @@ No resumo passado, vimos que o $x$ que satisfaz esse problema é $$x = \left( A^
 
 
 
-<a id="o-teorema"></a>
 <a id="secao-8"></a>
 
 ## O Teorema

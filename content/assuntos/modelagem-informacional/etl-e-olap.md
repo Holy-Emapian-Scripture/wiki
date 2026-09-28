@@ -22,7 +22,6 @@ ordem_na_trilha: 13
 # ETL e OLAP
 
 
-<a id="extrair"></a>
 <a id="secao-28"></a>
 
 ## Extrair
@@ -73,14 +72,12 @@ Preenche um Data Warehouse vazio. Pode envolver grandes quantidades de dados, de
 
 Atualiza um Data Warehouse já iniciado. Feito em um período pré-determinado pela empresa (**Ciclo de Atualização**). Em **[Data Warehouses](data-warehouses.md) ativos**, essas cargas ocorrem continuamente (Em microlotes)
 
-<a id="infraestrutura-de-um-etl"></a>
 <a id="secao-33"></a>
 
 ## Infraestrutura de um ETL
 
 Normalmente, o processo de criação da infraestrutura ETL inclui o uso de ferramentas de software ETL especializadas e/ou código salvos. Devido à quantidade de detalhes que deve ser considerada, a criação de infraestrutura ETL é muitas vezes a parte que mais consome tempo e recursos no processo de desenvolvimento do data warehouse. Embora trabalhoso, o processo de criação da infraestrutura ETL é essencialmente predeterminado pelos resultados dos processos de coleta de requisitos e modelagem de data warehouse que especificam as fontes e o destino
 
-<a id="processamentos"></a>
 <a id="secao-34"></a>
 
 ## Processamentos

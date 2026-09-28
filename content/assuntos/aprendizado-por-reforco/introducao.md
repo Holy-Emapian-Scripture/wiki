@@ -22,7 +22,6 @@ ordem_na_trilha: 1
 # Introdução
 
 
-<a id="reinforcement-learning"></a>
 <a id="secao-2"></a>
 
 ## Reinforcement Learning
@@ -43,7 +42,6 @@ Uma característica específica do Aprendizado por reforço, é o trade-off da e
 
 O aprendizado por reforço começa com um agente completo, interativo e objetivo. Todos os agentens tem metas explícitas, podem sentir os aspectos do seu ambiente e conseguem escolher suas ações para influenciar seus resultados.
 
-<a id="exemplos"></a>
 <a id="secao-3"></a>
 
 ## Exemplos
@@ -86,7 +84,6 @@ O estado é um conceito central em aprendizado por reforço, servindo como entra
 
 Embora muitos métodos de aprendizado por reforço se baseiem em funções de valor, isso não é obrigatório. Métodos evolutivos (como algoritmos genéticos e programação genética) não usam funções de valor: eles testam várias políticas em paralelo, selecionam as mais recompensadas e geram novas políticas a partir delas, de forma análoga à evolução biológica. Esses métodos podem ser eficazes em certos contextos (por exemplo, quando o espaço de políticas é pequeno ou quando há bastante tempo disponível), e podem lidar bem com situações em que o agente não percebe o estado completo do ambiente.
 
-<a id="tic-tac-toe-jogo-da-velha"></a>
 <a id="secao-6"></a>
 
 ## Tic-Tac-Toe (jogo da velha)

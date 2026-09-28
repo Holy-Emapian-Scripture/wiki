@@ -22,7 +22,6 @@ ordem_na_trilha: 3
 # Redes Aleatórias
 
 
-<a id="ideia-inicial"></a>
 <a id="secao-4"></a>
 
 ## Ideia Inicial
@@ -149,7 +148,6 @@ Tabela de redes no Barabás
 
 Queremos também ter uma noção da probabilidade de um nó $v_{i}$ qualquer estar em um cluster (Grupo de nós na rede) de tamanho $s$. No livro do Newman, ele nos mostra que essa probabilidade é: $${\mathbb{P}}(v_{i} \in \Psi_{\vert \Psi\vert  = s}) = e^{- \delta_{\text{med }}(G) \cdot s}\frac{\left( \delta_{\text{med }}(G) \cdot s \right)^{s - 1}}{s!}$$
 
-<a id="mundos-pequenos"></a>
 <a id="secao-11"></a>
 
 ## Mundos pequenos
@@ -172,7 +170,6 @@ Porém, aqui a gente ta vendo o **diâmetro** da rede, e nós comentamos anterio
 
 Mas por que isso acontece? Falando de um jeito mais intuitivo, essa aproximação de $d_{\text{max}}$ costuma funcionar mais para a média do caminho entre dois nós aleatórios pois, em redes reais, o $d_{\text{max}}$ é dado por um único caminho ou pouquissimos caminhos daquele tamanho, enquanto $\hat{d}$ é ponderado em todos os nós. Além de que essa fórmula traz algumas intuições interessantes. Ela mostra que a distância média entre os nós aumenta conforme aumentamos o tamanho da rede, mesmo que não linearmente ou exponencialmente. E mostra também com o termo $1/\ln(\hat{k})$ que, quanto mais densa é minha rede, menor vai ser a distância média
 
-<a id="coeficiente-de-clustering"></a>
 <a id="secao-12"></a>
 
 ## Coeficiente de Clustering

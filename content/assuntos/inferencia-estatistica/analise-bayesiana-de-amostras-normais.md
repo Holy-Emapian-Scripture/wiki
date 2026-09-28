@@ -35,7 +35,6 @@ Essa família de conjugados é chamada de NormalGamma com parâmetros $\alpha_{0
 
 Outro ponto é que $\mu$ e $\tau$ **não** são independentes, e mesmo que a gente escolha eles de forma que eles sejam independentes a priori, mesmo após uma única observação, eles já viram dependentes
 
-<a id="marginais"></a>
 <a id="secao-14"></a>
 
 ## Marginais

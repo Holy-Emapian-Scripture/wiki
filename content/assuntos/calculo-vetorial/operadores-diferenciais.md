@@ -22,7 +22,6 @@ ordem_na_trilha: 6
 # Operadores Diferenciais
 
 
-<a id="gradiente"></a>
 <a id="section_gradiente"></a>
 
 ## Gradiente
@@ -31,7 +30,6 @@ O gradiente $\nabla$ de $f:{\mathbb{R}}^{n} \rightarrow {\mathbb{R}}$ é:
 
 $$\nabla f = \left( \frac{\partial f}{\partial x_{1}},\ldots,\frac{\partial f}{\partial x_{n}} \right)$$ <a id="equation_definition_gradiente"></a>
 
-<a id="rotacional"></a>
 <a id="section_rotacional"></a>
 
 ## Rotacional
@@ -48,7 +46,6 @@ $$
 {\text{rot}(F)} = \frac{\partial F_{2}}{\partial x} - \frac{\partial F_{1}}{\partial y}
 $$
 
-<a id="laplaciano"></a>
 <a id="section_laplaciano"></a>
 
 ## Laplaciano

@@ -33,7 +33,6 @@ $$
 \begin{pmatrix} x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \\ x & x & x \end{pmatrix}_{A} \rightarrow Q_{1}A \rightarrow \begin{pmatrix} \mathbf{x} & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \\ & \mathbf{x} & \mathbf{x} \end{pmatrix}_{Q_{1}A} \rightarrow Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & \mathbf{x} & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \\ & & \mathbf{x} \end{pmatrix}_{Q_{2}Q_{1}A} \rightarrow Q_{3}Q_{2}Q_{1}A \rightarrow \begin{pmatrix} x & x & x \\ & x & x \\ & & \mathbf{x} \\ & & \\ & & \end{pmatrix}_{Q_{3}Q_{2}Q_{1}A}
 $$
 
-<a id="refletores-de-householder"></a>
 <a id="secao-30"></a>
 
 ## Refletores de Householder
@@ -62,7 +61,6 @@ $$
 F = I - 2\frac{ww^{\ast}}{w^{\ast}w}
 $$
 
-<a id="o-melhor-de-dois-refletores"></a>
 <a id="secao-31"></a>
 
 ## O Melhor de Dois Refletores
@@ -85,7 +83,6 @@ $$
 
 Só para esclarecer por que fizemos essa escolha, imagine que o ângulo entre $v$ e $\| v\| e_{1}$ é MUITO PEQUENO, isso significa que, quando fazemos $\| v\| e_{1} - v$, estamos subtraindo quantidades próximas, dependendo de quais quantidades, isso poderia nos levar a cálculos imprecisos, levando a grandes erros
 
-<a id="o-algoritmo"></a>
 <a id="secao-32"></a>
 
 ## O Algoritmo

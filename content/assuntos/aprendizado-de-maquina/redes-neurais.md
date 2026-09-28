@@ -22,7 +22,6 @@ ordem_na_trilha: 14
 # Redes Neurais
 
 
-<a id="estrutura-inicial"></a>
 <a id="secao-22"></a>
 
 ## Estrutura Inicial
@@ -61,7 +60,6 @@ De forma que a $i$-ésima coluna de $W^{(j)}$ representa os pesos de todas as co
 
 para algum $X$
 
-<a id="treinamento"></a>
 <a id="secao-25"></a>
 
 ## Treinamento

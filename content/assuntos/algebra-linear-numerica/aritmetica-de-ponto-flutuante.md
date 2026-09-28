@@ -22,7 +22,6 @@ ordem_na_trilha: 39
 # Aritmética de Ponto Flutuante
 
 
-<a id="conjunto-de-ponto-flutuante"></a>
 <a id="secao-46"></a>
 
 ## Conjunto de Ponto Flutuante

@@ -33,7 +33,6 @@ O primeiro que vamo estudar é um dos algoritmos de machine learning não superv
 
 ![](assets/kmeans-step.png)
 
-<a id="o-algoritmo"></a>
 <a id="secao-3"></a>
 
 ## O Algoritmo

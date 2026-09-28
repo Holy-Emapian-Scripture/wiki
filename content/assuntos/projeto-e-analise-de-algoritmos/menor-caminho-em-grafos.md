@@ -22,7 +22,6 @@ ordem_na_trilha: 13
 # Menor caminho em grafos
 
 
-<a id="caminho-mais-curto-em-um-dag"></a>
 <a id="secao-29"></a>
 
 ## Caminho mais curto em um DAG
@@ -90,7 +89,6 @@ A complexidade é a mesma, já que o deque é $O(1)$ para tirar à esquerda e pa
 
 Podemos avaliar a corretude desse algoritmo através das suas invariantes: primeiro, toda aresta $\left( v_{i},v_{j} \right)$ de $T$ (a árvore definida por parent) está relaxada com relação à distance; segundo, para cada aresta $\left( v_{i},v_{j} \right)$, se $v_{i}$ está em $T$ e $v_{j}$ está fora de $T$, então $v_{i}$ está na fila. Ao término da execução, a fila está vazia e, a partir da invariante (2), conclui-se que toda aresta com $v_{i}$ em $T$ também possui $v_{j}$ em $T$. O vetor distance é um potencial relaxado, portanto, $T$ é uma SPT e distance fornece o comprimento do caminho entre a raiz e os demais vértices acessíveis a partir dela.
 
-<a id="djikstra-fast"></a>
 <a id="secao-31"></a>
 
 ## Djikstra fast

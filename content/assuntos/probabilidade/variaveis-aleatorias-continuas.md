@@ -74,7 +74,6 @@ Logo a **a integral definida** da PDF é de fato uma probabilidade.
 
 <a id="definicao_PDF"></a>
 
-<a id="propriedades-da-cdf-e-pdf"></a>
 <a id="secao_propriedades_CDF_PDF"></a>
 
 ## Propriedades da CDF e PDF
@@ -135,7 +134,6 @@ $$
 
 <a id="propriedade_derivada_inversa"></a>
 
-<a id="lotus-law-of-the-unconscious-statistician"></a>
 <a id="secao_lotus"></a>
 
 ## LOTUS (Law of The Unconscious Statistician)

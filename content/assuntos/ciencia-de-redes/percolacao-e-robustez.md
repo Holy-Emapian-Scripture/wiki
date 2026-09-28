@@ -73,7 +73,6 @@ Já em uma rede livre-de-escala, os expoentes são: $$\beta_{p} = \begin{cases} 
 
 Perceba que no regime $2 < \gamma < 3$ **sempre há uma componente gigante**. Temos também a relação da **quantidade de componentes de tamanho $s$** ($n_{s}$) $$n_{s} \propto s^{- \tau}e^{- s/s^{\ast}}$$ $$s^{\ast} \propto \vert p - p_{c}\vert ^{- \sigma}$$ $$\tau = \begin{cases} \frac{5}{2}\text{ se }\gamma > 4 \\ \frac{2\gamma - 3}{\gamma - 2}\text{ se }2 < \gamma < 4 \end{cases}$$ $$\sigma = \begin{cases} \frac{3 - \gamma}{\gamma - 2}\text{ se }2 < \gamma < 3 \\ \frac{\gamma - 3}{\gamma - 2}\text{ se }3 < \gamma < 4 \\ \frac{1}{2}\text{ se }\gamma > 4 \end{cases}$$
 
-<a id="robustez"></a>
 <a id="secao-7"></a>
 
 ## Robustez
@@ -173,7 +172,6 @@ Então consegumos chegar no limiar crítico da fração de nós $$f_{c}^{\frac{2
 
 Perceba que, se $\gamma \rightarrow \infty$, então $f_{c} \rightarrow 1 - \frac{1}{k_{\min} - 1}$
 
-<a id="melhorando-a-robustez"></a>
 <a id="secao-11"></a>
 
 ## Melhorando a Robustez

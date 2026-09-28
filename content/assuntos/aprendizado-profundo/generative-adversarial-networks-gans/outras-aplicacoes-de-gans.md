@@ -44,7 +44,6 @@ ordem_na_trilha: 73
 
 *Figura 67. Exemplo de aplicação de GANs em super-resolução de imagens*
 
-<a id="the-gan-zoo"></a>
 <a id="secao-90"></a>
 
 ## The GAN Zoo

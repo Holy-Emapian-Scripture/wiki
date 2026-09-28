@@ -31,7 +31,6 @@ Esse capítulo trata de um método de aprendizado não supervisionado usado para
 
 Enquanto o modelo generativo cria imagens, o discriminador tenta distinguir entre imagens reais e imagens geradas. O objetivo do gerador é enganar o discriminador, enquanto o objetivo do discriminador é identificar corretamente as imagens reais e falsas. Esse processo de competição leva a uma melhoria contínua de ambos os modelos, resultando em um gerador capaz de produzir amostras realistas.
 
-<a id="treinamento-adversarial"></a>
 <a id="secao-27"></a>
 
 ## Treinamento Adversarial
@@ -57,7 +56,6 @@ onde (normalmente) $N_{\text{real }} = N_{\text{sintético}}$, ou seja, o datase
 
 O modo de treino que apresentamos até o momento faz com que o gerador aprenda distribuições não-condicionais $p(x)$. Por exemplo, se ele for treinado com imagens de cachorros, ele vai aprender a gerar imagens de cachorros. No entanto, podemos criar GANs condicionais, onde o gerador aprende uma distribuição $p\left( x\vert c \right)$ onde $c$ pode, por exemplo, representar um vetor que especifica a raça do cachorro.
 
-<a id="treinamento-do-gan"></a>
 <a id="secao-29"></a>
 
 ## Treinamento do GAN

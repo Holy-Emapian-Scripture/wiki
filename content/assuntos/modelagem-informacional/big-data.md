@@ -77,7 +77,6 @@ Grandes volumes de conjuntos de dados diversificados e de crescimento rápido qu
 
 - Se beneficia mais com visualizações elaboradas e inovadoras
 
-<a id="mapreduce-e-hadoop"></a>
 <a id="secao-3"></a>
 
 ## MapReduce e Hadoop
@@ -100,7 +99,6 @@ Vamos imaginar que temos um repositório com milhares de documentos e queremos c
 
 Nós passamos um ou mais documentos para nosso MapReduce, então ele divide (Seja por linha, parágrafo, etc., na nossa imagem de exemplificação, está separando por linha), e cada divisão é enviada para um node (Fase Split), onde cada node está fazendo o mapeamento das palavras em pares de chave e valor independentemente (Como se cada node fosse um computador separado), então pegamos aqueles valores que possuem chaves iguais (No nosso caso, todas as contagens de cada palavra), e então fazemos o processo de combinar todas em um único par chave-valor de acordo com o contexto. No nosso caso, vamos somar todos os valores para obter todas as quantidades de repetição daquela palavra, obtendo no final, a contagem total de todas as palavras
 
-<a id="data-lake"></a>
 <a id="secao-4"></a>
 
 ## Data Lake
@@ -149,7 +147,6 @@ Após toda essa caracterização de um Data Lake, é interessante compararmos la
 | **Variabilidade** | Muito Baixa (Estável, Esquema Fixo) | Baixa (Controlada via ETL) | Alta (Inconsistente, Mudança Contínua de Estrutura) |
 | **Visualização** | Simples (Detalhada, Telas de Sistema) | Direta (BI Tools, Dashboards) | Complexa (Exploratória, Requer Processamento Prévio) |
 
-<a id="ferramentas-para-big-data"></a>
 <a id="secao-6"></a>
 
 ## Ferramentas para Big Data
@@ -167,7 +164,6 @@ Eu comentei um pouco antes sobre o MapReduce e sua implementação, o Hadoop, ma
 | **Splunk** | Plataforma para **coletar, indexar e analisar dados de log, métricas e eventos** gerados por máquinas. | Otimizado para **observabilidade, segurança e solução de problemas**. Excelente para dados de **alta velocidade** (logs). |
 | **Hive** | Um **software** que facilita a consulta e análise de grandes conjuntos de dados armazenados no HDFS. | Fornece uma camada de **SQL** sobre o Hadoop. Permite que analistas de dados consultem o Data Lake sem escrever código MapReduce/Spark. |
 
-<a id="os-sgbds"></a>
 <a id="secao-7"></a>
 
 ## Os SGBDs
@@ -183,7 +179,6 @@ Além de ferramentas para utilizar dentro de um Data Lake, também podemos inser
 | **Row Store** | Armazena registros completos em blocos contínuos. | Linha por Linha. | **Eficiente para inserir ou atualizar** um registro completo (transações). |
 | **Column Store** | Armazena valores de uma coluna juntos em blocos contínuos. | Coluna por Coluna. | **Eficiente para analisar** poucas colunas em milhões de linhas. Permite alta **compressão**. |
 
-<a id="arquiteturas"></a>
 <a id="secao-8"></a>
 
 ## Arquiteturas

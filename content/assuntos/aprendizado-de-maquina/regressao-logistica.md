@@ -67,7 +67,6 @@ Note que o procedimento acima envolve inverter $H$. Como $m$ é um mínimo local
 
 Para aplicar o método de Laplace ao nosso modelo de regressão logística Bayesiano, podemos usar alguma variação de [gradiente descendente](../otimizacao-para-ciencia-de-dados/metodo-do-gradiente.md) para achar $m$ e, assumindo $\mu = 0$ e $\Sigma = cI$ para $c > 0$, as entradas $H_{ij}$ da Hessiana $H$ são dadas por $$H_{ij} = \begin{cases} \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}x_{nj}\text{ se }i \neq j \\ \sum_{n = 1}^{N}\sigma(\theta^{T}x_{n})\sigma( - \theta^{T}x_{n})x_{ni}^{2} + c^{- 1}\text{ se }i = j \end{cases}$$
 
-<a id="problemas-multiclasse-classificador-softmax"></a>
 <a id="secao-20"></a>
 
 ## Problemas multiclasse, classificador *softmax*

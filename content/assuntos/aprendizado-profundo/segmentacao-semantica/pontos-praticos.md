@@ -22,7 +22,6 @@ ordem_na_trilha: 24
 # Pontos Práticos
 
 
-<a id="a-necessidade-de-patches-tiles"></a>
 <a id="secao-31"></a>
 
 ## A necessidade de Patches (Tiles)
@@ -35,7 +34,6 @@ Por isso, na prática, a imagem é fatiada em blocos menores (**patches** ou **t
 
 *Figura 26. Exemplo de fatiamento de uma imagem em blocos menores*
 
-<a id="o-problema-do-contexto-nas-bordas-border-context-loss"></a>
 <a id="secao-32"></a>
 
 ## O Problema do Contexto nas Bordas (Border Context Loss)

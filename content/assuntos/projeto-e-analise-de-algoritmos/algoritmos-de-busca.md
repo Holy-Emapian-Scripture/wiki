@@ -23,7 +23,6 @@ ordem_na_trilha: 7
 # Algoritmos de busca
 
 
-<a id="busca-em-um-vetor-ordenado"></a>
 <a id="secao-8"></a>
 
 ## Busca em um vetor ordenado

@@ -22,7 +22,6 @@ ordem_na_trilha: 69
 # CycleGANs (Tradução sem dados pareados)
 
 
-<a id="estrutura-de-pareamento-duplo"></a>
 <a id="secao-80"></a>
 
 ## Estrutura de pareamento duplo
@@ -84,7 +83,6 @@ Reunindo todas as loss juntas, vamos obter a função objetivo completa das Cycl
 
 Dessa forma, podemos reescrever o aprendizado da nossa cycle GAN como $$\min\limits_{G,F}\max\limits_{D_{X},D_{Y}}\mathcal{L}(G,F,D_{X},D_{Y})$$
 
-<a id="arquitetura-de-cyclegans"></a>
 <a id="secao-86"></a>
 
 ## Arquitetura de CycleGANs
