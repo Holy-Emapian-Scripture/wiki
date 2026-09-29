@@ -28,7 +28,7 @@ Por ter uma estrutura mais enxuta, a GRU possui menos parâmetros e é ligeirame
 
 *Figura 51. Arquitetura de uma célula GRU*
 
-As principais diferenças que ocorrem são a **eliminação do cell state** $c_{t}$ e utilizamos apenas o estado oculto $h_{t}$ e agora são $2$ poras em vez de $3$
+As principais diferenças que ocorrem são a **eliminação do cell state** $c_{t}$ e utilizamos apenas o estado oculto $h_{t}$ e agora são $2$ gates em vez de $3$
 
 - **Porta de atualização ($z_{t}$)**: Determina quanto do novo estado oculto deve ser atualizado com base no novo input
 

@@ -89,7 +89,7 @@ Vale ressaltar que esse **pós-processamento** é feito com **todas** as caixas 
 
 ### YOLOv1 & YOLO9000
 
-Arquiteturas iniciais, foi na YOLO9000 onde as anchor boxes foram introduzidas e, em vez de prever diretamente prosição e tamanho das caixas, a rede aprende a prever **offsets** para ajustar as **anchor boxes** pré-definidas.
+Arquiteturas iniciais, foi na YOLO9000 onde as anchor boxes foram introduzidas e, em vez de prever diretamente a posição e tamanho das caixas, a rede aprende a prever **offsets** para ajustar as **anchor boxes** pré-definidas.
 
 <a id="secao-44"></a>
 

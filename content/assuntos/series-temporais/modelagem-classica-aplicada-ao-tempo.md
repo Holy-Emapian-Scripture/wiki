@@ -3,7 +3,7 @@ layout: "default"
 title: "Modelagem Clássica aplicada ao Tempo"
 tipo: "conteudo"
 disciplina: "Séries Temporais"
-origem: "6 semestre/Séries Temporais/A1.md"
+origem: "6 semestre/Séries Temporais/Recaps/A1.typ"
 trilha: "../../trilhas/series-temporais/a1.md"
 nav_exclude: true
 render_with_liquid: false

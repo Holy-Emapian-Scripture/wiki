@@ -10,6 +10,7 @@ render_with_liquid: false
 
 Os conteúdos ficam organizados por assunto. Estes hubs preservam o agrupamento por semestre das pastas originais, além de Eletivas e Mestrado.
 
+- [1º semestre](1-semestre.md)
 - [3º semestre](3-semestre.md)
 - [4º semestre](4-semestre.md)
 - [5º semestre](5-semestre.md)

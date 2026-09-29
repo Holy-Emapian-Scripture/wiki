@@ -16,6 +16,7 @@ Escolha uma disciplina para navegar pelos assuntos e suas páginas.
 - [[causalidade/index|Causalidade]]
 - [[ciencia-de-redes/index|Ciência de Redes]]
 - [[computacao-na-nuvem|Computação na Nuvem]]
+- [[calculo-i/index|Cálculo I]]
 - [[calculo-vetorial/index|Cálculo Vetorial]]
 - [[engenharia-de-software/index|Engenharia de Software]]
 - [[equacoes-diferenciais-ordinarias/index|Equações Diferenciais Ordinárias]]

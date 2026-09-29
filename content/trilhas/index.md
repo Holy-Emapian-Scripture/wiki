@@ -37,6 +37,10 @@ Revisões e percursos de leitura que mantêm a sequência das anotações origin
 
 - [A1](computacao-na-nuvem/a1.md)
 
+## Cálculo I
+
+- [A1](calculo-i/a1.md)
+
 ## Cálculo Vetorial
 
 - [A1](calculo-vetorial/a1.md)

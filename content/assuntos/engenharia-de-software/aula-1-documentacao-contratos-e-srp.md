@@ -3,7 +3,7 @@ layout: "default"
 title: "Aula 1 - Documentação, Contratos e SRP"
 tipo: "conteudo"
 disciplina: "Engenharia de Software"
-origem: "6 semestre/Engenharia de Software/Exp.md"
+origem: "6 semestre/Engenharia de Software/Recaps/A1.typ"
 trilha: "../../../trilhas/engenharia-de-software/notas-de-aula.md"
 nav_exclude: true
 render_with_liquid: false

@@ -3,7 +3,7 @@ layout: "default"
 title: "Notas de aula — Engenharia de Software"
 tipo: "notas"
 disciplina: "Engenharia de Software"
-origem: "6 semestre/Engenharia de Software/Exp.md"
+origem: "6 semestre/Engenharia de Software/Recaps/A1.typ"
 trilha: "notas-de-aula.md"
 nav_exclude: true
 render_with_liquid: false

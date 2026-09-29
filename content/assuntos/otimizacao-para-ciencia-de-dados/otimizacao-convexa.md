@@ -231,7 +231,7 @@ Mas e se $x^{\ast}$ estiver na minha fronteira?
 
 ![](assets/not-minimal-on-border.png)
 
-Perceba que na primeira figura, se eu vejo o ângulo do gradiente com qualquer outro ponto no meu conjunto eu tenho menos que 90 graus, ou seja, o meu gradiente aponta para **dentro do conjunt**, de forma que a única maneira de diminuir mais a função é **saindo da restrição**. Na outra figura isso é melhor ilustrado. Veja que existem vetores no conjunto que fazem mais que 90 graus com o vetor gradiente, ou seja, o vetor gradiente ta para fora do conjunto $C$, de forma que eu consigo andar na direção $- \nabla^{2}f\left( x^{\ast} \right)$ para que diminua ainda mais a função, ou seja, $x^{\ast}$ não seria um mínimo
+Perceba que na primeira figura, se eu vejo o ângulo do gradiente com qualquer outro ponto no meu conjunto eu tenho menos que $90$ graus, ou seja, o meu gradiente aponta para **dentro do conjunto**, de forma que a única maneira de diminuir mais a função é **saindo da restrição**, já que andar na direção oposta do gradiente vai fazer com que eu saia do conjunto $C$. Já na segunda imagem, veja que existem vetores no conjunto que fazem mais que $90$ graus com o vetor gradiente, ou seja, ele aponta para **fora do conjunto**, de forma que eu consigo andar na direção $-\nabla f(x^{\ast})$ sem sair da restrição $C$ e ainda sim diminuindo o valor total da função $f$, ou seja, $x^{\ast}$ não é um ponto de mínimo.
 
 Esse teorema nos da motivação para uma definição
 

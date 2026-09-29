@@ -324,6 +324,18 @@ render_with_liquid: false
 - [Two-player Game — Introdução às GANs](aprendizado-profundo/generative-adversarial-networks-gans/introducao-as-gans.md#two-player-game)
 - [U-Net — Arquiteturas](aprendizado-profundo/segmentacao-semantica/arquiteturas.md#u-net)
 
+## Cálculo I
+
+- [Sequências e limites](calculo-i/sequencias-e-limites.md)
+- [O que são sequências? — Sequências e limites](calculo-i/sequencias-e-limites.md#o-que-sao-sequencias)
+- [Sequências limitadas — Sequências e limites](calculo-i/sequencias-e-limites.md#sequencias-limitadas)
+- [Sequências convergentes — Sequências e limites](calculo-i/sequencias-e-limites.md#sequencias-convergentes)
+- [Primeira noção de limite — Sequências e limites](calculo-i/sequencias-e-limites.md#primeira-nocao-de-limite)
+- [Sequências monótonas — Sequências e limites](calculo-i/sequencias-e-limites.md#sequencias-monotonas)
+- [Operações básicas com limites — Sequências e limites](calculo-i/sequencias-e-limites.md#operacoes-basicas-com-limites)
+- [Formas indeterminadas — Sequências e limites](calculo-i/sequencias-e-limites.md#formas-indeterminadas)
+- [Limites de funções — Sequências e limites](calculo-i/sequencias-e-limites.md#limites-de-funcoes)
+
 ## Cálculo Vetorial
 
 - [Centroid and Mass Center of a Curve — Vector Calculus](calculo-vetorial/vector-calculus.md#centroid-and-mass-center-of-a-curve)
@@ -722,6 +734,10 @@ render_with_liquid: false
 - [Deep Learning (DL) — Modelagem Clássica aplicada ao Tempo](series-temporais/modelagem-classica-aplicada-ao-tempo.md#secao-15)
 - [Definições — Introdução às Séries Temporais](series-temporais/introducao-as-series-temporais.md#definicoes)
 - [Diagnóstico de Resíduos](series-temporais/diagnostico-de-residuos.md)
+- [Teste de Box–Pierce — Diagnóstico de Resíduos](series-temporais/diagnostico-de-residuos.md#teste-de-boxpierce)
+- [Teste de Ljung–Box — Diagnóstico de Resíduos](series-temporais/diagnostico-de-residuos.md#teste-de-ljungbox)
+- [Intervalos de previsão — Diagnóstico de Resíduos](series-temporais/diagnostico-de-residuos.md#intervalos-de-previsao)
+- [Intervalo por bootstrap — Diagnóstico de Resíduos](series-temporais/diagnostico-de-residuos.md#intervalo-por-bootstrap)
 - [Diagnóstico Visual](series-temporais/diagnostico-visual.md)
 - [Estacionariedade e ACF](series-temporais/estacionariedade-e-acf.md)
 - [Estimação Amostral — Estacionariedade e ACF](series-temporais/estacionariedade-e-acf.md#estimacao-amostral)
@@ -753,4 +769,3 @@ render_with_liquid: false
 - [Tendência — Diagnóstico Visual](series-temporais/diagnostico-visual.md#tendencia)
 - [Transformações](series-temporais/transformacoes.md)
 - [Valores Ajustados V.S Previsões — Previsão e Baselines](series-temporais/previsao-e-baselines.md#secao-38)
-
