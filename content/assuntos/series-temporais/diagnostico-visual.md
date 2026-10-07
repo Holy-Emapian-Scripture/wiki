@@ -42,7 +42,7 @@ Vamos analisar a seguinte figura
 
 Visualmente conseguimos identificar cada um dos componentes da série temporal.
 
-**$T$**: No médio/longo prazo, a tendência é um crescimento linear, com inclinação positiva. Mesmo que existam flutuações de subida e descida, é perceptível que a cada a no o valor de $y_{t}$ tende a aumentar. **$S$**: A série mostra uma sazonalidade de subida no inicio de cada ano e descida no final, mostrando um padrão anual claro (mas de forma que a descida sempre se mantém acima do padrão anterior, gerando a tendência positiva citada anteriormente)
+**$T$**: No médio/longo prazo, a tendência é um crescimento linear, com inclinação positiva. Mesmo que existam flutuações de subida e descida, é perceptível que a cada ano o valor de $y_{t}$ tende a aumentar. **$S$**: A série mostra uma sazonalidade de subida no inicio de cada ano e descida no final, mostrando um padrão anual claro (mas de forma que a descida sempre se mantém acima do padrão anterior, gerando a tendência positiva citada anteriormente)
 
 <a id="covariaveis"></a>
 <a id="secao-19"></a>
@@ -91,8 +91,6 @@ Sazonalidade é estrutura que se repete em fases do calendário (mês do ano, di
 ![Exemplo de boxplot por mês](assets/A1/tsr-seasonality-boxplot.png)
 
 *Figura 5. Exemplo de boxplot por mês*
-
-Em uma frase: overlay = “como o ano se parece”; sem tendência = “a onda no tempo”; boxplot = “estatística por mês”
 
 <a id="residuos"></a>
 <a id="secao-22"></a>

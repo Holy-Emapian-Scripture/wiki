@@ -4,7 +4,7 @@ title: "Discrete Distributions"
 tipo: "conteudo"
 disciplina: "Probabilidade"
 origem: "3 semestre/Probabilidade/Recaps/A1_recap.md"
-trilha: "../../../trilhas/probabilidade/a1.md"
+trilha: "../../../trilhas/probabilidade/a1-anterior.md"
 nav_exclude: true
 render_with_liquid: false
 semestre: 3
@@ -162,7 +162,7 @@ We now proceed to [continuous random variables](continuous-random-variables.md),
 
 ## Percurso de estudo
 
-[Trilha: A1](../../trilhas/probabilidade/a1.md) · [Apresentação e contexto da fonte](../../trilhas/probabilidade/a1.md#apresentacao-original)
+[Trilha: A1](../../trilhas/probabilidade/a1-anterior.md) · [Apresentação e contexto da fonte](../../trilhas/probabilidade/a1-anterior.md#apresentacao-original)
 
 - Anterior: [Fundamentals](fundamentals.md)
 - Próximo: [Continuous Random variables](continuous-random-variables.md)

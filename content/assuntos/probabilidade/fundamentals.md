@@ -4,7 +4,7 @@ title: "Fundamentals"
 tipo: "conteudo"
 disciplina: "Probabilidade"
 origem: "3 semestre/Probabilidade/Recaps/A1_recap.md"
-trilha: "../../../trilhas/probabilidade/a1.md"
+trilha: "../../../trilhas/probabilidade/a1-anterior.md"
 nav_exclude: true
 render_with_liquid: false
 semestre: 3
@@ -140,6 +140,6 @@ $$\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sigma(X)\sigma(Y)}$$ You can verify that $
 
 ## Percurso de estudo
 
-[Trilha: A1](../../trilhas/probabilidade/a1.md) · [Apresentação e contexto da fonte](../../trilhas/probabilidade/a1.md#apresentacao-original)
+[Trilha: A1](../../trilhas/probabilidade/a1-anterior.md) · [Apresentação e contexto da fonte](../../trilhas/probabilidade/a1-anterior.md#apresentacao-original)
 
 - Próximo: [Discrete Distributions](discrete-distributions.md)

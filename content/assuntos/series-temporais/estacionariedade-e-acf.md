@@ -4,7 +4,7 @@ title: "Estacionariedade e ACF"
 tipo: "conteudo"
 disciplina: "Séries Temporais"
 origem: "6 semestre/Séries Temporais/Recaps/A1.typ"
-trilha: "../../../trilhas/series-temporais/a1.md"
+trilha: "../../trilhas/series-temporais/a1.md"
 nav_exclude: true
 render_with_liquid: false
 semestre: 6
@@ -16,20 +16,28 @@ ordem_na_trilha: 19
 [Séries Temporais](index.md)
 
 <!-- wiki:original:inicio -->
+<a id="scripture-secao-24"></a>
 
 <a id="secao-24"></a>
+<a id="estacionariedade-e-acf"></a>
 
 # Estacionariedade e ACF
 
+<a id="scripture-secao-25"></a>
+
 <a id="introducao"></a>
 <a id="secao-25"></a>
+<a id="introdução"></a>
 
 ## Introdução
 
 Visualizamos anteriormente como utilizar de métodos **visuais** para identificar séries temporais, agora nosso foco vai ser formalizar esse conceito. Para tal, no entanto, precisamos definir alguns conceitos muito importantes, como média, [covariância](../probabilidade/variaveis-aleatorias-continuas-bidimensionais.md#secao_covariancia_correlacao) e a noção de **estacionariedade**
 
+<a id="scripture-secao-26"></a>
+
 <a id="exemplos-de-serie"></a>
 <a id="secao-26"></a>
+<a id="exemplos-de-série"></a>
 
 ## Exemplos de Série
 
@@ -41,7 +49,7 @@ $$
 Y_{t} = \varepsilon_{t}
 $$
 
-Não existe memória, cada instante contém um ruído que não conseguimos traçar a partir dos anteriores
+ Não existe memória, cada instante contém um ruído que não conseguimos traçar a partir dos anteriores
 
 ![](assets/A1/whitenoise.png)
 
@@ -51,7 +59,7 @@ $$
 Y_{t} = \varphi Y_{t - 1} + \varepsilon_{t},\text{\quad\quad}\vert \varphi\vert  < 1
 $$
 
-Depende diretamente do valor anterior, mas não de valores mais antigos. A memória é curta, mas existe
+ Depende diretamente do valor anterior, mas não de valores mais antigos. A memória é curta, mas existe
 
 ![](assets/A1/AR.png)
 
@@ -61,7 +69,7 @@ $$
 Y_{t} = Y_{t - 1} + \varepsilon_{t}
 $$
 
-Acumula os ruídos passados, de forma que a memória é longa e o valor atual depende de todos os valores anteriores
+ Acumula os ruídos passados, de forma que a memória é longa e o valor atual depende de todos os valores anteriores
 
 ![](assets/A1/randomwalk.png)
 
@@ -71,11 +79,14 @@ $$
 Y_{t} = \beta_{0} + \beta_{1}t + \varepsilon_{t}
 $$
 
-A tendência linear é um caso especial de passeio aleatório, onde o valor atual depende do tempo e de todos os valores anteriores
+ A tendência linear é um caso especial de passeio aleatório, onde o valor atual depende do tempo e de todos os valores anteriores
 
 ![](assets/A1/lineartrend.png)
 
+<a id="scripture-secao-27"></a>
+
 <a id="secao-27"></a>
+<a id="conceitos"></a>
 
 ## Conceitos
 
@@ -113,33 +124,33 @@ Para vermos como a correlação nos exemplos vistos se comportam, tenha em mente
 
 - **Tendência Linear**:
 
-  $$
-  \begin{aligned} \gamma_{Y(r,s)} & = \text{ Cov}\left( Y_{r},Y_{s} \right) \\ & = \text{ Cov}\left( \beta_{0} + \beta_{1}r + \varepsilon_{r},\beta_{0} + \beta_{1}s + \varepsilon_{s} \right) \\ & = \text{ Cov}\left( \varepsilon_{r},\varepsilon_{s} \right) \\ & = \begin{cases} \sigma^{2}\text{\quad\quad}r = s \\ 0\text{\quad\quad}r \neq s. \end{cases} \end{aligned}
-  $$
+$$
+\begin{aligned} \gamma_{Y(r,s)} & = \text{ Cov}\left( Y_{r},Y_{s} \right) \\ & = \text{ Cov}\left( \beta_{0} + \beta_{1}r + \varepsilon_{r},\beta_{0} + \beta_{1}s + \varepsilon_{s} \right) \\ & = \text{ Cov}\left( \varepsilon_{r},\varepsilon_{s} \right) \\ & = \begin{cases} \sigma^{2}\text{\quad\quad}r = s \\ 0\text{\quad\quad}r \neq s. \end{cases} \end{aligned}
+$$
 
 - **AR**: Dado que $Y_{t} = \varphi Y_{t - 1} + \varepsilon_{t}$, então temos:
 
-  $$
-  {\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = {\mathbb{V}}\left\lbrack \varphi Y_{t - 1} + \varepsilon_{t} \right\rbrack = \varphi^{2}{\mathbb{V}}\left\lbrack Y_{t - 1} \right\rbrack + \sigma^{2}
-  $$
+$$
+{\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = {\mathbb{V}}\left\lbrack \varphi Y_{t - 1} + \varepsilon_{t} \right\rbrack = \varphi^{2}{\mathbb{V}}\left\lbrack Y_{t - 1} \right\rbrack + \sigma^{2}
+$$
 
-  e se assumirmos que $Y_{t} = Y_{t - 1}$:
+ e se assumirmos que $Y_{t} = Y_{t - 1}$:
 
-  $$
-  {\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \varphi^{2}{\mathbb{V}}\left\lbrack Y_{t} \right\rbrack + \sigma^{2} \Rightarrow {\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \frac{\sigma^{2}}{1 - \varphi^{2}}
-  $$
+$$
+{\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \varphi^{2}{\mathbb{V}}\left\lbrack Y_{t} \right\rbrack + \sigma^{2} \Rightarrow {\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = \frac{\sigma^{2}}{1 - \varphi^{2}}
+$$
 
 - **Passeio Aleatório**: Assumindo o caso onde $Y_{t} = \varepsilon_{1} + \varepsilon_{2} + \ldots + \varepsilon_{t}$, temos que:
 
-  $$
-  {\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = {\mathbb{V}}\left\lbrack \varepsilon_{1} + \varepsilon_{2} + \ldots + \varepsilon_{t} \right\rbrack = t\sigma^{2}
-  $$
+$$
+{\mathbb{V}}\left\lbrack Y_{t} \right\rbrack = {\mathbb{V}}\left\lbrack \varepsilon_{1} + \varepsilon_{2} + \ldots + \varepsilon_{t} \right\rbrack = t\sigma^{2}
+$$
 
-  Ou seja, a variância do passeio aleatório cresce linearmente com o tempo. Além disso, a covariância entre dois instantes $r$ e $s$ é dada por
+ Ou seja, a variância do passeio aleatório cresce linearmente com o tempo. Além disso, a covariância entre dois instantes $r$ e $s$ é dada por
 
-  $$
-  \gamma_{Y}(r,s) = {\mathbb{E}}\left\lbrack Y_{r}Y_{s} \right\rbrack = {\mathbb{E}}\left\lbrack \left( \varepsilon_{1} + \ldots + \varepsilon_{r} \right)\left( \varepsilon_{1} + \ldots + \varepsilon_{s} \right) \right\rbrack = \min(r,s)\sigma^{2}
-  $$
+$$
+\gamma_{Y}(r,s) = {\mathbb{E}}\left\lbrack Y_{r}Y_{s} \right\rbrack = {\mathbb{E}}\left\lbrack \left( \varepsilon_{1} + \ldots + \varepsilon_{r} \right)\left( \varepsilon_{1} + \ldots + \varepsilon_{s} \right) \right\rbrack = \min(r,s)\sigma^{2}
+$$
 
 **Definição: Estacionariedade Fraca**
 
@@ -151,7 +162,10 @@ Dizemos que uma série temporal $\left\{ Y_{t} \right\}$ é **estacionária frac
 
 Como vemos pelos exemplos, as únicas séries que são estacionárias fracas são o **ruído branco** e o **AR**. A tendência linear e o passeio aleatório não são estacionários fracos, pois a média e a covariância dependem do tempo
 
+<a id="scripture-secao-28"></a>
+
 <a id="secao-28"></a>
+<a id="acf-e-acvf"></a>
 
 ## ACF e ACVF
 
@@ -175,8 +189,11 @@ $$
 
 A ACF é uma função que mede a correlação entre os valores da série temporal em diferentes lags. Ela nos ajuda a identificar padrões de dependência temporal e a determinar a ordem de modelos AR e MA, é como se ela fosse a função que mede a **memória** da série temporal. Vale ressaltar que não é porque uma série tem estacionaridade fraca que ela não possui memória, como vimos no caso do AR, que é estacionário fraco, mas possui memória curta. O mesmo não ocorre com o passeio aleatório, que não é estacionário fraco e possui memória longa
 
+<a id="scripture-secao-29"></a>
+
 <a id="iid-v-s-ruido-branco"></a>
 <a id="secao-29"></a>
+<a id="iid-vs-ruído-branco"></a>
 
 ## IID v.s Ruído Branco
 
@@ -208,8 +225,11 @@ $$
 \text{ I.I.D }\left( 0,\sigma^{2} \right) \Rightarrow \text{ WN}\left( 0,\sigma^{2} \right)
 $$
 
+<a id="scripture-secao-30"></a>
+
 <a id="estimacao-amostral"></a>
 <a id="secao-30"></a>
+<a id="estimação-amostral"></a>
 
 ## Estimação Amostral
 
@@ -227,13 +247,13 @@ $$
 
 Se $\left\{ Y_{t} \right\}$ for um processo fracamente estacionário com ${\mathbb{E}}\left\lbrack Y_{t} \right\rbrack = \mu$ e autocovariância $\gamma(h)$ então
 
-- ${\overline{Y}}_{t}$ é um estimador não-viezado de $\mu$
+- ${\overline{Y}}_{t}$ é um estimador não-viesado de $\mu$
 
 - A variância de ${\overline{Y}}_{t}$ é dada por
 
-  $$
-  {\mathbb{V}}\left\lbrack {\overline{Y}}_{t} \right\rbrack = \frac{1}{T}\sum_{h = - (T - 1)}^{T - 1}\left( 1 - \frac{\vert h\vert }{T} \right)\gamma(h)
-  $$
+$$
+{\mathbb{V}}\left\lbrack {\overline{Y}}_{t} \right\rbrack = \frac{1}{T}\sum_{h = - (T - 1)}^{T - 1}\left( 1 - \frac{\vert h\vert }{T} \right)\gamma(h)
+$$
 
 **Demonstração**
 
@@ -249,7 +269,7 @@ $$
 {\mathbb{V}}\left\lbrack {\overline{Y}}_{t} \right\rbrack = {\mathbb{V}}\left\lbrack \frac{1}{T}\sum_{t = 1}^{T}Y_{t} \right\rbrack = \frac{1}{T^{2}}{\mathbb{V}}\left\lbrack \sum_{t = 1}^{T}Y_{t} \right\rbrack = \frac{1}{T^{2}}\sum_{r = 1}^{T}\sum_{s = 1}^{T}\text{ Cov}\left( Y_{r},Y_{s} \right)
 $$
 
-como o processo é fracamente estacionário, podemos reescrever a covariância como uma função do lag $h = \vert r - s\vert$, assim
+ como o processo é fracamente estacionário, podemos reescrever a covariância como uma função do lag $h = \vert r - s\vert$, assim
 
 $$
 {\mathbb{V}}\left\lbrack {\overline{Y}}_{t} \right\rbrack = \frac{1}{T^{2}}\sum_{r = 1}^{T}\sum_{s = 1}^{T}\gamma(\vert r - s\vert )
@@ -283,13 +303,13 @@ $$
 \widetilde{\gamma}(h) = \frac{1}{T}\sum_{t = 1}^{T - h}\left( Y_{t} - \mu \right)\left( Y_{t + h} - \mu \right)
 $$
 
-tomando a esperança desse estimador
+ tomando a esperança desse estimador
 
 $$
 \begin{aligned} {\mathbb{E}}\left\lbrack \widetilde{\gamma}(h) \right\rbrack & = \frac{1}{T}\sum_{t = 1}^{T - h}{\mathbb{E}}\left\lbrack \left( Y_{t} - \mu \right)\left( Y_{t + h} - \mu \right) \right\rbrack \\ & = \frac{1}{T}\sum_{t = 1}^{T - h}\gamma(h) \\ & = \frac{T - h}{T}\gamma(h) \end{aligned}
 $$
 
-logo
+ logo
 
 $$
 {\mathbb{E}}\left\lbrack \widetilde{\gamma}(h) \right\rbrack - \gamma(h) = - \frac{h}{T}\gamma(h)
@@ -307,19 +327,19 @@ $$
 {\hat{\Gamma}}_{k} = \left\lbrack \hat{\gamma}(i - j) \right\rbrack_{i,j = 1}^{k}
 $$
 
-pode ser escrita da seguinte forma matricial
+ pode ser escrita da seguinte forma matricial
 
 $$
 {\hat{\Gamma}}_{k} = \frac{1}{T}X^{T}X
 $$
 
-onde $X_{rj} = Y_{r - j + 1} - {\overline{Y}}_{T}$ para $r \in \left\{ 1,\ldots,T + k - 1 \right\}$ e $j \in \left\{ 1,\ldots,k \right\}$. Para qualquer vetor não-nulo $a = \left( a_{1},\ldots,a_{k} \right)^{T} \in {\mathbb{R}}^{k}$:
+ onde $X_{rj} = Y_{r - j + 1} - {\overline{Y}}_{T}$ para $r \in \left\{ 1,\ldots,T + k - 1 \right\}$ e $j \in \left\{ 1,\ldots,k \right\}$. Para qualquer vetor não-nulo $a = \left( a_{1},\ldots,a_{k} \right)^{T} \in {\mathbb{R}}^{k}$:
 
 $$
 a^{T}{\hat{\Gamma}}_{k}a = a^{T}\left( \frac{1}{T}X^{T}X \right)a = \frac{1}{T}(Xa)^{T}(Xa) = \frac{1}{T}\| Xa\| \geq 0
 $$
 
-Se dividíssemos por $T - h$ em vez de $T$, esse cancelamento matricial exato falharia, podendo gerar matrizes de autocovariância amostrais não-definidas positivas (com variâncias teóricas negativas para combinações lineares da série) e maior variabilidade estatística em $h$ elevad
+ Se dividíssemos por $T - h$ em vez de $T$, esse cancelamento matricial exato falharia, podendo gerar matrizes de autocovariância amostrais não-definidas positivas (com variâncias teóricas negativas para combinações lineares da série) e maior variabilidade estatística em $h$
 
 **Definição: Autocorrelação Amostral**
 
@@ -339,7 +359,7 @@ $$
 \sqrt{T}{\hat{\rho}}_{h}\overset{d}{\rightarrow}\mathcal{N}(0,1)
 $$
 
-e isso implica que ${\hat{\rho}}_{h} \approx \mathcal{N}(0,\frac{1}{T})$ para $T$ grande
+ e isso implica que ${\hat{\rho}}_{h} \approx \mathcal{N}(0,\frac{1}{T})$ para $T$ grande
 
 **Demonstração**
 
@@ -377,9 +397,9 @@ $$
 \sqrt{T}\hat{\rho}(h) = \frac{\sqrt{T}\hat{\gamma}(h)}{\hat{\gamma}(0)}\overset{d}{\rightarrow}\frac{\mathcal{N}(0,\sigma^{4})}{\sigma^{2}} = \mathcal{N}\left( 0,\frac{\sigma^{4}}{\left( \sigma^{2} \right)^{2}} \right) = \mathcal{N}(0,1)
 $$
 
-**Corolário: Construção formal do intervalo de confiança da ACF**
+**Corolário: Construção formal do [intervalo de confiança](../inferencia-estatistica/intervalos-de-confianca.md) da ACF**
 
-Da [distribuição da autocorrelação amostral](#acf-amostral-dist), decorre que quando temos um ruído IID e amostras grandes, podemos construir um [intervalo de confiança](../inferencia-estatistica/intervalos-de-confianca.md) para a autocorrelação amostral. Para um nível de confiança $1 - \alpha$:
+Do [teorema da distribuição da autocorrelação amostral](#acf-amostral-dist), decorre que quando temos um ruído IID e amostras grandes, podemos construir um intervalo de confiança para a autocorrelação amostral. Para um nível de confiança $1 - \alpha$:
 
 $$
 \begin{array}{r} {\mathbb{P}}( - z_{1 - \alpha/2} \leq \sqrt{T}\hat{\rho}(h) \leq z_{1 - \alpha/2}) \approx 1 - \alpha \\ {\mathbb{P}}( - \frac{z_{1 - \alpha/2}}{\sqrt{T}} \leq \hat{\rho}(h) \leq \frac{z_{1 - \alpha/2}}{\sqrt{T}}) \approx 1 - \alpha \end{array}
@@ -392,9 +412,6 @@ $$
 $$
 
 se o valor amostral $\hat{\rho}(h)$ ultrapassar um desses limites, então rejeita-se a hipótese nula $H_{0}$ da **ausência de autocorrelação** no lag $h$, ou seja, existe evidência de que a série temporal possui memória linear. Caso contrário, não rejeitamos a hipótese nula, indicando que não há evidência suficiente para afirmar que existe autocorrelação nesse lag
-
-------------------------------------------------------------------------
-
 <!-- wiki:original:fim -->
 
 ## Percurso de estudo
@@ -402,4 +419,5 @@ se o valor amostral $\hat{\rho}(h)$ ultrapassar um desses limites, então rejeit
 [Trilha: A1](../../trilhas/series-temporais/a1.md) · [Apresentação e contexto da fonte](../../trilhas/series-temporais/a1.md#apresentacao-original)
 
 - Anterior: [Diagnóstico Visual](diagnostico-visual.md)
+
 - Próximo: [Previsão e Baselines](previsao-e-baselines.md)

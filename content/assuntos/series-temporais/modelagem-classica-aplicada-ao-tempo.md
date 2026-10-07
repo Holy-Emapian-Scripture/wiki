@@ -17,6 +17,7 @@ ordem_na_trilha: 4
 
 <!-- wiki:original:inicio -->
 <a id="secao-8"></a>
+
 # Modelagem Clássica aplicada ao Tempo
 
 ------------------------------------------------------------------------
@@ -104,7 +105,7 @@ $$
 y_{t} = f\left( x_{1t},\ldots,x_{pt} \right) + \varepsilon_{t}
 $$
 
-onde $f$ é uma função altamente flexível modelada por uma rede neural, capazes de capturar padrões complexos e não-lineares dos dados
+onde $f$ é uma função altamente flexível modelada por uma rede neural, capaz de capturar padrões complexos e não-lineares dos dados
 <a id="secao-16"></a>
 
 ### Janelas, Batches e Seta do Tempo
@@ -139,7 +140,7 @@ $$
 \left\{ 10,12,9,14,11,13,8,15,\ldots \right\}
 $$
 
-as janelas $\left\{ 10,12,9 \right\}$ e $\left\{ 12,9,14 \right\}$ se sobrepõe, de tal forma que elas NÃO são independentes pois contém a mesma parcela do passado e como ela influencia nos valores internos. O ponto é que, para um SGD, você **pode** embaralhar essas janelas, mas isso não lhe permite tratá-las como **independentes**
+as janelas $\left\{ 10,12,9 \right\}$ e $\left\{ 12,9,14 \right\}$ se sobrepõem, de tal forma que elas NÃO são independentes pois contém a mesma parcela do passado e como ela influencia nos valores internos. O ponto é que, para um SGD, você **pode** embaralhar essas janelas, mas isso não lhe permite tratá-las como **independentes**
 
 <!-- wiki:original:fim -->
 

@@ -39,6 +39,7 @@ Agrupamento conforme as pastas de origem das anotações.
 [Abrir conteúdos por assunto](../assuntos/probabilidade/index.md)
 
 - [A1](../trilhas/probabilidade/a1.md)
+- [A1 anterior](../trilhas/probabilidade/a1-anterior.md)
 - [A2](../trilhas/probabilidade/a2.md)
 
 ## Álgebra Linear Numérica

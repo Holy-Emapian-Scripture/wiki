@@ -84,6 +84,7 @@ Revisões e percursos de leitura que mantêm a sequência das anotações origin
 ## Probabilidade
 
 - [A1](probabilidade/a1.md)
+- [A1 anterior](probabilidade/a1-anterior.md)
 - [A2](probabilidade/a2.md)
 
 ## Processamento de Linguagem Natural
